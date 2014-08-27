@@ -60,4 +60,4 @@ target/
 migrations/*
 */migrations/*
 
-*/hackcon2014/static/*
+/static/*
