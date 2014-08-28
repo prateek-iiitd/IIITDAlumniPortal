@@ -9,9 +9,9 @@
         <h2>News</h2>
 
         {#Placeholder for main news.#}
-        <div class="row">
-            {% include 'summary_long_news.html' %}
-        </div>
+
+        {% include 'summary_long_news.html' %}
+
 
         {#Placeholder for smaller news.#}
         <div class="row">
@@ -23,10 +23,11 @@
 
     <div class="divider-4r"></div>
 
+    {% include 'summary_blog.html' %}
 
-    <div class="row">
-        {% include 'summary_blog.html' %}
-    </div>
+    <div class="divider-4r"></div>
+
+    {% include 'summary_blog.html' %}
 
 
 {% endblock %}
@@ -34,8 +35,8 @@
 {% block right_content %}
     <div class="row">
 
-    <h3>Upcoming Events</h3>
-        </div>
+        <h3>Upcoming Events</h3>
+    </div>
 
     {% include 'card_event_upcoming.html' %}
     {% include 'card_event_upcoming.html' %}
