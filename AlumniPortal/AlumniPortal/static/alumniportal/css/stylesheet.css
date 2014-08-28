@@ -21,28 +21,20 @@ body {
 	margin-bottom: -40px;
 	z-index: 10;
 }
-/*
-#nav-bar-back {
-    width:1024px;
-    background-color:#fff;
-    height:50px;
-    z-index:10;
+
+#nav-bar-main {
+    background-color: #fff;
     box-shadow: 0px 3px 8px #111;
-    opacity: 0.9;
-    position: fixed;
-    margin-top:-100px;
-    border-top:4px #333 solid;
-}*/
+    z-index: 900;
+	opacity: 0.9;
+}
 
 #nav-bar {
-	background-color:#fff;
-    box-shadow: 0px 3px 8px #111;
 	height:50px;
     /*padding-right: 85px;*/
     margin-top: 0px;
 	/*width: 1024px;*/
-	z-index: 900;
-	opacity: 0.9;
+
 }
 
 #nav-bar:hover {
@@ -52,7 +44,7 @@ body {
 #nav-bar ul {
     /*position: fixed;*/
 	list-style:none;
-	padding: 15px 0;
+	padding: 16px 0;
     width: 690px;
 }
 
