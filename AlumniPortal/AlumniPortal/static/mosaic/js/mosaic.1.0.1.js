@@ -122,7 +122,9 @@
                 opacity: 0.9			//Opacity for overlay (0-1)
             });
 
-            $('.fade2').mosaic();
+            $('.fade2').mosaic({
+                animation: 'fade'
+            });
 
             $('.bar').mosaic({
                 animation: 'slide'		//fade or slide

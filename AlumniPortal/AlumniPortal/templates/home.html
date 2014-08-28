@@ -6,7 +6,7 @@
 
 
     <div class="row">
-        <h2>News</h2>
+        <h3>News</h3>
 
         {#Placeholder for main news.#}
 
@@ -15,19 +15,93 @@
 
         {#Placeholder for smaller news.#}
         <div class="row">
-            {% include 'summary_short_news.html' %}
-            {% include 'summary_short_news.html' %}
-            {% include 'summary_short_news.html' %}
+            <div class="col-lg-4">
+                <div class="mosaic-block2 fade2">
+                    <a href="#" target="_blank" class="mosaic-overlay">
+                        <div class="details2">
+                            <h4>Research Showcase '14</h4><br/>
+
+                            <p>Let's Go Invent!<br/>@Sunday, 22 March 2014</p>
+                        </div>
+                    </a>
+
+                    <div class="mosaic-backdrop"><img
+                            src="{{ STATIC_URL }}alumniportal/img/research-showcase-2014.jpg"
+                            style="height:100%;width:auto;margin-left:-125px;"/></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mosaic-block2 fade2">
+                    <a href="#" target="_blank" class="mosaic-overlay">
+                        <div class="details2">
+                            <h4>Alumni '14</h4><br/>
+
+                            <p></p>
+                        </div>
+                    </a>
+
+                    <div class="mosaic-backdrop"><img
+                            src="{{ STATIC_URL }}alumniportal/img/IIITD-grad.jpg"
+                            style="height:100%;width:auto;margin-left:-200px;"/></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mosaic-block2 fade2">
+                    <a href="#" target="_blank" class="mosaic-overlay">
+                        <div class="details2">
+                            <h4>Esya '14</h4><br/>
+
+                            <p></p>
+                        </div>
+                    </a>
+
+                    <div class="mosaic-backdrop"><img
+                            src="{{ STATIC_URL }}alumniportal/img/esya14.jpg"
+                            style="height:100%;width:auto;margin-left:-55px;"/></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="divider-4r"></div>
 
-    {% include 'summary_blog.html' %}
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="mosaic-block3 bar2">
+                <div class="mosaic-backdrop">
+                    <img src="{{ STATIC_URL }}alumniportal/img/director-sir.jpg"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <h2>Role of Alumni in an Institute</h2>
+            <span class="writer">Pankaj Jalote, Director, IIIT-Delhi</span>
+
+            <p>
+                To a large extent what alumni do with their lives define the stature of an Institute. And we have
+                provided a strong foundation for you to do well in life – good education...
+            </p>
+        </div>
+    </div>
 
     <div class="divider-4r"></div>
 
-    {% include 'summary_blog.html' %}
+    <div class="col-lg-5">
+        <div class="mosaic-block3 bar2">
+            <div class="mosaic-backdrop">
+                <img src="{{ STATIC_URL }}alumniportal/img/raghavsethi.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <h2>IIIT-Delhi – A three year update </h2>
+        <span class="writer">Raghav Sethi, B.Tech (CSE) 2009</span>
+
+        <p>
+            I believe that IIIT-D is among the best places in the country to study computer science (and now possibly
+            electronics and communication as well). However, as I pointed out in my...
+        </p>
+    </div>
 
 
 {% endblock %}
@@ -45,5 +119,5 @@
 {% endblock %}
 
 {% block scripts %}
-        <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/home.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/home.js"></script>
 {% endblock %}
