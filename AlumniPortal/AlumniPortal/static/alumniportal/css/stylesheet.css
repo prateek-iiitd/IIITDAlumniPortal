@@ -192,6 +192,14 @@ hr {
     margin-bottom: 15px;
 }
 
+.panel-heading {
+    cursor: pointer;
+}
+.panel-heading:hover {
+    background-color: #eee;
+}
+
 .panel-body {
+    display: none;
     padding: 5px 15px 10px 15px;
 }
