@@ -44,7 +44,7 @@ body {
 #nav-bar ul {
     /*position: fixed;*/
 	list-style:none;
-	padding: 16px 0;
+	padding: 16px 0 15px 0;
     width: 690px;
 }
 
