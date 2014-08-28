@@ -84,12 +84,12 @@ body {
 
 #green-dabba {
     height:10px;
-    background-color:#3cada8;
+    background-color:#3fada8;
     margin-top:15px;
 }
 #green-dabba-2 {
     height:10px;
-    background-color:#3cada8;
+    background-color:#3fada8;
     margin-bottom: 10px;
     z-index:0;
 }
@@ -111,7 +111,7 @@ body {
 .footer {
 	background-color: #CCC;
 	box-shadow: 0px 0px 5px #111;
-    padding: 20px 30px 60px 30px;
+    padding: 10px 20px 65px 20px;
     text-shadow: 0 0 3px white;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
