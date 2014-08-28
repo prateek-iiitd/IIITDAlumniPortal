@@ -33,22 +33,12 @@
 
 {% block right_content %}
     <div class="row">
-        <div class="well text-center">
-            <h2>Convocation '14</h2>
-            <table class="table table-hover">
-                <tr>
-                    <td>Venue:</td>
-                    <td class="text-center">IIITD</td>
-                </tr>
-                <tr>
-                    <td>Time:</td>
-                    <td class="text-center">2pm, 31 August 2014</td>
-                </tr>
-            </table>
 
-            <p>
-                <a class="btn btn-primary" href="">Go to page</a>
-            </p>
+    <h3>Upcoming Events</h3>
         </div>
-    </div>
+
+    {% include 'card_event_upcoming.html' %}
+    {% include 'card_event_upcoming.html' %}
+    {% include 'card_event_upcoming.html' %}
+
 {% endblock %}
