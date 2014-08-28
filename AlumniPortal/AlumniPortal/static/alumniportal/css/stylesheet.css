@@ -1,0 +1,156 @@
+body {
+	background-color: #4D4D4D !important;
+	/*font-family: Calibri, Sans-Serif;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    /*min-height:100%;*/
+    margin-bottom: 80px;
+}
+
+/*#wrapper {
+	width: 1024px;
+	margin: 0 auto;
+	padding: 0;
+	
+	z-index: 0;
+}*/
+
+#top {
+	background-color: #000;
+	height: 40px;
+	margin-bottom: -40px;
+	z-index: 10;
+}
+/*
+#nav-bar-back {
+    width:1024px;
+    background-color:#fff;
+    height:50px;
+    z-index:10;
+    box-shadow: 0px 3px 8px #111;
+    opacity: 0.9;
+    position: fixed;
+    margin-top:-100px;
+    border-top:4px #333 solid;
+}*/
+
+#nav-bar {
+	/*position: fixed;*/
+	background-color:#fff;
+    box-shadow: 0px 3px 8px #111;
+	height:50px;
+	/*left: 0;*/
+	/*right: 0;*/
+	margin: 0 auto;
+    margin-top: 30px;
+	/*width: 1024px;*/
+	z-index: 900;
+	opacity: 0.90;
+}
+
+#nav-bar:hover {
+	opacity: 0.98;
+}
+
+#nav-bar ul {
+    /*position: fixed;*/
+	list-style:none;
+	padding: 15px 0;
+	margin:0 auto;
+	width: 670px;
+}
+
+#nav-bar div:first-child {
+	display: block;
+	height: 10px;
+	background-color: #fff;
+}
+
+#nav-bar li	{
+	/*float: right;*/
+	display: inline;
+	/*background-color: #efefef;*/
+	color: #777;
+	padding: 14px 20px 14px 20px;
+	/*letter-spacing: 1px;*/
+	cursor: pointer;
+    font-weight:bold;
+	/*border-bottom: 5px solid #efefef;*/
+}
+#nav-bar li:hover {
+	color:#3fada8;
+	border-bottom: 3px solid #3fada8;
+	/*box-shadow: inset 0px -5px 5px #3fada8;*/
+	/*background-color:#ddd;*/
+}
+
+#green-dabba {
+    height:10px;
+    background-color:#3cada8;
+    margin-top:15px;
+}
+#green-dabba-2 {
+    height:10px;
+    background-color:#3cada8;
+    margin-bottom: 10px;
+    z-index:0;
+}
+
+#contentpane {
+    /*position:relative;*/
+    /*display: block;*/
+    background-color: #fff;
+    box-shadow: 0 0 10px #111;
+    z-index:500;
+	/*margin: 0 auto;*/
+	/*margin-top: -150px;*/
+	/*width: 1024px;*/
+    /*min-height: 100%;*/
+}
+
+.footer {
+	background-color: #999;
+	box-shadow: 0px 0px 5px #111;
+	height:80px;
+    margin-bottom:-80px;
+	/*width:1024px;*/
+}
+
+.card-main {
+    margin:20px 0 0 0px;
+    background-color:#fff;
+    padding:0px 25px 30px 25px;
+    border-bottom: 1px #ccc solid;
+    /*height:600px;*/
+    /**/
+
+}
+
+.card-main h2 {
+    margin-top: 0;
+}
+
+.card-event {
+    margin:25px 0px 0 0;
+    background-color:#fff;
+    padding:0;
+    /*box-shadow: 0 0 10px #111;*/
+}
+
+.well {
+    background-color: rgba(187, 187, 187, 0.38) !important;
+    color: #ddd;
+}
+
+.well h2 {
+    color:#333;
+    font-size:18px;
+    font-weight:bold;
+}
+.well .btn {
+    color:#efefef;
+}
+.well p, .well table {
+    color:#333;
+    font-size:14px;
+}
+

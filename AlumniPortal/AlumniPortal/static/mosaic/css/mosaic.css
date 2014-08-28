@@ -1,0 +1,148 @@
+/*
+	Mosaic - Sliding Boxes and Captions jQuery Plugin
+	Version 1.0.1
+	www.buildinternet.com/project/mosaic
+	
+	By Sam Dunn / One Mighty Roar (www.onemightyroar.com)
+	Released under MIT License / GPL License
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+/*General Mosaic Styles*/
+
+.mosaic-block, .mosaic-block2, .mosaic-block3 {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0 0 0px;
+    background: #111 url(../img/progress.gif) no-repeat center center;
+
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.mosaic-block {
+    width: 100%;
+    height: 250px;
+}
+
+.mosaic-block2, .mosaic-block3 {
+    width: 200px;
+    height: 200px;
+}
+
+.mosaic-block3 {
+    margin-left: 15px;
+}
+
+.mosaic-block4-blog {
+    width: 400px;
+    height: 200px;
+}
+
+.mosaic-backdrop {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #333;
+}
+
+.mosaic-backdrop img {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.mosaic-overlay {
+    display: none;
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+
+/*** Custom Animation Styles (You can remove/add any styles below) ***/
+.circle .mosaic-overlay {
+    background: url(../img/hover-magnify.png) no-repeat center center;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=00)";
+    filter: alpha(opacity=00);
+    display: none;
+}
+
+.fade2 .mosaic-overlay {
+    bottom: -50px;
+    height: 250px;
+    width: 200px;
+    opacity: 0.8;
+    padding: 0px;
+    padding-right: 10px;
+    background-color: #111;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=00)";
+    filter: alpha(opacity=00);
+    background: url(../img/bg-black.png);
+}
+
+.bar .mosaic-overlay {
+    bottom: -100px;
+    height: 100px;
+    background: url(../img/bg-black.png);
+}
+
+.bar2 .mosaic-overlay {
+    bottom: -50px;
+    height: 100px;
+    opacity: 0.8;
+    background-color: #111;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+}
+
+.bar2 .mosaic-overlay:hover {
+    opacity: 0.8;
+    background-color: #111;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=80);
+}
+
+.bar3 .mosaic-overlay {
+    top: -100px;
+    height: 100px;
+    background: url(../img/bg-black.png);
+}
+
+/*** End Animation Styles ***/
+
+.details h4 {
+    color: #3fada8;
+    font-weight: bold;
+    padding: 5px 0 0 25px;
+}
+
+.details2 h4 {
+    color: #3fada8;
+    font-weight: bold;
+    padding: 5px 10px 0 15px;
+}
+
+.details p {
+    padding: 0px 0 0 25px;
+    color: #999;
+}
+
+.details2 p {
+    padding: 0px 10px 0 15px;
+    color: #999;
+}
+
+.mosaic-block a, .mosaic-block2 a, .mosaic-block3 a {
+    text-decoration: none;
+}
