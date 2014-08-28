@@ -203,3 +203,7 @@ hr {
     display: none;
     padding: 5px 15px 10px 15px;
 }
+
+.card-event .row:nth-child(2) .panel .panel-body {
+    display: block;
+}
