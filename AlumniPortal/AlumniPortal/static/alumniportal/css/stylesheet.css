@@ -40,7 +40,6 @@ body {
 	height:50px;
 	/*left: 0;*/
 	/*right: 0;*/
-	margin: 0 auto;
     margin-top: 30px;
 	/*width: 1024px;*/
 	z-index: 900;
@@ -55,8 +54,7 @@ body {
     /*position: fixed;*/
 	list-style:none;
 	padding: 15px 0;
-	margin:0 auto;
-	width: 670px;
+    width: 670px;
 }
 
 #nav-bar div:first-child {
@@ -101,6 +99,7 @@ body {
     background-color: #fff;
     box-shadow: 0 0 10px #111;
     z-index:500;
+    padding: 25px 15px;
 	/*margin: 0 auto;*/
 	/*margin-top: -150px;*/
 	/*width: 1024px;*/
@@ -116,10 +115,8 @@ body {
 }
 
 .card-main {
-    margin:20px 0 0 0px;
+    padding-left: 40px;
     background-color:#fff;
-    padding:0px 25px 30px 25px;
-    border-bottom: 1px #ccc solid;
     /*height:600px;*/
     /**/
 
@@ -127,12 +124,13 @@ body {
 
 .card-main h2 {
     margin-top: 0;
+    font-size: 40px !important;
+    font-weight:bold;
 }
 
 .card-event {
-    margin:25px 0px 0 0;
     background-color:#fff;
-    padding:0;
+    padding-right:25px;
     /*box-shadow: 0 0 10px #111;*/
 }
 
@@ -154,3 +152,9 @@ body {
     font-size:14px;
 }
 
+
+.divider-4r {
+    height:2px;
+    margin:30px 0;
+    background-color:#ccc;
+}

@@ -15,30 +15,31 @@
 
 <div class="container">
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10" id="green-dabba"></div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-offset-1 col-lg-10" id="green-dabba"></div>
 </div>
 
 <div id="contentpane" class="row">
 
 <div class="card-main col-lg-8">
-    {% block left_content %}{% endblock %}
+    {% block left_content %}
+
+    {% endblock %}
 </div>
 
 <div class="card-event col-lg-offset-1 col-lg-3">
-    {% block right_content %}{% endblock %}
+    {% block right_content %}
+
+    {% endblock %}
 </div>
 
 </div>
+
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10" id="green-dabba-2"></div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-offset-1 col-lg-10" id="green-dabba-2"></div>
 </div>
 </div>
 
-<script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}mosaic/js/mosaic.1.0.1.js"></script>
 
 {% block scripts %}{% endblock %}

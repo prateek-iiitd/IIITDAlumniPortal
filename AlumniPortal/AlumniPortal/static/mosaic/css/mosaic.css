@@ -32,7 +32,7 @@
 }
 
 .mosaic-block2, .mosaic-block3 {
-    width: 200px;
+    width: 230px;
     height: 200px;
 }
 
@@ -79,9 +79,8 @@
 }
 
 .fade2 .mosaic-overlay {
-    bottom: -50px;
-    height: 250px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
     opacity: 0.8;
     padding: 0px;
     padding-right: 10px;
