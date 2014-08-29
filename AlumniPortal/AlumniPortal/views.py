@@ -9,3 +9,6 @@ def directory(request):
 
 def contact_us(request):
     return render(request, 'contact_us.html')
+
+def blog(request):
+    return render(request, 'blog.html')
