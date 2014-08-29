@@ -1,0 +1,14 @@
+#preview {
+    display: none;
+    position: fixed;
+}
+
+#preview .panel {
+    height: 220px;
+    width: 230px;
+}
+
+#preview .panel .panel-body {
+    padding-top: 20px;
+    display: block;
+}
