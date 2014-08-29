@@ -230,6 +230,10 @@ hr {
     cursor: pointer;
 }
 
+.panel h4 {
+    height:40px;
+}
+
 .panel-heading:hover {
     background-color: #eee;
 }
@@ -301,6 +305,6 @@ fieldset[disabled] .btn-warning.active {
     height:160px;
 }
 
-#nav-bar a:link, a:visited, a:hover, a:active, .mosaic-block a:link, a:visited, a:hover, a:active, .mosaic-block2 a:link, a:visited, a:hover, a:active {
+#nav-bar a:link, a:visited, a:hover, a:active, .mosaic-block a:link, a:visited, a:hover, a:active, .mosaic-block2 a:link, a:visited, a:hover, a:active, .panel a:link, a:visited, a:hover, a:active {
     text-decoration: none !important;
 }

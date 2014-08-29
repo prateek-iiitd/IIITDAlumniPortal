@@ -6,3 +6,6 @@ def home(request):
 
 def directory(request):
     return render(request, 'directory.html')
+
+def contact_us(request):
+    return render(request, 'contact_us.html')

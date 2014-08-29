@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'AlumniPortal.views.home'),
     url(r'^directory/$', 'AlumniPortal.views.directory'),
+    url(r'^contact_us/$', 'AlumniPortal.views.contact_us'),
 )

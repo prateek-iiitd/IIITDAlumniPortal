@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Alumni | Contact Us{% endblock %}
+
+{% block left_content %}
+
+
+
+{% endblock %}
+
+{% block right_content %}
+    <div class="row">
+        <h3>Person of Contact</h3>
+    </div>
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="height:100px;">
+                <img src="{{ STATIC_URL }}alumniportal/img/richasingh.jpg" class="img-circle pull-right"
+                     style="height:80px;width:80px;top:0;left:0;border:1px #ccc solid">
+                <h4>Richa Singh</h4>
+
+                <p>Associate Professor</p>
+            </div>
+            <div class="panel-body text-left">
+                <span class="glyphicon glyphicon-phone card-field"><span
+                        class="card-field-font">+91-11-26907433</span></span><br/>
+                <span class="glyphicon glyphicon-map-marker card-field"><span
+                        class="card-field-font">A-201, IIITD</span></span><br/>
+                <span class="glyphicon glyphicon-inbox card-field"><span
+                        class="card-field-font">rsingh@iiitd.ac.in</span></span><br/>
+
+                <div class="clearfix"></div>
+                <hr>
+                I received my M.S. and PhD degrees in Computer Science in 2005 and 2008. I have over 100 research
+                publications in refereed journals, book chapters, and conferences and I am the recipient of 11 best
+                paper/poster awards. My current areas of interest are biometrics, pattern recognition, machine learning,
+                and granular computing.
+                <a href="http://www.iiitd.edu.in/~richa/">
+                    <div class="btn btn-warning center-block" style="margin-top:15px;">
+                        Website
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/home.js"></script>
+{% endblock %}
