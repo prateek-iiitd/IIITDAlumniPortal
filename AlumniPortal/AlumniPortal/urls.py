@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^directory/$', 'AlumniPortal.views.directory'),
     url(r'^contact_us/$', 'AlumniPortal.views.contact_us'),
     url(r'^blog/$', 'AlumniPortal.views.blog'),
+    url(r'^news/$', 'AlumniPortal.views.news'),
 )

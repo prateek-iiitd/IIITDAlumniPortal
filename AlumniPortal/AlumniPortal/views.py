@@ -12,3 +12,6 @@ def contact_us(request):
 
 def blog(request):
     return render(request, 'blog.html')
+
+def news(request):
+    return render(request, 'news.html')
