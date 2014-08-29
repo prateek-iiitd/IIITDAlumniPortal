@@ -1,0 +1,93 @@
+[
+    {
+        "model": "AlumniPortal.specialisationstream",
+        "pk": 1,
+        "fields": {
+            "name": "Information Security"
+        }
+    },
+
+    {
+        "model": "AlumniPortal.specialisationstream",
+        "pk": 2,
+        "fields": {
+            "name": "Data Engineering"
+        }
+    },
+
+    {
+        "model": "AlumniPortal.branch",
+        "pk": 1,
+        "fields": {
+            "name": "CSE"
+        }
+    },
+
+    {
+        "model": "AlumniPortal.branch",
+        "pk": 2,
+        "fields": {
+            "name": "ECE"
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 1,
+        "fields": {
+            "name": "B.Tech.",
+            "branch": 1
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 2,
+        "fields": {
+            "name": "M.Tech.",
+            "branch": 1,
+            "specialisation": 1
+
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 3,
+        "fields": {
+            "name": "M.Tech.",
+            "branch": 1,
+            "specialisation": 2
+
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 4,
+        "fields": {
+            "name": "Dual",
+            "branch": 1,
+            "specialisation": 1
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 5,
+        "fields": {
+            "name": "Dual",
+            "branch": 1,
+            "specialisation": 2
+        }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 6,
+        "fields": {
+            "name": "Ph.D.",
+            "branch": 1
+        }
+    }
+]
