@@ -10,6 +10,6 @@ $(document).ready(function() {
             $("#preview").fadeTo("medium", 1);
     });
     $("#preview .panel-heading").click(function() {
-        $("#preview").stop();
+        $("#preview").stop(true);
     });
 });
