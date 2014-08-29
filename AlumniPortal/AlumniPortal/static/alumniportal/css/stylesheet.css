@@ -198,6 +198,7 @@ body a:visited {
     position: absolute;
     right: 10px; top: -5px;
     color: white;
+    text-shadow: 0 0 2px #444;
     cursor: pointer;
     font-size: 26px;
 }
