@@ -12,6 +12,10 @@ $(document).ready(function () {
         $("#feedback").css("z-index", 1000).slideDown("fast");
 //        $("#feedback").css("z-index", 1000).fadeTo("medium", 1);
     });
+    $("#feedback #close").click(function () {
+        $("#black").fadeTo("medium", 0).css("z-index", -1);
+        $("#feedback").slideUp("fast").css("z-index", -1);
+    });
     $("#black").click(function () {
         $("#black").fadeTo("medium", 0).css("z-index", -1);
         $("#feedback").slideUp("fast").css("z-index", -1);
