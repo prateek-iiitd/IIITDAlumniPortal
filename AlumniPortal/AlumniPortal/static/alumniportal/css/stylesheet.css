@@ -175,7 +175,7 @@ body a:visited {
     background-color: rgba(240, 240, 240, 0.9);
     border-radius: 5px;
     position: fixed;
-    height: 400px;
+    height: 430px;
     width: 28%;
     z-index: 1000;
     box-shadow: 0 0 10px black;
@@ -195,6 +195,8 @@ body a:visited {
     border-top-right-radius: 5px;
 }
 #feedback input {
+    height: 30px;
+    width: 270px;
     display: block;
     margin: 10px auto;
     border: 1px solid #777;
@@ -203,6 +205,7 @@ body a:visited {
 }
 #feedback input:last-child {
     margin-top: 20px;
+    width: 100px;
 }
 #feedback input:last-child:hover {
     box-shadow: 0 0 10px white;
