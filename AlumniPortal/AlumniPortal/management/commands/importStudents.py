@@ -1,6 +1,3 @@
-from gi.overrides.keysyms import degree
-from scipy import special
-
 __author__ = 'ankur'
 
 import xlrd
