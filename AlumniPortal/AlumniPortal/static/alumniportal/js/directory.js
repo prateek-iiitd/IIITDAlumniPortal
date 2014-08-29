@@ -9,4 +9,7 @@ $(document).ready(function() {
 //        $("#preview .panel").html($cont);
             $("#preview").fadeTo("medium", 1);
     });
+    $("#preview .panel-heading").click(function() {
+        $("#preview").stop();
+    });
 });
