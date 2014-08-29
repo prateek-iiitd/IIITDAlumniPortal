@@ -2,7 +2,7 @@ __author__ = 'Prateek'
 
 from django.db import models
 
-GENDER_CHOICES = (('M','Male'), ('F', 'Female'))
+GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
 
 
 def news_large_image(self, filename):
@@ -19,16 +19,26 @@ class SpecialisationStream(models.Model):
         return self.name
 
 
+class Branch(models.Model):
+    name = models.CharField(max_length=40, db_index=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Degree(models.Model):
     name = models.CharField(max_length=40, db_index=True)
     specialisation = models.ForeignKey(SpecialisationStream, null=True, blank=True)
+    branch = models.ForeignKey(Branch)
 
     def __unicode__(self):
-        return self.name + " - " + self.specialisation
-
+        if self.specialisation:
+            return self.name + " - " + self.branch.name + " - " + self.specialisation.name
+        else:
+            return self.name + " - " + self.branch.name + " - "
 
 class Student(models.Model):
-    name = models.CharField(max_length=40, choices=GENDER_CHOICES, db_index=True)
+    name = models.CharField(max_length=40, db_index=True)
     iiitd_email = models.EmailField(db_index=True)
     personal_email = models.EmailField(blank=True, null=True)
     graduation_year = models.PositiveSmallIntegerField(db_index=True)
@@ -36,7 +46,8 @@ class Student(models.Model):
     degree = models.ForeignKey(Degree, db_index=True)
 
     def __unicode__(self):
-        return self.name + ": " + self.degree + "(" + str(self.graduation_year) + ")"
+        return self.name + ": " + self.degree.__unicode__() + "(" + str(self.graduation_year) + ")"
+
 
 
 class ContactPerson(models.Model):
@@ -79,11 +90,11 @@ class ConvocationAward(models.Model):
     recipient = models.ForeignKey(Student)
 
     def __unicode__(self):
-        return self.award + " awarded to " + self.recipient.name
+        return self.award.name + " awarded to " + self.recipient.name
 
 
 class Coordinator(models.Model):
     student = models.ForeignKey(Student)
 
     def __unicode__(self):
-        return self.student.name + " - " + self.student.graduation_year
+        return self.student.name + " - " + str(self.student.graduation_year)

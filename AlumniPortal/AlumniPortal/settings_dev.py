@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from creds_dev import *
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -64,15 +65,14 @@ WSGI_APPLICATION = 'AlumniPortal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test_db',
-        'USER': 'test_user',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': db_engine,
+        'NAME': db_name,
+        'USER': db_user,
+        'PASSWORD': db_password,
+        'HOST': db_host,
+        'PORT': db_port,                                              # Set to $
     }
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
