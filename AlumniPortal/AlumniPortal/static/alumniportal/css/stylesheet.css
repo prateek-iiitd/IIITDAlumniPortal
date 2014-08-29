@@ -15,6 +15,22 @@ body {
 	z-index: 0;
 }*/
 
+body a:link, a:active, a:hover, a:visited {
+    text-decoration: underline;
+}
+
+body a:link, a:active {
+    color:#444;
+}
+
+body a:hover {
+    color:#3cada8 !important;
+}
+
+body a:visited {
+    color:#666;
+}
+
 #top {
     background-color: #000;
     height: 40px;
@@ -44,7 +60,7 @@ body {
 #nav-bar ul {
     /*position: fixed;*/
     list-style: none;
-    padding: 28px 0 20px 0;
+    padding: 29px 0 20px 0;
     width: 690px;
 }
 
@@ -59,7 +75,7 @@ body {
     display: inline;
     /*background-color: #efefef;*/
     color: #777;
-    padding: 20px 20px 24px 20px;
+    padding: 20px 10px 24px 10px;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -69,6 +85,11 @@ body {
     border-bottom: 5px solid #3fada8;
     /*box-shadow: inset 0px -5px 5px #3fada8;*/
     /*background-color:#ddd;*/
+}
+
+.nav-bar-font {
+    margin-left:5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #green-dabba {
@@ -192,6 +213,10 @@ h3 {
 }
 
 .card-field {
+    margin-top: 10px;
+}
+
+.card-field-font {
     padding-left: 10px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
@@ -219,7 +244,63 @@ hr {
 }
 
 .writer {
-    font-size: 17px;
-    font-weight: bolds;
     color: #3cada8;
+}
+
+
+
+
+.btn-warning {
+  color: #fff;
+  background-color: rgba(65,175,175,0.9);
+  border-color: #39ada8;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+  color: #fff;
+  background-color: #3cada8;
+  border-color: #3fada8;
+}
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+  background-image: none;
+}
+.btn-warning.disabled,
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning,
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled:active,
+.btn-warning[disabled]:active,
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning[disabled].active,
+fieldset[disabled] .btn-warning.active {
+  background-color: #999;
+  border-color: #777;
+}
+.btn-warning .badge {
+  color: #fff;
+  background-color: #333;
+}
+
+
+.read-more {
+    margin-right:10px;
+}
+
+.contact-panel-body {
+    height:160px;
+}
+
+#nav-bar a:link, a:visited, a:hover, a:active, .mosaic-block a:link, a:visited, a:hover, a:active, .mosaic-block2 a:link, a:visited, a:hover, a:active {
+    text-decoration: none !important;
 }
