@@ -12,19 +12,28 @@ $(document).ready(function () {
         $("#feedback").css("z-index", 1000).slideDown("fast");
 //        $("#feedback").css("z-index", 1000).fadeTo("medium", 1);
     });
-    $("#feedback #close").click(function () {
+    var $close = function() {
         $("#black").fadeTo("medium", 0).css("z-index", -1);
         $("#feedback").slideUp("fast").css("z-index", -1);
+    }
+    $("#feedback #close").click(function () {
+        $close();
     });
     $("#black").click(function () {
-        $("#black").fadeTo("medium", 0).css("z-index", -1);
-        $("#feedback").slideUp("fast").css("z-index", -1);
+        $close();
     });
     $(document).keydown(function(e) {
     // ESCAPE key pressed
         if (e.keyCode == 27) {
-            $("#black").fadeTo("medium", 0).css("z-index", -1);
-            $("#feedback").slideUp("medium").css("z-index", -1);
+            $close();
         }
+    });
+    $("#feedback form input.btn-warning").click(function(e) {
+        e.preventDefault();
+
+        $("#feedback p").text("Thank you for your feedback!");
+        $("#feedback form").slideUp("fast");
+        $("#feedback").animate({height: "100px"});
+        window.setTimeout($close, 2000);
     });
 });
