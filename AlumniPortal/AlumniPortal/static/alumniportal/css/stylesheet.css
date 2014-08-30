@@ -378,3 +378,10 @@ fieldset[disabled] .btn-warning.active {
 #nav-bar a:link, a:visited, a:hover, a:active, .mosaic-block a:link, a:visited, a:hover, a:active, .mosaic-block2 a:link, a:visited, a:hover, a:active, .panel a:link, a:visited, a:hover, a:active {
     text-decoration: none !important;
 }
+
+.panel-user-h4-2 {
+    height:18px;
+    overflow-x: hidden;
+    padding-top:0;
+    margin-top:5px;
+}

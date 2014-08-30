@@ -1,6 +1,7 @@
 #preview {
     display: none;
     position: fixed;
+    margin-top: 65px;
 }
 
 #preview .panel {
