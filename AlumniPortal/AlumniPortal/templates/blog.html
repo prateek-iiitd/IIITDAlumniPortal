@@ -88,55 +88,8 @@
 {% endblock %}
 
 {% block right_content %}
-    <div class="row">
 
-        <h3>Upcoming Events</h3>
-    </div>
-
-    {% include 'card_event_upcoming.html' %}
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <!--<a href="#" class="pull-right">Read More</a>-->
-                <h4>Talk by Raghav Sethi</h4>
-            </div>
-            <div class="panel-body text-left">
-                <span class="glyphicon glyphicon-map-marker card-field"><span
-                        class="card-field-font">C01, IIITD</span></span><br/>
-                <span class="glyphicon glyphicon-calendar card-field"><span class="card-field-font">Monday, 1 Sep 14, 17:15 IST</span></span><br/>
-
-                <div class="clearfix"></div>
-                <hr>
-                Currently pursuing Masters in CS at Princeton. Interened at Microsoft India (2012) and Facebook USA
-                (2014).
-
-                <div class="btn btn-warning center-block" style="margin-top:15px;">
-                    Event Page
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <!--<a href="#" class="pull-right">Read More</a>-->
-                <h4>Alumni Meet '14</h4>
-            </div>
-            <div class="panel-body text-left">
-                <span class="glyphicon glyphicon-map-marker card-field"><span
-                        class="card-field-font">USA</span></span><br/>
-                <span class="glyphicon glyphicon-calendar card-field"><span class="card-field-font">Monday, 29 Dec 14, 09:30 EST</span></span><br/>
-
-                <div class="clearfix"></div>
-                <hr>
-                IIITD's 3rd Convocation to be held in the esteemed presence of Chief Guest Mr. Sunil Kant Munjal (Hero
-                Group) with live...
-                <div class="btn btn-warning center-block" style="margin-top:15px;">
-                    Event Page
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'events_upcoming.html' %}
 
 {% endblock %}
 
