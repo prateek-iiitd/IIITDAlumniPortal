@@ -385,3 +385,8 @@ fieldset[disabled] .btn-warning.active {
     padding-top:0;
     margin-top:5px;
 }
+
+.summary-blog h2 {
+    display:block;
+    height:90px;
+}
