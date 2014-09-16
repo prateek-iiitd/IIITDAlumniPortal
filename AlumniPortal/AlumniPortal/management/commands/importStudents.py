@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
             branch = Branch.objects.get(name=branch)
             if (specialization == ''):  #only BTechs
-                degree = Degree.objects.get(name="B.Tech.",branch=branch,specialisation=None)
+                degree = Degree.objects.get(name=degree,branch=branch,specialisation=None)
             else:
                 stream = SpecialisationStream.objects.get(name=specialization)
                 degree = Degree.objects.get(name=degree,branch=branch, specialisation=stream)
