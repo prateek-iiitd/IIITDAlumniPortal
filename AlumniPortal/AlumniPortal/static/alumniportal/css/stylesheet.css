@@ -235,7 +235,7 @@ h3 {
 
 #feedback input {
     height: 30px;
-    width: 270px;
+    width: 75%;
     display: block;
     margin: 10px auto;
     padding: 0 5px;
@@ -255,6 +255,8 @@ h3 {
 
 #feedback textarea {
     margin-top: 10px;
+    max-width: 75%; min-width: 50px;
+    max-height: 180px; min-height: 25px;
     border: 1px solid #777;
     padding: 2px 5px;
     border-radius: 5px;
