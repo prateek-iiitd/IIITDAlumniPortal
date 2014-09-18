@@ -89,5 +89,14 @@
             "name": "Ph.D.",
             "branch": 1
         }
+    },
+
+    {
+        "model": "AlumniPortal.degree",
+        "pk": 7,
+        "fields": {
+            "name": "M.Tech.",
+            "branch": 1
+        }
     }
 ]

@@ -3,62 +3,38 @@
 {% block title %}Alumni Directory{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/directory.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/directory.css">
 {% endblock %}
 
 {% block left_content %}
 
+    <div class="row">
+
+    <div class="dropdown col-lg-offset-5">
+        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="margin: 10px 0px 20px 0px">
+            Graduation Year
+            <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu" style="margin-top: -10px">
+            {% for year in grad_years %}
+                <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
 
 
 
-        <div class="col-lg-4 pull-left" style="margin-left:-30px;">
+        <div class="col-lg-4 pull-left" id="col0" style="margin-left:-30px;">
 
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
+
         </div>
-        <div class="col-lg-4 pull-left" style="margin-left:15px;">
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        </div>
-        <div class="col-lg-4 pull-left" style="margin-left:15px;">
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-            {% include 'card_contact2.html' %}
-        </div>
+        <div class="col-lg-4 pull-left" id="col1" style="margin-left:15px;">
 
-
+        </div>
+        <div class="col-lg-4 pull-left" id="col2" style="margin-left:15px;">
+        </div>
 
 
 
@@ -67,24 +43,32 @@
 {% block right_content %}
     <div id="preview">
         <div class="row">
-    <div class="panel panel-default">
-        <div class="panel-heading" style="height:75px;">
-            <img src="{{ STATIC_URL }}alumniportal/img/user.jpg" class="img-circle pull-right" style="height:60px;width:60px;top:0;left:0;border:1px #ccc solid">
-            <h4>Sauhard Gupta</h4>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="height:75px;">
+                    <img src="{{ STATIC_URL }}alumniportal/img/user.jpg" class="img-circle pull-right"
+                         style="height:60px;width:60px;top:0;left:0;border:1px #ccc solid">
+                    <h4>Sauhard Gupta</h4>
+                </div>
+                <div class="panel-body text-left">
+                    <span class="glyphicon glyphicon-phone card-field"><span
+                            class="card-field-font">+91-1234567890</span></span><br/>
+                    <span class="glyphicon glyphicon-map-marker card-field"><span
+                            class="card-field-font">IIITD</span></span><br/>
+
+                    <div class="clearfix"></div>
+                    <a href="http://raghavsethi.org/"></a>
+
+                    <div class="btn btn-warning center-block" style="margin-top:15px;">
+                        Website
+                    </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="panel-body text-left">
-            <span class="glyphicon glyphicon-phone card-field"><span class="card-field-font">+91-1234567890</span></span><br/>
-            <span class="glyphicon glyphicon-map-marker card-field"><span class="card-field-font">IIITD</span></span><br/>
-            <div class="clearfix"></div>
-            <a href="http://raghavsethi.org/"></a><div class="btn btn-warning center-block" style="margin-top:15px;">
-                Website
-            </div></a>
-        </div>
-    </div>
-</div>
     </div>
 {% endblock %}
 
 {% block scripts %}
     <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
 {% endblock %}
