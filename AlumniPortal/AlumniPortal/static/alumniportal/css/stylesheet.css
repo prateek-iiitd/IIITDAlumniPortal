@@ -19,7 +19,11 @@ body a:link, a:active {
     color: #444;
 }
 
-body a:hover {
+.no-underline a:link, a:active, a:visited {
+    text-decoration: none;
+}
+
+body a:hover, .no-underline a:hover, .no-underline h3:hover {
     color: #3cada8 !important;
 }
 
@@ -37,6 +41,12 @@ h3 {
     color: #555;
     font-weight: bold;
     font-size: 30px;
+}
+
+h4 {
+    color: #555;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 /*
@@ -458,4 +468,8 @@ fieldset[disabled] .btn-warning.active {
 .well p, .well table {
     color: #333;
     font-size: 14px;
+}
+
+#dropdownMenu1 {
+    margin: 0px 0 10px; 0 !important;
 }
