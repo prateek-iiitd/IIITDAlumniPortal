@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Alumni Directory{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/directory.css">
+{% endblock %}
+
+{% block left_content %}
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" class="form-control" placeholder="Headline">
+            <input type="date" class="form-control">
+            <textarea class="form-control" id="textarea" rows="5" placeholder="Article"></textarea>
+            <input type="file" class="form-control">
+            <input type="url" class="form-control" placeholder="Image Gallery Link">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon" style="width:90px;">Headline</span>
+                <input type="text" class="form-control" placeholder="Headline"  style="width:200px;">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" style="width:90px;">Date</span>
+                <input type="date" class="form-control">
+            </div>
+
+            <textarea class="form-control" id="textarea" rows="5" placeholder="Article"></textarea>
+            <input type="file" class="form-control">
+            <input type="url" class="form-control" placeholder="Image Gallery Link">
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block right_content %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}

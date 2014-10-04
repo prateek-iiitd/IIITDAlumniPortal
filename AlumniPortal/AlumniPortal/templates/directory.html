@@ -7,34 +7,65 @@
 {% endblock %}
 
 {% block left_content %}
+    <div class="row" style="margin-bottom:40px;">
+        <div class="col-lg-6 filter-year-main">
+            <div class="col-lg-2" style="z-index: 900;">
+                <div class="img-circle filter-year-all">
+                    <span style="margin:50px auto;">Year</span>
+                </div>
+            </div>
+
+            <div class="col-lg-7 filter-year-one"  style="z-index: 100;">
+                <span class="glyphicon">2014</span>
+                <span class="glyphicon" style="margin-left:20px;padding-left: 65px;">2013</span>
+                <span class="glyphicon" style="margin-left:10px;padding-left: 75px;">2012</span>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 filter-year-main">
+            <div class="col-lg-2" style="z-index: 900;">
+                <div class="img-circle filter-year-all">
+                    <span style="margin:50px -10px;">Degree</span>
+                </div>
+            </div>
+
+            <div class="col-lg-7 filter-year-one"  style="z-index: 100;">
+                <span class="glyphicon">Ph.D.</span>
+                <span class="glyphicon" style="margin-left:20px;padding-left: 65px;">M.Tech.</span>
+                <span class="glyphicon" style="margin-left:10px;padding-left: 75px;">B.Tech.</span>
+            </div>
+        </div>
+
+    </div>
 
     <div class="row">
 
-    <div class="dropdown">
-        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-            Graduation Year
-            <span class="caret"></span>
-        </button>
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                Graduation Year
+                <span class="caret"></span>
+            </button>
 
-        <ul class="dropdown-menu" style="margin-top: -10px">
-            {% for year in grad_years %}
-                <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
-            {% endfor %}
-        </ul>
+            <ul class="dropdown-menu" style="margin-top: -10px">
+                {% for year in grad_years %}
+                    <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
+
+
+    <div class="col-lg-4 pull-left" id="col0" style="margin-left:-30px;">
+
+
     </div>
+    <div class="col-lg-4 pull-left" id="col1" style="margin-left:15px;">
 
-
-
-        <div class="col-lg-4 pull-left" id="col0" style="margin-left:-30px;">
-
-
-        </div>
-        <div class="col-lg-4 pull-left" id="col1" style="margin-left:15px;">
-
-        </div>
-        <div class="col-lg-4 pull-left" id="col2" style="margin-left:15px;">
-        </div>
+    </div>
+    <div class="col-lg-4 pull-left" id="col2" style="margin-left:15px;">
+    </div>
 
 
 

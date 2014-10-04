@@ -473,3 +473,32 @@ fieldset[disabled] .btn-warning.active {
 #dropdownMenu1 {
     margin: 0px 0 10px; 0 !important;
 }
+
+.filter-year-all {
+    width:105px;
+    height:105px;
+    background-color:#333;
+    color:#fff;
+    padding:37px 0 0 30px;
+    font-size:15px;
+    font-weight: bold;
+    border:5px #fff solid;
+}
+
+.filter-year-one {
+    margin-top:5px;
+}
+
+.filter-year-one span{
+    background-color:#333;
+    color: #fff;
+    height:25px;
+    width:180px;
+    border-radius: 15px;
+    padding:5px 0 5px 85px;
+    margin-top:3px;
+}
+
+.filter-year-all:hover{
+    background-color: #3fada8;
+}

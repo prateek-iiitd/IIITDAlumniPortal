@@ -27,6 +27,9 @@ def news(request):
 def giveback(request):
     return render(request, 'giveback.html')
 
+def temp_forms(request):
+    return render(request, 'temp_forms.html')
+
 def get_by_batch(request):
     if request.is_ajax() and request.method=='GET':
         year = request.GET['year']
