@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.template import RequestContext
 from django.template.context import Context
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
+from forms import FeedbackForm
 import json
 
 from models import Student
@@ -46,3 +48,16 @@ def get_by_batch(request):
         template = get_template('card_contact2.html').render(RequestContext(request))
         resp = {'students': json_res, 'html': template}
         return HttpResponse(json.dumps(resp))
+
+@csrf_exempt
+def feedback(request):
+    if request.method == 'POST' and request.is_ajax():
+        print request.POST
+
+        f = FeedbackForm(request.POST)
+        f.save()
+
+        return HttpResponse()
+
+    else:
+        return HttpResponseBadRequest()

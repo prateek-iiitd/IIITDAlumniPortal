@@ -98,3 +98,12 @@ class Coordinator(models.Model):
 
     def __unicode__(self):
         return self.student.name + " - " + str(self.student.graduation_year)
+
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    text_feedback = models.TextField()
+
+    def __unicode__(self):
+        return self.name + " - " + self.email

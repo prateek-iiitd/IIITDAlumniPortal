@@ -1,8 +1,8 @@
 __author__ = 'Prateek'
 
-db_engine = 'django.db.backends.postgresql_psycopg2'
+db_engine = 'django.db.backends.mysql'
 db_name = 'test_db'
 db_user = 'test_user'
-db_password = 'password'
-db_host = 'localhost'
+db_password = ''
+db_host = '127.0.0.1'
 db_port = ''

@@ -1,7 +1,7 @@
 __author__ = 'Prateek'
 
 from django.contrib import admin
-from models import Award, NewsArticle, Degree, Student, Event, ContactPerson, ConvocationAward, Coordinator, SpecialisationStream
+from models import Award, NewsArticle, Degree, Student, Event, ContactPerson, ConvocationAward, Coordinator, SpecialisationStream, Feedback
 
 admin.site.register(Award)
 admin.site.register(NewsArticle)
@@ -12,3 +12,4 @@ admin.site.register(ContactPerson)
 admin.site.register(ConvocationAward)
 admin.site.register(Coordinator)
 admin.site.register(SpecialisationStream)
+admin.site.register(Feedback)
