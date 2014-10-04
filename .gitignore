@@ -65,3 +65,5 @@ migrations/*
 
 #Untrack creds_dev
 *creds_dev.py
+
+.DS_Store
