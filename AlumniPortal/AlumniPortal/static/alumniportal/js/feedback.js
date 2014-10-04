@@ -28,12 +28,24 @@ $(document).ready(function () {
             $close();
         }
     });
-    $("#feedback form input.btn-warning").click(function(e) {
-        e.preventDefault();
-
-        $("#feedback p").text("Thank you for your feedback!");
-        $("#feedback form").slideUp("fast");
-        $("#feedback").animate({height: "100px"});
-        window.setTimeout($close, 2000);
-    });
 });
+
+
+function submitFeedbackForm()
+{
+    $.ajax({
+            type: "POST",
+            url: "/feedback/",
+            data: $("#feedback>form").serialize(),
+            success: function(data, textStatus, jqXHR){
+                $("#feedback p").text("Thank you for your feedback!");
+                $("#feedback form").slideUp("fast");
+                $("#feedback").animate({height: "100px"});
+                window.setTimeout($close, 2000);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert("Error!")
+            }
+        }
+    )
+}

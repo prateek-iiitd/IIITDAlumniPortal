@@ -60,4 +60,10 @@ target/
 migrations/*
 */migrations/*
 
-/static/*
+/AlumniPortal/static/*
+
+
+#Untrack creds_dev
+*creds_dev.py
+
+.DS_Store

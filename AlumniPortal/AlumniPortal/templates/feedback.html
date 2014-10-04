@@ -8,10 +8,10 @@
     <br>
         We look forward to your comments/suggestions!
     </p>
-    <form action="/feedback" method="post">
+    <form>
         <input type="text" name="name" placeholder="Name" >
-        <input type="text" name="email" placeholder="Email Address" >
+        <input type="email" name="email" placeholder="Email Address" >
         <textarea name="text_feedback" cols="30" rows="7" placeholder="Feedback" ></textarea>
-        <input type="submit" class="btn btn-warning" value="Submit!">
+        <input class="btn btn-warning" value="Submit!" onclick="submitFeedbackForm()">
     </form>
 </div>
