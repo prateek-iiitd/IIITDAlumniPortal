@@ -61,3 +61,7 @@ migrations/*
 */migrations/*
 
 /static/*
+
+
+#Untrack creds_dev
+*/creds_dev.py
