@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^directory/batch/$', 'AlumniPortal.views.get_by_batch'),
     url(r'^giveback/$', 'AlumniPortal.views.giveback'),
     url(r'^feedback/$', 'AlumniPortal.views.feedback'),
+    url(r'^tempforms/$', 'AlumniPortal.views.temp_forms'),
 )
