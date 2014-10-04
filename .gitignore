@@ -60,7 +60,7 @@ target/
 migrations/*
 */migrations/*
 
-/static/*
+/AlumniPortal/static/*
 
 
 #Untrack creds_dev
