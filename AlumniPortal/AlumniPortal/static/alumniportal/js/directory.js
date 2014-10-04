@@ -9,14 +9,38 @@ $( document ).ready(function() {
 //  $(this).parents(".dropdown").find('.selection').val($(this).text());
 //
 //});
+   $(".filter-all").mouseenter(function() {
+       $(this).parent().parent().children(".filter-individual").children().addClass("highlight");
+       $(this).parent().parent().children(".filter-individual").children().css("width", "150px");
+       $(this).parent().parent().children(".filter-individual").children().css("padding-left", "70px");
+   });
+   $(".filter-all").mouseleave(function() {
+       $(this).parent().parent().children(".filter-individual").children().removeClass("highlight");
+       $(this).parent().parent().children(".filter-individual").children().css("width", "110px");
+       $(this).parent().parent().children(".filter-individual").children().css("padding-left", "42px");
+       $(this).parent().parent().children(".filter-individual").children(".filter-individual-1").css("padding-left", "50px");
+       $(this).parent().parent().children(".filter-individual").children(".filter-individual-2").css("padding-left", "38px");
+   });
+   $(".filter-individual>span").mouseenter(function() {
+       $(this).addClass("highlight");
+       $(this).css("width", "150px");
+       $(this).css("padding-left", "70px");
+       $(this).parent().parent().children(".col-lg-2").children().addClass("highlight");
+   });
+   $(".filter-individual>span").mouseleave(function() {
+       $(this).removeClass("highlight");
+       $(this).css("width", "110px");
+       $(this).css("padding-left", "42px");
+       $(this).parent().children(".filter-individual-1").css("padding-left", "50px");
+       $(this).parent().children(".filter-individual-2").css("padding-left", "38px");
+       $(this).parent().parent().children(".col-lg-2").children().removeClass("highlight");
+   });
    $(function(){
-
     $(".dropdown-menu").on('click', 'li a', function(){
       $(".btn:first-child").text($(this).text());
       $(".btn:first-child").val($(this).text());
+    });
    });
-
-});
 });
 
 function yearSelected(element) {
