@@ -474,7 +474,7 @@ fieldset[disabled] .btn-warning.active {
     margin: 0px 0 10px; 0 !important;
 }
 
-.filter-all {
+.filter-year-all {
     width:105px;
     height:105px;
     background-color:#333;
@@ -483,29 +483,22 @@ fieldset[disabled] .btn-warning.active {
     font-size:15px;
     font-weight: bold;
     border:5px #fff solid;
-    cursor: pointer;
 }
 
-.filter-individual {
+.filter-year-one {
     margin-top:5px;
 }
 
-.filter-individual span{
+.filter-year-one span{
     background-color:#333;
     color: #fff;
     height:25px;
-    width:110px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 8px;
-    padding:5px 0 5px 50px;
+    width:180px;
+    border-radius: 15px;
+    padding:5px 0 5px 85px;
     margin-top:3px;
-    cursor: pointer;
 }
 
-.filter-all:hover{
+.filter-year-all:hover{
     background-color: #3fada8;
-}
-
-.highlight {
-    background-color: #3fada8 !important;
 }
