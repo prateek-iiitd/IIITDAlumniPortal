@@ -6,6 +6,7 @@ from django import forms
 from models import Feedback, NewsArticle, Event
 import csv
 
+from models import Degree
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -31,7 +32,7 @@ class DirectoryForm(forms.Form):
     passing_year = forms.IntegerField()
     file = forms.FileField(label='Select a CSV file to import:',)
 
-    def clean(self):
+    def save(self):
         csv_file = self.cleaned_data['file']
         records = csv.reader(csv_file, dialect=csv.excel_tab)
         for row in records:

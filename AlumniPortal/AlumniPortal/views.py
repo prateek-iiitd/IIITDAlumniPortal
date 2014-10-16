@@ -5,10 +5,10 @@ from django.template import RequestContext
 from django.template.context import Context
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
-from forms import FeedbackForm
+from forms import FeedbackForm, NewsForm, EventForm, DirectoryForm
 import json
 
-from models import Student
+from models import Student, Degree
 
 def home(request):
     return render(request, 'home.html')
@@ -30,7 +30,8 @@ def giveback(request):
     return render(request, 'giveback.html')
 
 def temp_forms(request):
-    return render(request, 'temp_forms.html')
+    degree_values = Degree.objects.values('name').distinct()
+    return render(request, 'temp_forms.html', {'degree_values': degree_values})
 
 def get_by_batch(request):
     if request.is_ajax() and request.method=='GET':
@@ -55,12 +56,33 @@ def get_by_batch(request):
 @csrf_exempt
 def feedback(request):
     if request.method == 'POST' and request.is_ajax():
-        print request.POST
-
         f = FeedbackForm(request.POST)
         f.save()
-
         return HttpResponse()
 
+    else:
+        return HttpResponseBadRequest()
+
+def add_news(request):
+    if request.method == 'POST':
+        f = NewsForm(request.POST)
+        f.save()
+        return HttpResponse()
+    else:
+        return HttpResponseBadRequest()
+
+def add_event(request):
+    if request.method == 'POST':
+        f = EventForm(request.POST)
+        f.save()
+        return HttpResponse()
+    else:
+        return HttpResponseBadRequest()
+
+def add_directory(request):
+    if request.method == 'POST':
+        f = DirectoryForm(request.POST)
+        f.save()
+        return HttpResponse()
     else:
         return HttpResponseBadRequest()

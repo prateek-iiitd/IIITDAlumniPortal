@@ -19,4 +19,7 @@ urlpatterns = patterns('',
     url(r'^giveback/$', 'AlumniPortal.views.giveback'),
     url(r'^feedback/$', 'AlumniPortal.views.feedback'),
     url(r'^tempforms/$', 'AlumniPortal.views.temp_forms'),
+    url(r'^addNews/$', 'AlumniPortal.views.add_news'),
+    url(r'^addEvent/$', 'AlumniPortal.views.add_event'),
+    url(r'^addDirectory/$', 'AlumniPortal.views.add_directory'),
 )
