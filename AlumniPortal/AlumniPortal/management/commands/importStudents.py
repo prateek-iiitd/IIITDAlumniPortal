@@ -5,7 +5,9 @@ from django.core.management.base import BaseCommand, CommandError
 from AlumniPortal.models import Student, SpecialisationStream, Degree, Branch
 
 class Command(BaseCommand):
-    help = 'Adds the data of Alumni till 2013 given file as input'
+    help = 'Adds the data of Alumni given file as input'
+
+    args = "<filename>"
 
     def handle(self, *args, **options):
         try:
