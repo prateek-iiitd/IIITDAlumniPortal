@@ -7,33 +7,106 @@
 {% endblock %}
 
 {% block left_content %}
-    <div class="row">
-        <div class="col-lg-6">
-            <input type="text" class="form-control" placeholder="Headline">
-            <input type="date" class="form-control">
-            <textarea class="form-control" id="textarea" rows="5" placeholder="Article"></textarea>
-            <input type="file" class="form-control">
-            <input type="url" class="form-control" placeholder="Image Gallery Link">
+
+    <div class="row input-form">
+        <h2>Add News</h2>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Headline</span>
+            <input type="text" class="form-control" style="width:350px;">
         </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Date</span>
+            <input type="date" class="form-control" style="width:350px;">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Article</span>
+            <textarea class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Image</span>
+            <input type="file" class="form-control" style="width:350px">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Gallery Link</span>
+            <input type="text" class="form-control" style="width:350px;">
+        </div>
+
+        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </div>
 
-    <div class="row" style="margin-top:50px;">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <span class="input-group-addon" style="width:90px;">Headline</span>
-                <input type="text" class="form-control" placeholder="Headline"  style="width:250px;">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon" style="width:90px;">Date</span>
-                <input type="date" class="form-control"  style="width:250px;">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon" style="width:87px;">Article</span>
-                <textarea class="form-control" id="textarea" rows="5" placeholder="Article" style="width:250px;"></textarea>
-            </div>
-            <input type="file" class="form-control">
-            <input type="url" class="form-control" placeholder="Image Gallery Link">
+    <div class="row input-form" style="margin-top:50px;">
+        <h2>Add Event</h2>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Headline</span>
+            <input type="text" class="form-control" style="width:350px;">
         </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Date</span>
+            <input type="date" class="form-control" style="width:350px;">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Article</span>
+            <textarea class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Image</span>
+            <input type="file" class="form-control" style="width:350px">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Gallery Link</span>
+            <input type="text" class="form-control" style="width:350px;">
+        </div>
+
+        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
+    </div>
+
+    <div class="row input-form" style="margin-top:50px;">
+        <h2>Directory</h2>
+
+        <div class="input-group" style="width: 300px;margin-top:10px;">
+            <div class="dropdown pull-left">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Graduation Year
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" style="margin-top: -10px">
+                    {% for year in grad_years %}
+                        <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="dropdown pull-right">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Degree Type
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" style="margin-top: -10px">
+                    {% for year in grad_years %}
+                        <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="input-group" style="margin-top:0;">
+            <span class="input-group-addon" style="width:80px;">CSV</span>
+            <input type="file" class="form-control" style="width:220px">
+        </div>
+
+        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Upload</button>
     </div>
 
 {% endblock %}
