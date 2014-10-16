@@ -471,7 +471,7 @@ fieldset[disabled] .btn-warning.active {
 }
 
 #dropdownMenu1 {
-    margin: 0px 0 10px; 0 !important;
+    margin: 0px 0 10px 0; !important;
 }
 
 .filter-year-all {

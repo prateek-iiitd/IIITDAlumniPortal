@@ -64,6 +64,7 @@ class Event(models.Model):
     description = models.TextField(blank=True, null=True)
     venue = models.CharField(max_length=100)
     starts_at = models.DateTimeField(db_index=True)
+    external_link = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title + " on " + str(self.starts_at) + " at " + self.venue
@@ -76,6 +77,10 @@ class NewsArticle(models.Model):
     large_img = models.ImageField(blank=True, null=True, upload_to=news_large_image)
     thumbnail = models.ImageField(blank=True, null=True, upload_to=news_thumb_image)
     reporter = models.CharField(max_length=40, db_index=True)
+    gallery_link = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.headline + " - " + self.occurred_on
 
 
 class Award(models.Model):

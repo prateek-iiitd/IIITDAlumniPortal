@@ -55,6 +55,10 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'AlumniPortal', 'test', 'templates'),
+)
+
 ROOT_URLCONF = 'AlumniPortal.urls'
 
 WSGI_APPLICATION = 'AlumniPortal.wsgi.application'
