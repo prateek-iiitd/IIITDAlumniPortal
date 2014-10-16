@@ -8,110 +8,114 @@
 
 {% block left_content %}
 
-    <div class="row input-form">
+    <form class="row input-form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <h2>Add News</h2>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Headline</span>
-            <input type="text" class="form-control" style="width:350px;">
+            <input id="id_headline" name="headline" type="text" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Date</span>
-            <input type="date" class="form-control" style="width:350px;">
+            <input id="id_news_date" name="news_date" type="date" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Article</span>
-            <textarea class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+            <textarea id="id_news_article" name="news_article" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Image</span>
-            <input type="file" class="form-control" style="width:350px">
+            <input id="id_news_image" name="news_iamge" type="file" class="form-control" style="width:350px">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Gallery Link</span>
-            <input type="text" class="form-control" style="width:350px;">
+            <input id="id_news_link_gallery" name="news_link_gallery" type="text" class="form-control" style="width:350px;">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
-    </div>
+    </form>
 
-    <div class="row input-form" style="margin-top:50px;">
+    <form class="row input-form" style="margin-top:50px;" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <h2>Add Event</h2>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Name</span>
-            <input type="text" class="form-control" style="width:350px;">
+            <input id="id_event_name" name="event_name" type="text" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Location</span>
-            <input type="text" class="form-control" style="width:350px;">
+            <input id="id_event_location" name="event_location" type="text" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Date</span>
-            <input type="date" class="form-control" style="width:350px;">
+            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Time</span>
-            <input type="time" class="form-control" style="width:350px;">
+            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Description</span>
-            <textarea class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+            <textarea id="id_event_description" name="event_description" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
         </div>
 
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Link</span>
-            <input type="text" class="form-control" style="width:350px;">
+            <input id="id_event_link" name="event_link" type="text" class="form-control" style="width:350px;">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
-    </div>
+    </form>
 
-    <form class="row input-form" style="margin-top:50px;" action="" method="post">
+    <form class="row input-form" style="margin-top:50px;" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <h2>Directory</h2>
 
-        <div class="input-group" style="width: 300px;margin-top:10px;">
-            <div class="dropdown pull-left">
-                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    Graduation Year
-                    <span class="caret"></span>
-                    <input type="hidden" name="cs"/>
-                </button>
 
-                <ul class="dropdown-menu" style="margin-top: -10px">
-                    <li value="2014"><a onclick="yearSelected(this.innerHTML)">2014</a></li>
-                    <li value="2013"><a onclick="yearSelected(this.innerHTML)">2013</a></li>
-                    <li value="2012"><a onclick="yearSelected(this.innerHTML)">2012</a></li>
-                </ul>
-            </div>
+        <div class="form-group input-group" style="width: 500px">
+            <label class="control-label input-group-addon" for="gradyear" style="width:140px;">Graduation Year</label>
 
-            <div class="dropdown pull-right">
-                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    Degree
-                    <span class="caret"></span>
-                </button>
-
-                <ul class="dropdown-menu" style="margin-top: -10px">
-                    <li value="B.Tech."><a onclick="yearSelected(this.innerHTML)">B.Tech.</a></li>
-                    <li value="M.Tech."><a onclick="yearSelected(this.innerHTML)">M.Tech.</a></li>
-                    <li value="Ph.D."><a onclick="yearSelected(this.innerHTML)">Ph.D.</a></li>
-                    <li value="Dual"><a onclick="yearSelected(this.innerHTML)">Dual</a></li>
-                </ul>
-
+            <div>
+                <select id="id_gradyear" name="gradyear" class="form-control"
+                        style="width:300px;border-radius: 0 4px 4px 0;">
+                    <option value="-1">Select Year</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                </select>
             </div>
         </div>
 
-        <div class="input-group" style="margin-top:0;">
-            <span class="input-group-addon" style="width:80px;">CSV</span>
-            <input type="file" class="form-control" style="width:220px" name="file">
+
+        <div class="form-group input-group" style="width: 500px">
+            <label class="control-label input-group-addon" for="degree" style="width:140px;">Degree</label>
+
+            <div>
+                <select id="id_degree" name="degree" class="form-control"
+                        style="width:300px;border-radius: 0 4px 4px 0;">
+                    <option value="-1">Select Degree</option>
+                    <option value="B.Tech.">B.Tech.</option>
+                    <option value="M.Tech.">M.Tech.</option>
+                    <option value="Ph.D.">Ph.D.</option>
+                    <option value="Dual">Dual</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="input-group" style="margin-top:0;width: 500px;">
+            <span for="id_file" class="input-group-addon" style="width:140px;">CSV</span>
+            <input id="id_file" name="file" type="file" class="form-control" style="width:300px">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Upload</button>
