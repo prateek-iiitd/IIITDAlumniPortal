@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from AlumniPortal.forms import DirectoryForm
-
+from AlumniPortal.forms import DirectoryForm, EventForm
+import datetime
 __author__ = 'ankur'
 from django.http import HttpResponse, HttpResponseBadRequest
 
@@ -14,5 +14,5 @@ def form_test(request):
         if form.is_valid():
             return HttpResponse("Thanks")
 
-    form = DirectoryForm()
+    form = EventForm()
     return render(request, 'form_test.html', {'form': form})

@@ -8,7 +8,7 @@
 
 {% block left_content %}
 
-    <form class="row input-form" action="" method="post" enctype="multipart/form-data">
+    <form class="row input-form" action="/addNews/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Add News</h2>
 
@@ -40,44 +40,48 @@
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </form>
 
-    <form class="row input-form" style="margin-top:50px;" action="" method="post" enctype="multipart/form-data">
+    <form class="row input-form" style="margin-top:50px;" action="/addEvent/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Add Event</h2>
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Name</span>
-            <input id="id_event_name" name="event_name" type="text" class="form-control" style="width:350px;">
+            <input id="id_event_name" name="title" type="text" class="form-control" style="width:350px;">
         </div>
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Location</span>
-            <input id="id_event_location" name="event_location" type="text" class="form-control" style="width:350px;">
+            <input id="id_event_location" name="venue" type="text" class="form-control" style="width:350px;">
         </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Date</span>
-            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">
-        </div>
-
+{##}
+{#        <div class="form-group input-group">#}
+{#            <span class="input-group-addon" style="width:110px;">Date</span>#}
+{#            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">#}
+{#        </div>#}
+{##}
+{#        <div class="form-group input-group">#}
+{#            <span class="input-group-addon" style="width:110px;">Time</span>#}
+{#            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">#}
+{#        </div>#}
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Time</span>
-            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">
+            <input id="id_event_time" name="starts_at" type="datetime-local" class="form-control" style="width:350px;">
         </div>
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Description</span>
-            <textarea id="id_event_description" name="event_description" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+            <textarea id="id_event_description" name="description" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
         </div>
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Link</span>
-            <input id="id_event_link" name="event_link" type="text" class="form-control" style="width:350px;">
+            <input id="id_event_link" name="external_link" type="text" class="form-control" style="width:350px;">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </form>
 
-    <form class="row input-form" style="margin-top:50px;" action="" method="post" enctype="multipart/form-data">
+    <form class="row input-form" style="margin-top:50px;" action="/addDirectory/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Directory</h2>
 
@@ -104,10 +108,9 @@
                 <select id="id_degree" name="degree" class="form-control"
                         style="width:300px;border-radius: 0 4px 4px 0;">
                     <option value="-1">Select Degree</option>
-                    <option value="B.Tech.">B.Tech.</option>
-                    <option value="M.Tech.">M.Tech.</option>
-                    <option value="Ph.D.">Ph.D.</option>
-                    <option value="Dual">Dual</option>
+                    {% for degree in degree_values %}
+                        <option value = "{{ degree.name }}">{{ degree.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
