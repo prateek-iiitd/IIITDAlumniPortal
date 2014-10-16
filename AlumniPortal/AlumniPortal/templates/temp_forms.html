@@ -43,7 +43,12 @@
         <h2>Add Event</h2>
 
         <div class="input-group">
-            <span class="input-group-addon" style="width:110px;">Headline</span>
+            <span class="input-group-addon" style="width:110px;">Name</span>
+            <input type="text" class="form-control" style="width:350px;">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Location</span>
             <input type="text" class="form-control" style="width:350px;">
         </div>
 
@@ -53,24 +58,24 @@
         </div>
 
         <div class="input-group">
-            <span class="input-group-addon" style="width:110px;">Article</span>
+            <span class="input-group-addon" style="width:110px;">Time</span>
+            <input type="time" class="form-control" style="width:350px;">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" style="width:110px;">Description</span>
             <textarea class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
         </div>
 
         <div class="input-group">
-            <span class="input-group-addon" style="width:110px;">Image</span>
-            <input type="file" class="form-control" style="width:350px">
-        </div>
-
-        <div class="input-group">
-            <span class="input-group-addon" style="width:110px;">Gallery Link</span>
+            <span class="input-group-addon" style="width:110px;">Link</span>
             <input type="text" class="form-control" style="width:350px;">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </div>
 
-    <div class="row input-form" style="margin-top:50px;">
+    <form class="row input-form" style="margin-top:50px;" action="" method="post">
         <h2>Directory</h2>
 
         <div class="input-group" style="width: 300px;margin-top:10px;">
@@ -78,36 +83,39 @@
                 <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                     Graduation Year
                     <span class="caret"></span>
+                    <input type="hidden" name="cs"/>
                 </button>
 
                 <ul class="dropdown-menu" style="margin-top: -10px">
-                    {% for year in grad_years %}
-                        <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
-                    {% endfor %}
+                    <li value="2014"><a onclick="yearSelected(this.innerHTML)">2014</a></li>
+                    <li value="2013"><a onclick="yearSelected(this.innerHTML)">2013</a></li>
+                    <li value="2012"><a onclick="yearSelected(this.innerHTML)">2012</a></li>
                 </ul>
             </div>
 
             <div class="dropdown pull-right">
                 <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    Degree Type
+                    Degree
                     <span class="caret"></span>
                 </button>
 
                 <ul class="dropdown-menu" style="margin-top: -10px">
-                    {% for year in grad_years %}
-                        <li><a onclick="yearSelected(this.innerHTML)">{{ year.graduation_year }}</a></li>
-                    {% endfor %}
+                    <li value="B.Tech."><a onclick="yearSelected(this.innerHTML)">B.Tech.</a></li>
+                    <li value="M.Tech."><a onclick="yearSelected(this.innerHTML)">M.Tech.</a></li>
+                    <li value="Ph.D."><a onclick="yearSelected(this.innerHTML)">Ph.D.</a></li>
+                    <li value="Dual"><a onclick="yearSelected(this.innerHTML)">Dual</a></li>
                 </ul>
+
             </div>
         </div>
 
         <div class="input-group" style="margin-top:0;">
             <span class="input-group-addon" style="width:80px;">CSV</span>
-            <input type="file" class="form-control" style="width:220px">
+            <input type="file" class="form-control" style="width:220px" name="file">
         </div>
 
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Upload</button>
-    </div>
+    </form>
 
 {% endblock %}
 

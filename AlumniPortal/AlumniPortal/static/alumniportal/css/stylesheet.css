@@ -509,3 +509,7 @@ fieldset[disabled] .btn-warning.active {
 .highlight {
     background-color: #3fada8 !important;
 }
+
+.input-form .input-group {
+    margin-top:10px;
+}
