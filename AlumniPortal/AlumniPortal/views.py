@@ -29,9 +29,9 @@ def news(request):
 def giveback(request):
     return render(request, 'giveback.html')
 
-def temp_forms(request):
+def admin_forms(request):
     degree_values = Degree.objects.values('name').distinct()
-    return render(request, 'temp_forms.html', {'degree_values': degree_values})
+    return render(request, 'admin_forms.html', {'degree_values': degree_values})
 
 def get_by_batch(request):
     if request.is_ajax() and request.method=='GET':
