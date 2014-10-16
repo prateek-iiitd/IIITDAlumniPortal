@@ -74,8 +74,11 @@ def add_news(request):
 def add_event(request):
     if request.method == 'POST':
         f = EventForm(request.POST)
-        f.save()
-        return HttpResponse()
+        try:
+            f.save()
+            return HttpResponse()
+        except:
+            print f.errors
     else:
         return HttpResponseBadRequest()
 

@@ -5,6 +5,7 @@ __author__ = 'Prateek'
 from django import forms
 from models import Feedback, NewsArticle, Event
 import csv
+#from django.forms import widgets
 
 from models import Degree
 
@@ -15,14 +16,16 @@ class FeedbackForm(forms.ModelForm):
 
 class NewsForm(forms.ModelForm):
     class Meta:
-        modal = NewsArticle
+        model = NewsArticle
         fields = ['headline', 'article', 'occurred_on', 'large_img', 'reporter', 'gallery_link']
 
 
 class EventForm(forms.ModelForm):
     class Meta:
-        modal = Event
-
+        model = Event
+    # def __init__(self, *args, **kwargs):
+    #     super(EventForm, self).__init__(*args, **kwargs)
+    #     self.fields['starts_at'].widget = widgets.AdminSplitDateTime()
 
 DegreeChoices = (('B.Tech.', 'B.Tech.'), ('M.Tech.', 'M.Tech.'), ('Ph.D.', 'Ph.D.'), ('Dual', 'Dual'))
 

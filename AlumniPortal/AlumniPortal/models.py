@@ -64,7 +64,7 @@ class Event(models.Model):
     description = models.TextField(blank=True, null=True)
     venue = models.CharField(max_length=100)
     starts_at = models.DateTimeField(db_index=True)
-    external_link = models.TextField(blank=True, null=True)
+    external_link = models.CharField(blank=True, null=True, max_length=100)
 
     def __unicode__(self):
         return self.title + " on " + str(self.starts_at) + " at " + self.venue
