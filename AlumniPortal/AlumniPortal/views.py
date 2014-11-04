@@ -10,28 +10,37 @@ import json
 
 from models import Student, Degree
 
+
 def home(request):
     return render(request, 'home.html')
+
 
 def directory(request):
     grad_years = Student.objects.values('graduation_year').distinct()
     return render(request, 'directory.html', {'grad_years': grad_years})
 
+
 def contact_us(request):
     return render(request, 'contact_us.html')
+
 
 def blog(request):
     return render(request, 'blog.html')
 
+
 def news(request):
     return render(request, 'news.html')
+
 
 def giveback(request):
     return render(request, 'giveback.html')
 
+
 def admin_forms(request):
     degree_values = Degree.objects.values('name').distinct()
-    return render(request, 'admin_forms.html', {'degree_values': degree_values})
+    form = NewsForm()
+    return render(request, 'admin_forms.html', {'degree_values': degree_values, 'form': form})
+
 
 def get_by_batch(request):
     if request.is_ajax() and request.method=='GET':
@@ -63,6 +72,7 @@ def feedback(request):
     else:
         return HttpResponseBadRequest()
 
+
 def add_news(request):
     if request.method == 'POST':
         f = NewsForm(request.POST)
@@ -70,6 +80,7 @@ def add_news(request):
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
+
 
 def add_event(request):
     if request.method == 'POST':
@@ -81,6 +92,7 @@ def add_event(request):
             print f.errors
     else:
         return HttpResponseBadRequest()
+
 
 def add_directory(request):
     if request.method == 'POST':

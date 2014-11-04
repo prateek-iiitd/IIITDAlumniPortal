@@ -8,6 +8,26 @@
 
 {% block left_content %}
 
+    <form class="row input-form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add News</h2>
+
+        {% for field in form %}
+            <div class="form-group input-group" id="field.auto_id">
+                {{ field.help_text }}
+                <span class="input-group-addon" style="width:110px;">{{ field.label }}</span>
+                {{ field }}
+                <input id="{{ field.id_for_label }}" name="{{ field.html_name }}" type="" class="form-control" style="width:350px;">
+                <div id="{{ field.auto_id }}_errors">
+                    {{ field.errors }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
+    </form>
+
+
     <form class="row input-form" action="/addNews/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Add News</h2>
@@ -24,7 +44,8 @@
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Article</span>
-            <textarea id="id_news_article" name="article" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+            <textarea id="id_news_article" name="article" class="form-control" id="textarea" rows="3"
+                      style="width:350px;"></textarea>
         </div>
 
         <div class="form-group input-group">
@@ -40,7 +61,8 @@
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </form>
 
-    <form class="row input-form" style="margin-top:50px;" action="/addEvent/" method="post" enctype="multipart/form-data">
+    <form class="row input-form" style="margin-top:50px;" action="/addEvent/" method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Add Event</h2>
 
@@ -53,16 +75,16 @@
             <span class="input-group-addon" style="width:110px;">Location</span>
             <input id="id_event_location" name="venue" type="text" class="form-control" style="width:350px;">
         </div>
-{##}
-{#        <div class="form-group input-group">#}
-{#            <span class="input-group-addon" style="width:110px;">Date</span>#}
-{#            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">#}
-{#        </div>#}
-{##}
-{#        <div class="form-group input-group">#}
-{#            <span class="input-group-addon" style="width:110px;">Time</span>#}
-{#            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">#}
-{#        </div>#}
+        {##}
+        {#        <div class="form-group input-group">#}
+        {#            <span class="input-group-addon" style="width:110px;">Date</span>#}
+        {#            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">#}
+        {#        </div>#}
+        {##}
+        {#        <div class="form-group input-group">#}
+        {#            <span class="input-group-addon" style="width:110px;">Time</span>#}
+        {#            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">#}
+        {#        </div>#}
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Time</span>
             <input id="id_event_time" name="starts_at" type="datetime-local" class="form-control" style="width:350px;">
@@ -70,7 +92,8 @@
 
         <div class="form-group input-group">
             <span class="input-group-addon" style="width:110px;">Description</span>
-            <textarea id="id_event_description" name="description" class="form-control" id="textarea" rows="3" style="width:350px;"></textarea>
+            <textarea id="id_event_description" name="description" class="form-control" id="textarea" rows="3"
+                      style="width:350px;"></textarea>
         </div>
 
         <div class="form-group input-group">
@@ -81,7 +104,8 @@
         <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
     </form>
 
-    <form class="row input-form" style="margin-top:50px;" action="/addDirectory/" method="post" enctype="multipart/form-data">
+    <form class="row input-form" style="margin-top:50px;" action="/addDirectory/" method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Directory</h2>
 
@@ -109,7 +133,7 @@
                         style="width:300px;border-radius: 0 4px 4px 0;">
                     <option value="-1">Select Degree</option>
                     {% for degree in degree_values %}
-                        <option value = "{{ degree.name }}">{{ degree.name }}</option>
+                        <option value="{{ degree.name }}">{{ degree.name }}</option>
                     {% endfor %}
                 </select>
             </div>
