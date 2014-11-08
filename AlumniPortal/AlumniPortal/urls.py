@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from AlumniPortal import settings_dev
 from django.contrib import admin
 admin.autodiscover()
 
@@ -23,3 +23,9 @@ urlpatterns = patterns('',
     url(r'^addEvent/$', 'AlumniPortal.views.add_event'),
     url(r'^addDirectory/$', 'AlumniPortal.views.add_directory'),
 )
+
+if settings_dev.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings_dev.MEDIA_ROOT}))

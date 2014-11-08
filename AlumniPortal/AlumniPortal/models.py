@@ -1,16 +1,17 @@
 __author__ = 'Prateek'
 
 from django.db import models
+from django import forms
 
 GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
 
 
 def news_large_image(self, filename):
-    return '/'.join(['news', 'full', self.id, filename])
+    return '/'.join(['news', 'full', filename])
 
 
 def news_thumb_image(self, filename):
-    return '/'.join(['news', 'thumb', self.id, filename])
+    return '/'.join(['news', 'thumb', filename])
 
 class SpecialisationStream(models.Model):
     name = models.CharField(max_length=40, db_index=True)
@@ -63,7 +64,9 @@ class Event(models.Model):
     title = models.CharField(max_length=500, db_index=True)
     description = models.TextField(blank=True, null=True)
     venue = models.CharField(max_length=100)
-    starts_at = models.DateTimeField(db_index=True)
+    starts_at = models.DateTimeField(db_index=True, verbose_name="Date & Time")
+    # starts_at=forms.DateTimeField(widget=forms.DateTimeField('%Y-%m-%dT%H:%M'),
+    #                              input_formats =('%Y-%m-%dT%H:%M',))
     external_link = models.CharField(blank=True, null=True, max_length=100)
 
     def __unicode__(self):
@@ -76,11 +79,11 @@ class NewsArticle(models.Model):
     occurred_on = models.DateField(db_index=True)
     large_img = models.ImageField(blank=True, null=True, upload_to=news_large_image)
     thumbnail = models.ImageField(blank=True, null=True, upload_to=news_thumb_image)
-    reporter = models.CharField(max_length=40, db_index=True)
+    reporter = models.CharField(max_length=40, db_index=True, blank=True)
     gallery_link = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
-        return self.headline + " - " + self.occurred_on
+        return self.headline + " - " + str(self.occurred_on)
 
 
 class Award(models.Model):

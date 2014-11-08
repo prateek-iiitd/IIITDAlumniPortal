@@ -13,7 +13,7 @@ def hello(request):
 def form_test(request):
     if request.method=='POST':
         form = DirectoryForm(request.POST, request.FILES)
-        if form.is_valid():
+        if form.save():
             return HttpResponse("Thanks")
 
     form = EventForm()
