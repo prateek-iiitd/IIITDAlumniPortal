@@ -135,6 +135,14 @@ h4 {
 }
 
 /*
+    Nav-Tabs Styling
+*/
+
+.nav-tabs a {
+    text-decoration: none !important;
+}
+
+/*
     Footer
 */
 .footer {
@@ -512,4 +520,8 @@ fieldset[disabled] .btn-warning.active {
 
 .input-form .input-group {
     margin-top:10px;
+}
+
+.latest-updates {
+    color: #777;
 }

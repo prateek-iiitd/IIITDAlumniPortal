@@ -7,150 +7,216 @@
 {% endblock %}
 
 {% block left_content %}
+    <div class="row">
+        <div class="tabbable">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#a" data-toggle="tab">News</a></li>
+                <li><a href="#b" data-toggle="tab">Event</a></li>
+                <li><a href="#c" data-toggle="tab">Blog</a></li>
+                <li><a href="#c" data-toggle="tab">Directory</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="a">
 
-    <form class="row input-form" action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h2>Add News</h2>
+                    <div class="col-lg-12">
+                        <form class="row input-form" style="margin-top:25px;" action="" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2>Add News</h2>
 
-        {% for field in form %}
-            <div class="form-group input-group" id="field.auto_id">
-                {{ field.help_text }}
-                <span class="input-group-addon" style="width:110px;">{{ field.label }}</span>
-                {{ field }}
-                <input id="{{ field.id_for_label }}" name="{{ field.html_name }}" type="" class="form-control" style="width:350px;">
-                <div id="{{ field.auto_id }}_errors">
-                    {{ field.errors }}
+                            {% for field in form %}
+                                <div class="form-group input-group" id="field.auto_id">
+                                    {{ field.help_text }}
+                                    <span class="input-group-addon" style="width:110px;">{{ field.label }}</span>
+                                    {#                {{ field }}#}
+                                    <input id="{{ field.id_for_label }}" name="{{ field.html_name }}" type=""
+                                           class="form-control"
+                                           style="width:350px;">
+
+                                    <div id="{{ field.auto_id }}_errors">
+                                        {{ field.errors }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add
+                            </button>
+                        </form>
+
+                        <form class="row input-form" style="margin-top:25px;" action="/addNews/" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2>Add News</h2>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Headline</span>
+                                <input id="id_headline" name="headline" type="text" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Article</span>
+                                <textarea id="id_news_article" name="article" class="form-control" id="textarea"
+                                          rows="3"
+                                          style="width:350px;"></textarea>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Date</span>
+                                <input id="id_news_date" name="occurred_on" type="date" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Image</span>
+                                <input id="id_news_image" name="large_img" type="file" class="form-control"
+                                       style="width:350px">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Gallery Link</span>
+                                <input id="id_news_link_gallery" name="gallery_link" type="text" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="b">
+
+                    <div class="col-lg-12">
+                        <form class="row input-form" style="margin-top:25px;" action="/addEvent/" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2>Add Event</h2>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Name</span>
+                                <input id="id_event_name" name="title" type="text" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Location</span>
+                                <input id="id_event_location" name="venue" type="text" class="form-control"
+                                       style="width:350px;">
+                            </div>
+                            {##}
+                            {#        <div class="form-group input-group">#}
+                            {#            <span class="input-group-addon" style="width:110px;">Date</span>#}
+                            {#            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">#}
+                            {#        </div>#}
+                            {##}
+                            {#        <div class="form-group input-group">#}
+                            {#            <span class="input-group-addon" style="width:110px;">Time</span>#}
+                            {#            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">#}
+                            {#        </div>#}
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Time</span>
+                                <input id="id_event_time" name="starts_at" type="datetime-local" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Description</span>
+                                <textarea id="id_event_description" name="description" class="form-control"
+                                          id="textarea"
+                                          rows="3"
+                                          style="width:350px;"></textarea>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" style="width:110px;">Link</span>
+                                <input id="id_event_link" name="external_link" type="text" class="form-control"
+                                       style="width:350px;">
+                            </div>
+
+                            <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="c">
+
+                    <div class="col-lg-12">
+                        <form class="row input-form" style="margin-top:25px;" action="/addDirectory/" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2>Directory</h2>
+
+
+                            <div class="form-group input-group" style="width: 500px">
+                                <label class="control-label input-group-addon" for="gradyear" style="width:140px;">Graduation
+                                    Year</label>
+
+                                <div>
+                                    <select id="id_gradyear" name="passing_year" class="form-control"
+                                            style="width:300px;border-radius: 0 4px 4px 0;">
+                                        <option value="-1">Select Year</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group input-group" style="width: 500px">
+                                <label class="control-label input-group-addon" for="degree"
+                                       style="width:140px;">Degree</label>
+
+                                <div>
+                                    <select id="id_degree" name="degree" class="form-control"
+                                            style="width:300px;border-radius: 0 4px 4px 0;">
+                                        <option value="-1">Select Degree</option>
+                                        {% for degree in degree_values %}
+                                            <option value="{{ degree.name }}">{{ degree.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="input-group" style="margin-top:0;width: 500px;">
+                                <span for="id_file" class="input-group-addon" style="width:140px;">CSV</span>
+                                <input id="id_file" name="file" type="file" class="form-control" style="width:300px">
+                            </div>
+
+                            <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Upload
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-        {% endfor %}
-
-        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
-    </form>
-
-
-    <form class="row input-form" action="/addNews/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h2>Add News</h2>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Headline</span>
-            <input id="id_headline" name="headline" type="text" class="form-control" style="width:350px;">
         </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Date</span>
-            <input id="id_news_date" name="occurred_on" type="date" class="form-control" style="width:350px;">
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Article</span>
-            <textarea id="id_news_article" name="article" class="form-control" id="textarea" rows="3"
-                      style="width:350px;"></textarea>
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Image</span>
-            <input id="id_news_image" name="large_img" type="file" class="form-control" style="width:350px">
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Gallery Link</span>
-            <input id="id_news_link_gallery" name="gallery_link" type="text" class="form-control" style="width:350px;">
-        </div>
-
-        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
-    </form>
-
-    <form class="row input-form" style="margin-top:50px;" action="/addEvent/" method="post"
-          enctype="multipart/form-data">
-        {% csrf_token %}
-        <h2>Add Event</h2>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Name</span>
-            <input id="id_event_name" name="title" type="text" class="form-control" style="width:350px;">
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Location</span>
-            <input id="id_event_location" name="venue" type="text" class="form-control" style="width:350px;">
-        </div>
-        {##}
-        {#        <div class="form-group input-group">#}
-        {#            <span class="input-group-addon" style="width:110px;">Date</span>#}
-        {#            <input id="id_event_date" name="event_date" type="date" class="form-control" style="width:350px;">#}
-        {#        </div>#}
-        {##}
-        {#        <div class="form-group input-group">#}
-        {#            <span class="input-group-addon" style="width:110px;">Time</span>#}
-        {#            <input id="id_event_time" name="event_time" type="time" class="form-control" style="width:350px;">#}
-        {#        </div>#}
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Time</span>
-            <input id="id_event_time" name="starts_at" type="datetime-local" class="form-control" style="width:350px;">
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Description</span>
-            <textarea id="id_event_description" name="description" class="form-control" id="textarea" rows="3"
-                      style="width:350px;"></textarea>
-        </div>
-
-        <div class="form-group input-group">
-            <span class="input-group-addon" style="width:110px;">Link</span>
-            <input id="id_event_link" name="external_link" type="text" class="form-control" style="width:350px;">
-        </div>
-
-        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Add</button>
-    </form>
-
-    <form class="row input-form" style="margin-top:50px;" action="/addDirectory/" method="post"
-          enctype="multipart/form-data">
-        {% csrf_token %}
-        <h2>Directory</h2>
-
-
-        <div class="form-group input-group" style="width: 500px">
-            <label class="control-label input-group-addon" for="gradyear" style="width:140px;">Graduation Year</label>
-
-            <div>
-                <select id="id_gradyear" name="passing_year" class="form-control"
-                        style="width:300px;border-radius: 0 4px 4px 0;">
-                    <option value="-1">Select Year</option>
-                    <option value="2014">2014</option>
-                    <option value="2013">2013</option>
-                    <option value="2012">2012</option>
-                </select>
-            </div>
-        </div>
-
-
-        <div class="form-group input-group" style="width: 500px">
-            <label class="control-label input-group-addon" for="degree" style="width:140px;">Degree</label>
-
-            <div>
-                <select id="id_degree" name="degree" class="form-control"
-                        style="width:300px;border-radius: 0 4px 4px 0;">
-                    <option value="-1">Select Degree</option>
-                    {% for degree in degree_values %}
-                        <option value="{{ degree.name }}">{{ degree.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-
-
-        <div class="input-group" style="margin-top:0;width: 500px;">
-            <span for="id_file" class="input-group-addon" style="width:140px;">CSV</span>
-            <input id="id_file" name="file" type="file" class="form-control" style="width:300px">
-        </div>
-
-        <button type="submit" class="btn btn-warning" style="width: 110px;margin-top: 10px;">Upload</button>
-    </form>
-
+    </div>
 {% endblock %}
 
 {% block right_content %}
+
+    <div class="row">
+        <h3>Latest Updates</h3>
+    </div>
+    <div class="latest-updates">
+        <div class="row">
+            <span class="glyphicon glyphicon-plus card-field"><span
+                    class="card-field-font">Added to News 'Headline'</span></span>
+        </div>
+        <div class="row">
+        <span class="glyphicon glyphicon-pencil card-field"><span
+                class="card-field-font">Edited News 'Event Name'</span></span>
+        </div>
+        <div class="row">
+        <span class="glyphicon glyphicon-remove card-field"><span
+                class="card-field-font">Removed from Directory 'contact/batch'</span></span>
+        </div>
+    </div>
+
 
 {% endblock %}
 
