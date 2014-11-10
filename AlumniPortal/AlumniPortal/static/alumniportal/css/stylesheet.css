@@ -548,7 +548,6 @@ fieldset[disabled] .btn-warning.active {
 
 .tab-panel-body {
     display: none;
-    padding: 5px 15px;
 }
 
 .tab-panel-body .input-group {
