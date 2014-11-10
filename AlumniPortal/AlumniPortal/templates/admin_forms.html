@@ -23,11 +23,11 @@
                     <form class="row input-form" action="" method="post"
                           enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="row tab-panel-head">
+                        <div id="news-tab-panel-head" class="row tab-panel-head">
                             <h4>Add News</h4>
                         </div>
 
-                        <div class="tab-panel-body">
+                        <div id="news-tab-panel-body" class="tab-panel-body">
                             {% for field in news_form %}
                                 <div class="form-group input-group" id="field.auto_id">
                                     {{ field.help_text }}
@@ -65,11 +65,11 @@
                 <form class="row input-form" action="/addEvent/" method="post"
                       enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="row tab-panel-head">
+                    <div id="event-tab-panel-head" class="row tab-panel-head">
                         <h4>Add Event</h4>
                     </div>
 
-                    <div class="tab-panel-body">
+                    <div id="event-tab-panel-body" class="tab-panel-body">
                         {% for field in event_form %}
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
@@ -101,10 +101,10 @@
                 <form class="row input-form" action="/addDirectory/" method="post"
                       enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="row tab-panel-head">
+                    <div id="blog-tab-panel-head" class="row tab-panel-head">
                         <h4>Add Blog</h4>
                     </div>
-                    <div class="tab-panel-body">
+                    <div id="blog-tab-panel-body" class="tab-panel-body">
                         {% for field in news_form %}
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
@@ -136,11 +136,11 @@
                 <form class="row input-form" action="/addDirectory/" method="post"
                       enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="row tab-panel-head">
+                    <div id="directory-tab-panel-head" class="row tab-panel-head">
                         <h4>Add Directory</h4>
                     </div>
 
-                    <div class="tab-panel-body">
+                    <div id="directory-tab-panel-body" class="tab-panel-body">
                         {% for field in directory_form %}
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
@@ -219,4 +219,5 @@
 {% block scripts %}
     <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/admin_forms.js"></script>
 {% endblock %}

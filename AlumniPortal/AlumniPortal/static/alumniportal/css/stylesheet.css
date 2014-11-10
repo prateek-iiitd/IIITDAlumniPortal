@@ -540,10 +540,12 @@ fieldset[disabled] .btn-warning.active {
     border: 1px #ccc solid;
     border-radius: 5px;
     margin: 0px;
-    padding: 5px 15px;"
+    padding: 5px 15px;
+    cursor: pointer;
 }
 
 .tab-panel-body {
+    display: none;
     padding: 5px 15px;
 }
 
