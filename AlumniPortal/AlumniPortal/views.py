@@ -38,21 +38,29 @@ def giveback(request):
 
 def admin_forms(request):
     degree_values = Degree.objects.values('name').distinct()
-    form = NewsForm()
-    return render(request, 'admin_forms.html', {'degree_values': degree_values, 'form': form})
+    news_form = NewsForm()
+    event_form = EventForm()
+    directory_form = DirectoryForm()
+
+    for f in news_form:
+        print f.field.widget.attrs
+
+    return render(request, 'admin_forms.html',
+                  {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                   'directory_form': directory_form})
 
 
 def get_by_batch(request):
-    if request.is_ajax() and request.method=='GET':
+    if request.is_ajax() and request.method == 'GET':
         year = request.GET['year']
         students = Student.objects.filter(graduation_year=year)
         json_res = []
         for s in students:
-            json_obj = dict(name = s.name,
-                            iiitd_email = s.iiitd_email,
-                            graduation_year = s.graduation_year,
-                            degree = s.degree.name,
-                            branch = s.degree.branch.name)
+            json_obj = dict(name=s.name,
+                            iiitd_email=s.iiitd_email,
+                            graduation_year=s.graduation_year,
+                            degree=s.degree.name,
+                            branch=s.degree.branch.name)
             if s.degree.specialisation:
                 json_obj['specialisation'] = s.degree.specialisation.name
             json_res.append(json_obj)
@@ -61,6 +69,7 @@ def get_by_batch(request):
         template = get_template('card_contact2.html').render(RequestContext(request))
         resp = {'students': json_res, 'html': template}
         return HttpResponse(json.dumps(resp))
+
 
 @csrf_exempt
 def feedback(request):
@@ -75,7 +84,8 @@ def feedback(request):
 
 def add_news(request):
     if request.method == 'POST':
-        f = NewsForm(request.POST)
+        f = NewsForm(request.POST, request.FILES)
+        #print f.errors
         f.save()
         return HttpResponse()
     else:
@@ -85,19 +95,19 @@ def add_news(request):
 def add_event(request):
     if request.method == 'POST':
         f = EventForm(request.POST)
-        try:
-            f.save()
-            return HttpResponse()
-        except:
-            print f.errors
+        # try:
+        f.save()
+        return HttpResponse()
+        # except:
+        # print f.errors
     else:
         return HttpResponseBadRequest()
 
 
 def add_directory(request):
     if request.method == 'POST':
-        f = DirectoryForm(request.POST)
+        f = DirectoryForm(request.POST, request.FILES)
         f.save()
-        return HttpResponse()
+        return HttpResponse("Accepted")
     else:
         return HttpResponseBadRequest()
