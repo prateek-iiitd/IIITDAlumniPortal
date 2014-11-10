@@ -529,6 +529,7 @@ fieldset[disabled] .btn-warning.active {
 
 .tab-panel {
     margin: 0 auto;
+
 }
 
 .tab-panel form {
@@ -542,6 +543,7 @@ fieldset[disabled] .btn-warning.active {
     margin: 0px;
     padding: 5px 15px;
     cursor: pointer;
+    box-shadow: 1px 1px 5px #ccc;
 }
 
 .tab-panel-body {
@@ -568,7 +570,7 @@ fieldset[disabled] .btn-warning.active {
     margin-top:15px;
     border: 1px #ccc solid;
     background-color: #eee;
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 1px 1px 7px #ccc;
 }
 
 .tab-panel-unit-img {
