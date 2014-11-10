@@ -517,10 +517,85 @@ fieldset[disabled] .btn-warning.active {
     background-color: #3fada8 !important;
 }
 
+/* Admin Panel Styling */
+
 .input-form .input-group {
     margin-top:10px;
 }
 
 .latest-updates {
     color: #777;
+}
+
+.tab-panel {
+    margin: 0 auto;
+}
+
+.tab-panel form {
+    margin-top:25px;
+}
+
+.tab-panel-head {
+    background-color: #eee;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    margin: 0px;
+    padding: 5px 15px;"
+}
+
+.tab-panel-body {
+    padding: 5px 15px;
+}
+
+.tab-panel-body .input-group {
+    width: 100%;
+}
+
+.tab-panel-body .input-group .input-group-addon {
+     width:110px;
+}
+
+.tab-panel-body button {
+    width: 100px;
+}
+
+/* The unit to show data in admin panel */
+
+.tab-panel-unit {
+    border-radius: 5px;
+    margin-top:15px;
+    border: 1px #ccc solid;
+    background-color: #eee;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.tab-panel-unit-img {
+    height:100px;
+    width:150px;
+    background-size: cover;
+    border-radius: 5px 0 0 5px;
+}
+
+.tab-panel-unit-body-action {
+    font-size: 12px;
+    padding-right: 0;
+    margin-right: -30px;
+}
+
+.tab-panel-unit-body-action span {
+    padding-right: 15px;
+}
+
+.tab-panel-unit-body-head {
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tab-panel-unit-body-desc {
+    height: 50px;
+    padding: 10px;
+    font-size: 13px;
+    color: #666;">
 }
