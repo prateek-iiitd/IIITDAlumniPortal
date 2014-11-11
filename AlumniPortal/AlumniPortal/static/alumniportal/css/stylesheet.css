@@ -486,7 +486,7 @@ fieldset[disabled] .btn-warning.active {
 .filter-all {
     width:105px;
     height:105px;
-    background-color:#333;
+    background-color:#555;
     color:#fff;
     padding:37px 0 0 30px;
     font-size:15px;
@@ -500,7 +500,7 @@ fieldset[disabled] .btn-warning.active {
 }
 
 .filter-individual span{
-    background-color:#333;
+    background-color:#555;
     color: #fff;
     height:25px;
     width:110px;
@@ -511,11 +511,7 @@ fieldset[disabled] .btn-warning.active {
     cursor: pointer;
 }
 
-.filter-all:hover{
-    background-color: #3fada8;
-}
-
-.highlight {
+.filter-all:hover, .highlight {
     background-color: #3fada8 !important;
 }
 
