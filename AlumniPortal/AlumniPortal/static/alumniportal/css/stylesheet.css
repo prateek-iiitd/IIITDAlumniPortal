@@ -46,7 +46,8 @@ h3 {
 h4 {
     color: #555;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 15px;
+    height: 50px;
 }
 
 /*
@@ -365,10 +366,11 @@ hr {
 }
 
 .panel-user-h4-2 {
-    height: 18px;
+    height: 32px;
+    overflow: hidden;
     overflow-x: hidden;
     padding-top: 0;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 /*.panel-heading:hover {
@@ -494,7 +496,7 @@ fieldset[disabled] .btn-warning.active {
 }
 
 .filter-individual {
-    margin-top:5px;
+    margin-top:25px;
 }
 
 .filter-individual span{
