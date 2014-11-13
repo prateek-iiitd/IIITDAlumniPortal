@@ -5,7 +5,31 @@
  * Created by sauhard on 29/8/14.
  */
 $(document).ready(function () {
-    console.log("JS connecting");
+    if (document.URL=="http://127.0.0.1:8000/")
+    {
+        $("#nav-bar a:first-child li").css("color", "rgb(63, 173, 168)");
+    }
+    else if (document.URL=="http://127.0.0.1:8000/news/")
+    {
+        $("#nav-bar a:nth-child(2) li").css("color", "rgb(63, 173, 168)");
+    }
+    else if (document.URL=="http://127.0.0.1:8000/blog/")
+    {
+        $("#nav-bar a:nth-child(3) li").css("color", "rgb(63, 173, 168)");
+    }
+    else if (document.URL=="http://127.0.0.1:8000/directory/")
+    {
+        $("#nav-bar a:nth-child(4) li").css("color", "rgb(63, 173, 168)");
+    }
+    else if (document.URL=="http://127.0.0.1:8000/giveback/")
+    {
+        $("#nav-bar a:nth-child(5) li").css("color", "rgb(63, 173, 168)");
+    }
+    else if (document.URL=="http://127.0.0.1:8000/contact_us")
+    {
+        $("#nav-bar a:nth-child(6) li").css("color", "rgb(63, 173, 168)");
+    }
+
     $("#openfeedback").click(function() {
         console.log("Clicking");
         $("#black").css("z-index", 999).fadeTo("medium", 0.7);
