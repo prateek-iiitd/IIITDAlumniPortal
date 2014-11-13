@@ -19,9 +19,10 @@ urlpatterns = patterns('',
     url(r'^giveback/$', 'AlumniPortal.views.giveback'),
     url(r'^feedback/$', 'AlumniPortal.views.feedback'),
     url(r'^admin_forms/$', 'AlumniPortal.views.admin_forms'),
-    url(r'^addNews/$', 'AlumniPortal.views.add_news'),
-    url(r'^addEvent/$', 'AlumniPortal.views.add_event'),
-    url(r'^addDirectory/$', 'AlumniPortal.views.add_directory'),
+    url(r'^admin_forms/add_news/$', 'AlumniPortal.views.add_news'),
+    url(r'^admin_forms/add_event/$', 'AlumniPortal.views.add_event'),
+    url(r'^admin_forms/add_directory/$', 'AlumniPortal.views.add_directory'),
+    url(r'^admin_forms/add_blog/$', 'AlumniPortal.views.add_blog'),
 )
 
 if settings_dev.DEBUG:

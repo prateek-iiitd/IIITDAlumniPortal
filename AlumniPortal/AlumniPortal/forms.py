@@ -21,7 +21,7 @@ class NewsForm(forms.ModelForm):
             'headline': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
             'article': forms.Textarea(attrs={'html_tag': 'textarea'}),
             'occurred_on': forms.TextInput(attrs={'html_type': "date", "html_tag": "input"}),
-            'large_img': forms.TextInput(attrs={'html_type': "file", "html_tag": "input"}),
+            'large_img': forms.ClearableFileInput(attrs={'html_type': "file", "html_tag": "input"}),
             'reporter': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
             'gallery_link': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
         }

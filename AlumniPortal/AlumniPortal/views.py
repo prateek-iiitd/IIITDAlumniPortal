@@ -42,9 +42,6 @@ def admin_forms(request):
     event_form = EventForm()
     directory_form = DirectoryForm()
 
-    for f in news_form:
-        print f.field.widget.attrs
-
     return render(request, 'admin_forms.html',
                   {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
                    'directory_form': directory_form})
@@ -84,9 +81,9 @@ def feedback(request):
 
 def add_news(request):
     if request.method == 'POST':
-        f = NewsForm(request.POST, request.FILES)
-        #print f.errors
-        f.save()
+        form = NewsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
@@ -111,3 +108,9 @@ def add_directory(request):
         return HttpResponse("Accepted")
     else:
         return HttpResponseBadRequest()
+
+def add_blog(request):
+    if request.method == 'POST':
+        return HttpResponse("Accepted")
+
+    return HttpResponseBadRequest
