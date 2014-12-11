@@ -48,7 +48,7 @@ def admin_forms(request):
     directory_form = DirectoryForm()
     return render(request, 'admin_forms.html',
                   {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                   'directory_form': directory_form})
+                   'directory_form': directory_form, 'news_class': "active"})
 
 
 def get_by_batch(request):
@@ -84,24 +84,35 @@ def feedback(request):
 
 def add_news(request):
     if request.method == 'POST':
-        form = NewsForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        news_form = NewsForm(request.POST, request.FILES)
+        if news_form.is_valid():
+            news_form.save()
             return HttpResponseRedirect('/admin_forms/')
         else:
-            return HttpResponse(str(form.errors))
+            degree_values = Degree.objects.values('name').distinct()
+            event_form = EventForm()
+            directory_form = DirectoryForm()
+            return render(request, 'admin_forms.html',
+            {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                           'directory_form': directory_form, 'news_class': "active"})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
 
 def add_event(request):
     if request.method == 'POST':
-        form = EventForm(request.POST)
-        if form.is_valid():
-            form.save()
+        event_form = EventForm(request.POST)
+        if event_form.is_valid():
+            event_form.save()
             return HttpResponseRedirect('/admin_forms/')
         else:
-            return HttpResponse(str(form.errors))
+            degree_values = Degree.objects.values('name').distinct()
+            news_form = NewsForm()
+            directory_form = DirectoryForm()
+            return render(request, 'admin_forms.html',
+                          {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                           'directory_form': directory_form, 'event_class': "active"})
+
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
@@ -117,8 +128,8 @@ def add_directory(request):
             news_form = NewsForm()
             event_form = EventForm()
             return render(request, 'admin_forms.html',
-                              {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                               'directory_form': directory_form})
+                          {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                           'directory_form': directory_form, 'directory_class': "active"})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
