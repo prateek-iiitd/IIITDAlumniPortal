@@ -20,7 +20,7 @@
 
             <div class="col-lg-12">
                 <div class="row tab-panel">
-                    <form class="row input-form" action="" method="post"
+                    <form class="row input-form" action="add_news/" method="post"
                           enctype="multipart/form-data">
                         {% csrf_token %}
                         <div id="news-tab-panel-head" class="row tab-panel-head">
@@ -29,6 +29,9 @@
 
                         <div id="news-tab-panel-body" class="tab-panel-body">
                             {% for field in news_form %}
+                                <div id="{{ field.auto_id }}_errors">
+                                    {{ field.errors }}
+                                </div>
                                 <div class="form-group input-group" id="field.auto_id">
                                     {{ field.help_text }}
                                 <span class="input-group-addon">{{ field.label }}</span>
@@ -37,9 +40,7 @@
                                     type="{{ field.field.widget.attrs.html_type }}" class="form-control"
                                     style="border-radius:0 5px 5px 0;">
                                 </{{ field.field.widget.attrs.html_tag }}>
-                                <div id="{{ field.auto_id }}_errors">
-                                    {{ field.errors }}
-                                </div>
+
                                 </div>
 
 
@@ -71,6 +72,9 @@
 
                     <div id="event-tab-panel-body" class="tab-panel-body">
                         {% for field in event_form %}
+                            <div id="{{ field.auto_id }}_errors">
+                                {{ field.errors }}
+                            </div>
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
                                 <span class="input-group-addon">{{ field.label }}</span>
@@ -79,9 +83,7 @@
                                 type="{{ field.field.widget.attrs.html_type }}" class="form-control"
                                 style="border-radius: 0 5px 5px 0;">
                             </{{ field.field.widget.attrs.html_tag }}>
-                            <div id="{{ field.auto_id }}_errors">
-                                {{ field.errors }}
-                            </div>
+
                             </div>
                         {% endfor %}
 
@@ -106,6 +108,9 @@
                     </div>
                     <div id="blog-tab-panel-body" class="tab-panel-body">
                         {% for field in news_form %}
+                            <div id="{{ field.auto_id }}_errors">
+                                {{ field.errors }}
+                            </div>
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
                                 <span class="input-group-addon">{{ field.label }}</span>
@@ -114,9 +119,7 @@
                                 type="{{ field.field.widget.attrs.html_type }}" class="form-control"
                                 style="border-radius: 0 5px 5px 0;">
                             </{{ field.field.widget.attrs.html_tag }}>
-                            <div id="{{ field.auto_id }}_errors">
-                                {{ field.errors }}
-                            </div>
+
                             </div>
                         {% endfor %}
 
@@ -142,6 +145,10 @@
 
                     <div id="directory-tab-panel-body" class="tab-panel-body">
                         {% for field in directory_form %}
+                            <div id="{{ field.auto_id }}_errors">
+                                {{ field.errors }}
+                            </div>
+
                             <div class="form-group input-group" id="field.auto_id">
                                 {{ field.help_text }}
                                 <span class="input-group-addon">{{ field.label }}</span>
@@ -174,9 +181,6 @@
                                     </{{ field.field.widget.attrs.html_tag }}>
 
                                 {% endif %}
-                            <div id="{{ field.auto_id }}_errors">
-                                {{ field.errors }}
-                            </div>
                             </div>
                         {% endfor %}
 

@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.template import RequestContext
 from django.template.context import Context
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from forms import FeedbackForm, NewsForm, EventForm, DirectoryForm
 import json
+from models import NewsArticle
 
 from models import Student, Degree
 
@@ -29,7 +30,11 @@ def blog(request):
 
 
 def news(request):
-    return render(request, 'news.html')
+    news_articles = NewsArticle.objects.all()
+    return render(request, 'news.html',
+                  {
+                      'news_articles': news_articles
+                  })
 
 
 def giveback(request):
@@ -41,7 +46,6 @@ def admin_forms(request):
     news_form = NewsForm()
     event_form = EventForm()
     directory_form = DirectoryForm()
-
     return render(request, 'admin_forms.html',
                   {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
                    'directory_form': directory_form})
@@ -74,7 +78,6 @@ def feedback(request):
         f = FeedbackForm(request.POST)
         f.save()
         return HttpResponse()
-
     else:
         return HttpResponseBadRequest()
 
@@ -84,30 +87,41 @@ def add_news(request):
         form = NewsForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return HttpResponse()
+            return HttpResponseRedirect('/admin_forms/')
+        else:
+            return HttpResponse(str(form.errors))
     else:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
 
 def add_event(request):
     if request.method == 'POST':
-        f = EventForm(request.POST)
-        # try:
-        f.save()
-        return HttpResponse()
-        # except:
-        # print f.errors
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/admin_forms/')
+        else:
+            return HttpResponse(str(form.errors))
     else:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
 
 def add_directory(request):
     if request.method == 'POST':
-        f = DirectoryForm(request.POST, request.FILES)
-        f.save()
-        return HttpResponse("Accepted")
+        directory_form = DirectoryForm(request.POST, request.FILES)
+        if directory_form.is_valid():
+            directory_form.save()
+            return HttpResponseRedirect('/admin_forms/')
+        else:
+            degree_values = Degree.objects.values('name').distinct()
+            news_form = NewsForm()
+            event_form = EventForm()
+            return render(request, 'admin_forms.html',
+                              {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                               'directory_form': directory_form})
     else:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
+
 
 def add_blog(request):
     if request.method == 'POST':

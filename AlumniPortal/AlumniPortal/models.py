@@ -1,7 +1,6 @@
 __author__ = 'Prateek'
 
 from django.db import models
-from django import forms
 
 GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
 

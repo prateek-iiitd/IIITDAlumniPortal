@@ -48,12 +48,12 @@ class DirectoryForm(forms.Form):
     passing_year = forms.IntegerField()
     passing_year.widget = forms.TextInput(attrs={'html_type': "file", "html_tag": "input"})
     csv_file = forms.FileField(label='CSV File', )
-    csv_file.widget = forms.TextInput({'html_type': "file", "html_tag": "input"})
+    csv_file.widget = forms.ClearableFileInput({'html_type': "file", "html_tag": "input"})
 
 
     def save(self):
         if self.is_valid():
-            csv_file = self.cleaned_data['file']
+            csv_file = self.cleaned_data['csv_file']
             records = csv.reader(csv_file, dialect=csv.excel_tab)
             for row in records:
                 print row
