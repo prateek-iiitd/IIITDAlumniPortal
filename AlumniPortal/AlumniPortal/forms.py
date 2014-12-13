@@ -1,7 +1,7 @@
 __author__ = 'Prateek'
 
 from django import forms
-from models import Feedback, NewsArticle, Event
+from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student
 import csv
 # from django.forms import widgets
 
@@ -45,7 +45,7 @@ DegreeChoices = (('B.Tech.', 'B.Tech.'), ('M.Tech.', 'M.Tech.'), ('Ph.D.', 'Ph.D
 class DirectoryForm(forms.Form):
     degree = forms.ChoiceField(choices=DegreeChoices)
     degree.widget = forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
-    passing_year = forms.IntegerField()
+    passing_year = forms.IntegerField(min_value=2012)
     passing_year.widget = forms.TextInput(attrs={'html_type': "file", "html_tag": "input"})
     csv_file = forms.FileField(label='CSV File', )
     csv_file.widget = forms.ClearableFileInput({'html_type': "file", "html_tag": "input"})
@@ -54,8 +54,29 @@ class DirectoryForm(forms.Form):
     def save(self):
         if self.is_valid():
             csv_file = self.cleaned_data['csv_file']
-            records = csv.reader(csv_file, dialect=csv.excel_tab)
+            records = csv.reader(csv_file, dialect=csv.excel_tab, delimiter=',')
+            # skip header
+            next(records, None)
+            year, degree = str(self.cleaned_data['passing_year']), str(self.cleaned_data['degree'])
+
             for row in records:
-                print row
+                name, email, branch, specialization = row
+                branch = Branch.objects.get(name=branch)
+
+                if specialization == '':
+                    stream = None
+                else:
+                    if not SpecialisationStream.objects.filter(name=specialization).exists():
+                        stream = SpecialisationStream(name=specialization)
+                        stream.save()
+                    stream = SpecialisationStream.objects.get(name=specialization)
+
+                if not Degree.objects.filter(name=degree, branch=branch, specialisation=stream):
+                    new_degree = Degree(name=degree, branch=branch, specialisation=stream)
+                    new_degree.save()
+                student_degree = Degree.objects.get(name=degree, branch=branch, specialisation=stream)
+
+                student = Student(name=name, iiitd_email=email, graduation_year=int(year), degree=student_degree)
+                student.save()
         else:
             print self.errors
