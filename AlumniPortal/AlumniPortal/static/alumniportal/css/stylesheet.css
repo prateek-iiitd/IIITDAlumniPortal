@@ -365,6 +365,10 @@ hr {
     color: #333 !important;
 }
 
+.h4-big h4 {
+    font-size: 20px;
+}
+
 .panel-user-h4 {
     height: 40px;
 }

@@ -10,6 +10,6 @@ urlpatterns = patterns('',
     url(r'^temp/$', 'AlumniPortal.test.test_views.hello'),
     url(r'^formtest/$', 'AlumniPortal.test.test_views.form_test'),
     url(r'^adminformtest', 'AlumniPortal.test.test_views.admin_form_test'),
-
+    url(r'^profile/$', 'AlumniPortal.test.test_views.profile_test'),
 )
 

@@ -29,3 +29,6 @@ def admin_form_test(request):
             return HttpResponse("Thanks")
 
     return render(request, 'admin_form_test.html', {'form':form})
+
+def profile_test(request):
+    return render(request, 'profile.html')
