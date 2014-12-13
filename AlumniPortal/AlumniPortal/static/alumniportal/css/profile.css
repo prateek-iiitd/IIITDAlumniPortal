@@ -117,3 +117,10 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+#profile-top-right .pic:hover {
+    box-shadow: 0 0 1px 8px rgba(5,255,255,0.4);
+    height: 140px; width: 140px;
+    margin-top: -20px; margin-bottom: -20px;
+    cursor: pointer;
+}
