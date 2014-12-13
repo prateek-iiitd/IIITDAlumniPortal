@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
-<head>
-    {% block title %}IIITD Alumni Association{% endblock %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
-</head>
-{# <body>#}
-{#    <div class="col-lg-offset-1 col-lg-10">#}
-{#        <div class="row">#}
-{#            <div class="col-lg-8">#}
-    {% block left_content %}
-                <div id="banner">
-                    <img src="{{ STATIC_URL }}alumniportal/img/convocation13.jpg">
-                    <div class="profilepic"></div>
+
+{% block title %}IIITD Alumni Association{% endblock %}
+
+{% block stylesheets %}
+   <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
+{% block main %}
+    <div id="profile-container" class="row">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="banner">
+                        <img src="{{ STATIC_URL }}alumniportal/img/convocation13.jpg">
+                        <div class="profilepic"></div>
+                    </div>
                 </div>
-{#            </div>#}
-    {% endblock %}
-{#            <div class="col-lg-4 pull-right">#}
-    {% block right_content %}
-                <div style="height: 300px">
+                <div class="col-lg-4 pull-right">
+                    <div style="height: 300px">
+                    </div>
                 </div>
-    {% endblock %}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="row">#}
-{#            <div class="col-lg-8">#}
-{#                <div style="height: 500px">#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col-lg-4 pull-right">#}
-{#                <div style="height: 500px">#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</body>#}
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div style="height: 500px">
+                    </div>
+                </div>
+                <div class="col-lg-4 pull-right">
+                    <div style="height: 500px">
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}
