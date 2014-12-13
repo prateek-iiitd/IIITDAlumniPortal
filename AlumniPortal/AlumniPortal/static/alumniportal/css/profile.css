@@ -28,7 +28,7 @@ div>div div>div:hover {
 }
 
 .profilepic {
-	background-image: url('Sauhard.jpg');
+	background-image: url('../img/profile_Sauhard.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
