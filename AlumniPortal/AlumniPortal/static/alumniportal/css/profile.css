@@ -1,21 +1,22 @@
-body {
+/*body {
 	background-color: rgb(77,77,77);
 	padding: 10px 0;
 }
 
 div>div div {
 	padding: 7px !important;
-}
+}*/
 
-div>div div>div {
-	opacity: 0.95;
+/*div>div div>div {*/
+#banner {
+	/*opacity: 0.95;*/
 	padding: 0 !important;
     background-color: white;
     box-shadow: 0px 0px 10px rgb(17, 17, 17);
 }
-div>div div>div:hover {
-	opacity: 1;
-}
+/*div>div div>div:hover {*/
+	/*opacity: 1;*/
+/*}*/
 
 #banner {
 	height: 300px;

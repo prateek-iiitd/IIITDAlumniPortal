@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-<head>
-    {% block title %}IIITD Alumni Association{% endblock %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
-</head>
+
+{% block title %}IIITD Alumni Association{% endblock %}
+
+{% block stylesheets %}
+   <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
 {# <body>#}
 {#    <div class="col-lg-offset-1 col-lg-10">#}
 {#        <div class="row">#}
