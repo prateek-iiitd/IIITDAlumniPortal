@@ -17,9 +17,9 @@ $( document ).ready(function() {
    $(".filter-all").mouseleave(function() {
        $(this).parent().parent().children(".filter-individual").children().removeClass("highlight");
        $(this).parent().parent().children(".filter-individual").children().css("width", "110px");
-       $(this).parent().parent().children(".filter-individual").children().css("padding-left", "42px");
-       $(this).parent().parent().children(".filter-individual").children(".filter-individual-1").css("padding-left", "50px");
-       $(this).parent().parent().children(".filter-individual").children(".filter-individual-2").css("padding-left", "50px");
+       $(this).parent().parent().children(".filter-individual").children().css("padding-left", "52px");
+       $(this).parent().parent().children(".filter-individual").children(".filter-individual-1").css("padding-left", "55px");
+       $(this).parent().parent().children(".filter-individual").children(".filter-individual-2").css("padding-left", "48px");
    });
    $(".filter-individual>span").mouseenter(function() {
        $(this).addClass("highlight");
@@ -30,9 +30,9 @@ $( document ).ready(function() {
    $(".filter-individual>span").mouseleave(function() {
        $(this).removeClass("highlight");
        $(this).css("width", "110px");
-       $(this).css("padding-left", "50px");
-       $(this).parent().children(".filter-individual-1").css("padding-left", "50px");
-       $(this).parent().children(".filter-individual-2").css("padding-left", "50px");
+       $(this).css("padding-left", "52px");
+       $(this).parent().children(".filter-individual-1").css("padding-left", "55px");
+       $(this).parent().children(".filter-individual-2").css("padding-left", "48px");
        $(this).parent().parent().children(".col-lg-2").children().removeClass("highlight");
    });
    $(function(){
