@@ -1,0 +1,35 @@
+{% load text_to_html %}
+
+{% for article in news_articles %}
+{#    <p>#}
+{##}
+{#        <li>{{ article.gallery_link }}</li>#}
+{#        <li>{{ article.reporter }}</li>#}
+{##}
+{#        <li>{{ article.article }}</li>#}
+{#        <li>{{ article.headline }}</li>#}
+{#        <li>{{ article.large_img }}</li>#}
+{#        <li>{{ article.occurred_on }}</li>#}
+{##}
+{#    </p>#}
+
+    <div class="row">
+    <div class="col-lg-5">
+        <div class="mosaic-block3 bar2">
+            <div class="mosaic-backdrop">
+                <img src="/media/{{ article.large_img }}" style="left:0;top:0;height:100%;width:180%;margin-left:-60px;"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <h2 style="height:155px;font-size:35px !important;">{{ article.headline }}</h2>
+        <span class="info-no-colour">{{ article.occurred_on }}</span>
+    </div>
+    </div>
+
+    <div class="row" style="margin-top:10px;">
+    <div class="col-lg-12">
+        {{ article.article|text_to_html|safe }}
+    </div>
+    </div>
+{% endfor %}
