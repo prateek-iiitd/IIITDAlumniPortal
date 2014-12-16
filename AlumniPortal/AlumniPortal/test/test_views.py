@@ -32,3 +32,6 @@ def admin_form_test(request):
 
 def profile_test(request):
     return render(request, 'profile.html')
+
+def profile_edit_test(request):
+    return render(request, 'profile_form.html')

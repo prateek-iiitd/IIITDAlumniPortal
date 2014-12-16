@@ -8,34 +8,43 @@
 
 {% block left_content %}
     <div class="row" style="margin: 20px auto;">
-        <div class="col-lg-offset-4 col-lg-6 filter-main">
-            <div class="col-lg-2" style="z-index: 900;">
-                <div class="img-circle filter-all">
-                    <span style="margin:50px auto;">Year</span>
-                </div>
-            </div>
-
-            <div class="col-lg-7 filter-individual"  style="z-index: 100;">
-                <span class="glyphicon filter-individual-1" onclick="yearSelected(this.innerHTML)">2014</span>
-                <span class="glyphicon filter-individual-2" style="margin-left:20px;padding-left: 48px;" onclick="yearSelected(this.innerHTML)">2013</span>
-                <span class="glyphicon filter-individual-3" style="margin-left:10px;padding-left: 52px;" onclick="yearSelected(this.innerHTML)">2012</span>
+        <div class="col-lg-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"\>
+                    Year
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="no-underline"><a href="#">2012</a></li>
+                    <li class="no-underline"><a href="#">2013</a></li>
+                    <li class="no-underline"><a href="#">2014</a></li>
+                </ul>
             </div>
         </div>
 
-{#        #}
-{#        <div class="col-lg-6 filter-main">#}
-{#            <div class="col-lg-2" style="z-index: 900;">#}
-{#                <div class="img-circle filter-all">#}
-{#                    <span style="margin:50px -10px;">Degree</span>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="col-lg-7 filter-individual"  style="z-index: 100;">#}
-{#                <span class="glyphicon filter-individual-1">Ph.D.</span>#}
-{#                <span class="glyphicon filter-individual-2" style="margin-left:20px;padding-left: 38px;">M.Tech.</span>#}
-{#                <span class="glyphicon filter-individual-3" style="margin-left:10px;padding-left: 42px;">B.Tech.</span>#}
-{#            </div>#}
-{#        </div>#}
+        <div class="col-lg-9">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">B.Tech.</button>
+                <button type="button" class="btn btn-default">Dual</button>
+                <button type="button" class="btn btn-default">M.Tech.</button>
+                <button type="button" class="btn btn-default">Ph.D.</button>
+            </div>
+        </div>
+
+        {#        #}
+        {#        <div class="col-lg-6 filter-main">#}
+        {#            <div class="col-lg-2" style="z-index: 900;">#}
+        {#                <div class="img-circle filter-all">#}
+        {#                    <span style="margin:50px -10px;">Degree</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="col-lg-7 filter-individual"  style="z-index: 100;">#}
+        {#                <span class="glyphicon filter-individual-1">Ph.D.</span>#}
+        {#                <span class="glyphicon filter-individual-2" style="margin-left:20px;padding-left: 38px;">M.Tech.</span>#}
+        {#                <span class="glyphicon filter-individual-3" style="margin-left:10px;padding-left: 42px;">B.Tech.</span>#}
+        {#            </div>#}
+        {#        </div>#}
 
     </div>
 

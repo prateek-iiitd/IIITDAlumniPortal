@@ -1,9 +1,8 @@
 {% extends 'system_card.html' %}
 
-{% block title %}IIITD Alumni | Profile{% endblock %}
+{% block title %}IIITD Alumni | Edit Profile{% endblock %}
 
 {% block cards_top_left %}
-
     <div id="banner">
         <div class="image">
             <p>
@@ -40,20 +39,8 @@
 {% endblock %}
 
 
-
-{% block cards_bottom_left %}
-    <div style="height: 500px">
-    </div>
+{% block cards_bottom %}
 {% endblock %}
-
-
-{% block cards_bottom_right %}
-    <div style="height: 500px">
-    </div>
-{% endblock %}
-
-
-
 
 {#{% block scripts %}#}
 {#    $(document).ready(function() {#}
@@ -64,26 +51,4 @@
 {#            $(this).animate({height: "100px", width: "100px"});#}
 {#        });#}
 {#    });#}
-{#{%  endblock %}#}
-
-
-{#{% block scripts %}#}
-{#    <script>#}
-{#        $(document).ready(function() {#}
-{#            $("#banner").mouseenter(function() {#}
-{#                $(".profilepic").animate({marginTop: "-20px", height: "140px", width: "140px"}, 800);#}
-{#                $("#banner .image p").animate({marginLeft: "190px"}, 800);#}
-{#            });#}
-{#            $("#banner").mouseleave(function() {#}
-{#                $(".profilepic").animate({marginTop: 0, height: "100px", width: "100px"});#}
-{#                $("#banner .image p").animate({marginLeft: "150px"});#}
-{#            });#}
-{#            $("#profile-top-right .pic").mouseenter(function() {#}
-{#                $(this).animate({height: "140px", width: "140px"});#}
-{#            });#}
-{#            $("#profile-top-right .pic").mouseleave(function() {#}
-{#                $(this).animate({height: "100px", width: "100px"});#}
-{#            });#}
-{#        });#}
-{#    </script>#}
 {#{%  endblock %}#}

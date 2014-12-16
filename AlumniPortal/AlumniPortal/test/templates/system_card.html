@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
+
+{% block main %}
+    <div id="profile-container" class="row">
+        <div class="row">
+            <div class="col-lg-9">
+                {% block cards_top_left %}
+                {% endblock %}
+            </div>
+            <div class="col-lg-3 pull-right">
+                {% block cards_top_right %}
+                {% endblock %}
+            </div>
+        </div>
+        {% block cards_bottom %}
+            <div class="row">
+                <div class="col-lg-9">
+                    {% block cards_bottom_left %}
+                    {% endblock %}
+                </div>
+                <div class="col-lg-3 pull-right">
+                    {% block cards_bottom_right %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{#{% block scripts %}#}
+{#    $(document).ready(function() {#}
+{#        $("#profile-top-right .pic").mouseEnter(function() {#}
+{#            $(this).animate({height: "140px", width: "140px"});#}
+{#        });#}
+{#        $("#profile-top-right .pic").mouseLeave(function() {#}
+{#            $(this).animate({height: "100px", width: "100px"});#}
+{#        });#}
+{#    });#}
+{#{%  endblock %}#}
