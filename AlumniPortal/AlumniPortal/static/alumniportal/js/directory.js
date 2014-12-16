@@ -37,8 +37,8 @@ $( document ).ready(function() {
    });
    $(function(){
     $(".dropdown-menu").on('click', 'li a', function(){
-      $(".btn:first-child").text($(this).text());
-      $(".btn:first-child").val($(this).text());
+      $("#dropdownMenu1:first-child").text($(this).text());
+      $("#dropdownMenu1:first-child").val($(this).text());
     });
    });
 });
