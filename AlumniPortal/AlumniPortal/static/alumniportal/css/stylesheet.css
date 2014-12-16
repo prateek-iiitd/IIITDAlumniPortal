@@ -130,6 +130,13 @@ h4 {
     /*background-color:#ddd;*/
 }
 
+#login {
+    margin-left: 50px;
+}
+#login:hover {
+    border: none !important;
+}
+
 .nav-bar-font {
     margin-left: 5px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
