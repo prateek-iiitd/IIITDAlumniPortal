@@ -15,19 +15,19 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li class="no-underline"><a href="#">2012</a></li>
-                    <li class="no-underline"><a href="#">2013</a></li>
-                    <li class="no-underline"><a href="#">2014</a></li>
+                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2012</a></li>
+                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2013</a></li>
+                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2014</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="col-lg-9">
             <div class="btn-group">
-                <button type="button" class="btn btn-default">B.Tech.</button>
-                <button type="button" class="btn btn-default">Dual</button>
-                <button type="button" class="btn btn-default">M.Tech.</button>
-                <button type="button" class="btn btn-default">Ph.D.</button>
+                <a href="#btech"><button type="button" class="btn btn-default">B.Tech.</button></a>
+                <a href="#mtech"><button type="button" class="btn btn-default">M.Tech.</button></a>
+                <a href="#dual"><button type="button" class="btn btn-default">Dual</button></a>
+                <a href="#phd"><button type="button" class="btn btn-default">Ph.D.</button></a>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
 {#        </div>#}
 {#    </div>#}
 
-    <h1>Btech</h1>
+    <h1 id="btech">Btech</h1>
     <p id="no_betch" style="display: none">Oops! No Students Found!!!</p>
     <div class="row">
     <div class="col-lg-4 pull-left" id="btech_col0" style="margin-left:-30px;"></div>
@@ -72,7 +72,7 @@
     <div class="col-lg-4 pull-left" id="btech_col2" style="margin-left:15px;"></div>
     </div>
 
-    <div class="row">
+    <div id="mtech" class="row">
     <h1>Mtech</h1>
     <p id="no_metch" style="display: none">Oops! No Students Found!!!</p>
     <div class="col-lg-4 pull-left" id="mtech_col0" style="margin-left:-30px;"></div>
@@ -80,7 +80,7 @@
     <div class="col-lg-4 pull-left" id="mtech_col2" style="margin-left:15px;"></div>
     </div>
 
-    <div class="row">
+    <div id="dual" class="row">
     <h1>Dual</h1>
     <p id="no_dual" style="display: none">Oops! No Students Found!!!</p>
     <div class="col-lg-4 pull-left" id="dual_col0" style="margin-left:-30px;"></div>
@@ -88,7 +88,7 @@
     <div class="col-lg-4 pull-left" id="dual_col2" style="margin-left:15px;"></div>
     </div>
 
-    <div class="row">
+    <div id="phd" class="row">
     <h1>Phd</h1>
     <p id="no_phd" style="display: none">Oops! No Students Found!!!</p>
     <div class="col-lg-4 pull-left" id="phd_col0" style="margin-left:-30px;"></div>
