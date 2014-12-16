@@ -56,12 +56,22 @@
 {% endblock %}
 
 {#{% block scripts %}#}
-{#    $(document).ready(function() {#}
-{#        $("#profile-top-right .pic").mouseEnter(function() {#}
-{#            $(this).animate({height: "140px", width: "140px"});#}
+{#    <script>#}
+{#        $(document).ready(function() {#}
+{#            $("#banner").mouseenter(function() {#}
+{#                $(".profilepic").animate({marginTop: "-20px", height: "140px", width: "140px"}, 800);#}
+{#                $("#banner .image p").animate({marginLeft: "190px"}, 800);#}
+{#            });#}
+{#            $("#banner").mouseleave(function() {#}
+{#                $(".profilepic").animate({marginTop: 0, height: "100px", width: "100px"});#}
+{#                $("#banner .image p").animate({marginLeft: "150px"});#}
+{#            });#}
+{#            $("#profile-top-right .pic").mouseenter(function() {#}
+{#                $(this).animate({height: "140px", width: "140px"});#}
+{#            });#}
+{#            $("#profile-top-right .pic").mouseleave(function() {#}
+{#                $(this).animate({height: "100px", width: "100px"});#}
+{#            });#}
 {#        });#}
-{#        $("#profile-top-right .pic").mouseLeave(function() {#}
-{#            $(this).animate({height: "100px", width: "100px"});#}
-{#        });#}
-{#    });#}
+{#    </script>#}
 {#{%  endblock %}#}
