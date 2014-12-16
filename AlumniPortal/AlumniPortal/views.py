@@ -54,7 +54,7 @@ def admin_forms(request):
 def get_by_batch(request):
     if request.is_ajax() and request.method == 'GET':
         year = request.GET['year']
-        students = Student.objects.filter(graduation_year=year)
+        students = Student.objects.filter(graduation_year=year).order_by('name')
         json_res = []
         for s in students:
             json_obj = dict(name=s.name,
