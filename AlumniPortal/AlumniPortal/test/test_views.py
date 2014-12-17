@@ -33,5 +33,14 @@ def admin_form_test(request):
 def profile_test(request):
     return render(request, 'profile.html')
 
-def profile_edit_test(request):
-    return render(request, 'profile_form.html')
+def profile_edit_personal_test(request):
+    return render(request, 'profile_form_personal.html')
+
+def profile_edit_work_test(request):
+    return render(request, 'profile_form_work.html')
+
+def profile_edit_education_test(request):
+    return render(request, 'profile_form_education.html')
+
+def profile_link_test(request):
+    return render(request, 'profile_link.html')

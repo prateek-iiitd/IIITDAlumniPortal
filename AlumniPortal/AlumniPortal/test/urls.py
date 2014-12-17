@@ -11,6 +11,9 @@ urlpatterns = patterns('',
     url(r'^formtest/$', 'AlumniPortal.test.test_views.form_test'),
     url(r'^adminformtest', 'AlumniPortal.test.test_views.admin_form_test'),
     url(r'^profile/$', 'AlumniPortal.test.test_views.profile_test'),
-    url(r'^profile/edit/$', 'AlumniPortal.test.test_views.profile_edit_test'),
+    url(r'^profile/edit/personal/$', 'AlumniPortal.test.test_views.profile_edit_personal_test'),
+    url(r'^profile/edit/work/$', 'AlumniPortal.test.test_views.profile_edit_work_test'),
+    url(r'^profile/edit/education/$', 'AlumniPortal.test.test_views.profile_edit_education_test'),
+    url(r'^profile/link/$', 'AlumniPortal.test.test_views.profile_link_test'),
 )
 
