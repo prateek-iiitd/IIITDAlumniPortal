@@ -21,7 +21,7 @@
                     {% if not user.is_authenticated %}
                         <a href="{% provider_login_url "google" %}" title="Log in with IIITD mail"><li id="login"><span class="nav-bar-font">Login</span></li></a>
                     {% else %}
-                        {# User is logged in. Put logout and other options for a logged in user HERE.#}
+                        <span class='nav-bar-font'>Hi {{ user.first_name }}!</span>
 
                     {% endif %}
                 </ul>
