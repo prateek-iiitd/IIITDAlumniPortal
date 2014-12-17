@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 from creds_dev import *
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,7 +39,17 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AlumniPortal',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
 )
+
+
+# Set SITE_ID to match the ONLY row in the django_site Table in the DB.
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,6 +68,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'AlumniPortal', 'test', 'templates'),
+    os.path.join(BASE_DIR, 'AlumniPortal', 'templates')
 )
 
 ROOT_URLCONF = 'AlumniPortal.urls'
@@ -103,3 +115,50 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+
+
+# Following installation instructions on on http://django-allauth.readthedocs.org/en/latest/installation.html
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.contrib.auth.context_processors.auth',
+    # Required by allauth template tags
+    "django.core.context_processors.request",
+    # allauth specific context processors
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+
+
+# Following installation instructions on on http://django-allauth.readthedocs.org/en/latest/installation.html
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+
+)
+
+# http://django-allauth.readthedocs.org/en/latest/providers.html#django-configuration
+SOCIALACCOUNT_PROVIDERS = \
+    { 'google':
+        { 'SCOPE': ['profile', 'email'],
+          'AUTH_PARAMS': { 'access_type': 'online' } },
+
+        'linkedin':
+          {'SCOPE': ['r_emailaddress', 'r_basicprofile', 'r_fullprofile'],
+           'PROFILE_FIELDS': ['id',
+                             'first-name',
+                             'last-name',
+                             'email-address',
+                             'picture-url',
+                             'public-profile-url',
+                             'three-current-positions',
+                             'three-past-positions',
+                             'educations',
+                             'languages'
+           ]}
+    }
+
+
+ACCOUNT_LOGOUT_ON_GET = True
+LOGIN_REDIRECT_URL = "/"

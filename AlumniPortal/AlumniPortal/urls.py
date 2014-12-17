@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^admin_forms/add_event/$', 'AlumniPortal.views.add_event'),
     url(r'^admin_forms/add_directory/$', 'AlumniPortal.views.add_directory'),
     url(r'^admin_forms/add_blog/$', 'AlumniPortal.views.add_blog'),
+    url(r'^accounts/', include('allauth.urls')),
 )
 
 if settings_dev.DEBUG:

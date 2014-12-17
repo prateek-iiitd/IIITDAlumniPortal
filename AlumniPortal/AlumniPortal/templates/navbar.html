@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <!-- Main Element for Full width -->
 <div id="nav-bar-main" class="row navbar-fixed-top">
     <div class="container">
@@ -15,7 +17,13 @@
                     <a href="/directory/"><li class="glyphicon glyphicon-user"><span class="nav-bar-font">Directory</span></li></a>
                     <a href="/giveback/"><li class="glyphicon glyphicon-repeat"><span class="nav-bar-font">Give Back</span></li></a>
                     <a href="/contact_us/"><li class="glyphicon glyphicon-comment"><span class="nav-bar-font">Contact Us</span></li></a>
-                    <a href="/accounts/google/login/" title="Log in with IIITD mail"><li id="login"><span class="nav-bar-font">Login</span></li></a>
+
+                    {% if not user.is_authenticated %}
+                        <a href="{% provider_login_url "google" %}" title="Log in with IIITD mail"><li id="login"><span class="nav-bar-font">Login</span></li></a>
+                    {% else %}
+                        {# User is logged in. Put logout and other options for a logged in user HERE.#}
+
+                    {% endif %}
                 </ul>
             </div>
         </div>
