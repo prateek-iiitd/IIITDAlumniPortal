@@ -8,7 +8,7 @@
 
 {% block left_content %}
     <div class="row" style="margin: 20px auto;">
-        <div class="col-lg-2">
+        <div class="col-lg-offset-2 col-lg-2">
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                     Year
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="col-lg-9">
+        <div class="col-lg-7">
             <div class="btn-group">
                 <a href="#btech"><button type="button" class="btn btn-default">B.Tech.</button></a>
                 <a href="#mtech"><button type="button" class="btn btn-default">M.Tech.</button></a>
@@ -89,7 +89,7 @@
     </div>
 
     <div id="phd" class="row">
-    <h3 style="text-align: center;">PhD</h3>
+    <h3 style="text-align: center;">Ph.D.</h3>
     <p id="no_phd" style="display: none">No students graduated with this degree in the selected year!</p>
     <div class="col-lg-4 pull-left" id="phd_col0" style="margin-left:-20px;"></div>
     <div class="col-lg-4 pull-left" id="phd_col1" style="margin-left:10px;"></div>
@@ -124,6 +124,7 @@
             </div>
         </div>
     </div>
+    <a id="backtotop" href="#"><span class="glyphicon glyphicon-arrow-up"></span>Back to top</a>
 {% endblock %}
 
 {% block scripts %}

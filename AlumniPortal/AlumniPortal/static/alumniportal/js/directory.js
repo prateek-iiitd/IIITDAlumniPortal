@@ -39,7 +39,8 @@ $(document).ready(function () {
         $(".dropdown-menu").on('click', 'li a', function () {
             $("#dropdownMenu1:first-child").text($(this).text());
             $("#dropdownMenu1:first-child").val($(this).text());
-            $("#btech, #mtech, #dual, #phd").fadeTo("fast", 1);
+            $("#btech, #mtech, #dual, #phd").fadeIn("fast");
+            $("#backtotop").slideDown("fast");
         });
     });
 });
