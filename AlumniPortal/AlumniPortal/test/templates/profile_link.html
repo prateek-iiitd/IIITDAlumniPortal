@@ -1,1 +1,43 @@
-LinkedIn
+{% extends 'base.html' %}
+
+{% block title %}IIITD Alumni | Profile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
+
+{% block left_content %}
+    <div id="linkprofile">
+        <div class="row">
+            <h3 style="color: #333; font-weight: normal">
+                Click here to fetch your <img src="{{ STATIC_URL }}alumniportal/img/LinkedIn.png" height="33px"
+                                               width="132px"> profile!
+            </h3>
+        </div>
+        <br>
+
+        <div class="row" style="text-align: center">
+            <div id="linkedin">
+                <div></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block parent_right_content %}
+    <div class="row">
+        <div class="col-lg-1" style="padding-top: 90px">
+            <h3>OR</h3>
+        </div>
+        <div class="col-lg-3 pull-right">
+            <p id="proceedtosignup">
+                Skip this step and<br>proceed to signup
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}

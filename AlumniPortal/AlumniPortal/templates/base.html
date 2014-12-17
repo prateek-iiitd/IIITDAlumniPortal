@@ -28,11 +28,13 @@
                 {% endblock %}
             </div>
 
-            <div class="card-event col-lg-offset-1 col-lg-3">
-                {% block right_content %}
+            {% block parent_right_content %}
+                <div class="card-event col-lg-offset-1 col-lg-3">
+                    {% block right_content %}
 
-                {% endblock %}
-            </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
 
         </div>
 

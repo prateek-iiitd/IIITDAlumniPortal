@@ -106,6 +106,28 @@
 	background-position: center center;
 }
 
+#linkedin {
+    height: 100px; width: 100px;
+    border-radius: 50%;
+    border: 3px solid #DDD;
+    padding: 3px;
+    box-shadow: 0 2px 3px #909090;
+    display: inline-block;
+    cursor: pointer;
+    background-image: url('../img/socio-li.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#linkedin>div {
+    height: 100%; width: 100%;
+    border-radius: 50%;
+    box-shadow: inset -3px -2px 10px rgba(250, 250, 250, 0.7);
+}
+#linkedin>div:hover {
+    box-shadow: inset 2px 1px 8px rgba(250, 250, 250, 0.7);
+}
+
 #profile-top-right .row {
     text-align: center;
     font-size: 24px;
@@ -124,4 +146,29 @@
     height: 140px; width: 140px;
     margin-top: -20px; margin-bottom: -20px;
     cursor: pointer;
+}
+
+#linkprofile {
+    background-color: #D0D0D0;
+    border-bottom: 2px solid #444;
+    box-shadow: 0 2px 5px #111;
+    padding: 10px 50px 20px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#linkprofile:hover {
+    background-color: #DFDFDF;
+}
+#linkprofile img {
+    margin-top: -6px;
+}
+
+#proceedtosignup {
+    padding-top: 97px;
+    font-size: 18px;
+    cursor: pointer;
+}
+#proceedtosignup:hover {
+    text-decoration: underline;
+    color: #222;
 }
