@@ -5,7 +5,7 @@
 body {
     background-color: #4D4D4D !important;
     /*font-family: Calibri, Sans-Serif;*/
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     /*min-height:100%;*/
     /*margin-bottom: 80px;*/
     padding-top: 60px;
@@ -113,7 +113,7 @@ h4 {
     background-color: #fff;
 }
 
-#nav-bar li {
+#nav-bar li, #username  {
     /*float: right;*/
     display: inline;
     /*background-color: #efefef;*/
@@ -139,7 +139,7 @@ h4 {
 
 .nav-bar-font {
     margin-left: 5px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #nav-bar a:link, a:visited, a:hover, a:active, .mosaic-block a:link, a:visited, a:hover, a:active, .mosaic-block2 a:link, a:visited, a:hover, a:active, .panel a:link, a:visited, a:hover, a:active {
