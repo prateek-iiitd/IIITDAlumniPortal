@@ -39,6 +39,7 @@ $(document).ready(function () {
         $(".dropdown-menu").on('click', 'li a', function () {
             $("#dropdownMenu1:first-child").text($(this).text());
             $("#dropdownMenu1:first-child").val($(this).text());
+            $("#btech, #mtech, #dual, #phd").fadeTo("fast", 1);
         });
     });
 });
@@ -120,6 +121,7 @@ function yearSelected(element) {
 
             if (dual_index == 0)
                 $("#no_dual").show();
+//                $("#dual").hide();
             else
                 $("#no_dual").hide();
 

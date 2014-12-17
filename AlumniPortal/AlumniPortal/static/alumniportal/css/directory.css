@@ -13,3 +13,10 @@
     padding-top: 20px;
     display: block;
 }
+
+#btech, #mtech, #dual, #phd {
+    display: none;
+}
+#mtech, #dual, #phd {
+    padding: 60px 0 0 0;
+}

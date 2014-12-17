@@ -15,9 +15,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2012</a></li>
-                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2013</a></li>
-                    <li class="no-underline"><a onclick="yearSelected(this.innerHTML)">2014</a></li>
+                    <li class="no-underline"><a href="#" onclick="yearSelected(this.innerHTML)">2012</a></li>
+                    <li class="no-underline"><a href="#" onclick="yearSelected(this.innerHTML)">2013</a></li>
+                    <li class="no-underline"><a href="#" onclick="yearSelected(this.innerHTML)">2014</a></li>
                 </ul>
             </div>
         </div>
@@ -64,36 +64,36 @@
 {#        </div>#}
 {#    </div>#}
 
-    <h1 id="btech">Btech</h1>
-    <p id="no_betch" style="display: none">Oops! No Students Found!!!</p>
-    <div class="row">
-    <div class="col-lg-4 pull-left" id="btech_col0" style="margin-left:-30px;"></div>
-    <div class="col-lg-4 pull-left" id="btech_col1" style="margin-left:15px;"></div>
-    <div class="col-lg-4 pull-left" id="btech_col2" style="margin-left:15px;"></div>
+    <div id="btech" class="row">
+    <h3 style="text-align: center;">B.Tech.</h3>
+    <p id="no_betch" style="display: none">No students graduated with this degree in the selected year!</p>
+    <div class="col-lg-4 pull-left" id="btech_col0" style="margin-left:-20px;"></div>
+    <div class="col-lg-4 pull-left" id="btech_col1" style="margin-left:10px;"></div>
+    <div class="col-lg-4 pull-left" id="btech_col2" style="margin-left:10px;"></div>
     </div>
 
     <div id="mtech" class="row">
-    <h1>Mtech</h1>
-    <p id="no_metch" style="display: none">Oops! No Students Found!!!</p>
-    <div class="col-lg-4 pull-left" id="mtech_col0" style="margin-left:-30px;"></div>
-    <div class="col-lg-4 pull-left" id="mtech_col1" style="margin-left:15px;"></div>
-    <div class="col-lg-4 pull-left" id="mtech_col2" style="margin-left:15px;"></div>
+    <h3 style="text-align: center;">M.Tech.</h3>
+    <p id="no_metch" style="display: none">No students graduated with this degree in the selected year!</p>
+    <div class="col-lg-4 pull-left" id="mtech_col0" style="margin-left:-20px;"></div>
+    <div class="col-lg-4 pull-left" id="mtech_col1" style="margin-left:10px;"></div>
+    <div class="col-lg-4 pull-left" id="mtech_col2" style="margin-left:10px;"></div>
     </div>
 
     <div id="dual" class="row">
-    <h1>Dual</h1>
-    <p id="no_dual" style="display: none">Oops! No Students Found!!!</p>
-    <div class="col-lg-4 pull-left" id="dual_col0" style="margin-left:-30px;"></div>
-    <div class="col-lg-4 pull-left" id="dual_col1" style="margin-left:15px;"></div>
-    <div class="col-lg-4 pull-left" id="dual_col2" style="margin-left:15px;"></div>
+    <h3 style="text-align: center;">Dual</h3>
+    <p id="no_dual" style="display: none">No students graduated with this degree in the selected year!</p>
+    <div class="col-lg-4 pull-left" id="dual_col0" style="margin-left:-20px;"></div>
+    <div class="col-lg-4 pull-left" id="dual_col1" style="margin-left:10px;"></div>
+    <div class="col-lg-4 pull-left" id="dual_col2" style="margin-left:10px;"></div>
     </div>
 
     <div id="phd" class="row">
-    <h1>Phd</h1>
-    <p id="no_phd" style="display: none">Oops! No Students Found!!!</p>
-    <div class="col-lg-4 pull-left" id="phd_col0" style="margin-left:-30px;"></div>
-    <div class="col-lg-4 pull-left" id="phd_col1" style="margin-left:15px;"></div>
-    <div class="col-lg-4 pull-left" id="phd_col2" style="margin-left:15px;"></div>
+    <h3 style="text-align: center;">PhD</h3>
+    <p id="no_phd" style="display: none">No students graduated with this degree in the selected year!</p>
+    <div class="col-lg-4 pull-left" id="phd_col0" style="margin-left:-20px;"></div>
+    <div class="col-lg-4 pull-left" id="phd_col1" style="margin-left:10px;"></div>
+    <div class="col-lg-4 pull-left" id="phd_col2" style="margin-left:10px;"></div>
     </div>
 
 {% endblock %}
