@@ -19,7 +19,7 @@
                     <a href="/contact_us/"><li class="glyphicon glyphicon-comment"><span class="nav-bar-font">Contact Us</span></li></a>
 
                     {% if not user.is_authenticated %}
-                        <a href="{% provider_login_url "google" %}" title="Log in with IIITD mail"><li id="login"><span class="nav-bar-font">Login</span></li></a>
+                        <li id="login"><a href="{% provider_login_url "google" %}" title="Log in with IIITD mail"><span class="nav-bar-font">Login</span></a></li>
                     {% else %}
                         <span id="username" class='nav-bar-font'>Hi, {{ user.first_name }}!</span>
                     {% endif %}

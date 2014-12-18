@@ -11,23 +11,23 @@
     <div id="linkprofile">
         <div class="row">
             <h3 style="color: #333; font-weight: normal">
-                Click here to fetch your <img src="{{ STATIC_URL }}alumniportal/img/LinkedIn.png" height="33px"
-                                               width="132px"> profile!
+                Click here to fetch your &nbsp;<img src="{{ STATIC_URL }}alumniportal/img/LinkedIn.png" height="34px"
+                                               width="143px"> profile!
             </h3>
         </div>
         <br>
 
-        <div class="row" style="text-align: center">
-            <a href="{% provider_login_url "linkedin" process="connect" next="/test/profile/edit/personal" %}"><div id="linkedin">
-                <div></div>
-            </div></a>
-        </div>
+{#        <div class="row" style="text-align: center">#}
+{#            <a href="{% provider_login_url "linkedin" process="connect" next="/test/profile/edit/personal" %}"><div id="linkedin">#}
+{#                <div></div>#}
+{#            </div></a>#}
+{#        </div>#}
     </div>
 {% endblock %}
 
 {% block parent_right_content %}
     <div class="row">
-        <div class="col-lg-1" style="padding-top: 90px">
+        <div class="col-lg-1" style="padding-top: 41px">
             <h3>OR</h3>
         </div>
         <div class="col-lg-3 pull-right">
