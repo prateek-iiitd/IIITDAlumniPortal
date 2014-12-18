@@ -41,6 +41,7 @@ $(document).ready(function () {
             $("#dropdownMenu1:first-child").val($(this).text());
             $("#btech, #mtech, #dual, #phd").fadeIn("fast");
             $("#backtotop").slideDown("fast");
+            $("div div.btn-group").fadeIn("medium");
         });
     });
 });
