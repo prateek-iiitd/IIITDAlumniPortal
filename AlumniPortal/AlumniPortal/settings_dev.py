@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AlumniPortal',
+    'south',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -162,3 +163,9 @@ SOCIALACCOUNT_PROVIDERS = \
 
 ACCOUNT_LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = "/"
+AUTH_USER_MODEL = 'AlumniPortal.AlumniUser'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
