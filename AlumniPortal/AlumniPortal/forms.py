@@ -1,7 +1,7 @@
 __author__ = 'Prateek'
 
 from django import forms
-from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student
+from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student, AlumniUser
 import csv
 # from django.forms import widgets
 
@@ -44,7 +44,7 @@ DegreeChoices = (('B.Tech.', 'B.Tech.'), ('M.Tech.', 'M.Tech.'), ('Ph.D.', 'Ph.D
 
 class DirectoryForm(forms.Form):
     degree = forms.ChoiceField(choices=DegreeChoices)
-    degree.widget = forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
+    degree.widget = forms.Select(attrs={'html_type': "text", "html_tag": "input"})
     passing_year = forms.IntegerField(min_value=2012)
     passing_year.widget = forms.TextInput(attrs={'html_type': "file", "html_tag": "input"})
     csv_file = forms.FileField(label='CSV File', )
@@ -80,3 +80,28 @@ class DirectoryForm(forms.Form):
                 student.save()
         else:
             print self.errors
+
+
+class AlumniUserForm(forms.ModelForm):
+    class Meta:
+        model = AlumniUser
+        fields = ['first_name', 'last_name', 'email', 'personal_email', 'gender', 'marital_status', 'profile_photo',
+                  'linkedin_profile', 'facebook_profile', 'google_profile', 'twitter_profile', 'homepage']
+        widgets = {
+            'first_name':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'last_name':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'email':forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'personal_email':forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'gender': forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
+            'marital_status': forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
+            'profile_photo': forms.ClearableFileInput({'html_type': "file", "html_tag": "input"}),
+            'linkedin_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'facebook_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'google_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'twitter_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'homepage':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
+        }
+
+# class WorkDetailForm:
+#     class Meta:
+#         modal = WorkDetail

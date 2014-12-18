@@ -1,1 +1,87 @@
-Personal
+{% extends 'base.html' %}
+{% block left_content %}
+    <form class="row input-form" action="/admin_forms/add_news/" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div id="{{ field.auto_id }}_errors"
+                 style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+                <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+                {{ field.errors }}
+            </div>
+            {% if field.id_for_label == "id_gender" %}
+                <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
+
+                    {{ field.help_text }}
+                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+
+                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+                            class="form-control"
+                            style="border-radius: 0 5px 5px 0;">
+                        <option value="-1">Select Gender</option>
+                        {% for gender in gender_values %}
+                            <option value="{{ gender }}">{{ gender }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% elif  field.id_for_label == "id_marital_status" %}
+                <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
+
+                    {{ field.help_text }}
+                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+
+                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+                            class="form-control"
+                            style="border-radius: 0 5px 5px 0;">
+                        <option value="-1">Select Status</option>
+                        {% for marital_status in marital_status_values %}
+                            <option value="{{ marital_status }}">{{ marital_status }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% else %}
+                {% ifequal field.label "First name" %}
+                    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 290px;">
+                        {{ field.help_text }}
+                        <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                        <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                        name="{{ field.html_name }}"
+                        type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                        style="border-radius:0 5px 5px 0;">
+                    </{{ field.field.widget.attrs.html_tag }}>
+                    </div>
+                {% else %}
+                    {% ifequal field.label "Last name" %}
+                        <div class="form-group input-group" id="field.auto_id" style="width: 290px; padding-left:30px;">
+                            {{ field.help_text }}
+                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                            style="border-radius:0 5px 5px 0;">
+                        </{{ field.field.widget.attrs.html_tag }}>
+                        </div>
+                    {% else %}
+                        <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
+                            {{ field.help_text }}
+                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                            style="border-radius:0 5px 5px 0;">
+                        </{{ field.field.widget.attrs.html_tag }}>
+                        </div>
+                    {% endifequal %}
+                {% endifequal %}
+
+            {% endif %}
+        {% endfor %}
+
+        <button type="submit" class="btn btn-warning pull-right">Add
+        </button>
+
+
+    </form>
+
+
+{% endblock %}
