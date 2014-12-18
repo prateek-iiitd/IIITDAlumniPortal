@@ -3,7 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-heading h4-big">
                 <!--<a href="#" class="pull-right">Read More</a>-->
-                <h4 class="h4-card">{{ event.title }}</h4>
+                <h4 class="h4-card">{{ event.title }} <a href="{{ event.external_link }}"><span class="glyphicon glyphicon-new-window" style="color:#555;font-size:16px;"></span></a></h4>
             </div>
             <div class="panel-body text-left">
                 {% if event.description.strip %}
