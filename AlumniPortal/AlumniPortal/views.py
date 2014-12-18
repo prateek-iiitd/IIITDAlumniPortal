@@ -7,13 +7,14 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedire
 from django.views.decorators.csrf import csrf_exempt
 from forms import FeedbackForm, NewsForm, EventForm, DirectoryForm
 import json
-from models import NewsArticle
+from models import NewsArticle, Event
 
 from models import Student, Degree
 
 
 def home(request):
-    return render(request, 'home.html')
+    events = Event.objects.all()
+    return render(request, 'home.html', {'events': events, })
 
 
 def directory(request):
@@ -26,14 +27,17 @@ def contact_us(request):
 
 
 def blog(request):
-    return render(request, 'blog.html')
+    events = Event.objects.all()
+    return render(request, 'blog.html', {'events': events, })
 
 
 def news(request):
     news_articles = NewsArticle.objects.all()
+    events = Event.objects.all()
     return render(request, 'news.html',
                   {
-                      'news_articles': news_articles
+                      'news_articles': news_articles,
+                      'events': events,
                   })
 
 
@@ -93,7 +97,7 @@ def add_news(request):
             event_form = EventForm()
             directory_form = DirectoryForm()
             return render(request, 'admin_forms.html',
-            {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
+                          {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
                            'directory_form': directory_form, 'news_class': "active"})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")

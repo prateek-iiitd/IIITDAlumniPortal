@@ -1,19 +1,35 @@
-<div class="row">
-    <div class="panel panel-default">
-        <div class="panel-heading h4-big">
-            <!--<a href="#" class="pull-right">Read More</a>-->
-            <h4 class="h4-card">Reunion '14</h4>
-        </div>
-        <div class="panel-body text-left">
-            <span class="glyphicon glyphicon-map-marker card-field"><span class="card-field-font">IIIT-Delhi, India</span></span><br/>
-            <span class="glyphicon glyphicon-calendar card-field"><span class="card-field-font">21 Dec 14</span></span><br/>
+{% for event in events %}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading h4-big">
+                <!--<a href="#" class="pull-right">Read More</a>-->
+                <h4 class="h4-card">{{ event.title }}</h4>
+            </div>
+            <div class="panel-body text-left">
+                {% if event.description.strip %}
+                    <span class="card-field-font">{{ event.description }}</span>
+                    <br/>
+                {% endif %}
 
-            <div class="clearfix"></div>
-{#            <hr>#}
+                <span class="glyphicon glyphicon-map-marker card-field"><span
+                        class="card-field-font">{{ event.venue }}</span></span><br/>
+            <span class="glyphicon glyphicon-calendar card-field"><span
+                    class="card-field-font">{{ event.starts_at }}</span></span><br/>
+                <a>
+                    {% if event.external_link %}
+                        <div class="btn btn-warning center-block" style="margin-top:15px;">
+                            {{ event.external_link }}
+                        </div>
+                    {% endif %}
+                </a>
 
-{#            <div class="btn btn-warning center-block" style="margin-top:15px;">#}
-{#                Event Page#}
-{#            </div>#}
+                <div class="clearfix"></div>
+                {#            <hr>#}
+
+                {#            <div class="btn btn-warning center-block" style="margin-top:15px;">#}
+                {#                Event Page#}
+                {#            </div>#}
+            </div>
         </div>
     </div>
-</div>
+{% endfor %}
