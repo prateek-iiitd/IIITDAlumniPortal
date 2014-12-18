@@ -410,6 +410,9 @@ hr {
     display: none;
     padding: 5px 15px 10px 15px;
 }
+#contactus-panel-body {
+    display: block;
+}
 
 /*
     Right-content bar > Cards > button on bottom - overwriting bootstrap button colors for custom usage (IIITD colour scheme)
