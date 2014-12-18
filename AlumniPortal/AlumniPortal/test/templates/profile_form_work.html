@@ -1,1 +1,27 @@
-Work
+{% extends 'base.html' %}
+{% block left_content %}
+    <form class="row input-form" action="" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for form in formset %}
+            <div>
+                {% for field in form %}
+                    <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
+                        {{ field.help_text }}
+                        <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                        <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                        name="{{ field.html_name }}"
+                        type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                        style="border-radius:0 5px 5px 0;">
+                    </{{ field.field.widget.attrs.html_tag }}>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-warning pull-right">Submit
+        </button>
+    </form>
+{% endblock %}
+

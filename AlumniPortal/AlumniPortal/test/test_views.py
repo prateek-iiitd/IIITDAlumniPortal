@@ -1,7 +1,7 @@
 __author__ = 'ankur'
 from django.http import HttpResponse
 from django.shortcuts import render
-from AlumniPortal.forms import DirectoryForm, EventForm, NewsForm, AlumniUserForm
+from AlumniPortal.forms import DirectoryForm, EventForm, NewsForm, AlumniUserForm, WorkDetailForm
 
 
 def hello(request):
@@ -41,9 +41,11 @@ def profile_edit_personal_test(request):
                                                           'marital_status_values': marital_status_values,
                                                           'gender_values': gender_values})
 
-
 def profile_edit_work_test(request):
-    return render(request, 'profile_form_work.html')
+    from django.forms.formsets import formset_factory
+    ArticleFormSet = formset_factory(WorkDetailForm, extra=10, max_num=10)
+    visible_forms = 3
+    return render(request, 'profile_form_work.html', {'formset': ArticleFormSet, 'visible_forms': visible_forms})
 
 
 def profile_edit_education_test(request):

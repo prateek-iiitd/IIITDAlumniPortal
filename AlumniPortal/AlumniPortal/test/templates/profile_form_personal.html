@@ -3,6 +3,12 @@
     <form class="row input-form" action="/admin_forms/add_news/" method="post"
           enctype="multipart/form-data">
         {% csrf_token %}
+        <div class="form-group input-group pull-left" id="field.auto_id" style="width: 290px;">
+            {{ field.help_text }}
+            <span class="input-group-addon" style="width: 140px;">Name</span>
+            {{ user.first_name }} {{ user.last_name }}
+        </div>
+
         {% for field in form %}
             <div id="{{ field.auto_id }}_errors"
                  style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
@@ -40,47 +46,21 @@
                     </select>
                 </div>
             {% else %}
-                {% ifequal field.label "First name" %}
-                    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 290px;">
-                        {{ field.help_text }}
-                        <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                        <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                        name="{{ field.html_name }}"
-                        type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                        style="border-radius:0 5px 5px 0;">
-                    </{{ field.field.widget.attrs.html_tag }}>
-                    </div>
-                {% else %}
-                    {% ifequal field.label "Last name" %}
-                        <div class="form-group input-group" id="field.auto_id" style="width: 290px; padding-left:30px;">
-                            {{ field.help_text }}
-                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                            name="{{ field.html_name }}"
-                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                            style="border-radius:0 5px 5px 0;">
-                        </{{ field.field.widget.attrs.html_tag }}>
-                        </div>
-                    {% else %}
-                        <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
-                            {{ field.help_text }}
-                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                            name="{{ field.html_name }}"
-                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                            style="border-radius:0 5px 5px 0;">
-                        </{{ field.field.widget.attrs.html_tag }}>
-                        </div>
-                    {% endifequal %}
-                {% endifequal %}
+                <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
+                    {{ field.help_text }}
+                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                    <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                    name="{{ field.html_name }}"
+                    type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                    style="border-radius:0 5px 5px 0;">
+                </{{ field.field.widget.attrs.html_tag }}>
+                </div>
 
             {% endif %}
         {% endfor %}
 
         <button type="submit" class="btn btn-warning pull-right">Add
         </button>
-
-
     </form>
 
 

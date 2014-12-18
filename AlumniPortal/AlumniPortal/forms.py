@@ -1,9 +1,8 @@
 __author__ = 'Prateek'
 
 from django import forms
-from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student, AlumniUser
+from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student, AlumniUser, EducationDetail
 import csv
-# from django.forms import widgets
 
 from models import Degree
 
@@ -85,23 +84,33 @@ class DirectoryForm(forms.Form):
 class AlumniUserForm(forms.ModelForm):
     class Meta:
         model = AlumniUser
-        fields = ['first_name', 'last_name', 'email', 'personal_email', 'gender', 'marital_status', 'profile_photo',
+        fields = ['email', 'personal_email', 'gender', 'marital_status', 'profile_photo',
                   'linkedin_profile', 'facebook_profile', 'google_profile', 'twitter_profile', 'homepage']
         widgets = {
-            'first_name':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'last_name':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'email':forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'personal_email':forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'first_name': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'last_name': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'email': forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'personal_email': forms.EmailInput(attrs={'html_type': "text", "html_tag": "input"}),
             'gender': forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
             'marital_status': forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
             'profile_photo': forms.ClearableFileInput({'html_type': "file", "html_tag": "input"}),
-            'linkedin_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'facebook_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'google_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'twitter_profile':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
-            'homepage':forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
+            'linkedin_profile': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'facebook_profile': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'google_profile': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'twitter_profile': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'homepage': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
         }
 
-# class WorkDetailForm:
-#     class Meta:
-#         modal = WorkDetail
+
+class WorkDetailForm(forms.ModelForm):
+    class Meta:
+        model = EducationDetail
+        # fields = ['education']
+        widgets = {
+            'degree_name' : forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'degree_type':  forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
+            'field_of_study': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'start_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
+            'end_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
+            'school': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
+        }
