@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
 
 {% block title %}IIITD Alumni | Profile{% endblock %}
 
@@ -17,9 +18,9 @@
         <br>
 
         <div class="row" style="text-align: center">
-            <div id="linkedin">
+            <a href="{% provider_login_url "linkedin" process="connect" next="/test/profile/edit/personal" %}"><div id="linkedin">
                 <div></div>
-            </div>
+            </div></a>
         </div>
     </div>
 {% endblock %}
