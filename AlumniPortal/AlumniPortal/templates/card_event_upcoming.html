@@ -3,7 +3,12 @@
         <div class="panel panel-default">
             <div class="panel-heading h4-big">
                 <!--<a href="#" class="pull-right">Read More</a>-->
-                <h4 class="h4-card">{{ event.title }} <a href="{{ event.external_link }}"><span class="glyphicon glyphicon-new-window" style="color:#555;font-size:16px;"></span></a></h4>
+                <h4 class="h4-card">{{ event.title }}
+                {% if event.external_link %}
+                    <a href="{{ event.external_link }}"><span class="glyphicon glyphicon-new-window" style="color:#555;font-size:16px;"></span></a>
+                {% endif %}
+                </h4>
+
             </div>
             <div class="panel-body text-left">
                 {% if event.description.strip %}
@@ -15,13 +20,6 @@
                         class="card-field-font">{{ event.venue }}</span></span><br/>
             <span class="glyphicon glyphicon-calendar card-field"><span
                     class="card-field-font">{{ event.starts_at }}</span></span><br/>
-                <a>
-                    {% if event.external_link %}
-                        <div class="btn btn-warning center-block" style="margin-top:15px;">
-                            {{ event.external_link }}
-                        </div>
-                    {% endif %}
-                </a>
 
                 <div class="clearfix"></div>
                 {#            <hr>#}
