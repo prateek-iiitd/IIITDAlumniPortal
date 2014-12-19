@@ -1,7 +1,7 @@
 __author__ = 'Prateek'
 
 from django import forms
-from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student, AlumniUser, EducationDetail
+from models import Feedback, NewsArticle, Event, Branch, SpecialisationStream, Student, AlumniUser, EducationDetail, WorkDetail
 import csv
 
 from models import Degree
@@ -102,7 +102,7 @@ class AlumniUserForm(forms.ModelForm):
         }
 
 
-class WorkDetailForm(forms.ModelForm):
+class EducationDetailForm(forms.ModelForm):
     class Meta:
         model = EducationDetail
         # fields = ['education']
@@ -113,4 +113,18 @@ class WorkDetailForm(forms.ModelForm):
             'start_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
             'end_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
             'school': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
+        }
+
+
+class WorkDetailForm(forms.ModelForm):
+    class Meta:
+        model = WorkDetail
+        fields = ['title', 'work_type', 'start_date', 'end_date', 'organisation']
+        widgets = {
+            'title' : forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'work_type':  forms.Select(attrs={'html_type': "text", "html_tag": "input"}),
+            'start_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
+            'end_date': forms.DateInput(attrs={'html_type': "date", "html_tag": "input"}),
+            'organisation': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"}),
+            'id': forms.TextInput(attrs={'html_type': "hidden", "html_tag": "input"})
         }

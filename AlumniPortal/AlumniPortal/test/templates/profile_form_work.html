@@ -7,15 +7,55 @@
         {% for form in formset %}
             <div>
                 {% for field in form %}
-                    <div class="form-group input-group" id="field.auto_id" style="width: 600px;">
-                        {{ field.help_text }}
-                        <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                        <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                        name="{{ field.html_name }}"
-                        type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                        style="border-radius:0 5px 5px 0;">
-                    </{{ field.field.widget.attrs.html_tag }}>
-                    </div>
+                    {% if  "Work type" ==  field.label %}
+                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
+                            {{ field.help_text }}
+                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+
+                            <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+                                    class="form-control"
+                                    style="border-radius: 0 5px 5px 0;">
+                                <option value="-1">Select Status</option>
+                                {% for work in work_values %}
+                                <p>{{ work.0 }}</p><p>{{ field.value }}</p>
+                                {% if work.0 == field.value %}
+                                    <option value="{{ work.0 }}" selected="selected">{{ work.1 }}</option>
+                                {% else %}
+                                    <option value="{{ work.0 }}">{{ work.1 }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% elif field.label  == 'Id' %}
+                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
+                            {{ field.help_text }}
+                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                            style="border-radius:0 5px 5px 0;" value="{{ field.value }}">
+                        </{{ field.field.widget.attrs.html_tag }}>
+                        </div>
+                    {% elif field.field.widget.attrs.html_type  == 'date' %}
+                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
+                            {{ field.help_text }}
+                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                            style="border-radius:0 5px 5px 0;" value="{{ field.value|date:"Y-m-d" }}">
+                        </{{ field.field.widget.attrs.html_tag }}>
+                        </div>
+                    {% else %}
+                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
+                            {{ field.help_text }}
+                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
+                            style="border-radius:0 5px 5px 0;" value="{{ field.value }}">
+                        </{{ field.field.widget.attrs.html_tag }}>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         {% endfor %}
