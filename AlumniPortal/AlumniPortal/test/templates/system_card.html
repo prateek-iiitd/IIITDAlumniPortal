@@ -6,28 +6,45 @@
 
 {% block main %}
     <div id="profile-container" class="row">
-        <div class="row">
-            <div class="col-lg-9">
+        <div class="col-lg-9">
+            <div class="row">
                 {% block cards_top_left %}
                 {% endblock %}
             </div>
-            <div class="col-lg-3 pull-right">
-                {% block cards_top_right %}
+            <div class="row">
+                {% block cards_bottom_left %}
                 {% endblock %}
             </div>
         </div>
-        {% block cards_bottom %}
-            <div class="row">
-                <div class="col-lg-9">
-                    {% block cards_bottom_left %}
+        <div class="col-lg-3" style="height: 100%;">
+            <div class="row" style="margin: 0px;">
+                    {% block cards_top_right %}
                     {% endblock %}
-                </div>
-                <div class="col-lg-3 pull-right">
-                    {% block cards_bottom_right %}
-                    {% endblock %}
-                </div>
             </div>
-        {% endblock %}
+        </div>
+
+        {#        <div class="row">#}
+        {#            <div class="col-lg-9">#}
+        {#                {% block cards_top_left %}#}
+        {#                {% endblock %}#}
+        {#            </div>#}
+        {#            <div class="col-lg-3 pull-right">#}
+        {#                {% block cards_top_right %}#}
+        {#                {% endblock %}#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        {% block cards_bottom %}#}
+        {#            <div class="row">#}
+        {#                <div class="col-lg-9">#}
+        {#                    {% block cards_bottom_left %}#}
+        {#                    {% endblock %}#}
+        {#                </div>#}
+        {#                <div class="col-lg-3 pull-right">#}
+        {#                    {% block cards_bottom_right %}#}
+        {#                    {% endblock %}#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        {% endblock %}#}
     </div>
 {% endblock %}
 

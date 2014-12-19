@@ -5,6 +5,7 @@ from AlumniPortal.forms import DirectoryForm, EventForm, NewsForm, AlumniUserFor
 from AlumniPortal.models import DegreeType, WORK_TYPE_CHOICES, WorkDetail, WorkType
 from django.forms.models import modelformset_factory
 from django import forms
+from AlumniPortal.models import Event
 
 
 def hello(request):
@@ -33,7 +34,8 @@ def admin_form_test(request):
 
 
 def profile_test(request):
-    return render(request, 'profile.html')
+    events = Event.objects.all()
+    return render(request, 'profile.html', {'events': events})
 
 
 def profile_edit_personal_test(request):

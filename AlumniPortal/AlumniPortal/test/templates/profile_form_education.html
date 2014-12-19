@@ -1,1 +1,66 @@
-Education
+{% extends 'base.html' %}
+{% load socialaccount %}
+
+{% block title %}IIITD Alumni | Profile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
+
+{% block top_content %}
+    <div class="row" style="padding: 0 40px;">
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: 75%">
+                <span class="pull-left" style="width: 35%">LinkedIn</span>
+                <span style="width: 35%">Personal</span>
+                <span class="pull-right" style="width: 30%">Work</span>
+            </div>
+
+            <div class="progress-bar progress-bar-striped" style="width: 25%;background-color: #666">
+                <span style="width: 50%">Education</span>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block left_content %}
+
+    <h3>Education Details</h3>
+
+
+    <form class="row input-form" action="" method="post"
+          enctype="multipart/form-data" style="width: 600px;">
+        {% csrf_token %}
+{##}
+{#        {% for form in formset %}#}
+{#            <div>#}
+{#                {% for field in form %}#}
+{#                    <div class="form-group input-group" id="field.auto_id" style="width: 600px;">#}
+{#                        {{ field.help_text }}#}
+{#                        <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
+{#                        <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"#}
+{#                        name="{{ field.html_name }}"#}
+{#                        type="{{ field.field.widget.attrs.html_type }}" class="form-control"#}
+{#                        style="border-radius:0 5px 5px 0;">#}
+{#                    </{{ field.field.widget.attrs.html_tag }}>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% endfor %}#}
+
+        <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile/">Submit</a>
+        </button>
+    </form>
+
+
+{% endblock %}
+
+{% block parent_right_content %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}

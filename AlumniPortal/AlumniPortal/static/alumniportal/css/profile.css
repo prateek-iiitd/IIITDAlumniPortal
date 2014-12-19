@@ -44,7 +44,7 @@
 }
 
 .pic {
-    background-image: url('../img/profile_Sauhard.jpg');
+    background-image: url('../img/user.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -63,8 +63,8 @@
 }
 
 .social-btns {
-    position: absolute;
-    bottom: 0; right: 0;
+    position: absolute;right: 0;
+    margin-top: 75px;
     padding: 0 22px 12px 0;
 }
 .social-btns>div {

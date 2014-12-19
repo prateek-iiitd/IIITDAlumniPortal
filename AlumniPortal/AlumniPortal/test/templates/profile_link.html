@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
 {% endblock %}
 
+
+{% block top_content %}
+    <div class="row" style="padding: 0 40px;">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" style="width: 100%;background-color: #666">
+                <span class="pull-left" style="width: 25%">LinkedIn</span>
+                <span class="pull-left" style="width: 25%">Personal</span>
+                <span style="width: 25%">Work</span>
+                <span class="pull-right" style="width: 25%">Education</span>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
 {% block left_content %}
     <div id="linkprofile">
         <div class="row">
@@ -32,7 +47,7 @@
         </div>
         <div class="col-lg-3 pull-right">
             <p id="proceedtosignup">
-                Skip this step and<br>proceed to signup
+                <span id="login" style="display: block;margin-bottom: 20px;padding-left: 20px;"><a href="/test/profile/edit/personal"><span>Skip</span></a></span>Proceed to signup
             </p>
         </div>
     </div>
