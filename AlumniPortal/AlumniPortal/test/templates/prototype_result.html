@@ -1,0 +1,151 @@
+{% extends 'system_card.html' %}
+
+{% block title %}IIITD Alumni | Profile{% endblock %}
+
+
+
+{% block cards_top_left %}
+    <div id="banner">
+        <div class="image">
+            <p>
+                <span>Ankur Sial</span><br>
+                Adobe India &nbsp;| &nbsp;Software Developer<br>
+                Batch of 2015
+            </p>
+        </div>
+        <div class="pic profilepic"></div>
+        <div class="social-btns">
+            <div class="social-btns-li"></div>
+            <div class="social-btns-fb"></div>
+            <div class="social-btns-gp"></div>
+            <div class="social-btns-tw"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block cards_top_right %}
+
+    <div class="row" style="height: 100%;">
+        <div class="col-lg-11" style="margin-left: 10px;">
+            <div class="row">
+                <h3>Upcoming Events</h3>
+            </div>
+            {% for event in events %}
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading h4-big">
+                            <!--<a href="#" class="pull-right">Read More</a>-->
+                            <h4 class="h4-card">{{ event.title }}
+                                {% if event.external_link %}
+                                    <a href="{{ event.external_link }}"><span class="glyphicon glyphicon-new-window"
+                                                                              style="color:#555;font-size:16px;"></span></a>
+                                {% endif %}
+                            </h4>
+
+                        </div>
+                        <div class="panel-body text-left" style="display:block">
+                            {% if event.description.strip %}
+                                <span class="card-field-font">{{ event.description }}</span>
+                                <br/>
+                            {% endif %}
+
+                            <span class="glyphicon glyphicon-map-marker card-field"><span
+                                    class="card-field-font">{{ event.venue }}</span></span><br/>
+            <span class="glyphicon glyphicon-calendar card-field"><span
+                    class="card-field-font">{{ event.starts_at }}</span></span><br/>
+
+                            <div class="clearfix"></div>
+                            {#            <hr>#}
+
+                            {#            <div class="btn btn-warning center-block" style="margin-top:15px;">#}
+                            {#                Event Page#}
+                            {#            </div>#}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 20px;height: 200px;">
+        <div class="col-lg-11" style="margin-left: 10px;">
+            <div class="row">
+                <h3>Announcements</h3>
+            </div>
+            <div class="row">
+                <p style="font-size: 17px;">No new announcements</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block cards_bottom_left %}
+    <div style="height: 500px;">
+        <div class="col-lg-12" style="padding: 20px 40px;">
+            <div class="row">
+                <h3><span class="glyphicon glyphicon-briefcase" style="font-size: 26px;"></span> Work</h3>
+                <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;"  class="h4-big">
+                    <h4>EMC, Corp.</h4>
+                    <span>Internship</span>, <span>May 2014 - July 2014</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="divider-4r" style="padding: 0;margin: 10px 0;"></div>
+            </div>
+
+            <div class="row">
+                <h3><span class="glyphicon glyphicon-book" style="font-size: 26px;"></span> Education</h3>
+                <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;"  class="h4-big">
+                    <h4>Indraprastha Institute of Information Technology, Delhi</h4>
+                    <span>B.Tech (CSE)</span>, <span>2011 - 2015</span>
+                </div>
+                <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;"  class="h4-big">
+                    <h4>Mount Carmen School, Dwarka</h4>
+                    <span>Senior Secondary</span>, <span>2009 - 2011</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+{#{% block scripts %}#}
+{#    $(document).ready(function() {#}
+{#        $("#profile-top-right .pic").mouseEnter(function() {#}
+{#            $(this).animate({height: "140px", width: "140px"});#}
+{#        });#}
+{#        $("#profile-top-right .pic").mouseLeave(function() {#}
+{#            $(this).animate({height: "100px", width: "100px"});#}
+{#        });#}
+{#    });#}
+{#{%  endblock %}#}
+
+
+{#{% block scripts %}#}
+{#    <script>#}
+{#        $(document).ready(function() {#}
+{#            $("#banner").mouseenter(function() {#}
+{#                $(".profilepic").animate({marginTop: "-20px", height: "140px", width: "140px"}, 800);#}
+{#                $("#banner .image p").animate({marginLeft: "190px"}, 800);#}
+{#            });#}
+{#            $("#banner").mouseleave(function() {#}
+{#                $(".profilepic").animate({marginTop: 0, height: "100px", width: "100px"});#}
+{#                $("#banner .image p").animate({marginLeft: "150px"});#}
+{#            });#}
+{#            $("#profile-top-right .pic").mouseenter(function() {#}
+{#                $(this).animate({height: "140px", width: "140px"});#}
+{#            });#}
+{#            $("#profile-top-right .pic").mouseleave(function() {#}
+{#                $(this).animate({height: "100px", width: "100px"});#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#{%  endblock %}#}

@@ -86,3 +86,9 @@ def profile_link_test(request):
 
 def give_back(request):
     return render(request, 'give_back_backup_pycharm.html')
+
+def prototype_filter(request):
+    return render(request, 'prototype_filter.html')
+
+def prototype_result(request):
+    return render(request, 'prototype_result.html')
