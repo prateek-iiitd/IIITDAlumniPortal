@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumni | Give Back</title>
+    <link rel="stylesheet" href="http://alumni.iiitd.edu.in/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://alumni.iiitd.edu.in/static/alumniportal/css/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+
+    <style>
+        body{
+            font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        }
+    </style>
+</head>
+
+
+<body>
+<!-- Main Element for Full width -->
+<div id="nav-bar-main" class="row navbar-fixed-top">
+    <div class="container">
+        <!-- Element for actual navbar -->
+        <div class="row">
+            <div class="pull-left">
+                <a href="/"><img src="http://alumni.iiitd.edu.in/static/alumniportal/img/alumni-logo.png"
+                                 style="height:50px;margin-top:15px;"/></a>
+            </div>
+            <div id="nav-bar" class="pull-right">
+                <ul>
+                    <a href="http://alumni.iiitd.edu.in/">
+                        <li><span>Home</span></li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10" id="green-dabba"></div>
+</div>
+<div id="contentpane" class="row">
+<div class="card-main col-lg-9">
+
+
+<div class="row no-underline">
+<h2 style="text-align: center">Donation Pledge Form</h2>
+
+<FORM name='form' action='donatehdfc.php' method='post' encType='multipart/form-data'
+      onSubmit="form.paynow.value='Submitting.. ';form.paynow.disable=true;">
+
+<div>
+    <h3>Contributor's Information</h3>
+
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">First Name</span>
+        <input type="text" name="FName" class="form-control" required/>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">Last Name</span>
+        <input type="text" name="LName" class="form-control" required/>
+
+    </div>
+    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">
+
+        <span class="input-group-addon" style="width: 90px;">MI</span>
+        <input type="text" name="MI" class="form-control"/>
+
+    </div>
+
+    <div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+        <span class="input-group-addon" style="width: 90px;">Address</span>
+        <input name="fulladress" type="text" class="form-control" required/>
+
+    </div>
+
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">City</span>
+        <input type="text" name="city" class="form-control" required/>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">State</span>
+        <input type="text" name="state" class="form-control" required/>
+
+    </div>
+    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">
+
+        <span class="input-group-addon" style="width: 90px;">Pincode</span>
+        <input type="text" name="Pincode" max="6" class="form-control" required/>
+
+    </div>
+
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">Telephone</span>
+        <input type="tel" name="Mobile" required max="13" placeholder="Digits only" onBlur="check();"
+               class="form-control"/>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">
+
+        <span class="input-group-addon" style="width: 90px;">Email</span>
+        <input type="email" name="Email" class="form-control" required/>
+
+    </div>
+    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">
+
+        <span class="input-group-addon" style="width: 90px;">PAN</span>
+        <input type="text" name="PAN" max="10" class="form-control" required/>
+
+    </div>
+
+    <div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+            <span class="input-group-addon"><input type="checkbox" name="anonymous"
+                                                   onClick="form.remark.value += 'Donation as Anonymous'"/></span>
+        <span class="form-control">I (we) wish to have my (our) donation remain anonymous.</span>
+
+    </div>
+</div>
+
+<div class="divider-4r" style="margin: 40px 0 30px 0px;padding:0;width: 705px;"></div>
+
+
+<div>
+<h3>Donation Information</h3>
+
+<p>I pledge to contribute towards</p>
+
+<div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Scholarships"
+                                                       checked="checked"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control">Scholarships for students for financially weaker sections</span>
+
+</div>
+<div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" travelgrants"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control">Travel Grants for students for International Conferences</span>
+
+</div>
+<div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" studentclub"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control">Student Clubs and Activities</span>
+
+</div>
+<div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Entrepreneurship"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control">Entrepreneurship Activities</span>
+
+</div>
+<div class="form-group input-group" id="field.auto_id" style="width: 705px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Teaching"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control">Teaching Excellence Awards</span>
+
+</div>
+<div class="form-group input-group" id="field.auto_id" style="width: 710px;">
+
+                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Other"
+                                                       onClick="form.remark.value = this.value"/></span>
+    <span class="form-control pull-left" style="width: 200px;">Others (Please Specify)</span>
+    <input type="text" name="OtherOption" class="form-control" style="width: 467px;"
+           onChange="form.remark.value = this.value"/>
+
+
+</div>
+
+<p>Donation Frequency</p>
+
+<div class="form-group input-group pull-left" id="field.auto_id" style="width: 345px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="doationfrequency" value="one time"
+                                                       checked="checked"
+                                                       onClick="showblock(onetime);hideblock(repeating);twentyfive.checked='checked';form.tamount.value ='25000.00';"/></span>
+    <span class="form-control">One-time donation of INR</span>
+
+</div>
+
+<div class="form-group input-group" id="field.auto_id" style="width: 345px;">
+
+                <span class="input-group-addon"><input type="radio" name="doationfrequency" value="repeating"
+                                                       onClick="hideblock(onetime);showblock(repeating);form.remark.value+= 'Repeat donation';form.tamount.value ='10000.00';ten.checked='checked';"/></span>
+    <span class="form-control">Repeating donation of INR</span>
+
+</div>
+
+<p>Donation Amount</p>
+
+<div id="onetime">
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 115px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" value="100000.00"
+                                                       onClick="form.tamount.value = this.value;"/></span>
+        <span class="form-control">100,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" value="75000.00"
+                                                       onClick="form.tamount.value = this.value;"/></span>
+        <span class="form-control">75,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" value="50000.00"
+                                                       onClick="form.tamount.value = this.value;"/></span>
+        <span class="form-control">50,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" id="twentyfive" value="25000.00"
+                                                       checked="checked"
+                                                       onClick="form.tamount.value = this.value;"/></span>
+        <span class="form-control">25,000</span>
+
+    </div>
+    <div class="form-group input-group" id="field.auto_id" style="width: 210px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" value="Other"
+                                                       onClick="form.tamount.value = form.other.value;"/></span>
+        <span class="form-control pull-left" style="width: 70px;">Other</span>
+        <input type="text" name="other" id="other"
+               onBlur="form.tamount.value = this.value;checkother();"
+               placeholder="Digits only" class="form-control" style="width: 100px;"/>
+    </div>
+
+</div>
+
+<div id="repeating" style="display: none;">
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 115px;margin-right: 15px;">
+
+                <span class="input-group-addon"><input type="radio" name="donation" value="50000.00"
+                                                       onClick="form.tamount.value = this.value;"/></span>
+        <span class="form-control">50,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                    <span class="input-group-addon">
+                        <input type="radio" name="donation" value="40000.00"
+                               onClick="form.tamount.value = this.value;"/>
+                    </span>
+        <span class="form-control">40,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                    <span class="input-group-addon">
+                        <input type="radio" name="donation" value="20000.00"
+                               onClick="form.tamount.value = this.value;"/>
+                    </span>
+        <span class="form-control">20,000</span>
+
+    </div>
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">
+
+                    <span class="input-group-addon">
+                        <input type="radio" id="ten" name="donation" value="10000.00"
+                               onClick="form.tamount.value = this.value;"/>
+                    </span>
+        <span class="form-control">10,000</span>
+
+    </div>
+    <div class="form-group input-group" id="field.auto_id" style="width: 210px;">
+
+                    <span class="input-group-addon">
+                        <input type="radio" name="donation" value="Other"
+                               onClick="form.tamount.value = form.Rother.value;"/>
+                    </span>
+        <span class="form-control pull-left" style="width: 70px;">Other</span>
+        <input type="text" name="rother" id="rother" value=""
+               onBlur="form.tamount.value = this.value;checkrother();"
+               placeholder="Digits only" class="form-control" style="width: 100px;"/>
+    </div>
+
+</div>
+
+<p>Payment Method</p>
+
+
+<div class="form-group input-group pull-left" id="field.auto_id" style="width: 235px;margin-right: 15px">
+
+                <span class="input-group-addon">
+                    <input type="radio" name="regtype" value="Donate Now" checked="checked"
+                           onClick="showblock(paymentmethod);this.form.action='donatehdfc.php';form.paynow.value = ' Donate Later ';"/>
+                </span>
+                <span class="form-control">
+                    I would like to pay now
+                </span>
+
+</div>
+
+<div class="form-group input-group" id="field.auto_id" style="width: 455px;">
+
+                <span class="input-group-addon">
+                    <input type="radio" name="regtype" value="Donate Later"
+                           onClick="hideblock(paymentmethod);this.form.action='donationmail.php';form.paynow.value = ' Donate Later ';"/>
+                </span>
+                <span class="form-control">
+                    I would like to pay later, please contact me by email / phone
+                </span>
+
+</div>
+
+<div id="paymentmethod">
+    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 235px;margin-right: 15px">
+
+                <span class="input-group-addon">
+                    <input type="radio" value="hdfc" name="paymenttype" checked required
+                           onClick="this.form.action='donatehdfc.php'"/>
+                </span>
+                <span class="form-control">
+                    Via Credit Card
+                </span>
+
+    </div>
+
+    <div class="form-group input-group" id="field.auto_id" style="width: 455px;">
+
+                <span class="input-group-addon">
+                    <input name="paymenttype" type="radio" value="billdesk" required
+                           onClick="this.form.action='donatebilldesk.php'">
+                </span>
+                <span class="form-control">
+                    Via Bank Transfer (only for Banks within India)
+                </span>
+
+    </div>
+</div>
+
+<div class="form-group input-group" id="field.auto_id" style="width:705px;">
+
+    <span class="input-group-addon">Total Donation Amount</span>
+    <input type="hidden" value="" name="remark" readonly width="353px" class="form-control"/>
+    <input type="text" value="25000.00" name="tamount" class="form-control"/>
+
+
+</div>
+
+
+</div>
+
+<div class="divider-4r" style="margin: 40px 0 30px 0px;padding:0;width: 705px;"></div>
+
+<div style="width: 705px;">
+
+    <h3 style="margin-top: 30px">Note</h3>
+    <ul style="margin: 10px 0 0 20px;padding: 0;" class="normal-list">
+        <li>
+            We will send you the information required for payment by email.
+        </li>
+        <li>
+            IIITD urges all alumni to contribute to their alma mater, at least 1% of their yearly income to the
+            Institute.
+        </li>
+        <li>
+            IIITD is registered under section 80G of the Income Tax Act, 1961 that entitles a donor to claim 50%
+            deduction on amount donated to Institute. Upon donation the Institute will issue a receipt mentioning
+            amount
+            donated, approval number, and date etc. for claiming deduction.
+        </li>
+    </ul>
+</div>
+
+
+<div style="margin: 30px 0 0 0;text-align: center">
+    <input name="MTrackid" size="25" value="90002954"
+           type="hidden"/>
+    <input type="submit" name="paynow" value=" DONATE NOW " class="btn btn-warning"/>
+</div>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+<div class="col-lg-3">
+
+    <div class="row">
+        <h3>Faculty Coordinator</h3>
+    </div>
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading h4-big" style="height:100px;">
+                <img src="{{ STATIC_URL }}alumniportal/img/richasingh.jpg" class="img-circle pull-right"
+                     style="height:80px;width:80px;top:0;left:0;border:1px #ccc solid">
+                <h4 class="panel-user-h4 h4-big"><a href="http://www.iiitd.edu.in/~richa/">Richa Singh</a></h4>
+
+                <p>Assistant Professor</p>
+            </div>
+            <div class="panel-body text-left" style="display: block;">
+                <span class="glyphicon glyphicon-phone card-field"><span
+                        class="card-field-font">+91-11-26907433</span></span><br/>
+                <span class="glyphicon glyphicon-map-marker card-field"><span
+                        class="card-field-font">A-201, IIITD</span></span><br/>
+                <span class="glyphicon glyphicon-inbox card-field"><span
+                        class="card-field-font">rsingh@iiitd.ac.in</span></span><br/>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10" id="green-dabba-2"></div>
+</div>
+
+<div class="row">
+    <div class="footer">
+        <div class="col-lg-4">
+            <img src="http://alumni.iiitd.edu.in/static/alumniportal/img/Logo.png" width="300"/>
+        </div>
+        <div class="col-lg-8">
+
+        </div>
+    </div>
+</div>
+
+<div id="black"></div>
+
+
+</div>
+<script type="application/javascript">
+    function showblock(t) {
+        t.style.display = '';
+    }
+    function hideblock(t) {
+        t.style.display = 'none';
+    }
+    function check() {
+        var m = document.getElementById('mobile').value;
+        if (isNaN(m)) {
+            alert(m + " is not a valid number");
+        }
+    }
+    function checkother() {
+        var m = document.getElementById('other').value;
+        if (isNaN(m)) {
+            alert(m + " is not a valid number");
+        }
+    }
+    function checkrother() {
+        var m = document.getElementById('rother').value;
+        if (isNaN(m)) {
+            alert(m + " is not a valid number");
+        }
+    }
+</script>
+</body>
+
+</html>
+
+{##}
+{##}
+{##}
+{##}
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block title %}Alumni | Give Back{% endblock %}#}
+{##}
+{##}
+{##}
+{#{% block left_content %}#}
+{##}
+{##}
+{##}
+{#<div class="row no-underline">#}
+{#<h2 style="text-align: center">Donation Pledge Form</h2>#}
+{##}
+{#<FORM name='form' action='donatehdfc.php' method='post' encType='multipart/form-data'#}
+{#      onSubmit="form.paynow.value='Submitting.. ';form.paynow.disable=true;">#}
+{##}
+{#<div>#}
+{#    <h3>Contributor's Information</h3>#}
+{##}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">First Name</span>#}
+{#        <input type="text" name="FName" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">Last Name</span>#}
+{#        <input type="text" name="LName" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">MI</span>#}
+{#        <input type="text" name="MI" class="form-control"/>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">Address</span>#}
+{#        <input name="fulladress" type="text" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">City</span>#}
+{#        <input type="text" name="city" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">State</span>#}
+{#        <input type="text" name="state" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">Pincode</span>#}
+{#        <input type="text" name="Pincode" max="6" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">Telephone</span>#}
+{#        <input type="tel" name="Mobile" required max="13" placeholder="Digits only" onBlur="check();"#}
+{#               class="form-control"/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 225px;margin-right: 15px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">Email</span>#}
+{#        <input type="email" name="Email" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 225px;">#}
+{##}
+{#        <span class="input-group-addon" style="width: 90px;">PAN</span>#}
+{#        <input type="text" name="PAN" max="10" class="form-control" required/>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#            <span class="input-group-addon"><input type="checkbox" name="anonymous"#}
+{#                                                   onClick="form.remark.value += 'Donation as Anonymous'"/></span>#}
+{#        <span class="form-control">I (we) wish to have my (our) donation remain anonymous.</span>#}
+{##}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div class="divider-4r" style="margin: 40px 0 30px 0px;padding:0;width: 705px;"></div>#}
+{##}
+{##}
+{#<div>#}
+{#<h3>Donation Information</h3>#}
+{##}
+{#<p>I pledge to contribute towards</p>#}
+{##}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Scholarships"#}
+{#                                                       checked="checked"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control">Scholarships for students for financially weaker sections</span>#}
+{##}
+{#</div>#}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" travelgrants"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control">Travel Grants for students for International Conferences</span>#}
+{##}
+{#</div>#}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" studentclub"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control">Student Clubs and Activities</span>#}
+{##}
+{#</div>#}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Entrepreneurship"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control">Entrepreneurship Activities</span>#}
+{##}
+{#</div>#}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 705px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Teaching"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control">Teaching Excellence Awards</span>#}
+{##}
+{#</div>#}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 710px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="contribiute" value=" Other"#}
+{#                                                       onClick="form.remark.value = this.value"/></span>#}
+{#    <span class="form-control pull-left" style="width: 200px;">Others (Please Specify)</span>#}
+{#    <input type="text" name="OtherOption" class="form-control" style="width: 467px;"#}
+{#           onChange="form.remark.value = this.value"/>#}
+{##}
+{##}
+{#</div>#}
+{##}
+{#<p>Donation Frequency</p>#}
+{##}
+{#<div class="form-group input-group pull-left" id="field.auto_id" style="width: 345px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="doationfrequency" value="one time"#}
+{#                                                       checked="checked"#}
+{#                                                       onClick="showblock(onetime);hideblock(repeating);twentyfive.checked='checked';form.tamount.value ='25000.00';"/></span>#}
+{#    <span class="form-control">One-time donation of INR</span>#}
+{##}
+{#</div>#}
+{##}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 345px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="doationfrequency" value="repeating"#}
+{#                                                       onClick="hideblock(onetime);showblock(repeating);form.remark.value+= 'Repeat donation';form.tamount.value ='10000.00';ten.checked='checked';"/></span>#}
+{#    <span class="form-control">Repeating donation of INR</span>#}
+{##}
+{#</div>#}
+{##}
+{#<p>Donation Amount</p>#}
+{##}
+{#<div id="onetime">#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 115px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" value="100000.00"#}
+{#                                                       onClick="form.tamount.value = this.value;"/></span>#}
+{#        <span class="form-control">100,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" value="75000.00"#}
+{#                                                       onClick="form.tamount.value = this.value;"/></span>#}
+{#        <span class="form-control">75,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" value="50000.00"#}
+{#                                                       onClick="form.tamount.value = this.value;"/></span>#}
+{#        <span class="form-control">50,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" id="twentyfive" value="25000.00"#}
+{#                                                       checked="checked"#}
+{#                                                       onClick="form.tamount.value = this.value;"/></span>#}
+{#        <span class="form-control">25,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 210px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" value="Other"#}
+{#                                                       onClick="form.tamount.value = form.other.value;"/></span>#}
+{#        <span class="form-control pull-left" style="width: 70px;">Other</span>#}
+{#        <input type="text" name="other" id="other"#}
+{#               onBlur="form.tamount.value = this.value;checkother();"#}
+{#               placeholder="Digits only" class="form-control" style="width: 100px;"/>#}
+{#    </div>#}
+{##}
+{#</div>#}
+{##}
+{#<div id="repeating" style="display: none;">#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 115px;margin-right: 15px;">#}
+{##}
+{#                <span class="input-group-addon"><input type="radio" name="donation" value="50000.00"#}
+{#                                                       onClick="form.tamount.value = this.value;"/></span>#}
+{#        <span class="form-control">50,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                    <span class="input-group-addon">#}
+{#                        <input type="radio" name="donation" value="40000.00"#}
+{#                               onClick="form.tamount.value = this.value;"/>#}
+{#                    </span>#}
+{#        <span class="form-control">40,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                    <span class="input-group-addon">#}
+{#                        <input type="radio" name="donation" value="20000.00"#}
+{#                               onClick="form.tamount.value = this.value;"/>#}
+{#                    </span>#}
+{#        <span class="form-control">20,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 105px;margin-right: 15px;">#}
+{##}
+{#                    <span class="input-group-addon">#}
+{#                        <input type="radio" id="ten" name="donation" value="10000.00"#}
+{#                               onClick="form.tamount.value = this.value;"/>#}
+{#                    </span>#}
+{#        <span class="form-control">10,000</span>#}
+{##}
+{#    </div>#}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 210px;">#}
+{##}
+{#                    <span class="input-group-addon">#}
+{#                        <input type="radio" name="donation" value="Other"#}
+{#                               onClick="form.tamount.value = form.Rother.value;"/>#}
+{#                    </span>#}
+{#        <span class="form-control pull-left" style="width: 70px;">Other</span>#}
+{#        <input type="text" name="rother" id="rother" value=""#}
+{#               onBlur="form.tamount.value = this.value;checkrother();"#}
+{#               placeholder="Digits only" class="form-control" style="width: 100px;"/>#}
+{#    </div>#}
+{##}
+{#</div>#}
+{##}
+{#<p>Payment Method</p>#}
+{##}
+{##}
+{#<div class="form-group input-group pull-left" id="field.auto_id" style="width: 235px;margin-right: 15px">#}
+{##}
+{#                <span class="input-group-addon">#}
+{#                    <input type="radio" name="regtype" value="Donate Now" checked="checked"#}
+{#                           onClick="showblock(paymentmethod);this.form.action='donatehdfc.php';form.paynow.value = ' Donate Later ';"/>#}
+{#                </span>#}
+{#                <span class="form-control">#}
+{#                    I would like to pay now#}
+{#                </span>#}
+{##}
+{#</div>#}
+{##}
+{#<div class="form-group input-group" id="field.auto_id" style="width: 455px;">#}
+{##}
+{#                <span class="input-group-addon">#}
+{#                    <input type="radio" name="regtype" value="Donate Later"#}
+{#                           onClick="hideblock(paymentmethod);this.form.action='donationmail.php';form.paynow.value = ' Donate Later ';"/>#}
+{#                </span>#}
+{#                <span class="form-control">#}
+{#                    I would like to pay later, please contact me by email / phone#}
+{#                </span>#}
+{##}
+{#</div>#}
+{##}
+{#<div id="paymentmethod">#}
+{#    <div class="form-group input-group pull-left" id="field.auto_id" style="width: 235px;margin-right: 15px">#}
+{##}
+{#                <span class="input-group-addon">#}
+{#                    <input type="radio" value="hdfc" name="paymenttype" checked required#}
+{#                           onClick="this.form.action='donatehdfc.php'"/>#}
+{#                </span>#}
+{#                <span class="form-control">#}
+{#                    Via Credit Card#}
+{#                </span>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="form-group input-group" id="field.auto_id" style="width: 455px;">#}
+{##}
+{#                <span class="input-group-addon">#}
+{#                    <input name="paymenttype" type="radio" value="billdesk" required#}
+{#                           onClick="this.form.action='donatebilldesk.php'">#}
+{#                </span>#}
+{#                <span class="form-control">#}
+{#                    Via Bank Transfer (only for Banks within India)#}
+{#                </span>#}
+{##}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div class="form-group input-group" id="field.auto_id" style="width:705px;">#}
+{##}
+{#    <span class="input-group-addon">Total Donation Amount</span>#}
+{#    <input type="hidden" value="" name="remark" readonly width="353px" class="form-control"/>#}
+{#    <input type="text" value="25000.00" name="tamount" class="form-control"/>#}
+{##}
+{##}
+{#</div>#}
+{##}
+{##}
+{#</div>#}
+{##}
+{#<div class="divider-4r" style="margin: 40px 0 30px 0px;padding:0;width: 705px;"></div>#}
+{##}
+{#<div style="width: 705px;">#}
+{##}
+{#    <h3 style="margin-top: 30px">Note</h3>#}
+{#    <ul style="margin: 10px 0 0 20px;padding: 0;" class="normal-list">#}
+{#        <li>#}
+{#            We will send you the information required for payment by email.#}
+{#        </li>#}
+{#        <li>#}
+{#            IIITD urges all alumni to contribute to their alma mater, at least 1% of their yearly income to the#}
+{#            Institute.#}
+{#        </li>#}
+{#        <li>#}
+{#            IIITD is registered under section 80G of the Income Tax Act, 1961 that entitles a donor to claim 50%#}
+{#            deduction on amount donated to Institute. Upon donation the Institute will issue a receipt mentioning#}
+{#            amount#}
+{#            donated, approval number, and date etc. for claiming deduction.#}
+{#        </li>#}
+{#    </ul>#}
+{#</div>#}
+{##}
+{##}
+{#<div style="margin: 30px 0 0 0;text-align: center">#}
+{#    <input name="MTrackid" size="25" value="90002954"#}
+{#           type="hidden"/>#}
+{#    <input type="submit" name="paynow" value=" DONATE NOW " class="btn btn-warning"/>#}
+{#</div>#}
+{##}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</div>#}
+{##}
+{##}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block right_content %}#}
+{##}
+{##}
+{#<div class="row">#}
+{#    <h3>Faculty Coordinator</h3>#}
+{#</div>#}
+{##}
+{#<div class="row">#}
+{#    <div class="panel panel-default">#}
+{#        <div class="panel-heading h4-big" style="height:100px;">#}
+{#            <img src="{{ STATIC_URL }}alumniportal/img/richasingh.jpg" class="img-circle pull-right"#}
+{#                 style="height:80px;width:80px;top:0;left:0;border:1px #ccc solid">#}
+{#            <h4 class="panel-user-h4 h4-big"><a href="http://www.iiitd.edu.in/~richa/">Richa Singh</a></h4>#}
+{##}
+{#            <p>Assistant Professor</p>#}
+{#        </div>#}
+{#        <div class="panel-body text-left">#}
+{#                <span class="glyphicon glyphicon-phone card-field"><span#}
+{#                        class="card-field-font">+91-11-26907433</span></span><br/>#}
+{#                <span class="glyphicon glyphicon-map-marker card-field"><span#}
+{#                        class="card-field-font">A-201, IIITD</span></span><br/>#}
+{#                <span class="glyphicon glyphicon-inbox card-field"><span#}
+{#                        class="card-field-font">rsingh@iiitd.ac.in</span></span><br/>#}
+{##}
+{#            <div class="clearfix"></div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block scripts %}#}
+{#    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/home.js"></script>#}
+{#    <script type="text/javascript">#}
+{#        function showblock(t) {#}
+{#            t.style.display = '';#}
+{#        }#}
+{#        function hideblock(t) {#}
+{#            t.style.display = 'none';#}
+{#        }#}
+{#        function check() {#}
+{#            var m = document.getElementById('mobile').value;#}
+{#            if (isNaN(m)) {#}
+{#                alert(m + " is not a valid number");#}
+{#            }#}
+{#        }#}
+{#        function checkother() {#}
+{#            var m = document.getElementById('other').value;#}
+{#            if (isNaN(m)) {#}
+{#                alert(m + " is not a valid number");#}
+{#            }#}
+{#        }#}
+{#        function checkrother() {#}
+{#            var m = document.getElementById('rother').value;#}
+{#            if (isNaN(m)) {#}
+{#                alert(m + " is not a valid number");#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+{#{% endblock %}#}
