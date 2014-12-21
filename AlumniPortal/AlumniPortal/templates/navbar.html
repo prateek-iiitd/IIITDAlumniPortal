@@ -54,7 +54,7 @@
                         <li id="login"><a href="{% provider_login_url "google" %}" title="Log in with IIITD mail"><span
                                 class="nav-bar-font">Login</span></a></li>
                     {% else %}
-                        <span id="username" class='nav-bar-font'>Hi, {{ user.first_name }}!</span>
+                        <span id="username" class='nav-bar-font'><a href="/test/profile/link/">Hi, {{ user.first_name }}!</span>
                         <li id="login"><a href="/accounts/logout" title="Log in with IIITD mail"><span
                                 class="nav-bar-font">Logout</span></a></li>
                     {% endif %}
