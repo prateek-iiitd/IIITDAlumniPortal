@@ -28,7 +28,7 @@
 
     <h3>Personal Details</h3>
 
-    <form class="row input-form" action="/admin_forms/add_news/" method="post"
+    <form class="row input-form" action="/test/profile/edit/work/" method="post"
           enctype="multipart/form-data" style="width: 600px;">
         {% csrf_token %}
         <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 290px;">
@@ -87,7 +87,7 @@
             {% endif %}
         {% endfor %}
 
-        <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work">Next</a>
+        <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>
         </button>
     </form>
 
