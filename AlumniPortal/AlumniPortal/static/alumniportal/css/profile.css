@@ -262,6 +262,9 @@ ul.checkout-bar a:hover, ul.checkout-bar li.visited a:hover {
 ul.checkout-bar li.active a {
     color: #333333 !important;
 }
+ul.checkout-bar li.active-end a {
+    color: #333333 !important;
+}
 ul.checkout-bar li.visited a {
     color: #3FADA8 !important;
 }
