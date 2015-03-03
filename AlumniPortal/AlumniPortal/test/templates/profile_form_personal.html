@@ -1,40 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'profile_form.html' %}
 {% load socialaccount %}
 
-{% block title %}IIITD Alumni | Profile{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
-{% endblock %}
-
-{% block top_content %}
-    <div class="row" style="padding: 0 40px;">
-        <div class="progress">
-            <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: 25%">
-                <span class="pull-left" style="width: 100%">LinkedIn</span>
-            </div>
-
-            <div class="progress-bar progress-bar-striped" style="width: 75%;background-color: #666">
-                <span class="pull-left" style="width: 35%">Personal</span>
-                <span style="width: 30%">Work</span>
-                <span class="pull-right" style="width: 35%">Education</span>
-            </div>
-
-        </div>
-    </div>
-{% endblock %}
-
-{% block left_content %}
-
-    <h3>Personal Details</h3>
+{% block profile_form_left %}
+    <h4>Personal Details</h4>
 
     <form class="row input-form" action="/test/profile/edit/work/" method="post"
           enctype="multipart/form-data" style="width: 600px;">
         {% csrf_token %}
-        <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 290px;">
+        <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 600px;">
             {{ field.help_text }}
             <span class="input-group-addon" style="width: 140px;">Name</span>
-            {{ user.first_name }} {{ user.last_name }}
+            <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;" value="{{ user.first_name }} {{ user.last_name }}" disabled>
         </div>
 
         {% for field in form %}
@@ -93,12 +69,5 @@
 
 {% endblock %}
 
-{% block parent_right_content %}
-
+{% block profile_form_right %}
 {% endblock %}
-
-{% block scripts %}
-    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
-{% endblock %}
-

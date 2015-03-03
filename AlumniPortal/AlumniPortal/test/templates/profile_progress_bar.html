@@ -1,0 +1,145 @@
+<div class="row" style="background-color: #efefef;">
+    <h3 class="col-md-12 col-sm-12 col-xs-12 row text-center">Profile</h3>
+    <div class="col-lg-11" style="padding: 30px 50px;padding-top:10px;">
+        <div class="row">
+            <div class="checkout-wrap" style="margin-left: 0px;">
+                <ul class="checkout-bar" style="margin-left: 0px;position: absolute">
+                    <li class="active"><a href="#get-started" data-toggle="tab">LinkedIn</a>
+                    </li>
+                    <li class=""><a href="#about-you" data-toggle="tab">Personal</a>
+                    </li>
+                    <li class=""><a href="#looking-for" data-toggle="tab">Education</a>
+                    </li>
+                    <li class=""><a href="#">Work</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+{#        #}
+{#        <div class="row" style="padding: 50px;">#}
+{#            <div class="tabbable-panel">#}
+{#                <div class="tabbable-line">#}
+{#                    <ul class="nav nav-tabs ">#}
+{#                        <li class="active"><a href="#get-started" data-toggle="tab"> Get Started </a>#}
+{#                        </li>#}
+{#                        <li><a href="#about-you" data-toggle="tab"> About You </a>#}
+{#                        </li>#}
+{#                        <li><a href="#looking-for" data-toggle="tab"> Looking For </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                    <div class="tab-content">#}
+{#                        <div class="tab-pane active" id="get-started">#}
+{#                            <div class="form">#}
+{#                                <asp:ValidationSummary runat="server" CssClass="text-danger"/>#}
+{#                                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">Zip code where you live?:</label>#}
+{#                                                <asp:TextBox ID="zip" CssClass="form-control" name="zip code"#}
+{#                                                             placeholder="i.e. 17110" runat="server"></asp:TextBox>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">How many miles radio would you#}
+{#                                                    consider?:</label>#}
+{#                                                <asp:TextBox ID="miles" CssClass="form-control" name="miles"#}
+{#                                                             placeholder="i.e. 25" runat="server"></asp:TextBox>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">What relationship are you looking#}
+{#                                                    for?:</label>#}
+{#                                                <asp:DropDownList ID="relationship" name="relationship"#}
+{#                                                                  CssClass="form-control" runat="server">#}
+{#                                                    <asp:ListItem Enabled="True" Selected="True" Text="Select One"#}
+{#                                                                  Value="selectone"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False"#}
+{#                                                                  Text="Love Relationship"#}
+{#                                                                  Value="love"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False"#}
+{#                                                                  Text="Casual Encounter"#}
+{#                                                                  Value="casual"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False" Text="I'm Not Sure"#}
+{#                                                                  Value="notsure"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False" Text="Other"#}
+{#                                                                  Value="other"/>#}
+{#                                                </asp:DropDownList>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">Explain:</label>#}
+{#                                                <asp:TextBox ID="explainRel" Rows="10" TextMode="Multiline"#}
+{#                                                             CssClass="form-control" name="explainrel"#}
+{#                                                             placeholder="Be detailed if you have specific instructions"#}
+{#                                                             runat="server"></asp:TextBox>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="tab-pane" id="about-you">#}
+{#                            <div class="form">#}
+{#                                <asp:ValidationSummary runat="server" CssClass="text-danger"/>#}
+{#                                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12 picture">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">Let's start with your picture:</label>#}
+{#                                                <input id="profilepic" type="file" multiple="true" class="file"/>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">How many miles radio would you#}
+{#                                                    consider?:</label>#}
+{#                                                <asp:TextBox ID="TextBox2" CssClass="form-control" name="miles"#}
+{#                                                             placeholder="i.e. 25" runat="server"></asp:TextBox>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">What relationship are you looking#}
+{#                                                    for?:</label>#}
+{#                                                <asp:DropDownList ID="DropDownList1" name="relationship"#}
+{#                                                                  CssClass="form-control" runat="server">#}
+{#                                                    <asp:ListItem Enabled="True" Selected="True" Text="Select One"#}
+{#                                                                  Value="selectone"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False"#}
+{#                                                                  Text="Love Relationship"#}
+{#                                                                  Value="love"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False"#}
+{#                                                                  Text="Casual Encounter"#}
+{#                                                                  Value="casual"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False" Text="I'm Not Sure"#}
+{#                                                                  Value="notsure"/>#}
+{#                                                    <asp:ListItem Enabled="True" Selected="False" Text="Other"#}
+{#                                                                  Value="other"/>#}
+{#                                                </asp:DropDownList>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="form-group">#}
+{#                                                <label class="control-label">Explain:</label>#}
+{#                                                <asp:TextBox ID="TextBox3" Rows="10" TextMode="Multiline"#}
+{#                                                             CssClass="form-control" name="explainrel"#}
+{#                                                             placeholder="Be detailed if you have specific instructions"#}
+{#                                                             runat="server"></asp:TextBox>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="tab-pane" id="looking-for"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+    </div>
+</div>

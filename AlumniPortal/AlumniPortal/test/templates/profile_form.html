@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}IIITD Alumni | Profile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+{% endblock %}
+
+{% block top_content %}
+    {% include 'profile_progress_bar.html' %}
+
+{% endblock %}
+
+{% block left_content %}
+
+    {% block profile_form_left %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block parent_right_content %}
+
+    {% block profile_form_right %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                var href = $(e.target).attr('href');
+                var $curr = $(".checkout-bar  a[href='" + href + "']").parent();
+
+                $('.checkout-bar li').removeClass();
+
+                $curr.addClass("active");
+                $curr.prevAll().addClass("visited");
+
+
+            });
+        });
+    </script>
+{% endblock %}

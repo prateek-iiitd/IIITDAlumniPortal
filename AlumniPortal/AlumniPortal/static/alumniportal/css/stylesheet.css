@@ -43,6 +43,12 @@ h3 {
     font-size: 30px;
 }
 
+h4 {
+    color: #555;
+    font-weight: bold;
+    font-size:23px;
+}
+
 .h4-card {
     color: #555;
     font-weight: bold;
