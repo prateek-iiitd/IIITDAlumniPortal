@@ -2,70 +2,275 @@
 {% load socialaccount %}
 
 {% block profile_form_left %}
-    <h4>Personal Details</h4>
+    <h3>Personal Details</h3>
 
     <form class="row input-form" action="/test/profile/edit/work/" method="post"
           enctype="multipart/form-data" style="width: 600px;">
-        {% csrf_token %}
-        <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 600px;">
-            {{ field.help_text }}
-            <span class="input-group-addon" style="width: 140px;">Name</span>
-            <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;" value="{{ user.first_name }} {{ user.last_name }}" disabled>
-        </div>
+    <input type='hidden' name='csrfmiddlewaretoken' value='sRwG0zEZ16vYUWYPajR9SfAKscwySY6E'/>
 
-        {% for field in form %}
-            <div id="{{ field.auto_id }}_errors"
-                 style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-                <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-                {{ field.errors }}
-            </div>
-            {% if field.id_for_label == "id_gender" %}
-                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
+    <div class="form-group input-group pull-left" id="" style="width: 600px;">
 
-                    {{ field.help_text }}
-                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+        <span class="input-group-addon" style="width: 140px;">Name</span>
+        <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;"
+               value="Archit Agarwal" disabled>
+    </div>
 
-                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
-                            class="form-control"
-                            style="border-radius: 0 5px 5px 0;">
-                        <option value="-1">Select Gender</option>
-                        {% for gender in gender_values %}
-                            <option value="{{ gender }}">{{ gender }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            {% elif  field.id_for_label == "id_marital_status" %}
-                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
 
-                    {{ field.help_text }}
-                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
+    <div id="id_email_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
 
-                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
-                            class="form-control"
-                            style="border-radius: 0 5px 5px 0;">
-                        <option value="-1">Select Status</option>
-                        {% for marital_status in marital_status_values %}
-                            <option value="{{ marital_status }}">{{ marital_status }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            {% else %}
-                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
-                    {{ field.help_text }}
-                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                    <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                    name="{{ field.html_name }}"
-                    type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                    style="border-radius:0 5px 5px 0;">
-                </{{ field.field.widget.attrs.html_tag }}>
-                </div>
+    </div>
 
-            {% endif %}
-        {% endfor %}
+    <div class="form-group input-group" id="id_email" style="width: 600px;">
 
-        <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>
-        </button>
+        <span class="input-group-addon" style="width: 140px;">Email</span>
+        <input id="id_email"
+               name="email"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_personal_email_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_personal_email" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Personal email</span>
+        <input id="id_personal_email"
+               name="personal_email"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_gender_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_gender" style="width: 600px;">
+
+
+        <span class="input-group-addon" style="width: 140px;">Gender</span>
+
+        <select id="id_gender" name="gender"
+                class="form-control"
+                style="border-radius: 0 5px 5px 0;">
+            <option value="-1">Select Gender</option>
+
+            <option value="Female">Female</option>
+
+            <option value="Male">Male</option>
+
+            <option value="Other">Other</option>
+
+        </select>
+    </div>
+
+
+    <div id="id_marital_status_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_marital_status" style="width: 600px;">
+
+
+        <span class="input-group-addon" style="width: 140px;">Marital status</span>
+
+        <select id="id_marital_status" name="marital_status"
+                class="form-control"
+                style="border-radius: 0 5px 5px 0;">
+            <option value="-1">Select Status</option>
+
+            <option value="Single">Single</option>
+
+            <option value="Married">Married</option>
+
+        </select>
+    </div>
+
+
+    <div id="id_profile_photo_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_profile_photo" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Profile photo</span>
+        <input id="id_profile_photo"
+               name="profile_photo"
+               type="file" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    {% include 'divider_hr.html' %}
+
+
+    <div id="id_linkedin_profile_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_linkedin_profile" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Linkedin profile</span>
+        <input id="id_linkedin_profile"
+               name="linkedin_profile"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_facebook_profile_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_facebook_profile" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Facebook profile</span>
+        <input id="id_facebook_profile"
+               name="facebook_profile"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_google_profile_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_google_profile" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Google profile</span>
+        <input id="id_google_profile"
+               name="google_profile"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_twitter_profile_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_twitter_profile" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Twitter profile</span>
+        <input id="id_twitter_profile"
+               name="twitter_profile"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <div id="id_homepage_errors"
+         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+
+    </div>
+
+    <div class="form-group input-group" id="id_homepage" style="width: 600px;">
+
+        <span class="input-group-addon" style="width: 140px;">Homepage</span>
+        <input id="id_homepage"
+               name="homepage"
+               type="text" class="form-control"
+               style="border-radius:0 5px 5px 0;">
+        </input>
+    </div>
+
+
+    <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>
+    </button>
     </form>
+    {##}
+    {#    <form class="row input-form" action="/test/profile/edit/work/" method="post"#}
+    {#          enctype="multipart/form-data" style="width: 600px;">#}
+    {#        {% csrf_token %}#}
+    {#        <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 600px;">#}
+    {#            {{ field.help_text }}#}
+    {#            <span class="input-group-addon" style="width: 140px;">Name</span>#}
+    {#            <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;" value="{{ user.first_name }} {{ user.last_name }}" disabled>#}
+    {#        </div>#}
+    {##}
+    {#        {% for field in form %}#}
+    {#            <div id="{{ field.auto_id }}_errors"#}
+    {#                 style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">#}
+    {#                <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->#}
+    {#                {{ field.errors }}#}
+    {#            </div>#}
+    {#            {% if field.id_for_label == "id_gender" %}#}
+    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
+    {##}
+    {#                    {{ field.help_text }}#}
+    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
+    {##}
+    {#                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"#}
+    {#                            class="form-control"#}
+    {#                            style="border-radius: 0 5px 5px 0;">#}
+    {#                        <option value="-1">Select Gender</option>#}
+    {#                        {% for gender in gender_values %}#}
+    {#                            <option value="{{ gender }}">{{ gender }}</option>#}
+    {#                        {% endfor %}#}
+    {#                    </select>#}
+    {#                </div>#}
+    {#            {% elif  field.id_for_label == "id_marital_status" %}#}
+    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
+    {##}
+    {#                    {{ field.help_text }}#}
+    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
+    {##}
+    {#                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"#}
+    {#                            class="form-control"#}
+    {#                            style="border-radius: 0 5px 5px 0;">#}
+    {#                        <option value="-1">Select Status</option>#}
+    {#                        {% for marital_status in marital_status_values %}#}
+    {#                            <option value="{{ marital_status }}">{{ marital_status }}</option>#}
+    {#                        {% endfor %}#}
+    {#                    </select>#}
+    {#                </div>#}
+    {#            {% else %}#}
+    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
+    {#                    {{ field.help_text }}#}
+    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
+    {#                    <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"#}
+    {#                    name="{{ field.html_name }}"#}
+    {#                    type="{{ field.field.widget.attrs.html_type }}" class="form-control"#}
+    {#                    style="border-radius:0 5px 5px 0;">#}
+    {#                </{{ field.field.widget.attrs.html_tag }}>#}
+    {#                </div>#}
+    {##}
+    {#            {% endif %}#}
+    {#        {% endfor %}#}
+    {##}
+    {#        <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>#}
+    {#        </button>#}
+    {#    </form>#}
 
 {% endblock %}
 
