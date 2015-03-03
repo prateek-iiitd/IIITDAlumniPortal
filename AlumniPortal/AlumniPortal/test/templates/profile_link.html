@@ -1,7 +1,5 @@
 {% extends 'profile_form.html' %}
 
-    <>
-
 {% load socialaccount %}
 
 {% block profile_form_left %}
@@ -34,4 +32,13 @@
             </p>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // change the number in the line below to change current progress on the progress bar
+            $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('active');
+        });
+    </script>
 {% endblock %}
