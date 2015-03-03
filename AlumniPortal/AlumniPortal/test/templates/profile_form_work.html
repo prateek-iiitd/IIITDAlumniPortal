@@ -9,61 +9,109 @@
           enctype="multipart/form-data" style="width: 600px;">
         {% csrf_token %}
 
-        {% for form in formset %}
-            <div>
-                {% for field in form %}
-                    {% if  "Work type" ==  field.label %}
-                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
-                            {{ field.help_text }}
-                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-
-                            <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"
-                                    class="form-control"
-                                    style="border-radius: 0 5px 5px 0;">
-                                <option value="-1">Select Status</option>
-                                {% for work in work_values %}
-                                    <p>{{ work.0 }}</p><p>{{ field.value }}</p>
-                                    {% if work.0 == field.value %}
-                                        <option value="{{ work.0 }}" selected="selected">{{ work.1 }}</option>
-                                    {% else %}
-                                        <option value="{{ work.0 }}">{{ work.1 }}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% elif field.label  == 'Id' %}
-                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
-                            {{ field.help_text }}
-                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                            name="{{ field.html_name }}"
-                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                            style="border-radius:0 5px 5px 0;" value="{{ field.value }}">
-                        </{{ field.field.widget.attrs.html_tag }}>
-                        </div>
-                    {% elif field.field.widget.attrs.html_type  == 'date' %}
-                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
-                            {{ field.help_text }}
-                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                            name="{{ field.html_name }}"
-                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                            style="border-radius:0 5px 5px 0;" value="{{ field.value|date:"Y-m-d" }}">
-                        </{{ field.field.widget.attrs.html_tag }}>
-                        </div>
-                    {% else %}
-                        <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">
-                            {{ field.help_text }}
-                            <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>
-                            <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"
-                            name="{{ field.html_name }}"
-                            type="{{ field.field.widget.attrs.html_type }}" class="form-control"
-                            style="border-radius:0 5px 5px 0;" value="{{ field.value }}">
-                        </{{ field.field.widget.attrs.html_tag }}>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+        <div id="form0" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; padding-bottom: 45px">
+            <div class="form-group input-group" id="id_form-0-title" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Title</span>
+                <input id="id_form-0-title" name="form-0-title" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="text">
             </div>
-        {% endfor %}
+            <div class="form-group input-group" id="id_form-0-work_type" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Work type</span>
+                <select id="id_form-0-work_type" name="form-0-work_type" class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Select Status</option>
+                </select>
+            </div>
+            <div class="form-group input-group" id="id_form-0-start_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Start date</span>
+                <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-0-end_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">End date</span>
+                <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-0-organisation" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Organisation</span>
+                <input id="id_form-0-organisation" name="form-0-organisation" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="None" type="text">
+            </div>
+            <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">
+                <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="hidden">
+            </div>
+            <div class="btn btn-warning btn-add" style="float: right;">Add
+            </div>
+        </div>
+        <div id="form1" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; padding-bottom: 45px; display: none">
+            <div class="form-group input-group" id="id_form-1-title" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Title</span>
+                <input id="id_form-1-title" name="form-1-title" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="text">
+            </div>
+            <div class="form-group input-group" id="id_form-1-work_type" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Work type</span>
+                <select id="id_form-1-work_type" name="form-1-work_type" class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Select Status</option>
+                </select>
+            </div>
+            <div class="form-group input-group" id="id_form-1-start_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Start date</span>
+                <input id="id_form-1-start_date" name="form-1-start_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-1-end_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">End date</span>
+                <input id="id_form-1-end_date" name="form-1-end_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-1-organisation" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Organisation</span>
+                <input id="id_form-1-organisation" name="form-1-organisation" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="None" type="text">
+            </div>
+            <div class="form-group input-group" id="id_form-1-id" style="width: 600px;">
+                <input id="id_form-1-id" name="form-1-id" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="hidden">
+            </div>
+            <div class="btn btn-warning btn-add" style="float: right;">Add
+            </div>
+        </div>
+        <div id="form2" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; display: none;">
+            <div class="form-group input-group" id="id_form-2-title" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Title</span>
+                <input id="id_form-2-title" name="form-2-title" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="text">
+            </div>
+            <div class="form-group input-group" id="id_form-2-work_type" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Work type</span>
+                <select id="id_form-2-work_type" name="form-2-work_type" class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Select Status</option>
+                </select>
+            </div>
+            <div class="form-group input-group" id="id_form-2-start_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Start date</span>
+                <input id="id_form-2-start_date" name="form-2-start_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-2-end_date" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">End date</span>
+                <input id="id_form-2-end_date" name="form-2-end_date" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="" type="date">
+            </div>
+            <div class="form-group input-group" id="id_form-2-organisation" style="width: 600px;">
+                <span class="input-group-addon" style="width: 140px;">Organisation</span>
+                <input id="id_form-2-organisation" name="form-2-organisation" class="form-control"
+                       style="border-radius:0 5px 5px 0;" value="None" type="text">
+            </div>
+            <div class="form-group input-group" id="id_form-2-id" style="width: 600px;">
+                <input id="id_form-2-id" name="form-2-id" class="form-control" style="border-radius:0 5px 5px 0;"
+                       value="None" type="hidden">
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
         </button>

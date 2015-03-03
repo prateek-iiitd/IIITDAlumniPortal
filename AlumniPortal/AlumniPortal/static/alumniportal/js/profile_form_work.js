@@ -2,7 +2,7 @@
  * Created by sauhard on 10/11/14.
  */
 $(document).ready(function(){
-    counter = 2;
+    counter = 1;
     $(".btn-add").click(function() {
         $(this).hide();
         $("#form".concat(counter-1)).css("padding-bottom", "10px");
