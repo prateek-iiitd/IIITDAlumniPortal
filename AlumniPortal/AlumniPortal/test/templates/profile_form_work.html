@@ -18,18 +18,14 @@
 {% endblock %}
 
 {% block profile_form_left %}
-    <h3>Work Details</h3>
+    <h3 style="display: inline-block">Work Details</h3>
+    <div class="btn btn-warning btn-add" style="float: right; margin: 20px 42px 0 0"><b>+</b> Add</div>
 
     <form class="row input-form" action="/test/profile/" method="post"
           enctype="multipart/form-data" style="width: 600px;">
         {% csrf_token %}
 
         {% include 'profile_form_work_form.html' %}
-
-
-        <div class="row">
-            <div class="btn btn-warning btn-add" style="display: inline-block; margin-left: 50%"><b>+</b> Add</div>
-        </div>
 
         <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
         </button>
@@ -122,6 +118,7 @@
     <script type="text/javascript">
         var work_html;
         $(document).ready(function () {
+            $("#form0").css("display", "block");
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(4)').addClass('active-end');
             // adding class "visited" to all nodes before current active progress
@@ -137,7 +134,7 @@
                 url: "/test/work_details_html/",
                 type: "GET",
                 dataType: "html",
-                success: function(response, status, xhr) {
+                success: function (response, status, xhr) {
                     work_html = response;
                 },
                 error: function (xhr, status, error) {
@@ -158,45 +155,8 @@
                 //
                 console.log(1);
                 $('#form' + (counter - 1)).css("margin-bottom", "25px");
-                $('#form' + (counter - 1)).after(work_html.replace('"form0"','"form'+counter+'"').replace('1.', (counter+1)+'.'));
-                {#                $('#form'+(counter-1)).after('<div class="row">\#}
-                {#            <div class="col-lg-1" style="text-align: center; padding: 101px 20px; font-size: 36px; color: #CCC">'+(counter+1)+'.</div>\#}
-                {#            <div id="form'+counter+'" class="col-lg-11" \#}
-                {#                 style="border-bottom: solid 1px #CCC; margin-bottom: 10px; padding-bottom: 20px">\#}
-                {#                <div class="form-group input-group" id="id_form-0-title" style="width: 600px;">\#}
-                {#                    <span class="input-group-addon" style="width: 140px;">Title</span>\#}
-                {#                    <input id="id_form-0-title" name="form-0-title" class="form-control"\#}
-                {#                           style="border-radius:0 5px 5px 0;"\#}
-                {#                           value="None" type="text">\#}
-                {#                </div>\#}
-                {#                <div class="form-group input-group" id="id_form-0-work_type" style="width: 600px;">\#}
-                {#                    <span class="input-group-addon" style="width: 140px;">Work type</span>\#}
-                {#                    <select id="id_form-0-work_type" name="form-0-work_type" class="form-control" \#}
-                {#                            style="border-radius: 0 5px 5px 0;">\#}
-                {#                        <option value="-1">Select Status</option>\#}
-                {#                    </select>\#}
-                {#                </div>\#}
-                {#                <div class="form-group input-group" id="id_form-0-start_date" style="width: 600px;">\#}
-                {#                    <span class="input-group-addon" style="width: 140px;">Start date</span>\#}
-                {#                    <input id="id_form-0-start_date" name="form-0-start_date" class="form-control" \#}
-                {#                           style="border-radius:0 5px 5px 0;" value="" type="date">\#}
-                {#                </div>\#}
-                {#                <div class="form-group input-group" id="id_form-0-end_date" style="width: 600px;">\#}
-                {#                    <span class="input-group-addon" style="width: 140px;">End date</span>\#}
-                {#                    <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"\#}
-                {#                           style="border-radius:0 5px 5px 0;" value="" type="date">\#}
-                {#                </div>\#}
-                {#                <div class="form-group input-group" id="id_form-0-organisation" style="width: 600px;">\#}
-                {#                    <span class="input-group-addon" style="width: 140px;">Organisation</span>\#}
-                {#                    <input id="id_form-0-organisation" name="form-0-organisation" class="form-control" \#}
-                {#                           style="border-radius:0 5px 5px 0;" value="None" type="text">\#}
-                {#                </div>\#}
-                {#                <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">\#}
-                {#                    <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;" \#}
-                {#                           value="None" type="hidden">\#}
-                {#                </div>\#}
-                {#            </div>\#}
-                {#        </div>');#}
+                $('#form' + (counter - 1)).before(work_html.replace('"form0"', '"form' + counter + '"').replace('1.', (counter + 1) + '.'));
+                $('#form' + counter).slideDown('medium');
                 counter = counter + 1;
             });
         });
