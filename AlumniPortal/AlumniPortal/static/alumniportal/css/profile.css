@@ -214,7 +214,6 @@ ul.checkout-bar li.active {
     color: #333333;
     font-weight: bold;
     /*text-shadow: 0 1px 1px #999;*/
-
 }
 ul.checkout-bar li.active:before {
     background: #333333;
@@ -254,7 +253,6 @@ ul.checkout-bar a {
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-
 }
 ul.checkout-bar a:hover, ul.checkout-bar li.visited a:hover {
     color: #333333 !important;

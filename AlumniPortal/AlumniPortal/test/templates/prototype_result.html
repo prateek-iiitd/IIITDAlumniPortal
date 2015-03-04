@@ -90,38 +90,38 @@
         <div class="glyphicon glyphicon-envelope" style="padding-left: 50px; font-size: 22px" title="Contact all results!"></div>
     </div>
     <div id="search-results-right" class="col-lg-9" style="padding-top: 40px">
-        <div class="row">
-            <div class="col-lg-1">
-                <div class="pic"></div>
-            </div>
-            <div class="col-lg-10" style="padding: 5px 0 0 25px">
-                <p style="margin-bottom: 0">Ankur Sial<br>
-                    Adobe &nbsp;| &nbsp;Senior Scientist<br>
-                    Batch 2015</p>
-            </div>
-        </div>
-        <div class="divider-4r"></div>
-        <div class="row">
-            <div class="col-lg-1">
-                <div class="pic"></div>
-            </div>
-            <div class="col-lg-10" style="padding: 5px 0 0 25px">
-                <p style="margin-bottom: 0">Ankur Pandey<br>
-                    Adobe &nbsp;| &nbsp;Senior Scientist<br>
-                    Batch 2015</p>
-            </div>
-        </div>
-        <div class="divider-4r"></div>
-        <div class="row">
-            <div class="col-lg-1">
-                <div class="pic"></div>
-            </div>
-            <div class="col-lg-10" style="padding: 5px 0 0 25px">
-                <p style="margin-bottom: 0">Ankur Gupta<br>
-                    Adobe &nbsp;| &nbsp;Senior Scientist<br>
-                    Batch 2015</p>
-            </div>
-        </div>
+{#        <div class="row">#}
+{#            <div class="col-lg-1">#}
+{#                <div class="pic"></div>#}
+{#            </div>#}
+{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+{#                <p style="margin-bottom: 0">Ankur Sial<br>#}
+{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+{#                    Batch 2015</p>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="divider-4r"></div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-1">#}
+{#                <div class="pic"></div>#}
+{#            </div>#}
+{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+{#                <p style="margin-bottom: 0">Ankur Pandey<br>#}
+{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+{#                    Batch 2015</p>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="divider-4r"></div>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-1">#}
+{#                <div class="pic"></div>#}
+{#            </div>#}
+{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+{#                <p style="margin-bottom: 0">Ankur Gupta<br>#}
+{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+{#                    Batch 2015</p>#}
+{#            </div>#}
+{#        </div>#}
 
     </div>
 {% endblock %}
@@ -159,8 +159,8 @@
 {#    </div>#}
 {#{% endblock %}#}
 {##}
-
-
+{##}
+{##}
 {#{% block scripts %}#}
 {#    $(document).ready(function() {#}
 {#        $("#profile-top-right .pic").mouseEnter(function() {#}
@@ -193,3 +193,7 @@
 {#        });#}
 {#    </script>#}
 {#{%  endblock %}#}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/search.js"></script>
+{% endblock %}
