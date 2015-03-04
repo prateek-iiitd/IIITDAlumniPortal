@@ -3,125 +3,165 @@
 {% block title %}IIITD Alumni | Search Results{% endblock %}
 
 {% block stylesheets %}
-    	<link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/search_results.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/search_results.css">
 {% endblock %}
 
 
 {% block left_content %}
     <div id="search-results-left" class="col-lg-3">
         <div class="row">
-            <h3 style="color: #111">Advanced Search</h3>
+            <h2>Search</h2>
         </div>
-        <div class="divider-4r"></div>
-        <div class="row">
-            <h3 style="color: #111">Profession</h3>
+        {#        <div class="divider-4r"></div>#}
 
-            <div class="col-lg-12">
-                <div class="row">
-                    <input type="checkbox" name="profession" value="technical">
-                    Technical
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="profession" value="nontechnical">
-                    Non-technical
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="profession" value="research">
-                    Research
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="profession" value="faculty">
-                    Faculty
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="profession" value="entrepreneur">
-                    Entrepreneur
-                </div>
+        <div class="row">
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
+                <select id="id_gender" name="gender"
+                        class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Gender</option>
+
+                    <option value="Female">Female</option>
+
+                    <option value="Male">Male</option>
+
+                    <option value="Other">Other</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                <input id="id_location" name="location" type="text" class="form-control"
+                       style="border-radius:0 5px 5px 0;"
+                       placeholder="Current Location">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-education"></span> </span>
+                <input id="id_batch" name="batch" type="text" class="form-control" style="border-radius:0 5px 5px 0;"
+                       placeholder="Passout Batch">
             </div>
         </div>
         <div class="divider-4r"></div>
         <div class="row">
-            <h3 style="color: #111">Degree</h3>
+            <h4>Profession</h4>
 
-            <div class="col-lg-12">
-                <div class="row">
-                    <input type="checkbox" name="degree" value="bachelors">
-                    Bachelors
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="degree" value="masters">
-                    Masters
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="degree" value="phd">
-                    PhD
-                </div>
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-font"></span> </span>
+                <input id="id_company_name" name="company_name" type="text" class="form-control"
+                       style="border-radius:0 5px 5px 0;"
+                       placeholder="Company">
+            </div>
+
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
+                <select id="id_profession_type" name="profession_type"
+                        class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Domain Type</option>
+
+                    <option value="NotTechnical">Non-Technical</option>
+
+                    <option value="Technical">Technical</option>
+
+                    <option value="Research">Research</option>
+
+                    <option value="Teaching">Teaching</option>
+
+                </select>
+            </div>
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                <input id="id_company_location" name="company_location" type="text" class="form-control"
+                       style="border-radius:0 5px 5px 0;"
+                       placeholder="Location">
             </div>
         </div>
         <div class="divider-4r"></div>
         <div class="row">
-            <h3 style="color: #111">Location</h3>
+            <h4>Education</h4>
 
-            <div class="col-lg-12">
-                <div class="row">
-                    <input type="checkbox" name="location" value="India">
-                    India
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="location" value="Delhi">
-                    Delhi
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="location" value="Bangalore">
-                    Bangalore
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="location" value="United States">
-                    United States
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="location" value="Others" onclick="checkothers()">
-                    Others<br>
-                    <input id="txtothers" type="textbox" name="others" placeholder="Type in location here">
-                </div>
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-font"></span> </span>
+                <input id="id_university_name" name="university_name" type="text" class="form-control"
+                       style="border-radius:0 5px 5px 0;"
+                       placeholder="University">
+            </div>
+
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
+                <select id="id_profession_type" name="profession_type"
+                        class="form-control"
+                        style="border-radius: 0 5px 5px 0;">
+                    <option value="-1">Degree Type</option>
+
+                    <option value="NotTechnical">Graduate</option>
+
+                    <option value="Technical">Masters</option>
+
+                    <option value="Research">Ph.D</option>
+
+                </select>
+            </div>
+            <div class="form-group input-group pull-left" id="">
+
+                <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                <input id="id_university_location" name="university_location" type="text" class="form-control"
+                       style="border-radius:0 5px 5px 0;"
+                       placeholder="Location">
             </div>
         </div>
         <div class="divider-4r"></div>
-        <div class="glyphicon glyphicon-envelope" style="padding-left: 50px; font-size: 22px" title="Contact all results!"></div>
+
+        <div class="glyphicon glyphicon-envelope" style="padding-left: 50px; font-size: 22px"
+             title="Contact all results!"></div>
     </div>
-    <div id="search-results-right" class="col-lg-9" style="padding-top: 40px">
-{#        <div class="row">#}
-{#            <div class="col-lg-1">#}
-{#                <div class="pic"></div>#}
-{#            </div>#}
-{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
-{#                <p style="margin-bottom: 0">Ankur Sial<br>#}
-{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
-{#                    Batch 2015</p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="divider-4r"></div>#}
-{#        <div class="row">#}
-{#            <div class="col-lg-1">#}
-{#                <div class="pic"></div>#}
-{#            </div>#}
-{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
-{#                <p style="margin-bottom: 0">Ankur Pandey<br>#}
-{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
-{#                    Batch 2015</p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="divider-4r"></div>#}
-{#        <div class="row">#}
-{#            <div class="col-lg-1">#}
-{#                <div class="pic"></div>#}
-{#            </div>#}
-{#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
-{#                <p style="margin-bottom: 0">Ankur Gupta<br>#}
-{#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
-{#                    Batch 2015</p>#}
-{#            </div>#}
-{#        </div>#}
+    <div id="search-results-right" class="col-lg-offset-1 col-lg-8" style="padding-top: 40px">
+        {#        <div class="row">#}
+        {#            <div class="col-lg-1">#}
+        {#                <div class="pic"></div>#}
+        {#            </div>#}
+        {#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+        {#                <p style="margin-bottom: 0">Ankur Sial<br>#}
+        {#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+        {#                    Batch 2015</p>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="divider-4r"></div>#}
+        {#        <div class="row">#}
+        {#            <div class="col-lg-1">#}
+        {#                <div class="pic"></div>#}
+        {#            </div>#}
+        {#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+        {#                <p style="margin-bottom: 0">Ankur Pandey<br>#}
+        {#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+        {#                    Batch 2015</p>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="divider-4r"></div>#}
+        {#        <div class="row">#}
+        {#            <div class="col-lg-1">#}
+        {#                <div class="pic"></div>#}
+        {#            </div>#}
+        {#            <div class="col-lg-10" style="padding: 5px 0 0 25px">#}
+        {#                <p style="margin-bottom: 0">Ankur Gupta<br>#}
+        {#                    Adobe &nbsp;| &nbsp;Senior Scientist<br>#}
+        {#                    Batch 2015</p>#}
+        {#            </div>#}
+        {#        </div>#}
 
     </div>
 {% endblock %}
