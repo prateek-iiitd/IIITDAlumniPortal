@@ -1,14 +1,21 @@
 {% extends 'profile_form.html' %}
 {% load socialaccount %}
 
-<style>
-    .input-form>div:nth-child(odd) {
-        background-color: #C00;
-    }
-    .input-form>div:nth-child(even) {
-        background-color: #DDD;
-    }
-</style>
+{% block additional_styling %}
+{#    <style>#}
+{#        .input-form > div:nth-child(odd) > div.col-lg-11 {#}
+{#            background-color: #EEE;#}
+{#            box-shadow: 0 0 0 10px #EEE;#}
+{#            border-radius: 1px;#}
+{#        }#}
+{##}
+{#        .input-form > div:nth-child(even) > div.col-lg-11 {#}
+{#            background-color: #DDD;#}
+{#            box-shadow: 0 0 0 10px #DDD;#}
+{#            border-radius: 1px;#}
+{#        }#}
+{#    </style>#}
+{% endblock %}
 
 {% block profile_form_left %}
     <h3>Work Details</h3>
@@ -18,110 +25,116 @@
           enctype="multipart/form-data" style="width: 600px;">
         {% csrf_token %}
 
-        <div id="form0" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; padding-bottom: 45px">
-            <div class="form-group input-group" id="id_form-0-title" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Title</span>
-                <input id="id_form-0-title" name="form-0-title" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="text">
+        <div class="row">
+            <div class="col-lg-1" style="text-align: center; padding: 101px 20px; font-size: 36px; color: #CCC">1.</div>
+            <div id="form0" class="col-lg-11"
+                 style="border-bottom: solid 1px #CCC; margin-bottom: 10px; padding-bottom: 20px">
+                <div class="form-group input-group" id="id_form-0-title" style="width: 600px;">
+                    <span class="input-group-addon" style="width: 140px;">Title</span>
+                    <input id="id_form-0-title" name="form-0-title" class="form-control"
+                           style="border-radius:0 5px 5px 0;"
+                           value="None" type="text">
+                </div>
+                <div class="form-group input-group" id="id_form-0-work_type" style="width: 600px;">
+                    <span class="input-group-addon" style="width: 140px;">Work type</span>
+                    <select id="id_form-0-work_type" name="form-0-work_type" class="form-control"
+                            style="border-radius: 0 5px 5px 0;">
+                        <option value="-1">Select Status</option>
+                    </select>
+                </div>
+                <div class="form-group input-group" id="id_form-0-start_date" style="width: 600px;">
+                    <span class="input-group-addon" style="width: 140px;">Start date</span>
+                    <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
+                           style="border-radius:0 5px 5px 0;" value="" type="date">
+                </div>
+                <div class="form-group input-group" id="id_form-0-end_date" style="width: 600px;">
+                    <span class="input-group-addon" style="width: 140px;">End date</span>
+                    <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
+                           style="border-radius:0 5px 5px 0;" value="" type="date">
+                </div>
+                <div class="form-group input-group" id="id_form-0-organisation" style="width: 600px;">
+                    <span class="input-group-addon" style="width: 140px;">Organisation</span>
+                    <input id="id_form-0-organisation" name="form-0-organisation" class="form-control"
+                           style="border-radius:0 5px 5px 0;" value="None" type="text">
+                </div>
+                <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">
+                    <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;"
+                           value="None" type="hidden">
+                </div>
             </div>
-            <div class="form-group input-group" id="id_form-0-work_type" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Work type</span>
-                <select id="id_form-0-work_type" name="form-0-work_type" class="form-control"
-                        style="border-radius: 0 5px 5px 0;">
-                    <option value="-1">Select Status</option>
-                </select>
-            </div>
-            <div class="form-group input-group" id="id_form-0-start_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Start date</span>
-                <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-0-end_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">End date</span>
-                <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-0-organisation" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Organisation</span>
-                <input id="id_form-0-organisation" name="form-0-organisation" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="None" type="text">
-            </div>
-            <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">
-                <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="hidden">
-            </div>
-            <div class="btn btn-warning btn-add" style="float: right;">Add
-            </div>
+        </div>
+        <div class="row">
+            <div class="btn btn-warning btn-add" style="display: inline-block; margin-left: 50%">Add</div>
         </div>
 
-        <div id="form1" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; padding-bottom: 45px; display: none">
-            <div class="form-group input-group" id="id_form-1-title" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Title</span>
-                <input id="id_form-1-title" name="form-1-title" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="text">
-            </div>
-            <div class="form-group input-group" id="id_form-1-work_type" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Work type</span>
-                <select id="id_form-1-work_type" name="form-1-work_type" class="form-control"
-                        style="border-radius: 0 5px 5px 0;">
-                    <option value="-1">Select Status</option>
-                </select>
-            </div>
-            <div class="form-group input-group" id="id_form-1-start_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Start date</span>
-                <input id="id_form-1-start_date" name="form-1-start_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-1-end_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">End date</span>
-                <input id="id_form-1-end_date" name="form-1-end_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-1-organisation" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Organisation</span>
-                <input id="id_form-1-organisation" name="form-1-organisation" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="None" type="text">
-            </div>
-            <div class="form-group input-group" id="id_form-1-id" style="width: 600px;">
-                <input id="id_form-1-id" name="form-1-id" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="hidden">
-            </div>
-            <div class="btn btn-warning btn-add" style="float: right;">Add
-            </div>
-        </div>
-        <div id="form2" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; display: none;">
-            <div class="form-group input-group" id="id_form-2-title" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Title</span>
-                <input id="id_form-2-title" name="form-2-title" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="text">
-            </div>
-            <div class="form-group input-group" id="id_form-2-work_type" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Work type</span>
-                <select id="id_form-2-work_type" name="form-2-work_type" class="form-control"
-                        style="border-radius: 0 5px 5px 0;">
-                    <option value="-1">Select Status</option>
-                </select>
-            </div>
-            <div class="form-group input-group" id="id_form-2-start_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Start date</span>
-                <input id="id_form-2-start_date" name="form-2-start_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-2-end_date" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">End date</span>
-                <input id="id_form-2-end_date" name="form-2-end_date" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="" type="date">
-            </div>
-            <div class="form-group input-group" id="id_form-2-organisation" style="width: 600px;">
-                <span class="input-group-addon" style="width: 140px;">Organisation</span>
-                <input id="id_form-2-organisation" name="form-2-organisation" class="form-control"
-                       style="border-radius:0 5px 5px 0;" value="None" type="text">
-            </div>
-            <div class="form-group input-group" id="id_form-2-id" style="width: 600px;">
-                <input id="id_form-2-id" name="form-2-id" class="form-control" style="border-radius:0 5px 5px 0;"
-                       value="None" type="hidden">
-            </div>
-        </div>
+{#        <div id="form1" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; padding-bottom: 45px; display: none">#}
+{#            <div class="form-group input-group" id="id_form-1-title" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Title</span>#}
+{#                <input id="id_form-1-title" name="form-1-title" class="form-control" style="border-radius:0 5px 5px 0;"#}
+{#                       value="None" type="text">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-1-work_type" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Work type</span>#}
+{#                <select id="id_form-1-work_type" name="form-1-work_type" class="form-control"#}
+{#                        style="border-radius: 0 5px 5px 0;">#}
+{#                    <option value="-1">Select Status</option>#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-1-start_date" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Start date</span>#}
+{#                <input id="id_form-1-start_date" name="form-1-start_date" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="" type="date">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-1-end_date" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">End date</span>#}
+{#                <input id="id_form-1-end_date" name="form-1-end_date" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="" type="date">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-1-organisation" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Organisation</span>#}
+{#                <input id="id_form-1-organisation" name="form-1-organisation" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="None" type="text">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-1-id" style="width: 600px;">#}
+{#                <input id="id_form-1-id" name="form-1-id" class="form-control" style="border-radius:0 5px 5px 0;"#}
+{#                       value="None" type="hidden">#}
+{#            </div>#}
+{#            <div class="btn btn-warning btn-add" style="float: right;">Add#}
+{#            </div>#}
+{#        </div>#}
+{#        <div id="form2" style="border-bottom: solid 1px #CCC; margin-bottom: 25px; display: none;">#}
+{#            <div class="form-group input-group" id="id_form-2-title" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Title</span>#}
+{#                <input id="id_form-2-title" name="form-2-title" class="form-control" style="border-radius:0 5px 5px 0;"#}
+{#                       value="None" type="text">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-2-work_type" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Work type</span>#}
+{#                <select id="id_form-2-work_type" name="form-2-work_type" class="form-control"#}
+{#                        style="border-radius: 0 5px 5px 0;">#}
+{#                    <option value="-1">Select Status</option>#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-2-start_date" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Start date</span>#}
+{#                <input id="id_form-2-start_date" name="form-2-start_date" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="" type="date">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-2-end_date" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">End date</span>#}
+{#                <input id="id_form-2-end_date" name="form-2-end_date" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="" type="date">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-2-organisation" style="width: 600px;">#}
+{#                <span class="input-group-addon" style="width: 140px;">Organisation</span>#}
+{#                <input id="id_form-2-organisation" name="form-2-organisation" class="form-control"#}
+{#                       style="border-radius:0 5px 5px 0;" value="None" type="text">#}
+{#            </div>#}
+{#            <div class="form-group input-group" id="id_form-2-id" style="width: 600px;">#}
+{#                <input id="id_form-2-id" name="form-2-id" class="form-control" style="border-radius:0 5px 5px 0;"#}
+{#                       value="None" type="hidden">#}
+{#            </div>#}
+{#        </div>#}
 
         <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
         </button>
@@ -132,7 +145,7 @@
 {% block profile_form_right %}
 {% endblock %}
 
-{% block scripts %}
+{% block additional_script %}
     <script type="text/javascript">
         $(document).ready(function () {
             // change the number in the line below to change current progress on the progress bar
@@ -146,15 +159,55 @@
             // JS to add more instances of the work-form using the ADD button
             counter = 1;
             $(".btn-add").click(function () {
-                $(this).hide();
-                $("#form".concat(counter - 1)).css("padding-bottom", "10px");
-                $("#form".concat(counter - 1)).css("background-color", "white");
-                $("#form".concat(counter - 1)).css("box-shadow", "none");
-                $("#form".concat(counter)).css("background-color", "#F4F4F4");
-                $("#form".concat(counter)).css("box-shadow", "0 0 3px 15px #F4F4F4");
-                $("#form".concat(counter)).slideDown("fast");
+{#                $("#form".concat(counter - 1)).css("padding-bottom", "10px");#}
+                {#                $("#form".concat(counter - 1)).css("background-color", "white");#}
+                {#                $("#form".concat(counter - 1)).css("box-shadow", "none");#}
+                {#                $("#form".concat(counter)).css("background-color", "#F4F4F4");#}
+                {#                $("#form".concat(counter)).css("box-shadow", "0 0 3px 15px #F4F4F4");#}
+{#                $("#form".concat(counter)).slideDown("fast");#}
 //        $("#form".concat(counter)).delay(5000).css("background-color", "white");
 //        $("#form".concat(counter)).delay(5000).css("box-shadow", "none");
+
+                //
+                $('#form'+(counter-1)).css("margin-bottom", "25px");
+                $('#form'+(counter-1)).after('<div class="row">\
+            <div class="col-lg-1" style="text-align: center; padding: 101px 20px; font-size: 36px; color: #CCC">'+(counter+1)+'.</div>\
+            <div id="form'+counter+'" class="col-lg-11" \
+                 style="border-bottom: solid 1px #CCC; margin-bottom: 10px; padding-bottom: 20px">\
+                <div class="form-group input-group" id="id_form-0-title" style="width: 600px;">\
+                    <span class="input-group-addon" style="width: 140px;">Title</span>\
+                    <input id="id_form-0-title" name="form-0-title" class="form-control"\
+                           style="border-radius:0 5px 5px 0;"\
+                           value="None" type="text">\
+                </div>\
+                <div class="form-group input-group" id="id_form-0-work_type" style="width: 600px;">\
+                    <span class="input-group-addon" style="width: 140px;">Work type</span>\
+                    <select id="id_form-0-work_type" name="form-0-work_type" class="form-control" \
+                            style="border-radius: 0 5px 5px 0;">\
+                        <option value="-1">Select Status</option>\
+                    </select>\
+                </div>\
+                <div class="form-group input-group" id="id_form-0-start_date" style="width: 600px;">\
+                    <span class="input-group-addon" style="width: 140px;">Start date</span>\
+                    <input id="id_form-0-start_date" name="form-0-start_date" class="form-control" \
+                           style="border-radius:0 5px 5px 0;" value="" type="date">\
+                </div>\
+                <div class="form-group input-group" id="id_form-0-end_date" style="width: 600px;">\
+                    <span class="input-group-addon" style="width: 140px;">End date</span>\
+                    <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"\
+                           style="border-radius:0 5px 5px 0;" value="" type="date">\
+                </div>\
+                <div class="form-group input-group" id="id_form-0-organisation" style="width: 600px;">\
+                    <span class="input-group-addon" style="width: 140px;">Organisation</span>\
+                    <input id="id_form-0-organisation" name="form-0-organisation" class="form-control" \
+                           style="border-radius:0 5px 5px 0;" value="None" type="text">\
+                </div>\
+                <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">\
+                    <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;" \
+                           value="None" type="hidden">\
+                </div>\
+            </div>\
+        </div>');
                 counter = counter + 1;
             });
         });

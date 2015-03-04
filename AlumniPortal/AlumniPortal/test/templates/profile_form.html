@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile.css">
+    {% block additional_styling %}{% endblock %}
 {% endblock %}
 
 {% block top_content %}
@@ -31,7 +32,6 @@
 {% block scripts %}
     <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/profile_form_work.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -48,4 +48,5 @@
             });
         });
     </script>
+    {% block additional_script %}{% endblock %}
 {% endblock %}
