@@ -76,6 +76,8 @@ def profile_edit_work_test(request):
     return render(request, 'profile_form_work.html', {'formset': formset2, 'visible_forms': visible_forms,
                                                       'work_values': work_type_values2})
 
+def work_details_html(request):
+    return render(request, 'profile_form_work_form.html')
 
 def profile_edit_education_test(request):
     return render(request, 'profile_form_education.html')

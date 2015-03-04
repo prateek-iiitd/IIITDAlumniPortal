@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^give_back/$', 'AlumniPortal.test.test_views.give_back'),
     url(r'^prototype_filter/$', 'AlumniPortal.test.test_views.prototype_filter'),
     url(r'^prototype_result/$', 'AlumniPortal.test.test_views.prototype_result'),
-)
+    url(r'^work_details_html/$', 'AlumniPortal.test.test_views.work_details_html'),
+    )
 
