@@ -33,6 +33,14 @@
     box-shadow: 0 2px 5px #DDD;
 }
 
+#search-results-right>h4:first-child {
+    padding-left: 30px;
+    color: #777;
+}
+#search-results-right>h4:first-child>span {
+    color: #444;
+}
+
 .glyphicon-envelope {
     cursor: pointer;
 }

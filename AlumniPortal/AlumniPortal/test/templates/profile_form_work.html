@@ -1,6 +1,15 @@
 {% extends 'profile_form.html' %}
 {% load socialaccount %}
 
+<style>
+    .input-form>div:nth-child(odd) {
+        background-color: #C00;
+    }
+    .input-form>div:nth-child(even) {
+        background-color: #DDD;
+    }
+</style>
+
 {% block profile_form_left %}
     <h3>Work Details</h3>
 

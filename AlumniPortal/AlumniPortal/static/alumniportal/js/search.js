@@ -14,6 +14,7 @@ $(document).ready(function () {
     });
     function displaySearchResults(response, status, xhr) {
         total_count = response['meta']['total_count']; // total number of search results to display
+        $('#search-results-right>h4:first-child>span').html(total_count);
         for (var counter=0; counter<total_count; counter++) {
             var student = response['objects'][counter];
             console.log(student);
@@ -48,7 +49,7 @@ $(document).ready(function () {
 
             profile_link = '/test/profile/';
 
-            $("#search-results-right").append('<a href="'+profile_link+'"><div class="row"><div class="col-lg-1"><div class="pic" style="background-image: url('+profile_photo+')"></div></div><div class="col-lg-10" style="padding: 5px 0 0 25px"><p style="margin-bottom: 0">'+first_name+' '+last_name+'<br>Backend &nbsp;| &nbsp;Noobs<br> '+graduation_year+'</p></div></div></a>');
+            $("#search-results-right").append('<a href="'+profile_link+'"><div class="row"><div class="col-lg-1"><div class="pic" style="background-image: url('+profile_photo+')"></div></div><div class="col-lg-10" style="padding: 5px 0 0 37px"><p style="margin-bottom: 0">'+first_name+' '+last_name+'<br>Backend &nbsp;| &nbsp;Noobs<br> '+graduation_year+'</p></div></div></a>');
         }
     }
 //    $("#search-results-right").append('<div class="row"><div class="col-lg-1"><div class="pic"></div></div><div class="col-lg-10" style="padding: 5px 0 0 25px"><p style="margin-bottom: 0">Sauhard Gupta<br>Adobe &nbsp;| &nbsp;Senior Scientist<br>Batch 2015</p></div></div><div class="divider-4r"></div>');
