@@ -1,5 +1,5 @@
 .pic {
-    background-image: url('../img/Ankur.jpg');
+    /*background-image: url('../img/Ankur.jpg');*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -26,10 +26,11 @@
 
 #search-results-right div.row {
 	padding: 20px 40px;
+    border-bottom: 1px solid #CCC;
 }
 #search-results-right div.row:hover {
-	background-color: #F4F4F4;
-	cursor: pointer;
+    background-color: #F4F4F4;
+    box-shadow: 0 2px 5px #DDD;
 }
 
 .glyphicon-envelope {
