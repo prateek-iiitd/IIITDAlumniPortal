@@ -22,36 +22,8 @@ $(document).ready(function () {
         else {
             graduation_year = 'Class of '+student['graduation_year'];
         }
-        if (!student['work_details']) {
-            work_details = '<br>';
-        }
-        else {
-            work_details = student['work_details'];
-            for (work_detail in student['work_details']) {
-                if (work_detail['is_current']) {
-                    if (!work_detail['organisation']['name']) {
-                        organisation = '';
-                    }
-                    else {
-                        organisation = work_detail['organisation']['name'];
-                    }
-                    if (!work_detail['title']) {
-                        designation = '<br>';
-                    }
-                    else {
-                        designation = ' &nbsp;| &nbsp;'+work_detail['title']+'<br>';
-                    }
-                }
-                else {
-                    organisation = '';
-                    designation = '<br>';
-                }
-            }
-        }
-        $("#banner>div.image>p").html('<span>'+student['first_name']+' '+student['last_name']+'</span><br>'
-                +organisation+designation
-                +graduation_year);
 
+        // setting social links
         if (student['linkedin_profile']=='') {
             linkedin_profile='';
         }
@@ -77,5 +49,76 @@ $(document).ready(function () {
             twitter_profile = '<a href="'+student['twitter_profile']+'"><div class="social-btns-tw"></div></a>';
         }
         $("div.social-btns").html(linkedin_profile+facebook_profile+google_profile+twitter_profile);
+
+        // setting work and education
+        if (!student['work_details']) {
+            work_details = '<br>';
+        }
+        else {
+            work_details = student['work_details'];
+            for (i=0; i<student['work_details'].length; i++) {
+                if (work_details[i]['is_current']) {
+                    if (!work_details[i]['organisation']['name']) {
+                        organisation = '';
+                    }
+                    else {
+                        organisation = work_details[i]['organisation']['name'];
+                    }
+                    if (!work_details[i]['title']) {
+                        designation = '<br>';
+                    }
+                    else {
+                        designation = ' &nbsp;| &nbsp;'+work_details[i]['title']+'<br>';
+                    }
+                    console.log(work_details[i]);
+                    break;
+                }
+                else {
+                    organisation = '';
+                    designation = '<br>';
+                }
+            }
+        }
+        $("#banner>div.image>p").html('<span>'+student['first_name']+' '+student['last_name']+'</span><br>'
+                +organisation+designation
+                +graduation_year);
+        for (i=0; i<student['work_details'].length; i++) {
+            if (!work_details[i]['organisation']['name']) {
+                organisation = '';
+            }
+            else {
+                organisation = work_details[i]['organisation']['name'];
+            }
+            if (!work_details[i]['title']) {
+                designation = '<br>';
+            }
+            else {
+                designation = work_details[i]['title'];
+            }
+            if (!work_details[i]['start_date'] && !work_details[i]['end_date']) {
+                start_date = '';
+                end_date = '';
+            }
+            else {
+                if (!work_details[i]['start_date']) {
+                    start_date = ', ';
+                }
+                else {
+                    start_date = ', '+work_details[i]['start_date'];
+                }
+                if (!work_details[i]['end_date']) {
+                    end_date = ' - ';
+                }
+                else {
+                    end_date = ' - '+work_details[i]['end_date'];
+                }
+            }
+            $('div.work-and-education>div.row:first-child').append('\
+                <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;" class="h4-big">\
+                    <h4>'+organisation+'</h4>\
+                    <span>'+designation+start_date+end_date+'</span>\
+                </div>\
+                ');
+        }
     }
 });
