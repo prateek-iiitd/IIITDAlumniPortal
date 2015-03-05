@@ -35,10 +35,10 @@ $(document).ready(function () {
             }
             // WORKPLACE HERE??? BACKEND NOOBS FFS!
             if (!student['graduation_year']) {
-                graduation_year = '';
+                graduation_year = '<br>';
             }
             else {
-                graduation_year = 'Batch '+student['graduation_year'];
+                graduation_year = 'Class of '+student['graduation_year'];
             }
             if (!student['profile_photo']) {
                 profile_photo = STATIC_URL+'alumniportal/img/user.jpg';
