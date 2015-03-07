@@ -102,15 +102,17 @@ $(document).ready(function () {
             else {
                 if (!work_details[i]['start_date']) {
                     start_date = ', ';
+                    end_date = ' Till '+work_details[i]['end_date'];
                 }
                 else {
-                    start_date = ', '+work_details[i]['start_date'];
-                }
-                if (!work_details[i]['end_date']) {
-                    end_date = ' - ';
-                }
-                else {
-                    end_date = ' - '+work_details[i]['end_date'];
+                    if (!work_details[i]['end_date']) {
+                        start_date = ', Started ' + work_details[i]['start_date'];
+                        end_date = '';
+                    }
+                    else {
+                        start_date = ', ' + work_details[i]['start_date'];
+                        end_date = ' - ' + work_details[i]['end_date'];
+                    }
                 }
             }
             $('div.work-and-education>div.row:first-child').append('\
