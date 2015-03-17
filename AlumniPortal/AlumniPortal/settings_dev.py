@@ -161,8 +161,10 @@ SOCIALACCOUNT_PROVIDERS = \
     }
 
 
+ACCOUNT_ADAPTER = "AlumniPortal.adapter.AccountAdapter"
 ACCOUNT_LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = "/"
+LINKEDIN_LINK_URL = "/test/profile/link/"
 AUTH_USER_MODEL = 'AlumniPortal.AlumniUser'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'

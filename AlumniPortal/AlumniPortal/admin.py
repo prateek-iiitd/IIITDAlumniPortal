@@ -1,7 +1,7 @@
 __author__ = 'Prateek'
 
 from models import Award, NewsArticle, Degree, Student, Event, ContactPerson, ConvocationAward, Coordinator, \
-    SpecialisationStream, Feedback
+    SpecialisationStream, Feedback, Location, Country
 from models import AlumniUser, DegreeType, WorkType, WorkDetail, EducationDetail, Organisation, School
 
 from django.contrib import admin
@@ -27,6 +27,8 @@ admin.site.register(WorkDetail)
 admin.site.register(EducationDetail)
 admin.site.register(Organisation)
 admin.site.register(School)
+admin.site.register(Country)
+admin.site.register(Location)
 
 
 class UserChangeForm(forms.ModelForm):
@@ -53,8 +55,8 @@ class MyUserAdmin(UserAdmin):
         (None, {'fields': ('email', )}),
         ('Personal info',
          {'fields': ('first_name', 'last_name', 'gender', 'facebook_profile', 'linkedin_profile', 'google_profile',
-                     'twitter_profile', 'homepage', 'marital_status', 'profile_photo', 'education', 'work_experience',
-                     'graduation_year')}),
+                     'twitter_profile', 'homepage', 'marital_status', 'profile_photo', 'graduation_year',
+                     'current_location', 'personal_email')}),
     )
 
     add_fieldsets = (

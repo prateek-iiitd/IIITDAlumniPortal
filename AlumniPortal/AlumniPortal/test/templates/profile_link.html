@@ -3,21 +3,19 @@
 {% load socialaccount %}
 
 {% block profile_form_left %}
-    <div id="linkprofile">
-        <div class="row">
-            <h3 style="color: #333; font-weight: normal">
-                Click here to fetch your &nbsp;<img src="{{ STATIC_URL }}alumniportal/img/LinkedIn.png" height="34px"
-                                                    width="143px"> profile!
-            </h3>
-        </div>
-        <br>
+    <a href="{% provider_login_url "linkedin" process="connect" next="/test/profile/edit/personal" %}" style="text-decoration: none">
+        <div id="linkprofile">
+            <div class="row">
+                <h3 style="color: #333; font-weight: normal">
+                    Click here to fetch your &nbsp;<img src="{{ STATIC_URL }}alumniportal/img/LinkedIn.png"
+                                                        height="34px"
+                                                        width="143px"> profile!
+                </h3>
+            </div>
+            <br>
 
-        {#        <div class="row" style="text-align: center">#}
-        {#            <a href="{% provider_login_url "linkedin" process="connect" next="/test/profile/edit/personal" %}"><div id="linkedin">#}
-        {#                <div></div>#}
-        {#            </div></a>#}
-        {#        </div>#}
-    </div>
+        </div>
+    </a>
 {% endblock %}
 
 {% block profile_form_right %}
@@ -36,7 +34,7 @@
 
 {% block scripts %}
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('active');
         });

@@ -1,14 +1,18 @@
 {% extends 'profile_form.html' %}
 {% load socialaccount %}
 
+{% block additional_styling %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}selectize/css/selectize.css">
+    <script src="{{ STATIC_URL }}pace/js/pace.min.js"></script>
+    <link href="{{ STATIC_URL }}pace/css/pace-flash.css" rel="stylesheet"/>
+{% endblock %}
+
 {% block profile_form_left %}
     <h3>Personal Details</h3>
 
-    <form class="row input-form" action="/test/profile/edit/work/" method="post"
-          enctype="multipart/form-data" style="width: 600px;">
-    <input type='hidden' name='csrfmiddlewaretoken' value='sRwG0zEZ16vYUWYPajR9SfAKscwySY6E'/>
+    <form class="row input-form" style="width: 600px;">
 
-    <div class="form-group input-group pull-left" id="" style="width: 600px;">
+    <div class="form-group input-group" id="" style="width: 600px;">
 
         <span class="input-group-addon" style="width: 140px;">Name</span>
         <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;"
@@ -27,15 +31,15 @@
         <input id="id_email"
                name="email"
                type="text" class="form-control"
-               style="border-radius:0 5px 5px 0;">
+               style="border-radius:0 5px 5px 0;"
+               disabled>
         </input>
     </div>
 
 
     <div id="id_personal_email_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        Please check the email address.
     </div>
 
     <div class="form-group input-group" id="id_personal_email" style="width: 600px;">
@@ -44,14 +48,14 @@
         <input id="id_personal_email"
                name="personal_email"
                type="text" class="form-control"
-               style="border-radius:0 5px 5px 0;">
+               style="border-radius:0 5px 5px 0;"
+               required>
         </input>
     </div>
 
 
     <div id="id_gender_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside">
 
     </div>
 
@@ -63,20 +67,18 @@
         <select id="id_gender" name="gender"
                 class="form-control"
                 style="border-radius: 0 5px 5px 0;">
-            <option value="-1">Select Gender</option>
+            <option value="F">Female</option>
 
-            <option value="Female">Female</option>
+            <option value="M">Male</option>
 
-            <option value="Male">Male</option>
-
-            <option value="Other">Other</option>
+            <option value="O">Other</option>
 
         </select>
     </div>
 
 
     <div id="id_marital_status_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside">
         <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
 
     </div>
@@ -89,245 +91,42 @@
         <select id="id_marital_status" name="marital_status"
                 class="form-control"
                 style="border-radius: 0 5px 5px 0;">
-            <option value="-1">Select Status</option>
 
-            <option value="Single">Single</option>
-
-            <option value="Married">Married</option>
+            <option value="S">Single</option>
+            <option value="M">Married</option>
 
         </select>
     </div>
 
 
-    <div id="id_profile_photo_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+    <div class="row" style="height: 20px;margin: 30px 0 40px;">
+        <div class="col-lg-3 divider-4r"></div>
+        <div class="col-lg-6 text-center" style="font-size: 20px;color: #666666">
+            Location
+        </div>
+        <div class="col-lg-3 divider-4r"></div>
     </div>
 
-    <div class="form-group input-group" id="id_profile_photo" style="width: 600px;">
+    <div class="row" style="padding-left: 14px; padding-right: 14px">
+        <div class="pull-left" id="" style="width: 280px;">
 
-        <span class="input-group-addon" style="width: 140px;">Profile photo</span>
-        <input id="id_profile_photo"
-               name="profile_photo"
-               type="file" class="form-control"
-               style="border-radius:0 5px 5px 0;">
-        </input>
-    </div>
+            {#        <span class="input-group-addon" style="width: 140px;">City</span>#}
+            {#        <input id="id_city" name="city" type="text" class="form-control" style="border-radius:0 5px 5px 0;">#}
+            <span class="" style="width: 140px;">Current city</span>
 
+            <select id="id_city" placeholder="Enter your city...">
+            </select>
+        </div>
 
-    Current Location
-    <br/>
+        {#    <div class="form-group input-group pull-right" id="" style="width: 280px;">#}
+        <div class="pull-right" style="width: 280px;">
 
-    <div class="form-group input-group pull-left" id="" style="width: 280px;">
+            <span class="" style="width: 140px;">Current country</span>
 
-        <span class="input-group-addon" style="width: 140px;">City</span>
-        <input id="id_city" name="city" type="text" class="form-control" style="border-radius:0 5px 5px 0;">
-    </div>
+            <select id="id_country" placeholder="Select a country...">
+            </select>
 
-    <div class="form-group input-group pull-right" id="" style="width: 280px;">
-
-    <span class="input-group-addon" style="width: 140px;">Country</span>
-
-    <input id="id_country_name" name="country_name" type="text" class="form-control" list="country"
-           style="border-radius:0 5px 5px 0;"/>
-    <datalist id="country" style="padding: 10px;margin:10px;">
-        <option value="Afghanistan">
-        <option value="Albania">
-        <option value="Algeria">
-        <option value="Andorra">
-        <option value="Angola">
-        <option value="Antigua & Deps">
-        <option value="Argentina">
-        <option value="Armenia">
-        <option value="Australia">
-        <option value="Austria">
-        <option value="Azerbaijan">
-        <option value="Bahamas">
-        <option value="Bahrain">
-        <option value="Bangladesh">
-        <option value="Barbados">
-        <option value="Belarus">
-        <option value="Belgium">
-        <option value="Belize">
-        <option value="Benin">
-        <option value="Bhutan">
-        <option value="Bolivia">
-        <option value="Bosnia Herzegovina">
-        <option value="Botswana">
-        <option value="Brazil">
-        <option value="Brunei">
-        <option value="Bulgaria">
-        <option value="Burkina">
-        <option value="Burundi">
-        <option value="Cambodia">
-        <option value="Cameroon">
-        <option value="Canada">
-        <option value="Cape Verde">
-        <option value="Central African Rep">
-        <option value="Chad">
-        <option value="Chile">
-        <option value="China">
-        <option value="Colombia">
-        <option value="Comoros">
-        <option value="Congo">
-        <option value="Congo {Democratic Rep}">
-        <option value="Costa Rica">
-        <option value="Croatia">
-        <option value="Cuba">
-        <option value="Cyprus">
-        <option value="Czech Republic">
-        <option value="Denmark">
-        <option value="Djibouti">
-        <option value="Dominica">
-        <option value="Dominican Republic">
-        <option value="Timor Leste">
-        <option value="Ecuador">
-        <option value="Egypt">
-        <option value="El Salvador">
-        <option value="Equatorial Guinea">
-        <option value="Eritrea">
-        <option value="Estonia">
-        <option value="Ethiopia">
-        <option value="Fiji">
-        <option value="Finland">
-        <option value="France">
-        <option value="Gabon">
-        <option value="Gambia">
-        <option value="Georgia">
-        <option value="Germany">
-        <option value="Ghana">
-        <option value="Greece">
-        <option value="Grenada">
-        <option value="Guatemala">
-        <option value="Guinea">
-        <option value="Guinea-Bissau">
-        <option value="Guyana">
-        <option value="Haiti">
-        <option value="Honduras">
-        <option value="Hungary">
-        <option value="Iceland">
-        <option value="India">
-        <option value="Indonesia">
-        <option value="Iran">
-        <option value="Iraq">
-        <option value="Ireland {Republic}">
-        <option value="Israel">
-        <option value="Italy">
-        <option value="Ivory Coast">
-        <option value="Jamaica">
-        <option value="Japan">
-        <option value="Jordan">
-        <option value="Kazakhstan">
-        <option value="Kenya">
-        <option value="Kiribati">
-        <option value="Korea North">
-        <option value="Korea South">
-        <option value="Kuwait">
-        <option value="Kyrgyzstan">
-        <option value="Laos">
-        <option value="Latvia">
-        <option value="Lebanon">
-        <option value="Lesotho">
-        <option value="Liberia">
-        <option value="Libya">
-        <option value="Liechtenstein">
-        <option value="Lithuania">
-        <option value="Luxembourg">
-        <option value="Macedonia">
-        <option value="Madagascar">
-        <option value="Malawi">
-        <option value="Malaysia">
-        <option value="Maldives">
-        <option value="Mali">
-        <option value="Malta">
-        <option value="Marshall Islands">
-        <option value="Mauritania">
-        <option value="Mauritius">
-        <option value="Mexico">
-        <option value="Micronesia">
-        <option value="Moldova">
-        <option value="Monaco">
-        <option value="Mongolia">
-        <option value="Montenegro">
-        <option value="Morocco">
-        <option value="Mozambique">
-        <option value="Myanmar, {Burma}">
-        <option value="Namibia">
-        <option value="Nauru">
-        <option value="Nepal">
-        <option value="Netherlands">
-        <option value="New Zealand">
-        <option value="Nicaragua">
-        <option value="Niger">
-        <option value="Nigeria">
-        <option value="Norway">
-        <option value="Oman">
-        <option value="Pakistan">
-        <option value="Palau">
-        <option value="Panama">
-        <option value="Papua New Guinea">
-        <option value="Paraguay">
-        <option value="Peru">
-        <option value="Philippines">
-        <option value="Poland">
-        <option value="Portugal">
-        <option value="Qatar">
-        <option value="Romania">
-        <option value="Russian Federation">
-        <option value="Rwanda">
-        <option value="St Kitts & Nevis">
-        <option value="St Lucia">
-        <option value="Saint Vincent & the Grenadines">
-        <option value="Samoa">
-        <option value="San Marino">
-        <option value="Sao Tome & Principe">
-        <option value="Saudi Arabia">
-        <option value="Senegal">
-        <option value="Serbia">
-        <option value="Seychelles">
-        <option value="Sierra Leone">
-        <option value="Singapore">
-        <option value="Slovakia">
-        <option value="Slovenia">
-        <option value="Solomon Islands">
-        <option value="Somalia">
-        <option value="South Africa">
-        <option value="Spain">
-        <option value="Sri Lanka">
-        <option value="Sudan">
-        <option value="Suriname">
-        <option value="Swaziland">
-        <option value="Sweden">
-        <option value="Switzerland">
-        <option value="Syria">
-        <option value="Taiwan">
-        <option value="Tajikistan">
-        <option value="Tanzania">
-        <option value="Thailand">
-        <option value="Togo">
-        <option value="Tonga">
-        <option value="Trinidad & Tobago">
-        <option value="Tunisia">
-        <option value="Turkey">
-        <option value="Turkmenistan">
-        <option value="Tuvalu">
-        <option value="Uganda">
-        <option value="Ukraine">
-        <option value="United Arab Emirates">
-        <option value="United Kingdom">
-        <option value="United States of America">
-        <option value="Uruguay">
-        <option value="Uzbekistan">
-        <option value="Vanuatu">
-        <option value="Vatican City">
-        <option value="Venezuela">
-        <option value="Vietnam">
-        <option value="Yemen">
-        <option value="Zambia">
-        <option value="Zimbabwe">
-    </datalist>
-
+        </div>
     </div>
 
 
@@ -335,9 +134,8 @@
 
 
     <div id="id_linkedin_profile_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        That does not seem like a LinkedIn account
     </div>
 
     <div class="form-group input-group" id="id_linkedin_profile" style="width: 600px;">
@@ -352,9 +150,8 @@
 
 
     <div id="id_facebook_profile_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        That does not seem like a Facebook account
     </div>
 
     <div class="form-group input-group" id="id_facebook_profile" style="width: 600px;">
@@ -369,9 +166,8 @@
 
 
     <div id="id_google_profile_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        That does not seem like a Google Plus account
     </div>
 
     <div class="form-group input-group" id="id_google_profile" style="width: 600px;">
@@ -386,9 +182,8 @@
 
 
     <div id="id_twitter_profile_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        That does not seem like a Twitter account
     </div>
 
     <div class="form-group input-group" id="id_twitter_profile" style="width: 600px;">
@@ -403,9 +198,8 @@
 
 
     <div id="id_homepage_errors"
-         style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">
-        <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->
-
+         style="color: #C33; margin: 0 0 -10px 150px; list-style: none inside; display: none">
+        That does not seem like a valid URL.
     </div>
 
     <div class="form-group input-group" id="id_homepage" style="width: 600px;">
@@ -419,85 +213,311 @@
     </div>
 
 
-    <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>
-    </button>
+    <button type="button" class="btn btn-warning pull-right" onclick="nextButtonClicked()">Next</button>
     </form>
-    {##}
-    {#    <form class="row input-form" action="/test/profile/edit/work/" method="post"#}
-    {#          enctype="multipart/form-data" style="width: 600px;">#}
-    {#        {% csrf_token %}#}
-    {#        <div class="form-group input-group pull-left" id="{{ field.auto_id }}" style="width: 600px;">#}
-    {#            {{ field.help_text }}#}
-    {#            <span class="input-group-addon" style="width: 140px;">Name</span>#}
-    {#            <input id="id_name" name="name" type="text" class="form-control" style="border-radius:0 5px 5px 0;" value="{{ user.first_name }} {{ user.last_name }}" disabled>#}
-    {#        </div>#}
-    {##}
-    {#        {% for field in form %}#}
-    {#            <div id="{{ field.auto_id }}_errors"#}
-    {#                 style="color: #C33; margin: 0 0 -10px 115px; list-style: none inside">#}
-    {#                <!--style="color: #C00; margin: 15px 0 -10px 0px; padding: 10px 0 0 10px; border: 1px solid #CCC; border-radius: 5px; background-color: #DDD; list-style: none inside"-->#}
-    {#                {{ field.errors }}#}
-    {#            </div>#}
-    {#            {% if field.id_for_label == "id_gender" %}#}
-    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
-    {##}
-    {#                    {{ field.help_text }}#}
-    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
-    {##}
-    {#                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"#}
-    {#                            class="form-control"#}
-    {#                            style="border-radius: 0 5px 5px 0;">#}
-    {#                        <option value="-1">Select Gender</option>#}
-    {#                        {% for gender in gender_values %}#}
-    {#                            <option value="{{ gender }}">{{ gender }}</option>#}
-    {#                        {% endfor %}#}
-    {#                    </select>#}
-    {#                </div>#}
-    {#            {% elif  field.id_for_label == "id_marital_status" %}#}
-    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
-    {##}
-    {#                    {{ field.help_text }}#}
-    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
-    {##}
-    {#                    <select id="{{ field.id_for_label }}" name="{{ field.html_name }}"#}
-    {#                            class="form-control"#}
-    {#                            style="border-radius: 0 5px 5px 0;">#}
-    {#                        <option value="-1">Select Status</option>#}
-    {#                        {% for marital_status in marital_status_values %}#}
-    {#                            <option value="{{ marital_status }}">{{ marital_status }}</option>#}
-    {#                        {% endfor %}#}
-    {#                    </select>#}
-    {#                </div>#}
-    {#            {% else %}#}
-    {#                <div class="form-group input-group" id="{{ field.auto_id }}" style="width: 600px;">#}
-    {#                    {{ field.help_text }}#}
-    {#                    <span class="input-group-addon" style="width: 140px;">{{ field.label }}</span>#}
-    {#                    <{{ field.field.widget.attrs.html_tag }} id="{{ field.id_for_label }}"#}
-    {#                    name="{{ field.html_name }}"#}
-    {#                    type="{{ field.field.widget.attrs.html_type }}" class="form-control"#}
-    {#                    style="border-radius:0 5px 5px 0;">#}
-    {#                </{{ field.field.widget.attrs.html_tag }}>#}
-    {#                </div>#}
-    {##}
-    {#            {% endif %}#}
-    {#        {% endfor %}#}
-    {##}
-    {#        <button type="" class="btn btn-warning pull-right"><a href="/test/profile/edit/work/">Next</a>#}
-    {#        </button>#}
-    {#    </form>#}
 
 {% endblock %}
 
 {% block profile_form_right %}
+    <div class="col-lg-4" style="padding-top: 90px">
+        <div id="id_profile_photo_change"
+             style="height: 300px; width: 300px; position: absolute; margin-left: -30px; border-radius: 50%; overflow: auto"/>
+        <div style="height: 25%; width: 100%; bottom: 0;background-color: rgba(44, 44, 44, 0.8); position: absolute; bottom: 0; text-align: center; font-size: 30px; color: #CCC; padding-top: 20px;">
+            <span class="glyphicon glyphicon-upload" style="cursor: pointer"></span> | <span
+                class="glyphicon glyphicon-remove" style="cursor: pointer"></span></div>
+    </div>
+    <div id="id_profile_photo"
+         style="height: 300px; width: 300px; background-image: url('{{ STATIC_URL }}alumniportal/img/user.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; border-radius: 50%; border: 1px solid #AAA; margin-left: -30px;"></div>
+    </div>
+
+    <div class="form-group input-group" id="id_profile_photo_div">
+        <input id="id_profile_photo_input" name="profile_photo" type="file" style="display: none">
+        </input>
+    </div>
+
 {% endblock %}
 
 {% block scripts %}
+    <script>
+        Pace.on('start', function () {
+            $('#loading-overlay').css('display', 'block');
+        });
+        Pace.on('done', function () {
+            $('#loading-overlay').css('display', 'none');
+        });
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}selectize/js/standalone/selectize.js"></script>
     <script type="text/javascript">
+        var user_data = {};
         $(document).ready(function () {
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('active');
             // adding class "visited" to all nodes before current active progress
             $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
+            document.getElementById('id_profile_photo_input').addEventListener('change', handleFileSelect, false);
+            fetchCountryList();
+            fetchCityList();
+            fetchProfileData();
+            $('#id_profile_photo_change').css('opacity', '0');
+            $('#id_profile_photo_change').mouseenter(function () {
+                $('#id_profile_photo_change').css('opacity', '1');
+            });
+            $('#id_profile_photo_change').mouseleave(function () {
+                $('#id_profile_photo_change').css('opacity', '0');
+            });
+            $('#id_profile_photo_change>div>span:first-child').mouseenter(function () {
+                $(this).css('color', 'white')
+            });
+            $('#id_profile_photo_change>div>span:first-child').mouseleave(function () {
+                $(this).css('color', '#CCC')
+            });
+            $('#id_profile_photo_change>div>span:last-child').mouseenter(function () {
+                $(this).css('color', 'red')
+            });
+            $('#id_profile_photo_change>div>span:last-child').mouseleave(function () {
+                $(this).css('color', '#CCC')
+            });
+            $('#id_profile_photo_change>div>span:first-child').click(function () {
+                $('#id_profile_photo_input').click();
+            });
+            $('#id_profile_photo_change>div>span:last-child').click(function () {
+                $('#id_profile_photo').css('background-image', 'url({{ STATIC_URL }}alumniportal/img/user.jpg)');
+                new_img_64b = "";
+            });
         });
     </script>
+
+    {% block additional_script %}
+        <script type="text/javascript">
+
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        function fetchCountryList() {
+            $.ajax({
+                url: "/api/v1/country/?format=json",
+                type: "GET",
+                dataType: "json",
+                success: function (response, status, xhr) {
+                    country_data = response['objects'];
+                    populateCountrySelectList();
+                },
+                error: function (xhr, status, error) {
+                    console.log(status + ' ' + error);
+                }
+            });
+        }
+
+        function fetchCityList() {
+            $.ajax({
+                url: "/api/v1/city/?format=json",
+                type: "GET",
+                dataType: "json",
+                success: function (response, status, xhr) {
+                    city_data = response['objects'];
+                    populateCitySelectList();
+                },
+                error: function (xhr, status, error) {
+                    console.log(status + ' ' + error);
+                }
+            });
+        }
+
+        {#    Fetch USER Details using the API.#}
+        function fetchProfileData() {
+            $.ajax({
+                url: "/api/v1/current/?format=json",
+                type: "GET",
+                dataType: "json",
+                success: function (response, status, xhr) {
+                    user_data = response['objects'][0];
+                    populateUserData();
+                },
+                error: function (xhr, status, error) {
+                    console.log(status + ' ' + error);
+                }
+            });
+        }
+        {#    Function to populate the HTML form with user data received from the API.#}
+        function populateUserData() {
+            first_name = user_data['first_name'];
+            last_name = user_data['last_name'];
+            display_name = first_name + " " + last_name;
+
+            $('input#id_name').val(display_name);
+            $('input#id_email').val(user_data['email']);
+            $('input#id_personal_email').val(user_data['personal_email']);
+
+            $('select#id_gender').val(user_data['gender']);
+            $('select#id_marital_status').val(user_data['marital_status']);
+
+            if (user_data['profile_photo']) {
+                image_content_type = user_data['profile_photo']['content-type'];
+                image_data = user_data['profile_photo']['file'];
+                image_b64_url = 'data:' + image_content_type + ';base64,' + image_data;
+                $('#id_profile_photo').css("background-image", "url('" + image_b64_url.replace(/(\r\n|\n|\r)/gm, "") + "')");
+            }
+
+            $('input#id_linkedin_profile').val(user_data['linkedin_profile']);
+            $('input#id_facebook_profile').val(user_data['facebook_profile']);
+            $('input#id_twitter_profile').val(user_data['twitter_profile']);
+            $('input#id_google_profile').val(user_data['google_profile']);
+            $('input#id_homepage').val(user_data['homepage']);
+
+        }
+
+        function populateCountrySelectList() {
+            for (i = 0; i < country_data.length; i++) {
+                country_name = country_data[i]['name'];
+                country_uri = country_data[i]['resource_uri'];
+                $('#id_country').append($('<option>', {
+                    value: country_uri,
+                    text: country_name
+                }));
+            }
+            $('#id_country').selectize({
+                create: false,
+                sortField: 'text'
+            });
+        }
+
+        function populateCitySelectList() {
+            for (i = 0; i < city_data.length; i++) {
+                city_name = city_data[i]['city'];
+                $('#id_city').append($('<option>', {
+                    value: city_name,
+                    text: city_name
+                }));
+            }
+            $('#id_city').selectize({
+                create: true,
+                persist: false,
+                sortField: 'text'
+            });
+
+        }
+
+        var handleFileSelect = function (evt) {
+            var files = evt.target.files;
+            var file = files[0];
+
+            if (files && file) {
+                var reader = new FileReader();
+
+                reader.onload = function (readerEvt) {
+                    var binaryString = readerEvt.target.result;
+                    b64image = btoa(binaryString);
+                    content_type = file['type'];
+                    new_img_64b = 'data:' + content_type + ';base64,' + b64image;
+
+                    $('#id_profile_photo').css("background-image", "url('" + new_img_64b.replace(/(\r\n|\n|\r)/gm, "") + "')");
+                };
+
+                reader.readAsBinaryString(file);
+            }
+        };
+
+        $('#id_personal_email').focusout(function () {
+            console.log("Focus Out!");
+            var email_add = $('input#id_personal_email').val();
+            if (email_add != "") {
+                if (!isEmail(email_add)) {
+                    console.log("Email not valid.");
+                    $('#id_personal_email_errors').css('display', 'block');
+                    $('input#id_personal_email').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_personal_email').focusin(function () {
+            $('#id_personal_email_errors').css('display', 'none');
+            $('input#id_personal_email').css('border', '1px solid #CCC');
+        });
+
+        $('#id_facebook_profile').focusout(function () {
+            var fb_url = $('input#id_facebook_profile').val();
+            if (fb_url != "") {
+                if (fb_url.toLowerCase().indexOf('facebook.com') == -1) {
+                    $('#id_facebook_profile_errors').css('display', 'block');
+                    $('input#id_facebook_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_facebook_profile').focusin(function () {
+            $('#id_facebook_profile_errors').css('display', 'none');
+            $('input#id_facebook_profile').css('border', '1px solid #CCC');
+        });
+
+        $('#id_google_profile').focusout(function () {
+            var google_url = $('input#id_google_profile').val();
+            if (google_url != "") {
+                if (google_url.toLowerCase().indexOf('plus.google.com') == -1) {
+                    $('#id_google_profile_errors').css('display', 'block');
+                    $('input#id_google_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_google_profile').focusin(function () {
+            $('#id_google_profile_errors').css('display', 'none');
+            $('input#id_google_profile').css('border', '1px solid #CCC');
+        });
+
+        $('#id_twitter_profile').focusout(function () {
+            var twitter_url = $('input#id_twitter_profile').val();
+            if (twitter_url != "") {
+                if (twitter_url.toLowerCase().indexOf('twitter.com') == -1) {
+                    $('#id_twitter_profile_errors').css('display', 'block');
+                    $('input#id_twitter_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_twitter_profile').focusin(function () {
+            $('#id_twitter_profile_errors').css('display', 'none');
+            $('input#id_twitter_profile').css('border', '1px solid #CCC');
+        });
+
+        $('#id_linkedin_profile').focusout(function () {
+            var lin_url = $('input#id_linkedin_profile').val();
+            if (lin_url != "") {
+                if (lin_url.toLowerCase().indexOf('linkedin.com') == -1) {
+                    $('#id_linkedin_profile_errors').css('display', 'block');
+                    $('input#id_linkedin_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_linkedin_profile').focusin(function () {
+            $('#id_linkedin_profile_errors').css('display', 'none');
+            $('input#id_linkedin_profile').css('border', '1px solid #CCC');
+        });
+
+        $('#id_homepage').focusout(function () {
+            var hp = $('input#id_homepage').val();
+            if (hp != "") {
+                if (hp.toLowerCase().indexOf('.') == -1) {
+                    $('#id_homepage_errors').css('display', 'block');
+                    $('input#id_homepage').css('border', '1px solid #A00');
+                }
+
+            }
+        });
+        $('#id_homepage').focusin(function () {
+            $('#id_homepage_errors').css('display', 'none');
+            $('input#id_homepage').css('border', '1px solid #CCC');
+        });
+
+        function nextButtonClicked() {
+
+        }
+        </script>
+
+    {% endblock %}
+
 {% endblock %}
+
+

@@ -48,33 +48,7 @@ def profile_edit_personal_test(request):
 
 
 def profile_edit_work_test(request):
-    WorkDetailSet = modelformset_factory(WorkDetail, extra=10, max_num=10,
-         # widgets={
-         #     'degree_name': forms.TextInput(
-         #         attrs={'html_type': "text", "html_tag": "input"}),
-         #     'degree_type': forms.Select(
-         #         attrs={'html_type': "text", "html_tag": "input"}),
-         #     'field_of_study': forms.TextInput(
-         #         attrs={'html_type': "text", "html_tag": "input"}),
-         #     'start_date': forms.DateInput(
-         #         attrs={'html_type': "date", "html_tag": "input"}),
-         #     'end_date': forms.DateInput(
-         #         attrs={'html_type': "date", "html_tag": "input"}),
-         #     'school': forms.TextInput(attrs={'html_type': "text", "html_tag": "input"})
-         # }
-         form=WorkDetailForm, fields=('title', 'work_type', 'start_date', 'end_date', 'organisation'))
-    formset2 = WorkDetailSet(queryset=request.user.work_experience.all())
-    visible_forms = 3
-    work_type_values = WorkType.objects.order_by('id').values_list('name').distinct()
-
-    work_type_values2 = []
-    for ndx in range(len(work_type_values)):
-        for choise in WORK_TYPE_CHOICES:
-            if choise[0] == str(work_type_values[ndx][0]):
-                work_type_values2 += [(choise[0], choise[1])]
-    print str(formset2)
-    return render(request, 'profile_form_work.html', {'formset': formset2, 'visible_forms': visible_forms,
-                                                      'work_values': work_type_values2})
+    return render(request, 'profile_form_work.html')
 
 def work_details_html(request):
     return render(request, 'profile_form_work_form.html')

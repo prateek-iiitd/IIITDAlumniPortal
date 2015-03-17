@@ -1,6 +1,21 @@
 from django.conf.urls import patterns, include, url
 from AlumniPortal import settings_dev
 from django.contrib import admin
+from tastypie.api import Api
+from api import *
+
+
+v1_api = Api(api_name='v1')
+v1_api.register(OrganisationResource())
+v1_api.register(SchoolResource())
+v1_api.register(CountryResource())
+v1_api.register(LocationResource())
+v1_api.register(CityResource())
+
+v1_api.register(CurrentProfileResource())
+# v1_api.register(EducationResource())
+
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -24,6 +39,7 @@ urlpatterns = patterns('',
     url(r'^admin_forms/add_directory/$', 'AlumniPortal.views.add_directory'),
     url(r'^admin_forms/add_blog/$', 'AlumniPortal.views.add_blog'),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^api/', include(v1_api.urls)),
 )
 
 if settings_dev.DEBUG:

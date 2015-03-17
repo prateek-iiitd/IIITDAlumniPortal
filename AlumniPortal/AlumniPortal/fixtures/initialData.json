@@ -98,5 +98,86 @@
             "name": "M.Tech.",
             "branch": 1
         }
+    },
+
+    {
+        "pk": 1,
+        "model": "AlumniPortal.degreetype",
+        "fields": {
+            "name": "UG",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 2,
+        "model": "AlumniPortal.degreetype",
+        "fields": {
+            "name": "PG",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "AlumniPortal.degreetype",
+        "fields": {
+            "name": "PhD",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 4,
+        "model": "AlumniPortal.degreetype",
+        "fields": {
+            "name": "Other",
+            "desc": ""
+        }
+    },
+
+    {
+        "pk": 1,
+        "model": "AlumniPortal.worktype",
+        "fields": {
+            "name": "Tech",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 2,
+        "model": "AlumniPortal.worktype",
+        "fields": {
+            "name": "Non-Tech",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "AlumniPortal.worktype",
+        "fields": {
+            "name": "Research",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 4,
+        "model": "AlumniPortal.worktype",
+        "fields": {
+            "name": "Faculty",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 5,
+        "model": "AlumniPortal.worktype",
+        "fields": {
+            "name": "Other",
+            "desc": ""
+        }
+    },
+    {
+        "pk": 1,
+        "model": "AlumniPortal.country",
+        "fields": {
+            "name": "India"
+        }
     }
 ]
