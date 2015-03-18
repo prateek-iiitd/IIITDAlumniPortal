@@ -212,6 +212,7 @@ class WorkDetailResource(ModelResource):
         filtering = {
             'work_type': ALL_WITH_RELATIONS,
             'organisation': ALL_WITH_RELATIONS,
+            'is_current': ('exact', ),
         }
 
 
@@ -232,6 +233,7 @@ class EducationResource(ModelResource):
         filtering = {
             'degree_type': ALL_WITH_RELATIONS,
             'school': ALL_WITH_RELATIONS,
+            'is_current': ('exact', ),
         }
 
 
@@ -297,6 +299,7 @@ class testProfileResource(ModelResource):
     educations = fields.ToManyField('AlumniPortal.api.EducationResource', "educations", full=True, null=True)
     work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
     current_location = fields.ForeignKey(LocationResource, 'current_location', full=True)
+    #fullname = fields.CharField(attribute='get_full_name', readonly=True)
 
     def dehydrate(self, bundle):
         bundle.data.pop("educations")
@@ -306,7 +309,7 @@ class testProfileResource(ModelResource):
 
     class Meta:
         queryset = AlumniUser.objects.all()
-        resource_name = 'test'
+        resource_name = 'filter'
         # authentication = SessionAuthentication()
         authentication = Authentication()
         authorization = Authorization()
@@ -322,6 +325,7 @@ class testProfileResource(ModelResource):
             "graduation_year": ('lte', 'gte'),
             "educations": ALL_WITH_RELATIONS,
             "work_details": ALL_WITH_RELATIONS,
+            "current_location": ALL_WITH_RELATIONS,
         }
 
 

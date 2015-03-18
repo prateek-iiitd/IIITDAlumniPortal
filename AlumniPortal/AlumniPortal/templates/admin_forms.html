@@ -54,8 +54,9 @@
 
             </div>
 
-
-            {% include 'admin_form_unit.html' %}
+            {% for news in all_news %}
+                {% include 'admin_form_unit_news.html' with curr_news=news %}
+            {% endfor %}
 
         </div>
     </div>
@@ -92,6 +93,10 @@
             </div>
             </form>
         </div>
+
+        {% for event in all_events %}
+            {% include 'admin_form_unit_event.html' with curr_event=event %}
+        {% endfor %}
 
     </div>
 
@@ -196,30 +201,30 @@
     </div>
     </div>
 {% endblock %}
-
-{% block right_content %}
-
-    <div class="row">
-        <h3>Latest Updates</h3>
-    </div>
-    <div class="latest-updates">
-        <div class="row">
-            <span class="glyphicon glyphicon-plus card-field"><span
-                    class="card-field-font">Added to News 'Headline'</span></span>
-        </div>
-        <div class="row">
-        <span class="glyphicon glyphicon-pencil card-field"><span
-                class="card-field-font">Edited News 'Event Name'</span></span>
-        </div>
-        <div class="row">
-        <span class="glyphicon glyphicon-remove card-field"><span
-                class="card-field-font">Removed from Directory 'contact/batch'</span></span>
-        </div>
-    </div>
-
-
-{% endblock %}
-
+{##}
+{#{% block right_content %}#}
+{##}
+{#    <div class="row">#}
+{#        <h3>Latest Updates</h3>#}
+{#    </div>#}
+{#    <div class="latest-updates">#}
+{#        <div class="row">#}
+{#            <span class="glyphicon glyphicon-plus card-field"><span#}
+{#                    class="card-field-font">Added to News 'Headline'</span></span>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#        <span class="glyphicon glyphicon-pencil card-field"><span#}
+{#                class="card-field-font">Edited News 'Event Name'</span></span>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#        <span class="glyphicon glyphicon-remove card-field"><span#}
+{#                class="card-field-font">Removed from Directory 'contact/batch'</span></span>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#{% endblock %}#}
+{##}
 {% block scripts %}
     <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/directory.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>

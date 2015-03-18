@@ -1,0 +1,7 @@
+{% extends 'admin_form_unit.html' %}
+
+{#{% block afu_img %}{{ curr_event. }}{% endblock %}#}
+{% block afu_delete %}/event/delete/?id={{ curr_event.pk }}{% endblock %}
+{% block afu_head %}{{ curr_event.title }}{% endblock %}
+{% block afu_article %}{{ curr_event.description }}{% endblock %}
+{% block afu_link %}{{ curr_event.external_link }}{% endblock %}

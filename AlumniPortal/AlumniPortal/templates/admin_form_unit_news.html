@@ -1,0 +1,7 @@
+{% extends 'admin_form_unit.html' %}
+
+{% block afu_img %}{{ curr_news.large_img }}{% endblock %}
+{% block afu_delete %}/news/delete/?id={{ curr_news.pk }}{% endblock %}
+{% block afu_head %}{{ curr_news.headline }}{% endblock %}
+{% block afu_article %}{{ curr_news.article }}{% endblock %}
+{% block afu_link %}{{ curr_news.gallery_link }}{% endblock %}

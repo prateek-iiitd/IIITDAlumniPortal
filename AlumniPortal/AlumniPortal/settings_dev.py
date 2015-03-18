@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin',
+    'tastypie',
 )
 
 
@@ -59,6 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'AlumniPortal.middleware.crossoriginxhrmiddleware.XsSharing',
 )
 
 TEMPLATE_LOADERS = (

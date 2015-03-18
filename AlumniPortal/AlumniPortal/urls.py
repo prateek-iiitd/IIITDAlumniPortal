@@ -12,8 +12,13 @@ v1_api.register(CountryResource())
 v1_api.register(LocationResource())
 v1_api.register(CityResource())
 
+v1_api.register(BasicProfileResource())
+v1_api.register(FullProfileResource())
 v1_api.register(CurrentProfileResource())
-# v1_api.register(EducationResource())
+v1_api.register(testProfileResource())
+v1_api.register(WorkDetailResource())
+v1_api.register(DegreeTypeResource())
+v1_api.register(EducationResource())
 
 
 admin.autodiscover()
@@ -35,7 +40,9 @@ urlpatterns = patterns('',
     url(r'^feedback/$', 'AlumniPortal.views.feedback'),
     url(r'^admin_forms/$', 'AlumniPortal.views.admin_forms'),
     url(r'^admin_forms/add_news/$', 'AlumniPortal.views.add_news'),
+    url(r'^news/delete/', 'AlumniPortal.views.del_news'),
     url(r'^admin_forms/add_event/$', 'AlumniPortal.views.add_event'),
+    url(r'^event/delete/', 'AlumniPortal.views.del_event'),
     url(r'^admin_forms/add_directory/$', 'AlumniPortal.views.add_directory'),
     url(r'^admin_forms/add_blog/$', 'AlumniPortal.views.add_blog'),
     url(r'^accounts/', include('allauth.urls')),

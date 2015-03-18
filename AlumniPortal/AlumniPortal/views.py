@@ -50,9 +50,11 @@ def admin_forms(request):
     news_form = NewsForm()
     event_form = EventForm()
     directory_form = DirectoryForm()
+    news = NewsArticle.objects.all()
+    events = Event.objects.all()
     return render(request, 'admin_forms.html',
                   {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                   'directory_form': directory_form, 'news_class': "active"})
+                   'directory_form': directory_form, 'news_class': "active", 'all_news': news, 'all_events': events})
 
 
 def get_by_batch(request):
@@ -96,11 +98,19 @@ def add_news(request):
             degree_values = Degree.objects.values('name').distinct()
             event_form = EventForm()
             directory_form = DirectoryForm()
+            news = NewsArticle.objects.all()
+            events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'news_class': "active"})
+                           'directory_form': directory_form, 'news_class': "active", 'all_news': news, 'all_events': events})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
+
+
+def del_news(request):
+    del_pk = request.GET.get('id')
+    NewsArticle.objects.filter(id=del_pk).delete()
+    return HttpResponseRedirect('/admin_forms/')
 
 
 def add_event(request):
@@ -113,13 +123,19 @@ def add_event(request):
             degree_values = Degree.objects.values('name').distinct()
             news_form = NewsForm()
             directory_form = DirectoryForm()
+            news = NewsArticle.objects.all()
+            events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'event_class': "active"})
+                           'directory_form': directory_form, 'event_class': "active", 'all_news': news, 'all_events': events})
 
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
+def del_event(request):
+    del_pk = request.GET.get('id')
+    Event.objects.filter(id=del_pk).delete()
+    return HttpResponseRedirect('/admin_forms/')
 
 def add_directory(request):
     if request.method == 'POST':
@@ -131,9 +147,11 @@ def add_directory(request):
             degree_values = Degree.objects.values('name').distinct()
             news_form = NewsForm()
             event_form = EventForm()
+            news = NewsArticle.objects.all()
+            events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'directory_class': "active"})
+                           'directory_form': directory_form, 'directory_class': "active", 'all_news': news, 'all_events': events})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
