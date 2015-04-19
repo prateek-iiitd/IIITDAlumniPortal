@@ -271,7 +271,7 @@ class BasicProfileResource(ModelResource):
         detail_allowed_methods = ['get']
         list_allowed_methods = ['get']
 
-        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id']
+        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email']
 
 
 # Resource individual profile view

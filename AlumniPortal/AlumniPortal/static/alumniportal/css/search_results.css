@@ -9,6 +9,35 @@
     margin: 5px -25px;
 }
 
+#email-overlay {
+    position: fixed;
+    z-index: 10000;
+    background-color: rgba(0,6,10,0.9);
+    width: 100%;
+    height: 100%;
+    margin-top: -60px;
+
+    min-height: 100%;
+    min-height: 100vh;
+    display: none;
+    align-items: center;
+}
+#email-overlay div {
+    display: none;
+    text-align: center;
+    background-color: #EEE;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px #AAA;
+}
+#email-overlay div h2 span {
+    color: #3FADA8;
+}
+#email-overlay div input {
+    margin: 10px;
+    width: 80%;
+}
+
 #search-results-left div.row div.row {
 	color: #444;
 }

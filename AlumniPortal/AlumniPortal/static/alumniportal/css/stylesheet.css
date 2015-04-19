@@ -135,6 +135,9 @@ h4 {
     /*box-shadow: inset 0px -5px 5px #3fada8;*/
     /*background-color:#ddd;*/
 }
+#nav-bar li.nav-search-box:hover {
+    border-bottom: none;
+}
 
 #login {
     margin-left: 20px;

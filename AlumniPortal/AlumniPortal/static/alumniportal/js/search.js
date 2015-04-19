@@ -12,6 +12,8 @@ function displaySearchResults(response, status, xhr) {
 
         // checking for null values
         id = student['id'];
+        email = student['email'];
+        $("#email-overlay input").val($("#email-overlay input").val()+email+', ');
         if (!student['first_name']) {
             first_name = '';
         }
@@ -58,9 +60,35 @@ function getAndDisplayFilters(url)
 }
 
 $(document).ready(function () {
+    $("#email-overlay div input").val("");
     // function to request list of student details using Ajax and list all results automatically
     getAndDisplayFilters("/api/v1/basic/?format=json");
 
+    $(document).bind('keypress', function(event) {
+        if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
+            $("#email-overlay>div").slideUp("medium");
+            $("#email-overlay").fadeOut("medium");
+        }
+        if( event.which == 120 || event.which == 88 && event.ctrlKey ) {
+            $("#email-overlay>div").slideUp("medium");
+            $("#email-overlay").fadeOut("medium");
+        }
+        if( event.keyCode == 27 ) {
+            $("#email-overlay>div").slideUp("medium");
+            $("#email-overlay").fadeOut("medium");
+        }
+    });
+
+    $("#btn-email-overlay").click(function() {
+        $("#email-overlay").css("display", "flex");
+        $("#email-overlay>div").slideDown("medium");
+        $("#email-overlay div input").focus().select();
+    });
+
+    $("#email-overlay").click(function() {
+        $("#email-overlay>div").slideUp("medium");
+        $("#email-overlay").fadeOut("medium");
+    });
 //    $("#search-results-right").append('<div class="row"><div class="col-lg-1"><div class="pic"></div></div><div class="col-lg-10" style="padding: 5px 0 0 25px"><p style="margin-bottom: 0">Sauhard Gupta<br>Adobe &nbsp;| &nbsp;Senior Scientist<br>Batch 2015</p></div></div><div class="divider-4r"></div>');
 });
 

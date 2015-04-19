@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/search_results.css">
 {% endblock %}
 
+{% block overlay %}
+    <div id="email-overlay">
+        <div class="col-lg-offset-3 col-lg-6">
+            <h2>Press <span>Ctrl+C</span> to copy!</h2>
+            <input type="text">
+            </input>
+        </div>
+    </div>
+{% endblock %}
 
 {% block left_content %}
     <div id="search-results-left" class="col-lg-3">
@@ -223,7 +232,7 @@
             {#        </div>#}
 
         </div>
-
+    <button type="button" title="Copy email addresses of these people!" id="btn-email-overlay" class="btn btn-warning center-block" style="margin: 20px auto;"><span class="glyphicon glyphicon-envelope"></span></button>
     </div>
 {% endblock %}
 
