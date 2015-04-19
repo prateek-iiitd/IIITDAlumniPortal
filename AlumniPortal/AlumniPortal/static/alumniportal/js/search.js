@@ -73,6 +73,14 @@ $(document).ready(function () {
             $("#email-overlay>div").slideUp("medium");
             $("#email-overlay").fadeOut("medium");
         }
+        if( event.which == 99 || event.which == 67 && event.metaKey ) {
+            $("#email-overlay>div").slideUp("medium");
+            $("#email-overlay").fadeOut("medium");
+        }
+        if( event.which == 120 || event.which == 88 && event.metaKey ) {
+            $("#email-overlay>div").slideUp("medium");
+            $("#email-overlay").fadeOut("medium");
+        }
         if( event.keyCode == 27 ) {
             $("#email-overlay>div").slideUp("medium");
             $("#email-overlay").fadeOut("medium");
