@@ -64,7 +64,7 @@ $(document).ready(function () {
     // function to request list of student details using Ajax and list all results automatically
     getAndDisplayFilters("/api/v1/basic/?format=json");
 
-    $(document).bind('keypress', function(event) {
+    $(document).bind('keydown', function(event) {
         if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
             $("#email-overlay>div").slideUp("medium");
             $("#email-overlay").fadeOut("medium");
