@@ -66,8 +66,9 @@ $(document).ready(function () {
 
     $(document).bind('keydown', function(event) {
         if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
-            $("#email-overlay>div").slideUp("medium");
-            $("#email-overlay").fadeOut("medium");
+            $("#email-overlay>div h2 span").css("color", "#666");
+            $("#email-overlay>div").delay(500).slideUp("medium");
+            $("#email-overlay").delay(500).fadeOut("medium");
         }
         if( event.which == 120 || event.which == 88 && event.ctrlKey ) {
             $("#email-overlay>div").slideUp("medium");
