@@ -61,6 +61,18 @@
         </div>
 
         <div class="row">
+            <div style="text-align: center;font-weight: bold">Passout Batch</div>
+            <div class="form-group input-group pull-left" id="">
+
+{#                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>#}
+                <div class="pull-left" style="margin:0 5px;">YYYY</div>
+
+                <input type="range" id="id_batch" name="batch" placeholder="Passout Batch"
+                       min="2012" max="2015" style="width: 75%;">
+            </div>
+        </div>
+
+        <div class="row">
             <div class="form-group input-group pull-left" id="">
 
                 <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
@@ -128,7 +140,8 @@
             </div>
             <div class="form-group input-group" id="field.auto_id">
 
-        <span class="input-group-addon"><input type="checkbox" name="isCurrent" id="id_profession_is_current"></span>
+                <span class="input-group-addon"><input type="checkbox" name="isCurrent"
+                                                       id="id_profession_is_current"></span>
                 <span class="form-control">isCurrent</span>
 
             </div>
@@ -180,7 +193,8 @@
 
             <div class="form-group input-group" id="field.auto_id">
 
-        <span class="input-group-addon"><input type="checkbox" name="isCurrent" id="id_degree_is_current"></span>
+                <span class="input-group-addon"><input type="checkbox" name="isCurrent"
+                                                       id="id_degree_is_current"></span>
                 <span class="form-control">isCurrent</span>
 
             </div>
@@ -232,7 +246,9 @@
             {#        </div>#}
 
         </div>
-    <button type="button" title="Copy email addresses of these people!" id="btn-email-overlay" class="btn btn-warning center-block" style="margin: 20px auto;"><span class="glyphicon glyphicon-envelope"></span></button>
+        <button type="button" title="Copy email addresses of these people!" id="btn-email-overlay"
+                class="btn btn-warning center-block" style="margin: 20px auto;"><span
+                class="glyphicon glyphicon-envelope"></span></button>
     </div>
 {% endblock %}
 
