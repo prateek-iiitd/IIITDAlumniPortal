@@ -12,7 +12,7 @@ function displaySearchResults(response, status, xhr) {
 
         // checking for null values
         id = student['id'];
-        email = student['email'];
+        var email = student['email'];
         $("#email-overlay input").val($("#email-overlay input").val()+email+', ');
         if (!student['first_name']) {
             first_name = '';
@@ -66,37 +66,54 @@ $(document).ready(function () {
 
     $(document).bind('keydown', function(event) {
         if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
+            $("#email-overlay>div h2").html("Press <span>Ctrl+C</span> to copy!");
             $("#email-overlay>div h2 span").css("color", "#666");
             $("#email-overlay>div").delay(500).slideUp("medium");
             $("#email-overlay").delay(500).fadeOut("medium");
+            $("#email-overlay-background").delay(500).fadeOut("medium");
         }
         if( event.which == 120 || event.which == 88 && event.ctrlKey ) {
-            $("#email-overlay>div").slideUp("medium");
-            $("#email-overlay").fadeOut("medium");
+            $("#email-overlay>div h2").html("Press <span>Ctrl+X</span> to cut!");
+            $("#email-overlay>div h2 span").css("color", "#666");
+            $("#email-overlay>div").delay(500).slideUp("medium");
+            $("#email-overlay").delay(500).fadeOut("medium");
+            $("#email-overlay-background").delay(500).fadeOut("medium");
         }
         if( event.which == 99 || event.which == 67 && event.metaKey ) {
-            $("#email-overlay>div").slideUp("medium");
-            $("#email-overlay").fadeOut("medium");
+            $("#email-overlay>div h2").html("Press <span>Command+C</span> to copy!");
+            $("#email-overlay>div h2 span").css("color", "#666");
+            $("#email-overlay>div").delay(500).slideUp("medium");
+            $("#email-overlay").delay(500).fadeOut("medium");
+            $("#email-overlay-background").delay(500).fadeOut("medium");
         }
         if( event.which == 120 || event.which == 88 && event.metaKey ) {
-            $("#email-overlay>div").slideUp("medium");
-            $("#email-overlay").fadeOut("medium");
+            $("#email-overlay>div h2").html("Press <span>Command+X</span> to cut!");
+            $("#email-overlay>div h2 span").css("color", "#666");
+            $("#email-overlay>div").delay(500).slideUp("medium");
+            $("#email-overlay").delay(500).fadeOut("medium");
+            $("#email-overlay-background").delay(500).fadeOut("medium");
         }
         if( event.keyCode == 27 ) {
-            $("#email-overlay>div").slideUp("medium");
-            $("#email-overlay").fadeOut("medium");
+            $("#email-overlay>div h2").html("Press <span>Esc</span> to exit!");
+            $("#email-overlay>div h2 span").css("color", "#666");
+            $("#email-overlay>div").delay(500).slideUp("medium");
+            $("#email-overlay").delay(500).fadeOut("medium");
+            $("#email-overlay-background").delay(500).fadeOut("medium");
         }
     });
 
     $("#btn-email-overlay").click(function() {
         $("#email-overlay").css("display", "flex");
         $("#email-overlay>div").slideDown("medium");
+        $("#email-overlay-background").fadeIn("medium");
+//        $("#email-overlay div input").val(email);
         $("#email-overlay div input").focus().select();
     });
 
-    $("#email-overlay").click(function() {
+    $("#email-overlay-background").click(function() {
         $("#email-overlay>div").slideUp("medium");
         $("#email-overlay").fadeOut("medium");
+        $("#email-overlay-background").fadeOut("medium");
     });
 //    $("#search-results-right").append('<div class="row"><div class="col-lg-1"><div class="pic"></div></div><div class="col-lg-10" style="padding: 5px 0 0 25px"><p style="margin-bottom: 0">Sauhard Gupta<br>Adobe &nbsp;| &nbsp;Senior Scientist<br>Batch 2015</p></div></div><div class="divider-4r"></div>');
 });
