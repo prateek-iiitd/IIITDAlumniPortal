@@ -188,5 +188,6 @@ function filterList() {
     url += append_filter_checkbox("educations__is_current", "id_degree_is_current");
     url += append_filter_checkbox("work_type__is_current", "id_degree_is_current");
     getAndDisplayFilters(url);
+    window.scrollTo(0,0);
 
 }
