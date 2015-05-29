@@ -12,6 +12,7 @@ function displaySearchResults(response, status, xhr) {
 
         // checking for null values
         id = student['id'];
+        console.log(id);
         var email = student['email'];
         $("#email-overlay input").val($("#email-overlay input").val()+email+', ');
         if (!student['first_name']) {
@@ -40,7 +41,8 @@ function displaySearchResults(response, status, xhr) {
             profile_photo = student['profile_photo'];
         }
 
-        profile_link = '/test/profile/';
+        profile_link = '/test/profile/'+id+'/';
+        console.log(student);
 
         $("#search-results-right").append('<a href="' + profile_link + '"><div class="row"><div class="col-lg-1"><div class="pic" style="background-image: url(' + profile_photo + ')"></div></div><div class="col-lg-10" style="padding: 5px 0 0 37px"><p style="margin-bottom: 0">' + first_name + ' ' + last_name + '<br>Backend &nbsp;| &nbsp;Noobs<br> ' + graduation_year + '</p></div></div></a>');
     }
@@ -139,7 +141,7 @@ function append_filter_checkbox(filter, id) {
 function filterList() {
 
     url = "/api/v1/filter/?format=json"
-    url += append_filter_text("first_name__icontains", "id_name");
+    url += append_filter_text("first_name__istartswith", "id_name");
     url += append_filter_select("gender__iexact", "id_gender");
     url += append_filter_text("graduation_year__lte", "id_batch");
     url += append_filter_text("graduation_year__gte", "id_batch");
