@@ -313,7 +313,7 @@ class testProfileResource(ModelResource):
 
     def dehydrate(self, bundle):
         bundle.data.pop("educations")
-        bundle.data.pop("work_details")
+        # bundle.data.pop("work_details")
         bundle.data = bundle.data
         return bundle
 

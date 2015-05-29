@@ -8,11 +8,10 @@ function displaySearchResults(response, status, xhr) {
     $('#count-search-results-right>h4:first-child>span').html(total_count);
     for (var counter = 0; counter < total_count; counter++) {
         var student = response['objects'][counter];
-//        console.log(student);
+        console.log(student);
 
         // checking for null values
         id = student['id'];
-        console.log(id);
         var email = student['email'];
         $("#email-overlay input").val($("#email-overlay input").val()+email+', ');
         if (!student['first_name']) {
@@ -27,7 +26,36 @@ function displaySearchResults(response, status, xhr) {
         else {
             last_name = student['last_name'];
         }
-        // WORKPLACE HERE??? BACKEND NOOBS FFS!
+
+        if (!student['current_location']['city']) {
+            current_location = '';
+        }
+        else {
+            current_location = student['current_location']['city'];
+        }
+        if (!student['work_details'][0]) {
+            organization = '';
+        }
+        else {
+            organization = student['work_details'][0]['organisation']['name'];
+        }
+        if (organization != '' && current_location != '') {
+            organization_and_current_location = organization +' &nbsp;| &nbsp;<span class="glyphicon glyphicon-map-marker"></span> '+current_location+'<br> ';
+        }
+        else {
+            if (organization == '') {
+                organization_and_current_location = '<span class="glyphicon glyphicon-map-marker"></span> ' + current_location+'<br> ';
+            }
+            else {
+                if (current_location == '') {
+                    organization_and_current_location = organization + '<br> ';
+                }
+                else {
+                    organization_and_current_location = '<br> ';
+                }
+            }
+        }
+
         if (!student['graduation_year']) {
             graduation_year = '<br>';
         }
@@ -44,7 +72,7 @@ function displaySearchResults(response, status, xhr) {
         profile_link = '/test/profile/'+id+'/';
         console.log(student);
 
-        $("#search-results-right").append('<a href="' + profile_link + '"><div class="row"><div class="col-lg-1"><div class="pic" style="background-image: url(' + profile_photo + ')"></div></div><div class="col-lg-10" style="padding: 5px 0 0 37px"><p style="margin-bottom: 0">' + first_name + ' ' + last_name + '<br>Backend &nbsp;| &nbsp;Noobs<br> ' + graduation_year + '</p></div></div></a>');
+        $("#search-results-right").append('<a href="' + profile_link + '"><div class="row"><div class="col-lg-1"><div class="pic" style="background-image: url(' + profile_photo + ')"></div></div><div class="col-lg-10" style="padding: 5px 0 0 37px"><p style="margin-bottom: 0">' + first_name + ' ' + last_name + '<br>'+ organization_and_current_location + graduation_year + '</p></div></div></a>');
     }
 }
 
@@ -64,7 +92,7 @@ function getAndDisplayFilters(url)
 $(document).ready(function () {
     $("#email-overlay div input").val("");
     // function to request list of student details using Ajax and list all results automatically
-    getAndDisplayFilters("/api/v1/basic/?format=json");
+    getAndDisplayFilters("/api/v1/filter/?format=json");
 
     $(document).bind('keydown', function(event) {
         if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
@@ -139,6 +167,8 @@ function append_filter_checkbox(filter, id) {
 }
 
 function filterList() {
+
+    $("#email-overlay input").val('');
 
     url = "/api/v1/filter/?format=json"
     url += append_filter_text("first_name__istartswith", "id_name");
