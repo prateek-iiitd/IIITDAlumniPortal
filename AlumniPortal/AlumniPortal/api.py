@@ -251,6 +251,7 @@ class CurrentProfileResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         detail_allowed_methods = ['get', 'put']
+        list_allowed_methods = ['get', 'put']
 
         excludes = ['created_at', 'is_admin', 'is_active', 'last_login', 'password']
 
@@ -258,9 +259,18 @@ class CurrentProfileResource(ModelResource):
     def get_object_list(self, request):
         return super(CurrentProfileResource, self).get_object_list(request).filter(pk=request.user.pk)
 
+    def hydrate_current_location(self, bundle):
+        print bundle.data['current_location']
+        country_obj = Country.objects.get_or_create(name=bundle.data['current_location']['country']['name'])
+        city_obj = Location.objects.get_or_create(city=bundle.data['current_location']['city'], country=country_obj[0])
+        bundle.data['current_location'] = city_obj[0]
+        return bundle
 
 # Resource for list of basic profiles
 class BasicProfileResource(ModelResource):
+    work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
+    current_location = fields.ForeignKey(LocationResource, 'current_location', full=True, null=True)
+
     class Meta:
         queryset = AlumniUser.objects.all()
         resource_name = 'basic'
@@ -271,7 +281,7 @@ class BasicProfileResource(ModelResource):
         detail_allowed_methods = ['get']
         list_allowed_methods = ['get']
 
-        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email']
+        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details', 'current_location']
 
 
 # Resource individual profile view
@@ -291,8 +301,8 @@ class FullProfileResource(ModelResource):
         list_allowed_methods = []
 
         fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'gender', 'marital_status',
-                  'email', 'personal_email',
-                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage']
+                  'email', 'personal_email', 'work_details', 'current_location',
+                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage',]
 
 
 class testProfileResource(ModelResource):
@@ -319,8 +329,9 @@ class testProfileResource(ModelResource):
         excludes = ['created_at', 'is_admin', 'is_active', 'last_login', 'password', 'educations']
 
         filtering = {
-            "first_name": ('icontains', ),
-            "last_name": ('icontains', ),
+            "first_name": ('istartswith', ),
+            "last_name": ('istartswith', ),
+            #"full_name": ALL_WITH_RELATIONS,
             "gender": ('iexact', ),
             "graduation_year": ('lte', 'gte'),
             "educations": ALL_WITH_RELATIONS,
