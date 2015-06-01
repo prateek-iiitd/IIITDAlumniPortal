@@ -249,6 +249,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}selectize/js/standalone/selectize.js"></script>
     <script type="text/javascript">
         var user_data = {};
+        var full_user_data = {};
         $(document).ready(function () {
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('active');
@@ -332,6 +333,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function (response, status, xhr) {
+                    full_user_data = response;
                     user_data = response['objects'][0];
                     populateUserData();
                 },
@@ -340,6 +342,24 @@
                 }
             });
         }
+
+        function saveProfileData() {
+            $.ajax({
+                url: "/api/v1/current/",
+                type: "PUT",
+                data: JSON.stringify(full_user_data),
+                dataType: "json",
+                contentType: "application/json",
+                processData: false,
+                success: function (response, status, xhr) {
+                    window.location.replace('/test/profile/edit/education/');
+                },
+                error: function (xhr, status, error) {
+                    console.log(status + ' ' + error);
+                }
+            });
+        }
+
         {#    Function to populate the HTML form with user data received from the API.#}
         function populateUserData() {
             console.log(user_data);
@@ -520,13 +540,78 @@
             $('input#id_homepage').css('border', '1px solid #CCC');
         });
 
-        function nextButtonClicked() {
+        function scrollIntoView(eleID)
+        {
+            var e = document.getElementById(eleID);
+            if (!!e && e.scrollIntoView)
+            {
+                e.scrollIntoView(false);
+            }
+        }
 
+        function hasError(id)
+        {
+            if($('#'+id).is(':visible'))
+            {
+                console.log(id + "is visible")
+                scrollIntoView(id);
+                return true;
+            }
+            return false;
+        }
+
+        function nextButtonClicked() {
+            if( hasError('id_personal_email_errors')
+                    //||  hasError('id_gender_errors')
+                    //||  hasError('id_marital_status_errors')
+                    ||  hasError('id_linkedin_profile_errors')
+                    ||  hasError('id_facebook_profile_errors')
+                    ||  hasError('id_google_profile_errors')
+                    ||  hasError('id_google_profile_errors')
+                    ||  hasError('id_homepage_errors')
+                    //||  hasError('id_email_errors')
+                    ) {
+                return;
+            }
+
+            full_user_data['objects'][0]['personal_email'] = $('input#id_personal_email').val();
+            full_user_data['objects'][0]['gender'] = $('select#id_gender').val();
+            full_user_data['objects'][0]['marital_status'] = $('select#id_marital_status').val();
+            full_user_data['objects'][0]['linkedin_profile'] = $('input#id_linkedin_profile').val();
+            full_user_data['objects'][0]['facebook_profile'] = $('input#id_facebook_profile').val();
+            full_user_data['objects'][0]['google_profile'] = $('input#id_google_profile').val();
+            full_user_data['objects'][0]['twitter_profile'] = $('input#id_twitter_profile').val();
+            full_user_data['objects'][0]['homepage'] = $('input#id_homepage').val();
+            if(full_user_data['objects'][0]['current_location'] == null)
+            {
+                full_user_data['objects'][0]['current_location'] = {
+                    'city' : null,
+                    'country' : {
+                        name : null
+                    }
+
+                }
+            }
+            full_user_data['objects'][0]['current_location']['city'] = $('select#id_city').val();
+            full_user_data['objects'][0]['current_location']['country']['name'] = $('select#id_country').text();
+
+            if(full_user_data['objects'][0]['profile_photo'] == null)
+            {
+                full_user_data['objects'][0]['profile_photo'] = {
+                    'content_type' : null,
+                    'file' : null,
+                    'name' : null
+                }
+            }
+
+            var img = document.getElementById("id_profile_photo").style.backgroundImage;
+            full_user_data['objects'][0]['profile_photo']['content_type'] = img.substring(8, img.indexOf(';'));
+            full_user_data['objects'][0]['profile_photo']['file'] = img.substring(img.indexOf(',')+1, img.length-1);
+            full_user_data['objects'][0]['profile_photo']['name'] = full_user_data['objects'][0]['id'] + '.img';
+            saveProfileData();
         }
         </script>
 
     {% endblock %}
 
 {% endblock %}
-
-
