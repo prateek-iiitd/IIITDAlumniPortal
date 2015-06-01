@@ -342,6 +342,7 @@
         }
         {#    Function to populate the HTML form with user data received from the API.#}
         function populateUserData() {
+            console.log(user_data);
             first_name = user_data['first_name'];
             last_name = user_data['last_name'];
             display_name = first_name + " " + last_name;
@@ -352,6 +353,10 @@
 
             $('select#id_gender').val(user_data['gender']);
             $('select#id_marital_status').val(user_data['marital_status']);
+
+            citySelectize[0].selectize.setValue(user_data['current_location']['city']);
+
+            country_selectize[0].selectize.setValue(user_data['current_location']['country']['resource_uri']);
 
             if (user_data['profile_photo']) {
                 image_content_type = user_data['profile_photo']['content-type'];
@@ -368,6 +373,8 @@
 
         }
 
+        var country_selectize;
+
         function populateCountrySelectList() {
             for (i = 0; i < country_data.length; i++) {
                 country_name = country_data[i]['name'];
@@ -377,12 +384,14 @@
                     text: country_name
                 }));
             }
-            $('#id_country').selectize({
+
+            country_selectize = $('#id_country').selectize({
                 create: false,
                 sortField: 'text'
             });
         }
 
+        var citySelectize;
         function populateCitySelectList() {
             for (i = 0; i < city_data.length; i++) {
                 city_name = city_data[i]['city'];
@@ -391,7 +400,7 @@
                     text: city_name
                 }));
             }
-            $('#id_city').selectize({
+            citySelectize = $('#id_city').selectize({
                 create: true,
                 persist: false,
                 sortField: 'text'

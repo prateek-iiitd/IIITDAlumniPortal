@@ -37,6 +37,12 @@ def profile_test(request):
     events = Event.objects.all()
     return render(request, 'profile.html', {'events': events})
 
+def profile_by_id(request, id):
+    events = Event.objects.all()
+    return render(request, 'profile.html', {'events': events})
+
+
+
 
 def profile_edit_personal_test(request):
     marital_status_values = ['Single', 'Married']

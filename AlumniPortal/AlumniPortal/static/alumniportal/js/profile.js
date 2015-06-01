@@ -2,8 +2,13 @@
  * Created by sauhard on 3/5/15.
  */
 $(document).ready(function () {
+    url = window.location.href;
+    last_slash = url.lastIndexOf('/');
+    secondlast_slash = url.substring(0, last_slash).lastIndexOf('/');
+    url_id = url.substring(secondlast_slash+1, last_slash);
+
     $.ajax({
-        url: "/test/test_json_data/",
+        url: "/api/v1/full/"+url_id+'/',
         type: "GET",
         dataType: "json",
         success: populateProfile,
@@ -12,7 +17,9 @@ $(document).ready(function () {
         }
     });
     function populateProfile(response, status, xhr) {
-        student = response['objects'][0];
+        console.log(response);
+//        student = response['objects'][0];
+        student = response;
         if (student['profile_photo']) {
             $('.pic').css('background-image', 'url("'+student['profile_photo']+'")')
         }
@@ -28,30 +35,33 @@ $(document).ready(function () {
             linkedin_profile='';
         }
         else {
-            linkedin_profile = '<a href="'+student['linkedin_profile']+'"><div class="social-btns-li"></div></a>';
+            linkedin_profile = '<a href="'+student['linkedin_profile']+ '" target="_blank"><div class="social-btns-li"></div></a>';
         }
         if (student['facebook_profile']=='') {
             facebook_profile='';
         }
         else {
-            facebook_profile = '<a href="'+student['facebook_profile']+'"><div class="social-btns-fb"></div></a>';
+            facebook_profile = '<a href="'+student['facebook_profile']+ '" target="_blank"><div class="social-btns-fb"></div></a>';
         }
         if (student['google_profile']=='') {
             google_profile='';
         }
         else {
-            google_profile = '<a href="'+student['google_profile']+'"><div class="social-btns-gp"></div></a>';
+            google_profile = '<a href="'+student['google_profile']+ '" target="_blank"><div class="social-btns-gp"></div></a>';
         }
         if (student['twitter_profile']=='') {
             twitter_profile='';
         }
         else {
-            twitter_profile = '<a href="'+student['twitter_profile']+'"><div class="social-btns-tw"></div></a>';
+            twitter_profile = '<a href="'+student['twitter_profile']+ '" target="_blank"><div class="social-btns-tw"></div></a>';
         }
         $("div.social-btns").html(linkedin_profile+facebook_profile+google_profile+twitter_profile);
 
+        var organisation ='', designation = '';
+
         // setting work and education
-        if (!student['work_details']) {
+        if (student['work_details'].length == 0) {
+            $('div div.work-and-education>div.row:first-child').append("<p style='color: #777; margin-left: 20px'>This user hasn't entered any work details</p>");
             work_details = '<br>';
         }
         else {
