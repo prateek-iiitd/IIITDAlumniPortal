@@ -595,19 +595,22 @@
             full_user_data['objects'][0]['current_location']['city'] = $('select#id_city').val();
             full_user_data['objects'][0]['current_location']['country']['name'] = $('select#id_country').text();
 
-            if(full_user_data['objects'][0]['profile_photo'] == null)
+            var img = document.getElementById("id_profile_photo").style.backgroundImage;
+            if (img == "url(http://127.0.0.1:8000/static/alumniportal/img/user.jpg)")
             {
-                full_user_data['objects'][0]['profile_photo'] = {
-                    'content_type' : null,
-                    'file' : null,
-                    'name' : null
+                full_user_data['objects'][0]['profile_photo'] = null;
+            }
+            else
+            {
+                if(full_user_data['objects'][0]['profile_photo'] == null)
+                {
+                    full_user_data['objects'][0]['profile_photo'] = {}
                 }
+                full_user_data['objects'][0]['profile_photo']['content_type'] = img.substring(8, img.indexOf(';'));
+                full_user_data['objects'][0]['profile_photo']['file'] = img.substring(img.indexOf(',')+1, img.length-1);
+                full_user_data['objects'][0]['profile_photo']['name'] = full_user_data['objects'][0]['id'] + '.img';
             }
 
-            var img = document.getElementById("id_profile_photo").style.backgroundImage;
-            full_user_data['objects'][0]['profile_photo']['content_type'] = img.substring(8, img.indexOf(';'));
-            full_user_data['objects'][0]['profile_photo']['file'] = img.substring(img.indexOf(',')+1, img.length-1);
-            full_user_data['objects'][0]['profile_photo']['name'] = full_user_data['objects'][0]['id'] + '.img';
             saveProfileData();
         }
         </script>
