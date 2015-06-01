@@ -116,9 +116,11 @@
 
 {% block additional_script %}
     <script type="text/javascript">
+        var formToRemove;
         var work_html;
         $(document).ready(function () {
             $("#form0").css("display", "block");
+            $('div#form0 div.row div.col-lg-1>span.glyphicon-remove').remove();
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(4)').addClass('active-end');
             // adding class "visited" to all nodes before current active progress
@@ -152,12 +154,17 @@
 //        $("#form".concat(counter)).delay(5000).css("background-color", "white");
 //        $("#form".concat(counter)).delay(5000).css("box-shadow", "none");
 
-                //
-                console.log(1);
                 $('#form' + (counter - 1)).css("margin-bottom", "25px");
                 $('#form' + (counter - 1)).before(work_html.replace('"form0"', '"form' + counter + '"').replace('1.', (counter + 1) + '.'));
                 $('#form' + counter).slideDown('medium');
                 counter = counter + 1;
+                $('div[id^="form"] div.row div.col-lg-1').on('click', 'span.glyphicon-remove', function() {
+                    formToRemove = $(this).parents()[2];
+                    counter = parseInt($('form.input-form>div').attr('id').substr(4));
+                    console.log(counter);
+                    $(formToRemove).slideUp('fast');
+                    formToRemove.remove();
+                });
             });
         });
     </script>
