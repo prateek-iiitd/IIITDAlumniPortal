@@ -250,6 +250,77 @@
     <script type="text/javascript">
         var user_data = {};
         var full_user_data = {};
+
+        //validate functions
+        function personal_email_validate(){
+            console.log("rh");
+            var email_add = $('input#id_personal_email').val();
+            if (email_add != "") {
+                if (!isEmail(email_add)) {
+                    console.log("Email not valid.");
+                    $('#id_personal_email_errors').css('display', 'block');
+                    $('input#id_personal_email').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+        function facebook_profile_validate(){
+            var fb_url = $('input#id_facebook_profile').val();
+            if (fb_url != "") {
+                if (fb_url.toLowerCase().indexOf('facebook.com') == -1) {
+                    $('#id_facebook_profile_errors').css('display', 'block');
+                    $('input#id_facebook_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+        function google_profile_validate(){
+            var google_url = $('input#id_google_profile').val();
+            if (google_url != "") {
+                if (google_url.toLowerCase().indexOf('plus.google.com') == -1) {
+                    $('#id_google_profile_errors').css('display', 'block');
+                    $('input#id_google_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+        function twitter_profile_validate(){
+            var twitter_url = $('input#id_twitter_profile').val();
+            if (twitter_url != "") {
+                if (twitter_url.toLowerCase().indexOf('twitter.com') == -1) {
+                    $('#id_twitter_profile_errors').css('display', 'block');
+                    $('input#id_twitter_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+        function linkedin_profile_validate(){
+            var lin_url = $('input#id_linkedin_profile').val();
+            if (lin_url != "") {
+                if (lin_url.toLowerCase().indexOf('linkedin.com') == -1) {
+                    $('#id_linkedin_profile_errors').css('display', 'block');
+                    $('input#id_linkedin_profile').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+        function homepage_validate(){
+            var hp = $('input#id_homepage').val();
+            if (hp != "") {
+                if (hp.toLowerCase().indexOf('.') == -1) {
+                    $('#id_homepage_errors').css('display', 'block');
+                    $('input#id_homepage').css('border', '1px solid #A00');
+                }
+
+            }
+        }
+
+
         $(document).ready(function () {
             // change the number in the line below to change current progress on the progress bar
             $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('active');
@@ -449,16 +520,7 @@
         };
 
         $('#id_personal_email').focusout(function () {
-            console.log("Focus Out!");
-            var email_add = $('input#id_personal_email').val();
-            if (email_add != "") {
-                if (!isEmail(email_add)) {
-                    console.log("Email not valid.");
-                    $('#id_personal_email_errors').css('display', 'block');
-                    $('input#id_personal_email').css('border', '1px solid #A00');
-                }
-
-            }
+            personal_email_validate();
         });
         $('#id_personal_email').focusin(function () {
             $('#id_personal_email_errors').css('display', 'none');
@@ -466,14 +528,7 @@
         });
 
         $('#id_facebook_profile').focusout(function () {
-            var fb_url = $('input#id_facebook_profile').val();
-            if (fb_url != "") {
-                if (fb_url.toLowerCase().indexOf('facebook.com') == -1) {
-                    $('#id_facebook_profile_errors').css('display', 'block');
-                    $('input#id_facebook_profile').css('border', '1px solid #A00');
-                }
-
-            }
+            facebook_profile_validate();
         });
         $('#id_facebook_profile').focusin(function () {
             $('#id_facebook_profile_errors').css('display', 'none');
@@ -481,14 +536,7 @@
         });
 
         $('#id_google_profile').focusout(function () {
-            var google_url = $('input#id_google_profile').val();
-            if (google_url != "") {
-                if (google_url.toLowerCase().indexOf('plus.google.com') == -1) {
-                    $('#id_google_profile_errors').css('display', 'block');
-                    $('input#id_google_profile').css('border', '1px solid #A00');
-                }
-
-            }
+            google_profile_validate();
         });
         $('#id_google_profile').focusin(function () {
             $('#id_google_profile_errors').css('display', 'none');
@@ -496,14 +544,7 @@
         });
 
         $('#id_twitter_profile').focusout(function () {
-            var twitter_url = $('input#id_twitter_profile').val();
-            if (twitter_url != "") {
-                if (twitter_url.toLowerCase().indexOf('twitter.com') == -1) {
-                    $('#id_twitter_profile_errors').css('display', 'block');
-                    $('input#id_twitter_profile').css('border', '1px solid #A00');
-                }
-
-            }
+            twitter_profile_validate();
         });
         $('#id_twitter_profile').focusin(function () {
             $('#id_twitter_profile_errors').css('display', 'none');
@@ -511,14 +552,7 @@
         });
 
         $('#id_linkedin_profile').focusout(function () {
-            var lin_url = $('input#id_linkedin_profile').val();
-            if (lin_url != "") {
-                if (lin_url.toLowerCase().indexOf('linkedin.com') == -1) {
-                    $('#id_linkedin_profile_errors').css('display', 'block');
-                    $('input#id_linkedin_profile').css('border', '1px solid #A00');
-                }
-
-            }
+            linkedin_profile_validate();
         });
         $('#id_linkedin_profile').focusin(function () {
             $('#id_linkedin_profile_errors').css('display', 'none');
@@ -526,14 +560,7 @@
         });
 
         $('#id_homepage').focusout(function () {
-            var hp = $('input#id_homepage').val();
-            if (hp != "") {
-                if (hp.toLowerCase().indexOf('.') == -1) {
-                    $('#id_homepage_errors').css('display', 'block');
-                    $('input#id_homepage').css('border', '1px solid #A00');
-                }
-
-            }
+            homepage_validate();
         });
         $('#id_homepage').focusin(function () {
             $('#id_homepage_errors').css('display', 'none');
@@ -561,6 +588,14 @@
         }
 
         function nextButtonClicked() {
+
+            personal_email_validate();
+            facebook_profile_validate();
+            google_profile_validate();
+            twitter_profile_validate();
+            linkedin_profile_validate();
+            homepage_validate();
+
             if( hasError('id_personal_email_errors')
                     //||  hasError('id_gender_errors')
                     //||  hasError('id_marital_status_errors')
