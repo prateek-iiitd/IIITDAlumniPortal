@@ -1,25 +1,28 @@
-__author__ = 'Prateek'
-from django.shortcuts import render
-from django.template.loader import get_template
-from django.template import RequestContext
-from django.template.context import Context
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
-from forms import FeedbackForm, NewsForm, EventForm, DirectoryForm
-import json
-from models import NewsArticle, Event
+    __author__ = 'Prateek'
+    from django.shortcuts import render
+    from django.template.loader import get_template
+    from django.template import RequestContext
+    from django.template.context import Context
+    from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+    from django.views.decorators.csrf import csrf_exempt
+    from forms import FeedbackForm, NewsForm, EventForm, DirectoryForm
+    import json
+    from models import NewsArticle, Event
 
-from models import Student, Degree
+    from models import Student, Degree
+
+    def error(request):
+        error_msg = "404"
+        return render(request, 'error.html', {'error_msg': error_msg})
+
+    def home(request):
+        events = Event.objects.all()
+        return render(request, 'home.html', {'events': events, })
 
 
-def home(request):
-    events = Event.objects.all()
-    return render(request, 'home.html', {'events': events, })
-
-
-def directory(request):
-    grad_years = Student.objects.values('graduation_year').distinct()
-    return render(request, 'directory.html', {'grad_years': grad_years})
+    def directory(request):
+            grad_years = Student.objects.values('graduation_year').distinct()
+                return render(request, 'directory.html', {'grad_years': grad_years})
 
 
 def contact_us(request):

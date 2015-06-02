@@ -47,6 +47,7 @@ urlpatterns = patterns('',
     url(r'^admin_forms/add_blog/$', 'AlumniPortal.views.add_blog'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include(v1_api.urls)),
+    url(r'^sorry/$', 'AlumniPortal.views.error'),
 )
 
 if settings_dev.DEBUG:
