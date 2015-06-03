@@ -631,7 +631,7 @@
             full_user_data['objects'][0]['current_location']['country']['name'] = $('select#id_country').text();
 
             var img = document.getElementById("id_profile_photo").style.backgroundImage;
-            if (img == "url(http://127.0.0.1:8000/static/alumniportal/img/user.jpg)")
+            if (img.endsWith('url("/static/alumniportal/img/user.jpg")'))
             {
                 full_user_data['objects'][0]['profile_photo'] = null;
             }
