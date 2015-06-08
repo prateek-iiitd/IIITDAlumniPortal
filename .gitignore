@@ -61,7 +61,7 @@ migrations/*
 */migrations/*
 
 /AlumniPortal/static/*
-
+media/
 
 #Untrack creds_dev
 *creds_dev.py

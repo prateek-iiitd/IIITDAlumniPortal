@@ -1,0 +1,41 @@
+pycharm
+git repo:
+https://github.com/prateek-iiitd/IIITDAlumniPortal
+
+pip:
+http://pip.readthedocs.org/en/latest/installing.html
+
+install- django
+install- postgresql-X.Y
+install- postgresql-server-dev-X.Y
+
+install- psycopg2
+    sudo su postgres
+    psql
+    create user 'db_user' with password 'db_password';
+    create database 'db_name' with owner 'db_user';
+    grant all privileges on database 'db_name' to 'db_user';
+
+install- xlrd==0.9.3
+install- django-allauth==0.18.0
+install- South==1.0.1
+install- django-tastypie==0.12.1
+
+python manage.py syncdb
+python manage.py schemamigration AlumniPortal --initial
+python manage.py migrate AlumniPortal
+
+python manage.py loaddata ./AlumniPortal/fixtures/initialData.json
+manage.py importStudents <xls file, placed in the same folder as manage.py>
+
+/admin/socialaccount/ > socialapplications > add
+    Google
+        Client ID: 492163914838-ql7e8ug4l3uu769reo44k76ttnochjks.apps.googleusercontent.com
+        Secret Key: oBdx2APSOPsKyhFr1C-duxfk
+        Select the only site available.
+
+    LinkedIn
+        Client ID: 75z3efkfvi9ss4
+        Secret Key: 5HqLx5xy0mqyvK8C
+        Select the only site available.
+

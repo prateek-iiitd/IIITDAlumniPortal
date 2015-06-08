@@ -146,6 +146,13 @@ $(document).ready(function () {
         $("#email-overlay-background").fadeOut("medium");
     });
 //    $("#search-results-right").append('<div class="row"><div class="col-lg-1"><div class="pic"></div></div><div class="col-lg-10" style="padding: 5px 0 0 25px"><p style="margin-bottom: 0">Sauhard Gupta<br>Adobe &nbsp;| &nbsp;Senior Scientist<br>Batch 2015</p></div></div><div class="divider-4r"></div>');
+
+    $('div#search-results-left div input').focusout(function() {
+        filterList();
+    });
+    $('div#search-results-left div select').focusout(function() {
+        filterList();
+    });
 });
 
 function append_filter_text(filter, id) {

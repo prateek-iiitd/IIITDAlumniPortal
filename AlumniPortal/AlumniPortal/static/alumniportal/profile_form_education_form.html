@@ -1,15 +1,4 @@
-{% extends 'profile_form.html' %}
-{% load socialaccount %}
-
-{% block profile_form_left %}
-    <h3 style="display: inline-block">Education Details</h3>
-    <div class="btn btn-warning btn-add" style="float: right; margin: 20px 42px 0 0"><b>+</b> Add</div>
-
-    <form class="row input-form" action="/test/profile/" method="post"
-          enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <div class="form" style="background-color: #F7F7F7; border-radius: 5px; padding: 10px 10px 0 8px; margin-bottom: 20px; border-bottom: 1px solid #BBB; box-shadow: 1px 1px 3px #CCC">
+<div class="form" style="display: none; background-color: #F7F7F7; border-radius: 5px; padding: 10px 10px 0 8px; margin-bottom: 20px; border-bottom: 1px solid #BBB; box-shadow: 1px 1px 3px #CCC">
     <div class="row">
         <div class="col-lg-1" style="text-align: center; padding: 180px 20px; font-size: 36px; color: #CCC">
             <span class="glyphicon glyphicon-remove" title="Remove" style="color: #ff7158; cursor: pointer; text-shadow: 0 2px 1px #CCC;"></span>
@@ -276,45 +265,4 @@
         </div>
         </div>
     </div>
-    </div>
-
-    <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
-    </button>
-    </form>
-
-{% endblock %}
-
-{% block profile_form_right %}
-{% endblock %}
-
-{% block scripts %}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // change the number in the line below to change current progress on the progress bar
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(3)').addClass('active');
-            // adding class "visited" to all nodes before current active progress
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('visited');
-            $.ajax({
-                url: "{{ STATIC_URL }}alumniportal/profile_form_education_form.html",
-                type: "GET",
-                dataType: "html",
-                success: function (response, status, xhr) {
-                    education_html = response;
-                    console.log(education_html);
-                },
-                error: function (xhr, status, error) {
-                    console.log(status + ' ' + error);
-                }
-            });
-
-            $(".btn-add").click(function () {
-                $('form.input-form').html(education_html + $('form.input-form').html());
-                $('.form:first-of-type').slideDown('medium');
-                $('div.form div.row div.col-lg-1').on('click', 'span.glyphicon-remove', function() {
-                    $(this).parents('.form').slideUp('fast').addClass('deleted-form');
-                });
-            });
-        });
-    </script>
-{% endblock %}
+</div>

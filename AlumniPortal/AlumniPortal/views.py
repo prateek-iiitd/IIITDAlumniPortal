@@ -12,6 +12,11 @@ from models import NewsArticle, Event
 from models import Student, Degree
 
 
+def error(request):
+    error_msg = "404"
+    return render(request, 'error.html', {'error_msg': error_msg})
+
+
 def home(request):
     events = Event.objects.all()
     return render(request, 'home.html', {'events': events, })
@@ -102,7 +107,8 @@ def add_news(request):
             events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'news_class': "active", 'all_news': news, 'all_events': events})
+                           'directory_form': directory_form, 'news_class': "active", 'all_news': news,
+                           'all_events': events})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 
@@ -127,15 +133,18 @@ def add_event(request):
             events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'event_class': "active", 'all_news': news, 'all_events': events})
+                           'directory_form': directory_form, 'event_class': "active", 'all_news': news,
+                           'all_events': events})
 
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
+
 
 def del_event(request):
     del_pk = request.GET.get('id')
     Event.objects.filter(id=del_pk).delete()
     return HttpResponseRedirect('/admin_forms/')
+
 
 def add_directory(request):
     if request.method == 'POST':
@@ -151,7 +160,8 @@ def add_directory(request):
             events = Event.objects.all()
             return render(request, 'admin_forms.html',
                           {'degree_values': degree_values, 'news_form': news_form, 'event_form': event_form,
-                           'directory_form': directory_form, 'directory_class': "active", 'all_news': news, 'all_events': events})
+                           'directory_form': directory_form, 'directory_class': "active", 'all_news': news,
+                           'all_events': events})
     else:
         return HttpResponseBadRequest("THE REQUESTED URL IS INVALID")
 

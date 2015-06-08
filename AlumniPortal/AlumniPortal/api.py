@@ -6,7 +6,6 @@ from tastypie.authentication import SessionAuthentication, Authentication
 from tastypie.authorization import Authorization
 from tastypie import fields
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
-from django.db.models import Q
 import base64
 import os
 from tastypie.fields import FileField
@@ -41,7 +40,6 @@ class Base64FileField(FileField):
         "content_type": "image/png" # on hydrate optional
     }
     """
-
     def dehydrate(self, bundle, for_list):
         if not bundle.data.has_key(self.instance_name) and hasattr(bundle.obj, self.instance_name):
             file_field = getattr(bundle.obj, self.instance_name)
@@ -62,10 +60,8 @@ class Base64FileField(FileField):
     def hydrate(self, obj):
         value = super(FileField, self).hydrate(obj)
         if value:
-            value = SimpleUploadedFile(value["name"], base64.b64decode(value["file"]),
-                                       getattr(value, "content_type", "application/octet-stream"))
+            value = SimpleUploadedFile(value["name"], base64.b64decode(value["file"]), getattr(value, "content_type", "application/octet-stream"))
         return value
-
 
 class CountryResource(ModelResource):
     class Meta:
@@ -84,7 +80,6 @@ class CountryResource(ModelResource):
             'name': ('iexact',),
         }
 
-
 class CityResource(ModelResource):
     class Meta:
         queryset = Location.objects.all()
@@ -101,7 +96,6 @@ class CityResource(ModelResource):
         filtering = {
             'name': ('icontains',),
         }
-
 
 class LocationResource(ModelResource):
     country = fields.ForeignKey(CountryResource, 'country', full=True)
@@ -121,7 +115,6 @@ class LocationResource(ModelResource):
             "country": ALL_WITH_RELATIONS,
         }
         ordering = ['city', 'country']
-
 
 class OrganisationResource(ModelResource):
     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
@@ -273,6 +266,57 @@ class CurrentProfileResource(ModelResource):
         bundle.data['current_location'] = city_obj[0]
         return bundle
 
+    def hydrate_educations(self, bundle):
+        print "bundle", bundle
+        if bundle.obj.pk:
+            for education in bundle.data['educations']:
+                location = education.data['school']['location']
+                country_obj = Country.objects.get_or_create(name=location['country']['name'])
+                location_obj = Location.objects.get_or_create(city=location['city'],
+                                                              country=country_obj[0])
+                school_obj = School.objects.get_or_create(location=location_obj[0],
+                                                          name=education.data['school']['name'])
+                degree_type_obj = DegreeType.objects.get_or_create(name=education.data['degree_type']['name'],
+                                                                   desc=education.data['degree_type']['desc']
+                )
+                education_obj = EducationDetail.objects.get_or_create(degree_name=education.data['degree_name'],
+                                                                   school=school_obj[0],
+                                                                   end_date=education.data['end_date'],
+                                                                   field_of_study=education.data[
+                                                                       'field_of_study'],
+                                                                   degree_type=degree_type_obj[0],
+                                                                   start_date=education.data['start_date'],
+                                                                   is_current=education.data['is_current'],
+                                                                   user_id=bundle.request.user.id
+                )
+                education.obj = education_obj[0]
+        return bundle
+
+
+    def hydrate_work_details(self, bundle):
+        if bundle.obj.pk:
+            for work_detail in bundle.data['work_details']:
+                location = work_detail.data['organisation']['location']
+                country_obj = Country.objects.get_or_create(name=location['country']['name'])[0]
+                location_obj = Location.objects.get_or_create(city=location['city'],
+                                                              country=country_obj)[0]
+                organisation_obj = Organisation.objects.get_or_create(location=location_obj,
+                                                          name=work_detail.data['organisation']['name'])[0]
+                work_type_obj = WorkType.objects.get_or_create(name=work_detail.data['work_type']['name'],
+                                                                   desc=work_detail.data['work_type']['desc']
+                )[0]
+                work_detail_obj = WorkDetail.objects.get_or_create(title = work_detail.data['title'],
+                                                                   start_date=work_detail.data['start_date'],
+                                                                   end_date=work_detail.data['end_date'],
+                                                                   work_type=work_type_obj,
+                                                                   organisation=organisation_obj,
+                                                                   user_id=bundle.request.user.id,
+                                                                   is_current=work_detail.data['is_current']
+                )[0]
+                print "edu data type", type(work_detail.data)
+                work_detail.obj = work_detail_obj
+        return bundle
+
 
 # Resource for list of basic profiles
 class BasicProfileResource(ModelResource):
@@ -289,8 +333,7 @@ class BasicProfileResource(ModelResource):
         detail_allowed_methods = ['get']
         list_allowed_methods = ['get']
 
-        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details',
-                  'current_location']
+        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details', 'current_location']
 
 
 # Resource individual profile view
@@ -311,7 +354,7 @@ class FullProfileResource(ModelResource):
 
         fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'gender', 'marital_status',
                   'email', 'personal_email', 'work_details', 'current_location',
-                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage', ]
+                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage',]
 
 
 class testProfileResource(ModelResource):
@@ -319,6 +362,12 @@ class testProfileResource(ModelResource):
     work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
     current_location = fields.ForeignKey(LocationResource, 'current_location', full=True)
     full_name = fields.CharField(attribute='get_full_name', readonly=True)
+
+    def dehydrate(self, bundle):
+        bundle.data.pop("educations")
+        # bundle.data.pop("work_details")
+        bundle.data = bundle.data
+        return bundle
 
     class Meta:
         queryset = AlumniUser.objects.all()
@@ -334,7 +383,7 @@ class testProfileResource(ModelResource):
         filtering = {
             "first_name": ('istartswith', ),
             "last_name": ('istartswith', ),
-            # "full_name": ALL_WITH_RELATIONS,
+            #"full_name": ALL_WITH_RELATIONS,
             "gender": ('iexact', ),
             "graduation_year": ('lte', 'gte'),
             "educations": ALL_WITH_RELATIONS,
