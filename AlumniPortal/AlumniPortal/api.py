@@ -12,7 +12,9 @@ import os
 from tastypie.fields import FileField
 from django.core.files.uploadedfile import SimpleUploadedFile
 import mimetypes
-
+from tastypie.serializers import Serializer
+import datetime
+from django.utils import dateformat
 
 # AUTHENTICATION_OBJECT = SessionAuthentication()
 AUTHENTICATION_OBJECT = Authentication()
@@ -64,6 +66,11 @@ class Base64FileField(FileField):
         if value:
             value = SimpleUploadedFile(value["name"], base64.b64decode(value["file"]), getattr(value, "content_type", "application/octet-stream"))
         return value
+
+
+class CustomDateSerializer(Serializer):
+    def format_date(self, data):
+        return data.strftime("%b '%y")
 
 class CountryResource(ModelResource):
     class Meta:
@@ -210,6 +217,7 @@ class WorkDetailResource(ModelResource):
         detail_allowed_methods = ['get']
         max_limit = 0
         excludes = ['id']
+        serializer = CustomDateSerializer(formats=['json'])
 
         filtering = {
             'work_type': ALL_WITH_RELATIONS,
@@ -231,6 +239,7 @@ class EducationResource(ModelResource):
 
         list_allowed_methods = ['get']
         detail_allowed_methods = ['get']
+        serializer = CustomDateSerializer(formats=['json'])
 
         filtering = {
             'degree_type': ALL_WITH_RELATIONS,
@@ -262,14 +271,12 @@ class CurrentProfileResource(ModelResource):
         return super(CurrentProfileResource, self).get_object_list(request).filter(pk=request.user.pk)
 
     def hydrate_current_location(self, bundle):
-        print bundle.data['current_location']
         country_obj = Country.objects.get_or_create(name=bundle.data['current_location']['country']['name'])
         city_obj = Location.objects.get_or_create(city=bundle.data['current_location']['city'], country=country_obj[0])
         bundle.data['current_location'] = city_obj[0]
         return bundle
 
     def hydrate_educations(self, bundle):
-        print "bundle", bundle
         if bundle.obj.pk:
             for education in bundle.data['educations']:
                 location = education.data['school']['location']
@@ -315,7 +322,6 @@ class CurrentProfileResource(ModelResource):
                                                                    user_id=bundle.request.user.id,
                                                                    is_current=work_detail.data['is_current']
                 )[0]
-                print "edu data type", type(work_detail.data)
                 work_detail.obj = work_detail_obj
         return bundle
 
@@ -354,6 +360,7 @@ class FullProfileResource(ModelResource):
 
         detail_allowed_methods = ['get']
         list_allowed_methods = []
+        serializer = CustomDateSerializer(formats=['json'])
 
         fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'gender', 'marital_status',
                   'email', 'personal_email', 'work_details', 'current_location',

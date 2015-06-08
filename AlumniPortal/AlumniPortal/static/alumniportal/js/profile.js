@@ -64,6 +64,7 @@ $(document).ready(function () {
             $('div div.work-and-education>div.row:first-child').append("<p style='color: #777; margin-left: 20px'>This user hasn't entered any work details</p>");
             work_details = '<br>';
         }
+        // Find current work_detail and show in the profile banner.
         else {
             work_details = student['work_details'];
             for (i=0; i<student['work_details'].length; i++) {
@@ -92,6 +93,8 @@ $(document).ready(function () {
         $("#banner>div.image>p").html('<span>'+student['first_name']+' '+student['last_name']+'</span><br>'
                 +organisation+designation
                 +graduation_year);
+
+        // Show complete work history of the user.
         for (i=0; i<student['work_details'].length; i++) {
             if (!work_details[i]['organisation']['name']) {
                 organisation = '';
@@ -129,6 +132,64 @@ $(document).ready(function () {
                 <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;" class="h4-big">\
                     <h4>'+organisation+'</h4>\
                     <span>'+designation+start_date+end_date+'</span>\
+                </div>\
+                ');
+        }
+
+        // Populate education history of the user.
+
+        var school ='', degree = '';
+        if (student['educations'].length == 0) {
+            $('div div.work-and-education>div.row:last-child').append("<p style='color: #777; margin-left: 20px'>This user hasn't entered any education details</p>");
+            education_details = '<br>';
+        }
+        else
+        {
+            education_details = student['educations'];
+        }
+        for (i=0; i<student['educations'].length; i++) {
+            if (!education_details[i]['school']['name']) {
+                school = '';
+            }
+            else {
+                school = education_details[i]['school']['name'];
+            }
+            if (!education_details[i]['degree_name']) {
+                degree = '<br>';
+            }
+            else {
+                degree = education_details[i]['degree_name'];
+                if (!education_details[i]['field_of_study']) {
+                    degree += '<br/>';
+                }
+                else {
+                    degree += ', ' + education_details[i]['field_of_study'] + '<br/>';
+                }
+            }
+            if (!education_details[i]['start_date'] && !education_details[i]['end_date']) {
+                start_date = '';
+                end_date = '';
+            }
+            else {
+                if (!education_details[i]['start_date']) {
+                    start_date = '';
+                    end_date = ' Till '+education_details[i]['end_date'];
+                }
+                else {
+                    if (!education_details[i]['end_date']) {
+                        start_date = 'Started ' + education_details[i]['start_date'];
+                        end_date = '';
+                    }
+                    else {
+                        start_date = '' + education_details[i]['start_date'];
+                        end_date = ' - ' + education_details[i]['end_date'];
+                    }
+                }
+            }
+            $('div.work-and-education>div.row:last-child').append('\
+                <div style="margin-left: 15px;padding-left: 10px;border-left:1px #666 solid;" class="h4-big">\
+                    <h4>'+school+'</h4>\
+                    <span>'+degree+start_date+end_date+'</span>\
                 </div>\
                 ');
         }
