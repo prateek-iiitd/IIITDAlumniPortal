@@ -171,7 +171,7 @@ function filterList() {
     $("#email-overlay input").val('');
 
     url = "/api/v1/filter/?format=json"
-    url += append_filter_text("first_name__istartswith", "id_name");
+    url += append_filter_text("full", "id_name");
     url += append_filter_select("gender__iexact", "id_gender");
     url += append_filter_text("graduation_year__lte", "id_batch");
     url += append_filter_text("graduation_year__gte", "id_batch");

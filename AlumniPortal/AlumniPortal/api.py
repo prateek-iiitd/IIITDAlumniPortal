@@ -6,6 +6,7 @@ from tastypie.authentication import SessionAuthentication, Authentication
 from tastypie.authorization import Authorization
 from tastypie import fields
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
+from django.db.models import Q
 import base64
 import os
 from tastypie.fields import FileField
@@ -40,6 +41,7 @@ class Base64FileField(FileField):
         "content_type": "image/png" # on hydrate optional
     }
     """
+
     def dehydrate(self, bundle, for_list):
         if not bundle.data.has_key(self.instance_name) and hasattr(bundle.obj, self.instance_name):
             file_field = getattr(bundle.obj, self.instance_name)
@@ -60,8 +62,10 @@ class Base64FileField(FileField):
     def hydrate(self, obj):
         value = super(FileField, self).hydrate(obj)
         if value:
-            value = SimpleUploadedFile(value["name"], base64.b64decode(value["file"]), getattr(value, "content_type", "application/octet-stream"))
+            value = SimpleUploadedFile(value["name"], base64.b64decode(value["file"]),
+                                       getattr(value, "content_type", "application/octet-stream"))
         return value
+
 
 class CountryResource(ModelResource):
     class Meta:
@@ -80,6 +84,7 @@ class CountryResource(ModelResource):
             'name': ('iexact',),
         }
 
+
 class CityResource(ModelResource):
     class Meta:
         queryset = Location.objects.all()
@@ -96,6 +101,7 @@ class CityResource(ModelResource):
         filtering = {
             'name': ('icontains',),
         }
+
 
 class LocationResource(ModelResource):
     country = fields.ForeignKey(CountryResource, 'country', full=True)
@@ -115,6 +121,7 @@ class LocationResource(ModelResource):
             "country": ALL_WITH_RELATIONS,
         }
         ordering = ['city', 'country']
+
 
 class OrganisationResource(ModelResource):
     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
@@ -266,6 +273,7 @@ class CurrentProfileResource(ModelResource):
         bundle.data['current_location'] = city_obj[0]
         return bundle
 
+
 # Resource for list of basic profiles
 class BasicProfileResource(ModelResource):
     work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
@@ -281,7 +289,8 @@ class BasicProfileResource(ModelResource):
         detail_allowed_methods = ['get']
         list_allowed_methods = ['get']
 
-        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details', 'current_location']
+        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details',
+                  'current_location']
 
 
 # Resource individual profile view
@@ -302,20 +311,14 @@ class FullProfileResource(ModelResource):
 
         fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'gender', 'marital_status',
                   'email', 'personal_email', 'work_details', 'current_location',
-                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage',]
+                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage', ]
 
 
 class testProfileResource(ModelResource):
     educations = fields.ToManyField('AlumniPortal.api.EducationResource', "educations", full=True, null=True)
     work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
     current_location = fields.ForeignKey(LocationResource, 'current_location', full=True)
-    #fullname = fields.CharField(attribute='get_full_name', readonly=True)
-
-    def dehydrate(self, bundle):
-        bundle.data.pop("educations")
-        # bundle.data.pop("work_details")
-        bundle.data = bundle.data
-        return bundle
+    full_name = fields.CharField(attribute='get_full_name', readonly=True)
 
     class Meta:
         queryset = AlumniUser.objects.all()
@@ -331,7 +334,7 @@ class testProfileResource(ModelResource):
         filtering = {
             "first_name": ('istartswith', ),
             "last_name": ('istartswith', ),
-            #"full_name": ALL_WITH_RELATIONS,
+            # "full_name": ALL_WITH_RELATIONS,
             "gender": ('iexact', ),
             "graduation_year": ('lte', 'gte'),
             "educations": ALL_WITH_RELATIONS,
@@ -339,45 +342,36 @@ class testProfileResource(ModelResource):
             "current_location": ALL_WITH_RELATIONS,
         }
 
+    def dehydrate(self, bundle):
+        bundle.data.pop("educations")
+        bundle.data = bundle.data
+        return bundle
 
-        # class testProfileResource2(ModelResource):
-        # # def build_filters(self, filters=None):
-        # # if filters is None:
-        #     # filters = {}
-        #     # orm_filters = super(testProfileResource, self).build_filters(filters)
-        #     # #print orm_filters
-        #     #     return orm_filters
-        #
-        #     def apply_filters(self, request, applicable_filters):
-        #         data = super(testProfileResource, self).apply_filters(request, applicable_filters)
-        #         print "filters : ", applicable_filters
-        #         print "data >> : ", type(data), type(data[0])
-        #         for item in data:
-        #             for edu in item.educations.all():
-        #                 print edu.degree_name
-        #         return data
-        #
-        #     def dehydrate(self, bundle):
-        #         bundle.data.pop("educations")
-        #         bundle.data.pop("work_details")
-        #         bundle.data = bundle.data
-        #         return bundle
-        #
-        #     educations = fields.ToManyField('AlumniPortal.api.EducationResource', "educations", full=True, null=True)
-        #     work_details = fields.ToManyField('AlumniPortal.api.WorkDetailResource', "work_details", full=True, null=True)
-        #
-        #     class Meta:
-        #         queryset = AlumniUser.objects.all()
-        #         resource_name = 'test'
-        #         # authentication = SessionAuthentication()
-        #         authentication = Authentication()
-        #         authorization = Authorization()
-        #         detail_allowed_methods = ['get', 'put']
-        #         list_allowed_methods = ['get']
-        #
-        #         excludes = ['created_at', 'is_admin', 'is_active', 'last_login', 'password', 'educations']
-        #
-        #         filtering = {
-        #             "first_name": ('icontains', ),
-        #             "password": ('icontains', )
-        #         }
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+        orm_filters = super(testProfileResource, self).build_filters(filters)
+
+        if('full' in filters):
+            name_search_string = filters['full'].strip()
+            name_parts = name_search_string.split()
+
+            queries = [Q(first_name__istartswith=value) | Q(last_name__istartswith=value) for value in name_parts]
+            query = queries.pop()
+
+            for item in queries:
+                query &= item
+
+            orm_filters.update({'full': (query)})
+
+        return orm_filters
+
+    def apply_filters(self, request, applicable_filters):
+        if 'full' in applicable_filters:
+            custom = applicable_filters.pop('full')
+        else:
+            custom = None
+
+        semi_filtered = super(testProfileResource, self).apply_filters(request, applicable_filters)
+
+        return semi_filtered.filter(custom) if custom else semi_filtered
