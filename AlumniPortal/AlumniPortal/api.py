@@ -6,6 +6,7 @@ from tastypie.authentication import SessionAuthentication, Authentication
 from tastypie.authorization import Authorization
 from tastypie import fields
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
+from django.db.models import Q
 import base64
 import os
 from tastypie.fields import FileField
@@ -40,6 +41,7 @@ class Base64FileField(FileField):
         "content_type": "image/png" # on hydrate optional
     }
     """
+
     def dehydrate(self, bundle, for_list):
         if not bundle.data.has_key(self.instance_name) and hasattr(bundle.obj, self.instance_name):
             file_field = getattr(bundle.obj, self.instance_name)
@@ -333,7 +335,8 @@ class BasicProfileResource(ModelResource):
         detail_allowed_methods = ['get']
         list_allowed_methods = ['get']
 
-        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details', 'current_location']
+        fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'id', 'email', 'work_details',
+                  'current_location']
 
 
 # Resource individual profile view
@@ -354,7 +357,7 @@ class FullProfileResource(ModelResource):
 
         fields = ['first_name', 'last_name', 'profile_photo', 'graduation_year', 'gender', 'marital_status',
                   'email', 'personal_email', 'work_details', 'current_location',
-                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage',]
+                  'facebook_profile', 'google_profile', 'linkedin_profile', 'twitter_profile', 'homepage', ]
 
 
 class testProfileResource(ModelResource):
