@@ -296,7 +296,7 @@ function nextButtonClicked() {
     full_user_data['objects'][0]['current_location']['country']['name'] = $('select#id_country').text();
 
     var img = document.getElementById("id_profile_photo").style.backgroundImage;
-    if (img.endsWith('alumniportal/img/user.jpg')) {
+    if (img.endsWith('alumniportal/img/user.jpg)')) {
         full_user_data['objects'][0]['profile_photo'] = null;
     }
     else {
@@ -343,7 +343,7 @@ $(document).ready(function () {
         $('#id_profile_photo_input').click();
     });
     $('#id_profile_photo_change>div>span:last-child').click(function () {
-        $('#id_profile_photo').css('background-image', 'url({{ STATIC_URL }}alumniportal/img/user.jpg)');
+        $('#id_profile_photo').css('background-image', 'url('+ STATIC_URL +'alumniportal/img/user.jpg)');
         new_img_64b = "";
     });
 });
