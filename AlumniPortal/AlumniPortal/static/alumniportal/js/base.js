@@ -70,25 +70,55 @@ $(document).ready(function () {
             $('#search-btn').click();
         }
     });
+
+    // resetting feedback form (validation)
+    $('div#feedback>form>input:first-child').focusin(function() {
+        $('div#feedback>form>input:first-child').css("border", "1px solid #777");
+        $('div#feedback>form>input:first-child').attr("placeholder", "Name");
+    });
+
+    $('div#feedback>form>textarea').focusin(function() {
+        $('div#feedback>form>textarea').css("border", "1px solid #777");
+        $('div#feedback>form>textarea').attr("placeholder", "Feedback");
+    });
 });
 
 function submitFeedbackForm()
 {
-    $.ajax({
-            type: "POST",
-            url: "/feedback/",
-            data: $("#feedback>form").serialize(),
-            success: function(data, textStatus, jqXHR){
-                $("#feedback p").text("Thank you for your feedback!");
-                $("#feedback form").slideUp("fast");
-                $("#feedback").animate({height: "100px"});
-                window.setTimeout($close, 2000);
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                alert("Error!")
+    validFlag = true;
+
+    // Validation
+    if ($('div#feedback>form>input:first-child').val() == '') {
+        validFlag = false;
+        $('div#feedback>form>input:first-child').css("border", "1px solid red");
+        $('div#feedback>form>input:first-child').attr("placeholder", "Name cannot be empty!");
+    }
+
+    if ($('div#feedback>form>textarea').val() == '') {
+        validFlag = false;
+        $('div#feedback>form>textarea').css("border", "1px solid red");
+        $('div#feedback>form>textarea').attr("placeholder", "Please enter some feedback!");
+    }
+
+    if (validFlag)
+    {
+        // -- Validated --
+        $.ajax({
+                type: "POST",
+                url: "/feedback/",
+                data: $("#feedback>form").serialize(),
+                success: function (data, textStatus, jqXHR) {
+                    $("#feedback p").text("Thank you for your feedback!");
+                    $("#feedback form").slideUp("fast");
+                    $("#feedback").animate({height: "100px"});
+                    window.setTimeout($close, 2000);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Your feedback could not be submitted at this time.")
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 function getParameterByName(name) {

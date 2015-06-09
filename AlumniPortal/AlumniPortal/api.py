@@ -431,6 +431,6 @@ class testProfileResource(ModelResource):
         else:
             custom = None
 
-        semi_filtered = super(testProfileResource, self).apply_filters(request, applicable_filters)
+        semi_filtered = super(testProfileResource, self).apply_filters(request, applicable_filters).distinct()
 
         return semi_filtered.filter(custom) if custom else semi_filtered
