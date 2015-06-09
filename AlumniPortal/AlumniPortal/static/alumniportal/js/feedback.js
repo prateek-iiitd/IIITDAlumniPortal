@@ -31,7 +31,6 @@ $(document).ready(function () {
     }
 
     $("#openfeedback").click(function() {
-        console.log("Clicking");
         $("#black").css("z-index", 999).fadeTo("medium", 0.7);
         $("#feedback").css("z-index", 1000).slideDown("fast");
 //        $("#feedback").css("z-index", 1000).fadeTo("medium", 1);
