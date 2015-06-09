@@ -3,7 +3,12 @@
 {% block title %}IIITD Alumni | Search Results{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/search_results.css">
+    <script data-pace-options='{ "ajax": true }' src="{{ STATIC_URL }}pace/js/pace.min.js"></script>
+    <link href="{{ STATIC_URL }}pace/css/pace-flash.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block overlay %}
@@ -53,23 +58,15 @@
         </div>
 
         <div class="row">
-            <div class="form-group input-group pull-left" id="">
-
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
-                <input id="id_batch" name="batch" type="text" class="form-control" style="border-radius:0 5px 5px 0;"
-                       placeholder="Passout Batch">
+            <div style="text-align: center;font-weight: bold"><span class="glyphicon glyphicon-calendar"></span> Graduating Year</div>
+            <div class="row" style="margin: 10px 0 5px 0">
+                <div id="passout-range-slider" class="ui-slider ui-slider-horizontal">
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div style="text-align: center;font-weight: bold">Passout Batch</div>
-            <div class="form-group input-group pull-left" id="">
-
-{#                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>#}
-                <div class="pull-left" style="margin:0 5px;">YYYY</div>
-
-                <input type="range" id="id_batch" name="batch" placeholder="Passout Batch"
-                       min="2012" max="2015" style="width: 75%;">
+            <div class="row" style="margin-bottom: 10px; text-align: center; letter-spacing: 2px; font-family: 'Droid Sans','Helvetica Neue',Helvetica,Arial,sans-serif !important;">
+                <div class="col-lg-offset-2 col-lg-8" style="padding: 3px; border-radius: 5px; background: #DDD">
+                    <span id="grad-year-start">2012</span> - <span id="grad-year-end">2020</span>
+                </div>
             </div>
         </div>
 
@@ -322,5 +319,17 @@
 {#{%  endblock %}#}
 
 {% block scripts %}
+    <script>
+        Pace.on('start', function () {
+            $('#loading-overlay').css('display', 'block');
+        });
+        Pace.on('restart', function () {
+            $('#loading-overlay').css('display', 'block');
+        });
+        Pace.on('done', function () {
+            $('#loading-overlay').css('display', 'none');
+        });
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}alumniportal/js/search.js"></script>
 {% endblock %}
