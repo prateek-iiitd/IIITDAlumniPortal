@@ -52,8 +52,26 @@ $(document).ready(function () {
             $close();
         }
     });
-});
 
+    $('#search-btn').mouseenter(function() {
+        $('li.nav-search-box div.form-group span>span.glyphicon-search').css("color", "#3fada8");
+    });
+    $('#search-btn').mouseleave(function() {
+        $('li.nav-search-box div.form-group span>span.glyphicon-search').css("color", "#555555");
+    });
+    $('#search-btn').click(function() {
+        searchQuery = $('li.nav-search-box div.form-group input.form-control').val();
+        console.log(searchQuery);
+        window.location.href = '/test/prototype_result/?q='+searchQuery;
+    });
+
+    $('li.nav-search-box div.form-group input.form-control').keydown(function(e) {
+    // ENTER key pressed
+        if (e.keyCode == 13) {
+            $('#search-btn').click();
+        }
+    });
+});
 
 function submitFeedbackForm()
 {
@@ -72,4 +90,11 @@ function submitFeedbackForm()
             }
         }
     )
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }

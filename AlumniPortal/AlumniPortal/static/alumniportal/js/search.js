@@ -91,8 +91,17 @@ function getAndDisplayFilters(url)
 
 $(document).ready(function () {
     $("#email-overlay div input").val("");
-    // function to request list of student details using Ajax and list all results automatically
-    getAndDisplayFilters("/api/v1/filter/?format=json");
+
+    // ?q = --> search
+    searchQuery = getParameterByName('q');
+    if (searchQuery == '') {
+        getAndDisplayFilters("/api/v1/filter/?format=json");
+    }
+    else {
+        $('li.nav-search-box div.form-group input.form-control').val(searchQuery);
+        $('#id_name').val(searchQuery);
+        filterList();
+    }
 
     $(document).bind('keydown', function(event) {
         if( event.which == 99 || event.which == 67 && event.ctrlKey ) {
