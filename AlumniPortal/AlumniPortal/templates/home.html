@@ -1,10 +1,12 @@
-<style>
-    div#nav-bar li.glyphicon-home {
-        color: #3FADA8 !important;
-    }
-</style>
-
 {% extends 'base.html' %}
+
+{% block stylesheets %}
+    <style>
+        div#nav-bar li.glyphicon-home {
+            color: #3FADA8 !important;
+        }
+    </style>
+{% endblock %}
 
 {% block title %}Alumni Home{% endblock %}
 

@@ -1,14 +1,13 @@
-<style>
-    div#nav-bar li.glyphicon-user {
-        color: #3FADA8 !important;
-    }
-</style>
-
 {% extends 'base.html' %}
 
 {% block title %}Alumni Directory{% endblock %}
 
 {% block stylesheets %}
+    <style>
+        div#nav-bar li.glyphicon-user {
+            color: #3FADA8 !important;
+        }
+    </style>
     <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/directory.css">
 {% endblock %}
 
