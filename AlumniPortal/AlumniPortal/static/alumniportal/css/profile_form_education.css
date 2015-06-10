@@ -1,0 +1,42 @@
+.form-group {
+    width:100%;
+}
+
+.form-group .input-group-addon {
+    width: 140px;
+}
+
+.remove-box {
+    text-align: center;
+    font-size: 15px;
+    color: #CCC;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 10px 5px 0;
+    /*box-shadow: 2px 2px 3px #aaa;*/
+}
+
+.remove-box:hover .remove-box-button {
+    /*color: #ff6666;*/
+    /*color:#3fada8;*/
+    color: #808080;
+}
+
+.remove-box, .form-box {
+    background-color: #f6f6f6;
+}
+
+.remove-box-button {
+    /*color: #ff7158;*/
+    color: #b0b0b0;
+    cursor: pointer;
+}
+
+.form-box {
+    margin-top:-10px;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom:0;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 3px #aaa;
+}

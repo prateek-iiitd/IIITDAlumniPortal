@@ -2,141 +2,117 @@
 {% load socialaccount %}
 
 {% block additional_styling %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}selectize/css/selectize.bootstrap3.css">
-    <style>
-        div#education-form > div.row > div.col-lg-11 div.form-group, div#education-form > div.row > div.col-lg-11 div.input-group {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-
-        div#education-form > div.row > div.col-lg-11 div.row {
-            margin-top: 5px !important;
-            margin-bottom: 10px !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ STATIC_URL }}alumniportal/css/profile_form_education.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/jquery-ui.min.css">
 {% endblock %}
 
 {% block profile_form_left %}
     <h3 style="display: inline-block">Education Details</h3>
-    <div class="btn btn-warning btn-add" style="float: right; margin: 20px 42px 0 0"><b>+</b> Add</div>
-
-    <form class="row input-form" action="/test/profile/" method="post"
-          enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <div class="form" id="education-form"
-             style="background-color: #fbfbfb; border-radius: 5px; padding: 10px 10px 10px 10px; margin-bottom: 20px; border-bottom: 1px solid #BBB; box-shadow: 1px 1px 3px #CCC">
-            <div class="row">
-                <div class="pull-right" style="text-align: center;  font-size: 36px; color: #CCC; padding: 0px 10px">
-                <span class="glyphicon glyphicon-remove" title="Remove"
-                      style="color: #ff7158; cursor: pointer; text-shadow: 0 2px 1px #CCC;"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-
-                            <div class="form-group input-group" id="id_form-0-school" style="width: 100%">
-                                <span class="input-group-addon" style="width: 140px;">School</span>
-                                <input id="id_form-0-school" name="form-0-school" class="form-control"
-                                       style="border-radius:0 5px 5px 0;" type="text">
-                            </div>
 
 
-                            <div class="form-group input-group" id="id_form-0-degree_name" style="width: 100%">
-                                <span class="input-group-addon" style="width: 140px;">Degree</span>
-                                <input id="id_form-0-degree_name" name="form-0-degree_name" class="form-control"
-                                       style="border-radius:0 5px 5px 0;"
-                                       type="text">
-                            </div>
-                            <div class="form-group input-group" id="id_form-0-field_of_study" style="width: 100%">
-                                <span class="input-group-addon" style="width: 140px;">Field of Study</span>
-                                <input id="id_form-0-field_of_study" name="form-0-field_of_study" class="form-control"
-                                       style="border-radius:0 5px 5px 0;"
-                                       type="text">
-                            </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group input-group" id="did_form-0-degree_type" style="margin-top: 0">
-                                <span class="input-group-addon"
-                                      style="width: 140px; line-height: 20px">Degree level</span>
-                                <select id="id_form-0-degree_type" name="form-0-degree_type"
-                                        style="border-radius: 0 5px 5px 0; width: 190px">
-                                    <option value="-1">Select Status</option>
-                                    <option value="1">Undergraduate</option>
-                                    <option value="2">Postgraduate</option>
-                                    <option value="3">Doctoral</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group input-group" id="field.auto_id" style="width: 100%; margin-top: 0">
-                                <span class="input-group-addon" style="width: 140px;">
-                                    <input type="checkbox" name="isCurrent"
-                                           onclick="form.remark.value += 'isCurrent'">
-                                </span>
-                                    <span class="form-control">Currently studying
-                                    </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group input-group" id="id_form-0-start_date" style="width: 100%;  margin-top: 0">
-                                <span class="input-group-addon" style="width: 140px;">Attended from</span>
-                                <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
-                                       style="border-radius:0 5px 5px 0;" value="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group input-group" id="id_form-0-end_date" style="width: 100%;  margin-top: 0">
-                                <span class="input-group-addon" style="width: 140px;">Attended till</span>
-                                <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
-                                       style="border-radius:0 5px 5px 0;" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" id="">
+    <div id="form-0">
 
-                            <span class="" style="width: 140px;">City</span>
-
-                            <select id="id_city" placeholder="Enter your city...">
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <span class="" style="width: 140px;">Country</span>
-
-                            <select id="id_country" placeholder="Select a country...">
-                            </select>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">
-                    <input id="id_form-0-id" name="form-0-id" class="form-control"
-                           style="border-radius:0 5px 5px 0;"
-                           value="None" type="hidden">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pull-right remove-box">
+                    <span class="glyphicon glyphicon-trash remove-box-button" title="Remove"> Remove</span>
                 </div>
             </div>
         </div>
+        <div class="form-box">
 
-        <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
-        </button>
-    </form>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">School</span>
+                        <input id="" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Degree</span>
+                        <input id="" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Field of Study</span>
+                        <input id="" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Degree Level</span>
+                        <select class="form-control">
+                            <option value="-1">Select Status</option>
+                            <option value="1">Undergraduate</option>
+                            <option value="2">Postgraduate</option>
+                            <option value="3">Doctoral</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <input type="checkbox">
+                </span>
+                <span class="form-control">
+                    Currently studying
+                </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Attended from</span>
+                        <input id="" class="form-control startDatepicker">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Attended till</span>
+                        <input id="" class="form-control endDatepicker">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">City</span>
+                        <select id="" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">Country</span>
+                        <select id="" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
+
 
 {% block profile_form_right %}
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ STATIC_URL }}selectize/js/standalone/selectize.js"></script>
+    <script src="{{ STATIC_URL }}alumniportal/js/utilities.js"></script>
+    <script src="{{ STATIC_URL }}alumniportal/js/profile_form_education.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/jquery-ui.min.js"></script>
     {% block additional_script %}
-        <script src="{{ STATIC_URL }}alumniportal/js/profile_form_education.js"></script>
-        <script src="{{ STATIC_URL }}alumniportal/js/utilities.js"></script>
-
     {% endblock %}
 {% endblock %}
