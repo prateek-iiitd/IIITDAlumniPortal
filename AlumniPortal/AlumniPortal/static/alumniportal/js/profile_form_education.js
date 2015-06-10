@@ -80,10 +80,10 @@ function fetchFormHtml() {
 
 $(document).ready(function () {
     // change the number in the line below to change current progress on the progress bar
-    $('div.checkout-wrap ul.checkout-bar li:nth-child(3)').addClass('active');
+    $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('active');
     // adding class "visited" to all nodes before current active progress
     $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
-    $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('visited');
+//    $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('visited');
 
     $('#id_form-0-degree_type').selectize({
         create: true

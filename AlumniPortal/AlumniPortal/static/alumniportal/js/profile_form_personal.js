@@ -313,9 +313,9 @@ function nextButtonClicked() {
 
 $(document).ready(function () {
     // change the number in the line below to change current progress on the progress bar
-    $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('active');
+    $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('active');
     // adding class "visited" to all nodes before current active progress
-    $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
+//    $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
     document.getElementById('id_profile_photo_input').addEventListener('change', handleFileSelect, false);
     fetchCountryList(set_country_data, populateCountrySelectList);
     fetchCityList(set_city_data, populateCitySelectList);
