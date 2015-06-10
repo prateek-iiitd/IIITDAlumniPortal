@@ -2,12 +2,16 @@
 {% load socialaccount %}
 
 {% block additional_styling %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}selectize/css/selectize.bootstrap3.css">
     <style>
-        div#education-form>div.row>div.col-lg-11 div.form-group, div#education-form>div.row>div.col-lg-11 div.input-group {
-            margin-top: 0 !important; margin-bottom: 0 !important;
+        div#education-form > div.row > div.col-lg-11 div.form-group, div#education-form > div.row > div.col-lg-11 div.input-group {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
         }
-        div#education-form>div.row>div.col-lg-11 div.row {
-            margin-top: 5px !important  ; margin-bottom: 10px !important;
+
+        div#education-form > div.row > div.col-lg-11 div.row {
+            margin-top: 5px !important;
+            margin-bottom: 10px !important;
         }
     </style>
 {% endblock %}
@@ -18,288 +22,109 @@
 
     <form class="row input-form" action="/test/profile/" method="post"
           enctype="multipart/form-data">
-    {% csrf_token %}
+        {% csrf_token %}
 
-    <div class="form" id="education-form"
-         style="background-color: #F7F7F7; border-radius: 5px; padding: 10px 10px 10px 8px; margin-bottom: 20px; border-bottom: 1px solid #BBB; box-shadow: 1px 1px 3px #CCC">
-        <div class="row">
-            <div class="col-lg-1" style="text-align: center; padding: 100px 20px; font-size: 36px; color: #CCC">
+        <div class="form" id="education-form"
+             style="background-color: #fbfbfb; border-radius: 5px; padding: 10px 10px 10px 10px; margin-bottom: 20px; border-bottom: 1px solid #BBB; box-shadow: 1px 1px 3px #CCC">
+            <div class="row">
+                <div class="pull-right" style="text-align: center;  font-size: 36px; color: #CCC; padding: 0px 10px">
                 <span class="glyphicon glyphicon-remove" title="Remove"
                       style="color: #ff7158; cursor: pointer; text-shadow: 0 2px 1px #CCC;"></span>
+                </div>
             </div>
 
-            <div class="col-lg-11" style="padding-left: 30px">
-                <div class="form-group input-group row" id="id_form-0-school" style="width: 100%;">
-                    <span class="input-group-addon" style="width: 140px;">School</span>
-                    <input id="id_form-0-school" name="form-0-school" class="form-control"
-                           style="border-radius:0 5px 5px 0;" type="text">
-                </div>
-                <div class="form-group input-group row" id="id_form-0-degree_name" style="width: 100%;">
-                    <span class="input-group-addon" style="width: 140px;">Degree</span>
-                    <input id="id_form-0-degree_name" name="form-0-degree_name" class="form-control"
-                           style="border-radius:0 5px 5px 0;"
-                           type="text">
-                </div>
-                <div class="form-group input-group row" id="id_form-0-field_of_study" style="width: 100%;">
-                    <span class="input-group-addon" style="width: 140px;">Field of Study</span>
-                    <input id="id_form-0-field_of_study" name="form-0-field_of_study" class="form-control"
-                           style="border-radius:0 5px 5px 0;"
-                           type="text">
-                </div>
-                <div class="row">
-                    <div class="col-lg-6" style="padding: 0">
-                        <div class="form-group input-group" id="id_form-0-degree_type">
-                            <span class="input-group-addon" style="width: 50%;">Degree level</span>
-                            <select id="id_form-0-degree_type" name="form-0-degree_type" class="form-control"
-                                    style="border-radius: 0 5px 5px 0">
-                                <option value="-1">Select Status</option>
-                                <option value="1">Undergraduate</option>
-                                <option value="2">Postgraduate</option>
-                                <option value="3">Doctoral</option>
+            <div class="row">
+                <div class="col-lg-12">
+
+                            <div class="form-group input-group" id="id_form-0-school" style="width: 100%">
+                                <span class="input-group-addon" style="width: 140px;">School</span>
+                                <input id="id_form-0-school" name="form-0-school" class="form-control"
+                                       style="border-radius:0 5px 5px 0;" type="text">
+                            </div>
+
+
+                            <div class="form-group input-group" id="id_form-0-degree_name" style="width: 100%">
+                                <span class="input-group-addon" style="width: 140px;">Degree</span>
+                                <input id="id_form-0-degree_name" name="form-0-degree_name" class="form-control"
+                                       style="border-radius:0 5px 5px 0;"
+                                       type="text">
+                            </div>
+                            <div class="form-group input-group" id="id_form-0-field_of_study" style="width: 100%">
+                                <span class="input-group-addon" style="width: 140px;">Field of Study</span>
+                                <input id="id_form-0-field_of_study" name="form-0-field_of_study" class="form-control"
+                                       style="border-radius:0 5px 5px 0;"
+                                       type="text">
+                            </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group input-group" id="did_form-0-degree_type" style="margin-top: 0">
+                                <span class="input-group-addon"
+                                      style="width: 140px; line-height: 20px">Degree level</span>
+                                <select id="id_form-0-degree_type" name="form-0-degree_type"
+                                        style="border-radius: 0 5px 5px 0; width: 190px">
+                                    <option value="-1">Select Status</option>
+                                    <option value="1">Undergraduate</option>
+                                    <option value="2">Postgraduate</option>
+                                    <option value="3">Doctoral</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group input-group" id="field.auto_id" style="width: 100%; margin-top: 0">
+                                <span class="input-group-addon" style="width: 140px;">
+                                    <input type="checkbox" name="isCurrent"
+                                           onclick="form.remark.value += 'isCurrent'">
+                                </span>
+                                    <span class="form-control">Currently studying
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group input-group" id="id_form-0-start_date" style="width: 100%;  margin-top: 0">
+                                <span class="input-group-addon" style="width: 140px;">Attended from</span>
+                                <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
+                                       style="border-radius:0 5px 5px 0;" value="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group input-group" id="id_form-0-end_date" style="width: 100%;  margin-top: 0">
+                                <span class="input-group-addon" style="width: 140px;">Attended till</span>
+                                <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
+                                       style="border-radius:0 5px 5px 0;" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" id="">
+
+                            <span class="" style="width: 140px;">City</span>
+
+                            <select id="id_city" placeholder="Enter your city...">
                             </select>
                         </div>
-                    </div>
-                    <div class="col-lg-6" style="padding: 0">
-                        <div class="form-group input-group" id="field.auto_id">
-                            <span class="input-group-addon">I currently study here</span>
-                            <span class="form-control" style="width: 20%;"><input type="checkbox" name="isCurrent" onclick="form.remark.value += 'isCurrent'"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6" style="padding-left: 0">
-                        <div class="form-group input-group" id="id_form-0-start_date">
-                            <span class="input-group-addon" style="width: 50%;">Attended from</span>
-                            <input id="id_form-0-start_date" name="form-0-start_date" class="form-control"
-                                   style="border-radius:0 5px 5px 0;" value="" type="date">
-                        </div>
-                    </div>
-                    <div class="col-lg-6" style="padding-left: 0">
-                        <div class="form-group input-group" id="id_form-0-end_date">
-                            <span class="input-group-addon" style="width: 50%;">To</span>
-                            <input id="id_form-0-end_date" name="form-0-end_date" class="form-control"
-                                   style="border-radius:0 5px 5px 0;" value="" type="date">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group input-group pull-left col-lg-6" id="" style="padding-right: 15px">
-                        <span class="input-group-addon" style="width: 50%;">City</span>
-                        <input id="id_city" name="city" type="text" class="form-control" style="border-radius:0 5px 5px 0;">
-                    </div>
 
-                    <div class="form-group input-group pull-right col-lg-6" id="">
-                        <span class="input-group-addon" style="width: 50%;">Country</span>
-                        <input id="id_country_name" name="country_name" type="text" class="form-control" list="country"
-                               style="border-radius:0 5px 5px 0; width: 90%"/>
-                        <datalist id="country" style="padding: 10px; margin:10px;">
-                            <option value="Afghanistan">
-                            <option value="Albania">
-                            <option value="Algeria">
-                            <option value="Andorra">
-                            <option value="Angola">
-                            <option value="Antigua & Deps">
-                            <option value="Argentina">
-                            <option value="Armenia">
-                            <option value="Australia">
-                            <option value="Austria">
-                            <option value="Azerbaijan">
-                            <option value="Bahamas">
-                            <option value="Bahrain">
-                            <option value="Bangladesh">
-                            <option value="Barbados">
-                            <option value="Belarus">
-                            <option value="Belgium">
-                            <option value="Belize">
-                            <option value="Benin">
-                            <option value="Bhutan">
-                            <option value="Bolivia">
-                            <option value="Bosnia Herzegovina">
-                            <option value="Botswana">
-                            <option value="Brazil">
-                            <option value="Brunei">
-                            <option value="Bulgaria">
-                            <option value="Burkina">
-                            <option value="Burundi">
-                            <option value="Cambodia">
-                            <option value="Cameroon">
-                            <option value="Canada">
-                            <option value="Cape Verde">
-                            <option value="Central African Rep">
-                            <option value="Chad">
-                            <option value="Chile">
-                            <option value="China">
-                            <option value="Colombia">
-                            <option value="Comoros">
-                            <option value="Congo">
-                            <option value="Congo {Democratic Rep}">
-                            <option value="Costa Rica">
-                            <option value="Croatia">
-                            <option value="Cuba">
-                            <option value="Cyprus">
-                            <option value="Czech Republic">
-                            <option value="Denmark">
-                            <option value="Djibouti">
-                            <option value="Dominica">
-                            <option value="Dominican Republic">
-                            <option value="Timor Leste">
-                            <option value="Ecuador">
-                            <option value="Egypt">
-                            <option value="El Salvador">
-                            <option value="Equatorial Guinea">
-                            <option value="Eritrea">
-                            <option value="Estonia">
-                            <option value="Ethiopia">
-                            <option value="Fiji">
-                            <option value="Finland">
-                            <option value="France">
-                            <option value="Gabon">
-                            <option value="Gambia">
-                            <option value="Georgia">
-                            <option value="Germany">
-                            <option value="Ghana">
-                            <option value="Greece">
-                            <option value="Grenada">
-                            <option value="Guatemala">
-                            <option value="Guinea">
-                            <option value="Guinea-Bissau">
-                            <option value="Guyana">
-                            <option value="Haiti">
-                            <option value="Honduras">
-                            <option value="Hungary">
-                            <option value="Iceland">
-                            <option value="India">
-                            <option value="Indonesia">
-                            <option value="Iran">
-                            <option value="Iraq">
-                            <option value="Ireland {Republic}">
-                            <option value="Israel">
-                            <option value="Italy">
-                            <option value="Ivory Coast">
-                            <option value="Jamaica">
-                            <option value="Japan">
-                            <option value="Jordan">
-                            <option value="Kazakhstan">
-                            <option value="Kenya">
-                            <option value="Kiribati">
-                            <option value="Korea North">
-                            <option value="Korea South">
-                            <option value="Kuwait">
-                            <option value="Kyrgyzstan">
-                            <option value="Laos">
-                            <option value="Latvia">
-                            <option value="Lebanon">
-                            <option value="Lesotho">
-                            <option value="Liberia">
-                            <option value="Libya">
-                            <option value="Liechtenstein">
-                            <option value="Lithuania">
-                            <option value="Luxembourg">
-                            <option value="Macedonia">
-                            <option value="Madagascar">
-                            <option value="Malawi">
-                            <option value="Malaysia">
-                            <option value="Maldives">
-                            <option value="Mali">
-                            <option value="Malta">
-                            <option value="Marshall Islands">
-                            <option value="Mauritania">
-                            <option value="Mauritius">
-                            <option value="Mexico">
-                            <option value="Micronesia">
-                            <option value="Moldova">
-                            <option value="Monaco">
-                            <option value="Mongolia">
-                            <option value="Montenegro">
-                            <option value="Morocco">
-                            <option value="Mozambique">
-                            <option value="Myanmar, {Burma}">
-                            <option value="Namibia">
-                            <option value="Nauru">
-                            <option value="Nepal">
-                            <option value="Netherlands">
-                            <option value="New Zealand">
-                            <option value="Nicaragua">
-                            <option value="Niger">
-                            <option value="Nigeria">
-                            <option value="Norway">
-                            <option value="Oman">
-                            <option value="Pakistan">
-                            <option value="Palau">
-                            <option value="Panama">
-                            <option value="Papua New Guinea">
-                            <option value="Paraguay">
-                            <option value="Peru">
-                            <option value="Philippines">
-                            <option value="Poland">
-                            <option value="Portugal">
-                            <option value="Qatar">
-                            <option value="Romania">
-                            <option value="Russian Federation">
-                            <option value="Rwanda">
-                            <option value="St Kitts & Nevis">
-                            <option value="St Lucia">
-                            <option value="Saint Vincent & the Grenadines">
-                            <option value="Samoa">
-                            <option value="San Marino">
-                            <option value="Sao Tome & Principe">
-                            <option value="Saudi Arabia">
-                            <option value="Senegal">
-                            <option value="Serbia">
-                            <option value="Seychelles">
-                            <option value="Sierra Leone">
-                            <option value="Singapore">
-                            <option value="Slovakia">
-                            <option value="Slovenia">
-                            <option value="Solomon Islands">
-                            <option value="Somalia">
-                            <option value="South Africa">
-                            <option value="Spain">
-                            <option value="Sri Lanka">
-                            <option value="Sudan">
-                            <option value="Suriname">
-                            <option value="Swaziland">
-                            <option value="Sweden">
-                            <option value="Switzerland">
-                            <option value="Syria">
-                            <option value="Taiwan">
-                            <option value="Tajikistan">
-                            <option value="Tanzania">
-                            <option value="Thailand">
-                            <option value="Togo">
-                            <option value="Tonga">
-                            <option value="Trinidad & Tobago">
-                            <option value="Tunisia">
-                            <option value="Turkey">
-                            <option value="Turkmenistan">
-                            <option value="Tuvalu">
-                            <option value="Uganda">
-                            <option value="Ukraine">
-                            <option value="United Arab Emirates">
-                            <option value="United Kingdom">
-                            <option value="United States of America">
-                            <option value="Uruguay">
-                            <option value="Uzbekistan">
-                            <option value="Vanuatu">
-                            <option value="Vatican City">
-                            <option value="Venezuela">
-                            <option value="Vietnam">
-                            <option value="Yemen">
-                            <option value="Zambia">
-                            <option value="Zimbabwe">
-                        </datalist>
+                        <div class="col-lg-6">
+
+                            <span class="" style="width: 140px;">Country</span>
+
+                            <select id="id_country" placeholder="Select a country...">
+                            </select>
+
+                        </div>
                     </div>
                 </div>
                 <div class="form-group input-group" id="id_form-0-id" style="width: 600px; margin: 0;">
-                    <input id="id_form-0-id" name="form-0-id" class="form-control" style="border-radius:0 5px 5px 0;"
+                    <input id="id_form-0-id" name="form-0-id" class="form-control"
+                           style="border-radius:0 5px 5px 0;"
                            value="None" type="hidden">
                 </div>
             </div>
         </div>
-    </div>
 
-    <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
-    </button>
+        <button type="submit" class="btn btn-warning pull-right"><a href="/test/profile">Next</a>
+        </button>
     </form>
 
 {% endblock %}
@@ -308,33 +133,10 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // change the number in the line below to change current progress on the progress bar
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(3)').addClass('active');
-            // adding class "visited" to all nodes before current active progress
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(1)').addClass('visited');
-            $('div.checkout-wrap ul.checkout-bar li:nth-child(2)').addClass('visited');
-            $.ajax({
-                url: "{{ STATIC_URL }}alumniportal/profile_form_education_form.html",
-                type: "GET",
-                dataType: "html",
-                success: function (response, status, xhr) {
-                    education_html = response;
-                    console.log(education_html);
-                },
-                error: function (xhr, status, error) {
-                    console.log(status + ' ' + error);
-                }
-            });
+    <script type="text/javascript" src="{{ STATIC_URL }}selectize/js/standalone/selectize.js"></script>
+    {% block additional_script %}
+        <script src="{{ STATIC_URL }}alumniportal/js/profile_form_education.js"></script>
+        <script src="{{ STATIC_URL }}alumniportal/js/utilities.js"></script>
 
-            $(".btn-add").click(function () {
-                $('form.input-form').html(education_html + $('form.input-form').html());
-                $('.form:first-of-type').slideDown('medium');
-                $('div.form div.row div.col-lg-1').on('click', 'span.glyphicon-remove', function () {
-                    $(this).parents('.form').slideUp('fast').addClass('deleted-form');
-                });
-            });
-        });
-    </script>
+    {% endblock %}
 {% endblock %}
